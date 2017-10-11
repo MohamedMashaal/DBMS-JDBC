@@ -97,15 +97,12 @@ public class CalculatorClass implements Calculator {
     public String current() {
         if(history.isEmpty())
             return "";
-        System.out.println(index);
-        System.out.println(history.get(index));
         index = history.size() > 1 ? history.size()-1 : 0;
         return history.get(history.size()-1);
     }
 
     @Override
     public String prev() {
-        System.out.println(index);
         if(history.isEmpty())
             return "";
         if(index == 0)
