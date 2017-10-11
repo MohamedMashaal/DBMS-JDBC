@@ -9,8 +9,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Scanner;
 
 /**
  *
@@ -18,17 +17,25 @@ import java.util.logging.Logger;
  */
 public class CalculatorClass implements Calculator {
     
-    private String currentOperationString = "";
+    private String currentOperationString;
     private String[] currentOperation;
     private char currentOperator;
-    private int index = 0;
-    private File data = new File("data.txt");
+    private int index;
+    private File data;
     
-    private ArrayList<String> history = new ArrayList<>();
+    private ArrayList<String> history;
 
+    public CalculatorClass(){
+        history = new ArrayList<>();
+        currentOperationString = "";
+        index = 0;
+        data = new File("data.txt");
+    }
+    
     @Override
     public void input(String s) {
         history.add(s);
+        index = history.size()-1;
         currentOperationString = s;
         String[] operation = s.split("\\+|\\*|/|-");
         currentOperation = operation;
@@ -41,8 +48,12 @@ public class CalculatorClass implements Calculator {
 
     @Override
     public String getResult() {
-        if(currentOperation.length > 2)
-            throw new RuntimeException("More than two numbers were entered.");
+        if(currentOperation.length == 1 && currentOperation[0].length() == currentOperationString.length())
+            return currentOperationString;
+        if(currentOperation.length > 2){
+            return "ERROR";
+            //throw new RuntimeException("More than two numbers were entered.");
+        }
         
         double number1 = Double.parseDouble(currentOperation[0]);
         double number2 = Double.parseDouble(currentOperation[1]);
@@ -52,11 +63,14 @@ public class CalculatorClass implements Calculator {
             int dots = 0;
             for(int j=0; j<currentOperation[i].length(); j++){
                 if(currentOperation[i].charAt(j) == '.'){
-                    if(dots == 1)
-                        throw new RuntimeException("Error in dots.");
+                    if(dots == 1){
+                        return "ERROR";
+                        //throw new RuntimeException("Error in dots.");
+                    }
                     dots++;
                 }else if(!(currentOperation[i].charAt(j) >= '0' && currentOperation[i].charAt(j) <= '9')){
-                    throw new RuntimeException("Invalid character.");
+                    return "ERROR";
+                    //throw new RuntimeException("Invalid character.");
                 }
             }
         }
@@ -81,16 +95,26 @@ public class CalculatorClass implements Calculator {
 
     @Override
     public String current() {
-        return currentOperationString;
+        if(history.isEmpty())
+            return "";
+        System.out.println(index);
+        System.out.println(history.get(index));
+        index = history.size() > 1 ? history.size()-1 : 0;
+        return history.get(history.size()-1);
     }
 
     @Override
     public String prev() {
+        System.out.println(index);
+        if(index == 0)
+            return "";
         return history.get(--index);
     }
 
     @Override
     public String next() {
+        if(index == history.size()-1 || history.isEmpty())
+            return "";
         return history.get(++index);
     }
 
@@ -98,6 +122,17 @@ public class CalculatorClass implements Calculator {
     public void save() {
         try {
             PrintWriter pw = new PrintWriter(data);
+            if(history.size() < 5){
+                for(int i=0; i<history.size(); i++){
+                    pw.println(history.get(i));
+                }
+            }
+            else{
+                for(int i=history.size()-5; i<history.size(); i++){
+                    pw.println(history.get(i));
+                }
+            }
+            pw.close();
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
         }
@@ -105,6 +140,16 @@ public class CalculatorClass implements Calculator {
 
     @Override
     public void load() {
+        try {
+            Scanner in = new Scanner(data);
+            history = new ArrayList<>();
+            while(in.hasNextLine())
+                history.add(in.nextLine());
+            in.close();
+            index = history.size()-1;
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+        }
     }
     
 }

@@ -4,18 +4,22 @@
  * and open the template in the editor.
  */
 package eg.edu.alexu.csd.oop.calculator.cs73;
+import eg.edu.alexu.csd.oop.calculator.Calculator;
 
 /**
  *
  * @author youssefali
  */
 public class MainWindow extends javax.swing.JFrame {
+    
+    Calculator myCalc;
 
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
         initComponents();
+        myCalc = new CalculatorClass();
     }
 
     /**
@@ -30,31 +34,32 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
-        jButton20 = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
-        jButton23 = new javax.swing.JButton();
-        jButton24 = new javax.swing.JButton();
-        jButton26 = new javax.swing.JButton();
-        jButton27 = new javax.swing.JButton();
-        jButton28 = new javax.swing.JButton();
-        jButton29 = new javax.swing.JButton();
-        jButton30 = new javax.swing.JButton();
+        inputScreen = new javax.swing.JTextField();
+        resultScreen = new javax.swing.JLabel();
+        nineBtn = new javax.swing.JButton();
+        sevenBtn = new javax.swing.JButton();
+        eightBtn = new javax.swing.JButton();
+        fourBtn = new javax.swing.JButton();
+        fiveBtn = new javax.swing.JButton();
+        sixBtn = new javax.swing.JButton();
+        twoBtn = new javax.swing.JButton();
+        threeBtn = new javax.swing.JButton();
+        oneBtn = new javax.swing.JButton();
+        mlpBtn = new javax.swing.JButton();
+        divBtn = new javax.swing.JButton();
+        plusBtn = new javax.swing.JButton();
+        minusBtn = new javax.swing.JButton();
+        deleteBtn = new javax.swing.JButton();
+        dotBtn = new javax.swing.JButton();
+        prevBtn = new javax.swing.JButton();
+        nextBtn = new javax.swing.JButton();
+        saveBtn = new javax.swing.JButton();
+        loadBtn = new javax.swing.JButton();
+        getResultBtn = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jButton31 = new javax.swing.JButton();
-        jButton32 = new javax.swing.JButton();
+        zeroBtn = new javax.swing.JButton();
+        resetScreenBtn = new javax.swing.JButton();
+        currBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(113, 113, 113));
@@ -79,124 +84,171 @@ public class MainWindow extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
         );
 
-        jTextField1.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+        inputScreen.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+
+        resultScreen.setBackground(new java.awt.Color(254, 254, 254));
+        resultScreen.setFont(new java.awt.Font("Ubuntu", 1, 21)); // NOI18N
+        resultScreen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        resultScreen.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        nineBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        nineBtn.setText("9");
+        nineBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nineBtnMouseClicked(evt);
             }
         });
 
-        jLabel2.setBackground(new java.awt.Color(254, 254, 254));
-        jLabel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jButton1.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jButton1.setText("9");
-
-        jButton2.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jButton2.setText("7");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        sevenBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        sevenBtn.setText("7");
+        sevenBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sevenBtnMouseClicked(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jButton3.setText("8");
-
-        jButton4.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jButton4.setText("4");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+        eightBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        eightBtn.setText("8");
+        eightBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eightBtnMouseClicked(evt);
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jButton5.setText("5");
-
-        jButton6.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jButton6.setText("6");
-
-        jButton7.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jButton7.setText("2");
-
-        jButton8.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jButton8.setText("3");
-
-        jButton9.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jButton9.setText("1");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+        fourBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        fourBtn.setText("4");
+        fourBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fourBtnMouseClicked(evt);
             }
         });
 
-        jButton19.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jButton19.setText("*");
-        jButton19.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton19ActionPerformed(evt);
+        fiveBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        fiveBtn.setText("5");
+        fiveBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fiveBtnMouseClicked(evt);
             }
         });
 
-        jButton20.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jButton20.setText("/");
-        jButton20.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton20ActionPerformed(evt);
+        sixBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        sixBtn.setText("6");
+        sixBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sixBtnMouseClicked(evt);
             }
         });
 
-        jButton21.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jButton21.setText("+");
-
-        jButton22.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jButton22.setText("-");
-
-        jButton23.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jButton23.setText("Del");
-        jButton23.setToolTipText("Modulus, the two numbers must be integers.");
-
-        jButton24.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jButton24.setText(".");
-
-        jButton26.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jButton26.setText("<< Prev");
-        jButton26.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton26ActionPerformed(evt);
+        twoBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        twoBtn.setText("2");
+        twoBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                twoBtnMouseClicked(evt);
             }
         });
 
-        jButton27.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jButton27.setText("Next >>");
-        jButton27.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton27ActionPerformed(evt);
+        threeBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        threeBtn.setText("3");
+        threeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                threeBtnMouseClicked(evt);
             }
         });
 
-        jButton28.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jButton28.setText("Save");
-        jButton28.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton28ActionPerformed(evt);
+        oneBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        oneBtn.setText("1");
+        oneBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                oneBtnMouseClicked(evt);
             }
         });
 
-        jButton29.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jButton29.setText("Load");
-        jButton29.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton29ActionPerformed(evt);
+        mlpBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        mlpBtn.setText("*");
+        mlpBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mlpBtnMouseClicked(evt);
             }
         });
 
-        jButton30.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jButton30.setText("=");
-        jButton30.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton30ActionPerformed(evt);
+        divBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        divBtn.setText("/");
+        divBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                divBtnMouseClicked(evt);
+            }
+        });
+
+        plusBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        plusBtn.setText("+");
+        plusBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                plusBtnMouseClicked(evt);
+            }
+        });
+
+        minusBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        minusBtn.setText("-");
+        minusBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                minusBtnMouseClicked(evt);
+            }
+        });
+
+        deleteBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        deleteBtn.setText("Del");
+        deleteBtn.setToolTipText("Modulus, the two numbers must be integers.");
+        deleteBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteBtnMouseClicked(evt);
+            }
+        });
+
+        dotBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        dotBtn.setText(".");
+        dotBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dotBtnMouseClicked(evt);
+            }
+        });
+
+        prevBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        prevBtn.setText("<< Prev");
+        prevBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                prevBtnMouseClicked(evt);
+            }
+        });
+
+        nextBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        nextBtn.setText("Next >>");
+        nextBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nextBtnMouseClicked(evt);
+            }
+        });
+
+        saveBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        saveBtn.setText("Save");
+        saveBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                saveBtnMouseClicked(evt);
+            }
+        });
+
+        loadBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        loadBtn.setText("Load");
+        loadBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loadBtnMouseClicked(evt);
+            }
+        });
+
+        getResultBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        getResultBtn.setText("=");
+        getResultBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                getResultBtnMouseClicked(evt);
             }
         });
 
@@ -204,12 +256,30 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Made by Youssef Ali, 2017");
 
-        jButton31.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jButton31.setText("0");
+        zeroBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        zeroBtn.setText("0");
+        zeroBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                zeroBtnMouseClicked(evt);
+            }
+        });
 
-        jButton32.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
-        jButton32.setText("AC");
-        jButton32.setToolTipText("Modulus, the two numbers must be integers.");
+        resetScreenBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        resetScreenBtn.setText("AC");
+        resetScreenBtn.setToolTipText("Modulus, the two numbers must be integers.");
+        resetScreenBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                resetScreenBtnMouseClicked(evt);
+            }
+        });
+
+        currBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
+        currBtn.setText("Current");
+        currBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                currBtnMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -219,104 +289,108 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputScreen, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(currBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(fourBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(fiveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(16, 16, 16)
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(sixBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(sevenBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(eightBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(16, 16, 16)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(nineBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(oneBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(twoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(16, 16, 16)
-                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(threeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(prevBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(nextBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(27, 27, 27)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(16, 16, 16)
-                                    .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(16, 16, 16)
-                                    .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(16, 16, 16)
-                                    .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(16, 16, 16)
-                                .addComponent(jButton32, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton30, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(plusBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(16, 16, 16)
+                                            .addComponent(minusBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(mlpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(16, 16, 16)
+                                            .addComponent(divBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(dotBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(16, 16, 16)
+                                            .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(zeroBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(16, 16, 16)
+                                        .addComponent(resetScreenBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(loadBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(getResultBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(resultScreen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inputScreen, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(resultScreen, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(currBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(divBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mlpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prevBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nineBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sevenBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(eightBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(sixBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fourBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fiveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dotBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jButton32, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(resetScreenBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(zeroBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(threeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(oneBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(twoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(minusBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(plusBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(loadBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton30, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(getResultBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -334,56 +408,109 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void saveBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveBtnMouseClicked
+        myCalc.save();
+    }//GEN-LAST:event_saveBtnMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void loadBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadBtnMouseClicked
+        myCalc.load();
+    }//GEN-LAST:event_loadBtnMouseClicked
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void resetScreenBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetScreenBtnMouseClicked
+        inputScreen.setText("");
+    }//GEN-LAST:event_resetScreenBtnMouseClicked
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+    private void deleteBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteBtnMouseClicked
+        String text = inputScreen.getText();
+        if(text.equals(""))
+            return;
+        inputScreen.setText(text.substring(0,text.length()-1));
+    }//GEN-LAST:event_deleteBtnMouseClicked
 
-    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton19ActionPerformed
+    private void mlpBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mlpBtnMouseClicked
+        inputScreen.setText(inputScreen.getText() + "*");
+    }//GEN-LAST:event_mlpBtnMouseClicked
 
-    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton20ActionPerformed
+    private void divBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_divBtnMouseClicked
+        inputScreen.setText(inputScreen.getText() + "/");
+    }//GEN-LAST:event_divBtnMouseClicked
 
-    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton26ActionPerformed
+    private void plusBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_plusBtnMouseClicked
+        inputScreen.setText(inputScreen.getText() + "+");
+    }//GEN-LAST:event_plusBtnMouseClicked
 
-    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton27ActionPerformed
+    private void minusBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minusBtnMouseClicked
+        inputScreen.setText(inputScreen.getText() + "-");
+    }//GEN-LAST:event_minusBtnMouseClicked
 
-    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton28ActionPerformed
+    private void zeroBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_zeroBtnMouseClicked
+        inputScreen.setText(inputScreen.getText() + "0");
+    }//GEN-LAST:event_zeroBtnMouseClicked
 
-    private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton29ActionPerformed
+    private void threeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_threeBtnMouseClicked
+        inputScreen.setText(inputScreen.getText() + "3");
+    }//GEN-LAST:event_threeBtnMouseClicked
 
-    private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton30ActionPerformed
+    private void twoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_twoBtnMouseClicked
+        inputScreen.setText(inputScreen.getText() + "2");
+    }//GEN-LAST:event_twoBtnMouseClicked
+
+    private void fiveBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fiveBtnMouseClicked
+        inputScreen.setText(inputScreen.getText() + "5");
+    }//GEN-LAST:event_fiveBtnMouseClicked
+
+    private void oneBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_oneBtnMouseClicked
+        inputScreen.setText(inputScreen.getText() + "1");
+    }//GEN-LAST:event_oneBtnMouseClicked
+
+    private void fourBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fourBtnMouseClicked
+        inputScreen.setText(inputScreen.getText() + "4");
+    }//GEN-LAST:event_fourBtnMouseClicked
+
+    private void sixBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sixBtnMouseClicked
+        inputScreen.setText(inputScreen.getText() + "6");
+    }//GEN-LAST:event_sixBtnMouseClicked
+
+    private void sevenBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sevenBtnMouseClicked
+        inputScreen.setText(inputScreen.getText() + "7");
+    }//GEN-LAST:event_sevenBtnMouseClicked
+
+    private void eightBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eightBtnMouseClicked
+        inputScreen.setText(inputScreen.getText() + "8");
+    }//GEN-LAST:event_eightBtnMouseClicked
+
+    private void nineBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nineBtnMouseClicked
+        inputScreen.setText(inputScreen.getText() + "9");
+    }//GEN-LAST:event_nineBtnMouseClicked
+
+    private void prevBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prevBtnMouseClicked
+        inputScreen.setText(myCalc.prev());
+    }//GEN-LAST:event_prevBtnMouseClicked
+
+    private void nextBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextBtnMouseClicked
+        inputScreen.setText(myCalc.next());
+    }//GEN-LAST:event_nextBtnMouseClicked
+
+    private void getResultBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_getResultBtnMouseClicked
+        String operation = inputScreen.getText();
+        myCalc.input(operation);
+        resultScreen.setText(myCalc.getResult());
+        inputScreen.setText("");
+    }//GEN-LAST:event_getResultBtnMouseClicked
+
+    private void dotBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dotBtnMouseClicked
+        inputScreen.setText(inputScreen.getText() + ".");
+    }//GEN-LAST:event_dotBtnMouseClicked
+
+    private void currBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_currBtnMouseClicked
+        inputScreen.setText(myCalc.current());
+    }//GEN-LAST:event_currBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -421,45 +548,34 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton26;
-    private javax.swing.JButton jButton27;
-    private javax.swing.JButton jButton28;
-    private javax.swing.JButton jButton29;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton30;
-    private javax.swing.JButton jButton31;
-    private javax.swing.JButton jButton32;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton currBtn;
+    private javax.swing.JButton deleteBtn;
+    private javax.swing.JButton divBtn;
+    private javax.swing.JButton dotBtn;
+    private javax.swing.JButton eightBtn;
+    private javax.swing.JButton fiveBtn;
+    private javax.swing.JButton fourBtn;
+    private javax.swing.JButton getResultBtn;
+    private javax.swing.JTextField inputScreen;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton loadBtn;
+    private javax.swing.JButton minusBtn;
+    private javax.swing.JButton mlpBtn;
+    private javax.swing.JButton nextBtn;
+    private javax.swing.JButton nineBtn;
+    private javax.swing.JButton oneBtn;
+    private javax.swing.JButton plusBtn;
+    private javax.swing.JButton prevBtn;
+    private javax.swing.JButton resetScreenBtn;
+    private javax.swing.JLabel resultScreen;
+    private javax.swing.JButton saveBtn;
+    private javax.swing.JButton sevenBtn;
+    private javax.swing.JButton sixBtn;
+    private javax.swing.JButton threeBtn;
+    private javax.swing.JButton twoBtn;
+    private javax.swing.JButton zeroBtn;
     // End of variables declaration//GEN-END:variables
 }
