@@ -106,15 +106,20 @@ public class CalculatorClass implements Calculator {
     @Override
     public String prev() {
         System.out.println(index);
-        if(index == 0)
+        if(history.isEmpty())
             return "";
+        if(index == 0)
+            return history.get(index);
         return history.get(--index);
     }
 
     @Override
     public String next() {
-        if(index == history.size()-1 || history.isEmpty())
+        if(history.isEmpty())
             return "";
+        if(index == history.size()-1){
+            return history.get(index);
+        }
         return history.get(++index);
     }
 
