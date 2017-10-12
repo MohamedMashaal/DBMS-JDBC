@@ -94,7 +94,7 @@ public class MainWindow extends javax.swing.JFrame {
         nineBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         nineBtn.setText("9");
         nineBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(final final java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 nineBtnMouseClicked(evt);
             }
         });
@@ -102,7 +102,7 @@ public class MainWindow extends javax.swing.JFrame {
         sevenBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         sevenBtn.setText("7");
         sevenBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(final final java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 sevenBtnMouseClicked(evt);
             }
         });
@@ -110,7 +110,7 @@ public class MainWindow extends javax.swing.JFrame {
         eightBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         eightBtn.setText("8");
         eightBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(final final java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 eightBtnMouseClicked(evt);
             }
         });
