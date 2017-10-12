@@ -61,7 +61,7 @@ public class CalculatorClass implements Calculator {
     }
 
     @Override
-    public static final String current() {
+    public final String current() {
         if (history.isEmpty()) {
             return null;
         }
@@ -76,7 +76,7 @@ public class CalculatorClass implements Calculator {
     }
 
     @Override
-    public static final void input(String s) {
+    public final void input(String s) {
         history.add(s);
 
         while (history.size() > 5) {
@@ -89,7 +89,7 @@ public class CalculatorClass implements Calculator {
     }
 
     @Override
-    public static final void load() {
+    public final void load() {
         try {
             Scanner in = new Scanner(data);
 
@@ -112,7 +112,7 @@ public class CalculatorClass implements Calculator {
     }
 
     @Override
-    public static final String next() {
+    public final String next() {
         if (history.isEmpty()) {
             return null;
         }
@@ -131,7 +131,7 @@ public class CalculatorClass implements Calculator {
     }
 
     @Override
-    public static final String prev() {
+    public final String prev() {
         if (history.isEmpty()) {
             return null;
         }
@@ -150,7 +150,7 @@ public class CalculatorClass implements Calculator {
     }
 
     @Override
-    public static final void save() {
+    public final void save() {
         try {
             PrintWriter pw = new PrintWriter(data);
 
@@ -173,7 +173,7 @@ public class CalculatorClass implements Calculator {
      *
      * @author youssefali
      */
-    private static final void
+    private final void
     updateCurrentOperation(String s) {
         String[] operation = s.split("\\+|\\*|/|-");
 
@@ -190,7 +190,7 @@ public class CalculatorClass implements Calculator {
     }
 
     @Override
-    public static final String getResult() {
+    public final String getResult() {
         if ((currentOperation.length == 1) &&
             (currentOperation[0].length() == currentOperationString.length())) {
             return currentOperationString;
