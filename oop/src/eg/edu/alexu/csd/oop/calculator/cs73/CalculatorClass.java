@@ -48,10 +48,13 @@ public class CalculatorClass implements Calculator {
      *
      * @author youssefali
      */
-    private ArrayList < String > history;
-
+    private ArrayList <String> history;
+    /**
+     *
+     * @author youssefali
+     */
     public CalculatorClass() {
-        history = new ArrayList < > ();
+        history = new ArrayList <> ();
         currentOperationString = "";
         index = 0;
         data = new File("data.txt");
@@ -90,10 +93,10 @@ public class CalculatorClass implements Calculator {
         try {
             Scanner in = new Scanner(data);
 
-            history = new ArrayList < > ();
+            history = new ArrayList <> ();
 
-            while ( in .hasNextLine()) {
-                history.add( in .nextLine());
+            while (in .hasNextLine()) {
+                history.add(in .nextLine());
             }
 
             in .close();
@@ -166,7 +169,10 @@ public class CalculatorClass implements Calculator {
             System.out.println(ex);
         }
     }
-
+    /**
+     *
+     * @author youssefali
+     */
     private static final void
     updateCurrentOperation(String s) {
         String[] operation = s.split("\\+|\\*|/|-");
