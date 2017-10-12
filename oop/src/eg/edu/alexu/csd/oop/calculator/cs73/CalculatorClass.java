@@ -34,6 +34,8 @@ public class CalculatorClass implements Calculator {
     
     @Override
     public void input(String s) {
+        if(history.size() == 5)
+            history = new ArrayList<>();
         history.add(s);
         index = history.size()-1;
         currentOperationString = s;
