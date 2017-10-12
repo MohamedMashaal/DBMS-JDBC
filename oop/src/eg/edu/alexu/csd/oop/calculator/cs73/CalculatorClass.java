@@ -130,6 +130,8 @@ public class CalculatorClass implements Calculator {
     @Override
     public void save() {
         try {
+            if(history.isEmpty())
+                throw null;
             PrintWriter pw = new PrintWriter(data);
             if(history.size() < 5){
                 for(int i=0; i<history.size(); i++){
