@@ -58,7 +58,7 @@ public class CalculatorClass implements Calculator {
 	}
 
 	@Override
-	static final public String current() {
+	public static final String current() {
 		if (history.isEmpty()) {
 			return null;
 		}
@@ -73,7 +73,7 @@ public class CalculatorClass implements Calculator {
 	}
 
 	@Override
-	static final public void input(String s) {
+	public static final void input(String s) {
 		history.add(s);
 
 		while (history.size() > 5) {
@@ -86,7 +86,7 @@ public class CalculatorClass implements Calculator {
 	}
 
 	@Override
-	static final public void load() {
+	public static final void load() {
 		try {
 			Scanner in = new Scanner(data);
 
@@ -109,7 +109,7 @@ public class CalculatorClass implements Calculator {
 	}
 
 	@Override
-	static final public String next() {
+	public static final String next() {
 		if (history.isEmpty()) {
 			return null;
 		}
@@ -128,7 +128,7 @@ public class CalculatorClass implements Calculator {
 	}
 
 	@Override
-	static final public String prev() {
+	public static final String prev() {
 		if (history.isEmpty()) {
 			return null;
 		}
@@ -147,7 +147,7 @@ public class CalculatorClass implements Calculator {
 	}
 
 	@Override
-	static final public void save() {
+	public static final void save() {
 		try {
 			PrintWriter pw = new PrintWriter(data);
 
@@ -156,7 +156,8 @@ public class CalculatorClass implements Calculator {
 					pw.println(history.get(i));
 				}
 			} else {
-				for (int i = history.size() - 5; i < history.size(); i++) {
+				for (int i = history.size() - 5; 
+						i < history.size(); i++) {
 					pw.println(history.get(i));
 				}
 			}
@@ -167,13 +168,15 @@ public class CalculatorClass implements Calculator {
 		}
 	}
 
-	final private static void updateCurrentOperation(String s) {
+	private static final void 
+	updateCurrentOperation(String s) {
 		String[] operation = s.split("\\+|\\*|/|-");
 
 		currentOperation = operation;
 
 		for (int i = 0; i < s.length(); i++) {
-			if ((s.charAt(i) == '+') || (s.charAt(i) == '-') || (s.charAt(i) == '*') || (s.charAt(i) == '/')) {
+			if ((s.charAt(i) == '+') || (s.charAt(i) == '-')
+			|| (s.charAt(i) == '*') || (s.charAt(i) == '/')) {
 				currentOperator = s.charAt(i);
 
 				break;
@@ -182,8 +185,9 @@ public class CalculatorClass implements Calculator {
 	}
 
 	@Override
-	static final public String getResult() {
-		if ((currentOperation.length == 1) && (currentOperation[0].length() == currentOperationString.length())) {
+	public static final String getResult() {
+		if ((currentOperation.length == 1)
+		&& (currentOperation[0].length() == currentOperationString.length())) {
 			return currentOperationString;
 		}
 
@@ -209,7 +213,8 @@ public class CalculatorClass implements Calculator {
 					}
 
 					dots++;
-				} else if (!((currentOperation[i].charAt(j) >= '0') && (currentOperation[i].charAt(j) <= '9'))) {
+				} else if (!((currentOperation[i].charAt(j) >= '0')
+				&& (currentOperation[i].charAt(j) <= '9'))) {
 					return "ERROR";
 
 					// throw new RuntimeException("Invalid character.");
