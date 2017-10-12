@@ -105,7 +105,8 @@ public class CalculatorClass implements Calculator {
     public String prev() {
         if(history.isEmpty())
             return null;
-        if(index == 0){
+        if(index <= 0){
+            index = -1;
             return null;
             //return history.get(index);
         }
@@ -116,7 +117,8 @@ public class CalculatorClass implements Calculator {
     public String next() {
         if(history.isEmpty())
             return null;
-        if(index == history.size()-1){
+        if(index >= history.size()-1){
+            index = history.size();
             return null;
             //return history.get(index);
         }
