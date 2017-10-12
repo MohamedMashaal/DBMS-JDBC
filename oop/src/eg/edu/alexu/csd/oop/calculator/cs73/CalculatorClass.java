@@ -104,18 +104,21 @@ public class CalculatorClass implements Calculator {
     @Override
     public String prev() {
         if(history.isEmpty())
-            return "";
-        if(index == 0)
-            return history.get(index);
+            return null;
+        if(index == 0){
+            return null;
+            //return history.get(index);
+        }
         return history.get(--index);
     }
 
     @Override
     public String next() {
         if(history.isEmpty())
-            return "";
+            return null;
         if(index == history.size()-1){
-            return history.get(index);
+            return null;
+            //return history.get(index);
         }
         return history.get(++index);
     }
