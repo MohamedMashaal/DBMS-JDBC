@@ -34,9 +34,9 @@ public class CalculatorClass implements Calculator {
     
     @Override
     public void input(String s) {
-        if(history.size() == 5)
-            history = new ArrayList<>();
         history.add(s);
+        while(history.size() > 5)
+            history.remove(0);
         index = history.size()-1;
         currentOperationString = s;
         String[] operation = s.split("\\+|\\*|/|-");
