@@ -94,7 +94,7 @@ public class MainWindow extends javax.swing.JFrame {
         nineBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         nineBtn.setText("9");
         nineBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final final java.awt.event.MouseEvent evt) {
                 nineBtnMouseClicked(evt);
             }
         });
@@ -102,7 +102,7 @@ public class MainWindow extends javax.swing.JFrame {
         sevenBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         sevenBtn.setText("7");
         sevenBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final final java.awt.event.MouseEvent evt) {
                 sevenBtnMouseClicked(evt);
             }
         });
@@ -110,7 +110,7 @@ public class MainWindow extends javax.swing.JFrame {
         eightBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         eightBtn.setText("8");
         eightBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final final java.awt.event.MouseEvent evt) {
                 eightBtnMouseClicked(evt);
             }
         });
@@ -118,7 +118,7 @@ public class MainWindow extends javax.swing.JFrame {
         fourBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         fourBtn.setText("4");
         fourBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 fourBtnMouseClicked(evt);
             }
         });
@@ -126,7 +126,7 @@ public class MainWindow extends javax.swing.JFrame {
         fiveBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         fiveBtn.setText("5");
         fiveBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 fiveBtnMouseClicked(evt);
             }
         });
@@ -134,7 +134,7 @@ public class MainWindow extends javax.swing.JFrame {
         sixBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         sixBtn.setText("6");
         sixBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 sixBtnMouseClicked(evt);
             }
         });
@@ -142,7 +142,7 @@ public class MainWindow extends javax.swing.JFrame {
         twoBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         twoBtn.setText("2");
         twoBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 twoBtnMouseClicked(evt);
             }
         });
@@ -150,7 +150,7 @@ public class MainWindow extends javax.swing.JFrame {
         threeBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         threeBtn.setText("3");
         threeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 threeBtnMouseClicked(evt);
             }
         });
@@ -158,7 +158,7 @@ public class MainWindow extends javax.swing.JFrame {
         oneBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         oneBtn.setText("1");
         oneBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 oneBtnMouseClicked(evt);
             }
         });
@@ -166,7 +166,7 @@ public class MainWindow extends javax.swing.JFrame {
         mlpBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         mlpBtn.setText("*");
         mlpBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 mlpBtnMouseClicked(evt);
             }
         });
@@ -174,7 +174,7 @@ public class MainWindow extends javax.swing.JFrame {
         divBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         divBtn.setText("/");
         divBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 divBtnMouseClicked(evt);
             }
         });
@@ -182,7 +182,7 @@ public class MainWindow extends javax.swing.JFrame {
         plusBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         plusBtn.setText("+");
         plusBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 plusBtnMouseClicked(evt);
             }
         });
@@ -190,7 +190,7 @@ public class MainWindow extends javax.swing.JFrame {
         minusBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         minusBtn.setText("-");
         minusBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 minusBtnMouseClicked(evt);
             }
         });
@@ -199,7 +199,7 @@ public class MainWindow extends javax.swing.JFrame {
         deleteBtn.setText("Del");
         deleteBtn.setToolTipText("Modulus, the two numbers must be integers.");
         deleteBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 deleteBtnMouseClicked(evt);
             }
         });
@@ -207,7 +207,7 @@ public class MainWindow extends javax.swing.JFrame {
         dotBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         dotBtn.setText(".");
         dotBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 dotBtnMouseClicked(evt);
             }
         });
@@ -215,7 +215,7 @@ public class MainWindow extends javax.swing.JFrame {
         prevBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         prevBtn.setText("<< Prev");
         prevBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 prevBtnMouseClicked(evt);
             }
         });
@@ -223,7 +223,7 @@ public class MainWindow extends javax.swing.JFrame {
         nextBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         nextBtn.setText("Next >>");
         nextBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 nextBtnMouseClicked(evt);
             }
         });
@@ -231,7 +231,7 @@ public class MainWindow extends javax.swing.JFrame {
         saveBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         saveBtn.setText("Save");
         saveBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 saveBtnMouseClicked(evt);
             }
         });
@@ -239,7 +239,7 @@ public class MainWindow extends javax.swing.JFrame {
         loadBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         loadBtn.setText("Load");
         loadBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 loadBtnMouseClicked(evt);
             }
         });
@@ -247,7 +247,7 @@ public class MainWindow extends javax.swing.JFrame {
         getResultBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         getResultBtn.setText("=");
         getResultBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 getResultBtnMouseClicked(evt);
             }
         });
@@ -259,7 +259,7 @@ public class MainWindow extends javax.swing.JFrame {
         zeroBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         zeroBtn.setText("0");
         zeroBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 zeroBtnMouseClicked(evt);
             }
         });
@@ -268,7 +268,7 @@ public class MainWindow extends javax.swing.JFrame {
         resetScreenBtn.setText("AC");
         resetScreenBtn.setToolTipText("Modulus, the two numbers must be integers.");
         resetScreenBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 resetScreenBtnMouseClicked(evt);
             }
         });
@@ -276,7 +276,7 @@ public class MainWindow extends javax.swing.JFrame {
         currBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         currBtn.setText("Current");
         currBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(final java.awt.event.MouseEvent evt) {
                 currBtnMouseClicked(evt);
             }
         });
@@ -414,101 +414,101 @@ public class MainWindow extends javax.swing.JFrame {
         pack();
     } // </editor-fold>                        
 
-    private void saveBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void saveBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         myCalc.save();
     }
 
-    private void loadBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void loadBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         myCalc.load();
     }
 
-    private void resetScreenBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void resetScreenBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         inputScreen.setText("");
     }
 
-    private void deleteBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void deleteBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         String text = inputScreen.getText();
         if (text.equals(""))
             return;
         inputScreen.setText(text.substring(0, text.length() - 1));
     }
 
-    private void mlpBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void mlpBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         inputScreen.setText(inputScreen.getText() + "*");
     }
 
-    private void divBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void divBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         inputScreen.setText(inputScreen.getText() + "/");
     }
 
-    private void plusBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void plusBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         inputScreen.setText(inputScreen.getText() + "+");
     }
 
-    private void minusBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void minusBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         inputScreen.setText(inputScreen.getText() + "-");
     }
 
-    private void zeroBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void zeroBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         inputScreen.setText(inputScreen.getText() + "0");
     }
 
-    private void threeBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void threeBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         inputScreen.setText(inputScreen.getText() + "3");
     }
 
-    private void twoBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void twoBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         inputScreen.setText(inputScreen.getText() + "2");
     }
 
-    private void fiveBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void fiveBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         inputScreen.setText(inputScreen.getText() + "5");
     }
 
-    private void oneBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void oneBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         inputScreen.setText(inputScreen.getText() + "1");
     }
 
-    private void fourBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void fourBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         inputScreen.setText(inputScreen.getText() + "4");
     }
 
-    private void sixBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void sixBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         inputScreen.setText(inputScreen.getText() + "6");
     }
 
-    private void sevenBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void sevenBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         inputScreen.setText(inputScreen.getText() + "7");
     }
 
-    private void eightBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void eightBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         inputScreen.setText(inputScreen.getText() + "8");
     }
 
-    private void nineBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void nineBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         inputScreen.setText(inputScreen.getText() + "9");
     }
 
-    private void prevBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void prevBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         inputScreen.setText(myCalc.prev());
     }
 
-    private void nextBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void nextBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         inputScreen.setText(myCalc.next());
     }
 
-    private void getResultBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void getResultBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         String operation = inputScreen.getText();
         myCalc.input(operation);
         resultScreen.setText(myCalc.getResult());
         inputScreen.setText("");
     }
 
-    private void dotBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void dotBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         inputScreen.setText(inputScreen.getText() + ".");
     }
 
-    private void currBtnMouseClicked(java.awt.event.MouseEvent evt) {
+    private void currBtnMouseClicked(final java.awt.event.MouseEvent evt) {
         inputScreen.setText(myCalc.current());
     }
 
