@@ -39,13 +39,7 @@ public class CalculatorClass implements Calculator {
             history.remove(0);
         index = history.size()-1;
         currentOperationString = s;
-        String[] operation = s.split("\\+|\\*|/|-");
-        currentOperation = operation;
-        for(int i=0; i<s.length(); i++)
-            if(s.charAt(i) == '+' || s.charAt(i) == '-' || s.charAt(i) == '*' || s.charAt(i) == '/'){
-                currentOperator = s.charAt(i);
-                break;
-            }
+        updateCurrentOperation(s);
     }
 
     @Override
@@ -114,7 +108,8 @@ public class CalculatorClass implements Calculator {
             return null;
             //return history.get(index);
         }
-        return history.get(--index);
+        updateCurrentOperation(history.get(--index));
+        return history.get(index);
     }
 
     @Override
@@ -126,7 +121,8 @@ public class CalculatorClass implements Calculator {
             return null;
             //return history.get(index);
         }
-        return history.get(++index);
+        updateCurrentOperation(history.get(++index));
+        return history.get(index);
     }
 
     @Override
@@ -164,6 +160,16 @@ public class CalculatorClass implements Calculator {
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
         }
+    }
+
+    private void updateCurrentOperation(String s) {
+        String[] operation = s.split("\\+|\\*|/|-");
+        currentOperation = operation;
+        for(int i=0; i<s.length(); i++)
+            if(s.charAt(i) == '+' || s.charAt(i) == '-' || s.charAt(i) == '*' || s.charAt(i) == '/'){
+                currentOperator = s.charAt(i);
+                break;
+            }
     }
     
 }
