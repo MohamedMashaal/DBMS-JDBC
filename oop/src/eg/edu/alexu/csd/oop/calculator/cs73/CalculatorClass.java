@@ -147,7 +147,7 @@ public class CalculatorClass implements Calculator {
     public void load() {
         try {
             Scanner in = new Scanner(data);
-            history = new ArrayList<>();
+            //history = new ArrayList<>();
             while(in.hasNextLine())
                 history.add(in.nextLine());
             in.close();
