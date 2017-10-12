@@ -155,7 +155,10 @@ public class CalculatorClass implements Calculator {
             while(in.hasNextLine())
                 history.add(in.nextLine());
             in.close();
-            index = history.size()-1;
+            if(history.size() < 5)
+                index = 0;
+            else
+                index = history.size()-1;
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
         }
