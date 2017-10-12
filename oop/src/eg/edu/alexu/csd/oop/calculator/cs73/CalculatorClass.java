@@ -58,7 +58,7 @@ public class CalculatorClass implements Calculator {
 	}
 
 	@Override
-	final static public String current() {
+	static final public String current() {
 		if (history.isEmpty()) {
 			return null;
 		}
@@ -73,7 +73,7 @@ public class CalculatorClass implements Calculator {
 	}
 
 	@Override
-	final static public void input(String s) {
+	static final public void input(String s) {
 		history.add(s);
 
 		while (history.size() > 5) {
@@ -86,7 +86,7 @@ public class CalculatorClass implements Calculator {
 	}
 
 	@Override
-	final static public void load() {
+	static final public void load() {
 		try {
 			Scanner in = new Scanner(data);
 
@@ -109,7 +109,7 @@ public class CalculatorClass implements Calculator {
 	}
 
 	@Override
-	final static public String next() {
+	static final public String next() {
 		if (history.isEmpty()) {
 			return null;
 		}
@@ -128,7 +128,7 @@ public class CalculatorClass implements Calculator {
 	}
 
 	@Override
-	final static public String prev() {
+	static final public String prev() {
 		if (history.isEmpty()) {
 			return null;
 		}
@@ -147,7 +147,7 @@ public class CalculatorClass implements Calculator {
 	}
 
 	@Override
-	final static public void save() {
+	static final public void save() {
 		try {
 			PrintWriter pw = new PrintWriter(data);
 
@@ -167,7 +167,7 @@ public class CalculatorClass implements Calculator {
 		}
 	}
 
-	private static void updateCurrentOperation(String s) {
+	final private static void updateCurrentOperation(String s) {
 		String[] operation = s.split("\\+|\\*|/|-");
 
 		currentOperation = operation;
@@ -182,7 +182,7 @@ public class CalculatorClass implements Calculator {
 	}
 
 	@Override
-	final static public String getResult() {
+	static final public String getResult() {
 		if ((currentOperation.length == 1) && (currentOperation[0].length() == currentOperationString.length())) {
 			return currentOperationString;
 		}
