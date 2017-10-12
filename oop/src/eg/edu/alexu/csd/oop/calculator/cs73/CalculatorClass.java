@@ -98,7 +98,8 @@ public class CalculatorClass implements Calculator {
         if(history.isEmpty())
             return null;
         //index = history.size() > 1 ? history.size()-1 : 0;
-        
+        if(index < 0 || index >= history.size())
+            return null;
         return history.get(index);
     }
 
