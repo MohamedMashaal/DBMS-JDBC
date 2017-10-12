@@ -96,7 +96,7 @@ public class CalculatorClass implements Calculator {
     @Override
     public String current() {
         if(history.isEmpty())
-            return "";
+            return null;
         index = history.size() > 1 ? history.size()-1 : 0;
         return history.get(history.size()-1);
     }
