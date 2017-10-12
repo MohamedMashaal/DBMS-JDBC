@@ -19,236 +19,235 @@ import eg.edu.alexu.csd.oop.calculator.Calculator;
  * @author youssefali
  */
 public class CalculatorClass implements Calculator {
-	/**
-	 *
-	 * @author youssefali
-	 */
-	private String currentOperationString;
-	/**
-	 *
-	 * @author youssefali
-	 */
-	private String[] currentOperation;
-	/**
-	 *
-	 * @author youssefali
-	 */
-	private char currentOperator;
-	/**
-	 *
-	 * @author youssefali
-	 */
-	private int index;
-	/**
-	 *
-	 * @author youssefali
-	 */
-	private File data;
-	/**
-	 *
-	 * @author youssefali
-	 */
-	private ArrayList < String > history;
+    /**
+     *
+     * @author youssefali
+     */
+    private String currentOperationString;
+    /**
+     *
+     * @author youssefali
+     */
+    private String[] currentOperation;
+    /**
+     *
+     * @author youssefali
+     */
+    private char currentOperator;
+    /**
+     *
+     * @author youssefali
+     */
+    private int index;
+    /**
+     *
+     * @author youssefali
+     */
+    private File data;
+    /**
+     *
+     * @author youssefali
+     */
+    private ArrayList < String > history;
 
-	public CalculatorClass() {
-		history = new ArrayList < > ();
-		currentOperationString = "";
-		index = 0;
-		data = new File("data.txt");
-	}
+    public CalculatorClass() {
+        history = new ArrayList < > ();
+        currentOperationString = "";
+        index = 0;
+        data = new File("data.txt");
+    }
 
-	@Override
-	public static final String current() {
-		if (history.isEmpty()) {
-			return null;
-		}
+    @Override
+    public static final String current() {
+        if (history.isEmpty()) {
+            return null;
+        }
 
-		// index = history.size() > 1 ? history.size()-1 : 0;
+        // index = history.size() > 1 ? history.size()-1 : 0;
 
-		/*
-		 * if(index < 0 || index >= history.size())
-		 *   return null;
-		 */
-		return history.get(index);
-	}
+        /*
+         * if(index < 0 || index >= history.size())
+         *   return null;
+         */
+        return history.get(index);
+    }
 
-	@Override
-	public static final void input(String s) {
-		history.add(s);
+    @Override
+    public static final void input(String s) {
+        history.add(s);
 
-		while (history.size() > 5) {
-			history.remove(0);
-		}
+        while (history.size() > 5) {
+            history.remove(0);
+        }
 
-		index = history.size() - 1;
-		currentOperationString = s;
-		updateCurrentOperation(s);
-	}
+        index = history.size() - 1;
+        currentOperationString = s;
+        updateCurrentOperation(s);
+    }
 
-	@Override
-	public static final void load() {
-		try {
-			Scanner in = new Scanner(data);
+    @Override
+    public static final void load() {
+        try {
+            Scanner in = new Scanner(data);
 
-			history = new ArrayList < > ();
+            history = new ArrayList < > ();
 
-			while ( in .hasNextLine()) {
-				history.add( in .nextLine());
-			}
+            while ( in .hasNextLine()) {
+                history.add( in .nextLine());
+            }
 
-			in .close();
+            in .close();
 
-			if (history.size() < 5) {
-				index = 0;
-			} else {
-				index = history.size() - 1;
-			}
-		} catch (FileNotFoundException ex) {
-			System.out.println(ex);
-		}
-	}
+            if (history.size() < 5) {
+                index = 0;
+            } else {
+                index = history.size() - 1;
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+        }
+    }
 
-	@Override
-	public static final String next() {
-		if (history.isEmpty()) {
-			return null;
-		}
+    @Override
+    public static final String next() {
+        if (history.isEmpty()) {
+            return null;
+        }
 
-		if (index >= history.size() - 1) {
+        if (index >= history.size() - 1) {
 
-			// index = history.size();
-			return null;
+            // index = history.size();
+            return null;
 
-			// return history.get(index);
-		}
+            // return history.get(index);
+        }
 
-		updateCurrentOperation(history.get(++index));
+        updateCurrentOperation(history.get(++index));
 
-		return history.get(index);
-	}
+        return history.get(index);
+    }
 
-	@Override
-	public static final String prev() {
-		if (history.isEmpty()) {
-			return null;
-		}
+    @Override
+    public static final String prev() {
+        if (history.isEmpty()) {
+            return null;
+        }
 
-		if (index <= 0) {
+        if (index <= 0) {
 
-			// index = -1;
-			return null;
+            // index = -1;
+            return null;
 
-			// return history.get(index);
-		}
+            // return history.get(index);
+        }
 
-		updateCurrentOperation(history.get(--index));
+        updateCurrentOperation(history.get(--index));
 
-		return history.get(index);
-	}
+        return history.get(index);
+    }
 
-	@Override
-	public static final void save() {
-		try {
-			PrintWriter pw = new PrintWriter(data);
+    @Override
+    public static final void save() {
+        try {
+            PrintWriter pw = new PrintWriter(data);
 
-			if (history.size() < 5) {
-				for (int i = 0; i < history.size(); i++) {
-					pw.println(history.get(i));
-				}
-			} else {
-				for (int i = history.size() - 5; 
-						i < history.size(); i++) {
-					pw.println(history.get(i));
-				}
-			}
+            if (history.size() < 5) {
+                for (int i = 0; i < history.size(); i++) {
+                    pw.println(history.get(i));
+                }
+            } else {
+                for (int i = history.size() - 5; i < history.size(); i++) {
+                    pw.println(history.get(i));
+                }
+            }
 
-			pw.close();
-		} catch (FileNotFoundException ex) {
-			System.out.println(ex);
-		}
-	}
+            pw.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+        }
+    }
 
-	private static final void 
-	updateCurrentOperation(String s) {
-		String[] operation = s.split("\\+|\\*|/|-");
+    private static final void
+    updateCurrentOperation(String s) {
+        String[] operation = s.split("\\+|\\*|/|-");
 
-		currentOperation = operation;
+        currentOperation = operation;
 
-		for (int i = 0; i < s.length(); i++) {
-			if ((s.charAt(i) == '+') || (s.charAt(i) == '-')
-			|| (s.charAt(i) == '*') || (s.charAt(i) == '/')) {
-				currentOperator = s.charAt(i);
+        for (int i = 0; i < s.length(); i++) {
+            if ((s.charAt(i) == '+') || (s.charAt(i) == '-') ||
+                (s.charAt(i) == '*') || (s.charAt(i) == '/')) {
+                currentOperator = s.charAt(i);
 
-				break;
-			}
-		}
-	}
+                break;
+            }
+        }
+    }
 
-	@Override
-	public static final String getResult() {
-		if ((currentOperation.length == 1)
-		&& (currentOperation[0].length() == currentOperationString.length())) {
-			return currentOperationString;
-		}
+    @Override
+    public static final String getResult() {
+        if ((currentOperation.length == 1) &&
+            (currentOperation[0].length() == currentOperationString.length())) {
+            return currentOperationString;
+        }
 
-		if (currentOperation.length > 2) {
-			return "ERROR";
+        if (currentOperation.length > 2) {
+            return "ERROR";
 
-			// throw new RuntimeException("More than two numbers were entered.");
-		}
+            // throw new RuntimeException("More than two numbers were entered.");
+        }
 
-		double number1 = Double.parseDouble(currentOperation[0]);
-		double number2 = Double.parseDouble(currentOperation[1]);
+        double number1 = Double.parseDouble(currentOperation[0]);
+        double number2 = Double.parseDouble(currentOperation[1]);
 
-		// make sure that number1 and number2 are valid numbers
-		for (int i = 0; i < 2; i++) {
-			int dots = 0;
+        // make sure that number1 and number2 are valid numbers
+        for (int i = 0; i < 2; i++) {
+            int dots = 0;
 
-			for (int j = 0; j < currentOperation[i].length(); j++) {
-				if (currentOperation[i].charAt(j) == '.') {
-					if (dots == 1) {
-						return "ERROR";
+            for (int j = 0; j < currentOperation[i].length(); j++) {
+                if (currentOperation[i].charAt(j) == '.') {
+                    if (dots == 1) {
+                        return "ERROR";
 
-						// throw new RuntimeException("Error in dots.");
-					}
+                        // throw new RuntimeException("Error in dots.");
+                    }
 
-					dots++;
-				} else if (!((currentOperation[i].charAt(j) >= '0')
-				&& (currentOperation[i].charAt(j) <= '9'))) {
-					return "ERROR";
+                    dots++;
+                } else if (!((currentOperation[i].charAt(j) >= '0') &&
+                        (currentOperation[i].charAt(j) <= '9'))) {
+                    return "ERROR";
 
-					// throw new RuntimeException("Invalid character.");
-				}
-			}
-		}
+                    // throw new RuntimeException("Invalid character.");
+                }
+            }
+        }
 
-		double result = 0;
+        double result = 0;
 
-		switch (currentOperator) {
-		case '+':
-			result = number1 + number2;
+        switch (currentOperator) {
+            case '+':
+                result = number1 + number2;
 
-			break;
+                break;
 
-		case '-':
-			result = number1 - number2;
+            case '-':
+                result = number1 - number2;
 
-			break;
+                break;
 
-		case '*':
-			result = number1 * number2;
+            case '*':
+                result = number1 * number2;
 
-			break;
+                break;
 
-		case '/':
-			result = number1 / number2;
+            case '/':
+                result = number1 / number2;
 
-			break;
+                break;
 
-		default :
-			break;
-		}
+            default:
+                break;
+        }
 
-		return String.valueOf(result);
-	}
+        return String.valueOf(result);
+    }
 }
