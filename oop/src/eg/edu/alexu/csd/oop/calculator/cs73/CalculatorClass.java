@@ -1,8 +1,7 @@
-
 /*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package eg.edu.alexu.csd.oop.calculator.cs73;
 
@@ -20,18 +19,42 @@ import eg.edu.alexu.csd.oop.calculator.Calculator;
  * @author youssefali
  */
 public class CalculatorClass implements Calculator {
-    private String            currentOperationString;
-    private String[]          currentOperation;
-    private char              currentOperator;
-    private int               index;
-    private File              data;
-    private ArrayList<String> history;
+    /**
+     *
+     * @author youssefali
+     */
+    private String currentOperationString;
+    /**
+     *
+     * @author youssefali
+     */
+    private String[] currentOperation;
+    /**
+     *
+     * @author youssefali
+     */
+    private char currentOperator;
+    /**
+     *
+     * @author youssefali
+     */
+    private int index;
+    /**
+     *
+     * @author youssefali
+     */
+    private File data;
+    /**
+     *
+     * @author youssefali
+     */
+    private ArrayList < String > history;
 
     public CalculatorClass() {
-        history                = new ArrayList<>();
+        history = new ArrayList < > ();
         currentOperationString = "";
-        index                  = 0;
-        data                   = new File("data.txt");
+        index = 0;
+        data = new File("data.txt");
     }
 
     @Override
@@ -57,7 +80,7 @@ public class CalculatorClass implements Calculator {
             history.remove(0);
         }
 
-        index                  = history.size() - 1;
+        index = history.size() - 1;
         currentOperationString = s;
         updateCurrentOperation(s);
     }
@@ -67,13 +90,13 @@ public class CalculatorClass implements Calculator {
         try {
             Scanner in = new Scanner(data);
 
-            history = new ArrayList<>();
+            history = new ArrayList < > ();
 
-            while (in.hasNextLine()) {
-                history.add(in.nextLine());
+            while ( in .hasNextLine()) {
+                history.add( in .nextLine());
             }
 
-            in.close();
+            in .close();
 
             if (history.size() < 5) {
                 index = 0;
@@ -144,7 +167,7 @@ public class CalculatorClass implements Calculator {
         }
     }
 
-    final private void updateCurrentOperation(String s) {
+    private void updateCurrentOperation(String s) {
         String[] operation = s.split("\\+|\\*|/|-");
 
         currentOperation = operation;
@@ -197,25 +220,25 @@ public class CalculatorClass implements Calculator {
         double result = 0;
 
         switch (currentOperator) {
-        case '+' :
-            result = number1 + number2;
+            case '+':
+                result = number1 + number2;
 
-            break;
+                break;
 
-        case '-' :
-            result = number1 - number2;
+            case '-':
+                result = number1 - number2;
 
-            break;
+                break;
 
-        case '*' :
-            result = number1 * number2;
+            case '*':
+                result = number1 * number2;
 
-            break;
+                break;
 
-        case '/' :
-            result = number1 / number2;
+            case '/':
+                result = number1 / number2;
 
-            break;
+                break;
         }
 
         return String.valueOf(result);
