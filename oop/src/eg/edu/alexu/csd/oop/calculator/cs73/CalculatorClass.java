@@ -1,8 +1,7 @@
-
 /*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package eg.edu.alexu.csd.oop.calculator.cs73;
 
@@ -20,22 +19,49 @@ import eg.edu.alexu.csd.oop.calculator.Calculator;
  * @author youssefali
  */
 public class CalculatorClass implements Calculator {
-    private String            currentOperationString;
-    private String[]          currentOperation;
-    private char              currentOperator;
-    private int               index;
-    private File              data;
-    private ArrayList<String> history;
-
+    /**
+     *
+     * @author youssefali
+     */
+    private String currentOperationString;
+    /**
+     *
+     * @author youssefali
+     */
+    private String[] currentOperation;
+    /**
+     *
+     * @author youssefali
+     */
+    private char currentOperator;
+    /**
+     *
+     * @author youssefali
+     */
+    private int index;
+    /**
+     *
+     * @author youssefali
+     */
+    private File data;
+    /**
+     *
+     * @author youssefali
+     */
+    private ArrayList <String> history;
+    /**
+     *
+     * @author youssefali
+     */
     public CalculatorClass() {
-        history                = new ArrayList<>();
+        history = new ArrayList <> ();
         currentOperationString = "";
-        index                  = 0;
-        data                   = new File("data.txt");
+        index = 0;
+        data = new File("data.txt");
     }
 
     @Override
-    public String current() {
+    public final String current() {
         if (history.isEmpty()) {
             return null;
         }
@@ -50,30 +76,30 @@ public class CalculatorClass implements Calculator {
     }
 
     @Override
-    public void input(String s) {
+    public final void input(String s) {
         history.add(s);
 
         while (history.size() > 5) {
             history.remove(0);
         }
 
-        index                  = history.size() - 1;
+        index = history.size() - 1;
         currentOperationString = s;
         updateCurrentOperation(s);
     }
 
     @Override
-    public void load() {
+    public final void load() {
         try {
             Scanner in = new Scanner(data);
 
-            history = new ArrayList<>();
+            history = new ArrayList <> ();
 
-            while (in.hasNextLine()) {
-                history.add(in.nextLine());
+            while (in .hasNextLine()) {
+                history.add(in .nextLine());
             }
 
-            in.close();
+            in .close();
 
             if (history.size() < 5) {
                 index = 0;
@@ -86,7 +112,7 @@ public class CalculatorClass implements Calculator {
     }
 
     @Override
-    public String next() {
+    public final String next() {
         if (history.isEmpty()) {
             return null;
         }
@@ -105,7 +131,7 @@ public class CalculatorClass implements Calculator {
     }
 
     @Override
-    public String prev() {
+    public final String prev() {
         if (history.isEmpty()) {
             return null;
         }
@@ -124,7 +150,7 @@ public class CalculatorClass implements Calculator {
     }
 
     @Override
-    public void save() {
+    public final void save() {
         try {
             PrintWriter pw = new PrintWriter(data);
 
@@ -143,14 +169,19 @@ public class CalculatorClass implements Calculator {
             System.out.println(ex);
         }
     }
-
-    private void updateCurrentOperation(String s) {
+    /**
+     *
+     * @author youssefali
+     */
+    private final void
+    updateCurrentOperation(String s) {
         String[] operation = s.split("\\+|\\*|/|-");
 
         currentOperation = operation;
 
         for (int i = 0; i < s.length(); i++) {
-            if ((s.charAt(i) == '+') || (s.charAt(i) == '-') || (s.charAt(i) == '*') || (s.charAt(i) == '/')) {
+            if ((s.charAt(i) == '+') || (s.charAt(i) == '-') ||
+                (s.charAt(i) == '*') || (s.charAt(i) == '/')) {
                 currentOperator = s.charAt(i);
 
                 break;
@@ -159,8 +190,9 @@ public class CalculatorClass implements Calculator {
     }
 
     @Override
-    public String getResult() {
-        if ((currentOperation.length == 1) && (currentOperation[0].length() == currentOperationString.length())) {
+    public final String getResult() {
+        if ((currentOperation.length == 1) &&
+            (currentOperation[0].length() == currentOperationString.length())) {
             return currentOperationString;
         }
 
@@ -186,7 +218,8 @@ public class CalculatorClass implements Calculator {
                     }
 
                     dots++;
-                } else if (!((currentOperation[i].charAt(j) >= '0') && (currentOperation[i].charAt(j) <= '9'))) {
+                } else if (!((currentOperation[i].charAt(j) >= '0') &&
+                        (currentOperation[i].charAt(j) <= '9'))) {
                     return "ERROR";
 
                     // throw new RuntimeException("Invalid character.");
@@ -197,30 +230,30 @@ public class CalculatorClass implements Calculator {
         double result = 0;
 
         switch (currentOperator) {
-        case '+' :
-            result = number1 + number2;
+            case '+':
+                result = number1 + number2;
 
-            break;
+                break;
 
-        case '-' :
-            result = number1 - number2;
+            case '-':
+                result = number1 - number2;
 
-            break;
+                break;
 
-        case '*' :
-            result = number1 * number2;
+            case '*':
+                result = number1 * number2;
 
-            break;
+                break;
 
-        case '/' :
-            result = number1 / number2;
+            case '/':
+                result = number1 / number2;
 
-            break;
+                break;
+
+            default:
+                break;
         }
 
         return String.valueOf(result);
     }
 }
-
-
-//~ Formatted by Jindent --- http://www.jindent.com

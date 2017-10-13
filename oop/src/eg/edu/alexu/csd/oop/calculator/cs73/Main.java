@@ -7,6 +7,7 @@
 package eg.edu.alexu.csd.oop.calculator.cs73;
 
 import java.util.Scanner;
+import javax.swing.ImageIcon;
 
 import javax.swing.JFrame;
 
@@ -19,6 +20,10 @@ public class Main {
         JFrame jf = new MainWindow();
 
         jf.setTitle("Youssef's Simple Calculator");
+        
+        ImageIcon img = new ImageIcon("src/eg/edu/alexu/csd/oop/calculator/cs73/myicon.png");
+        jf.setIconImage(img.getImage());
+        
         jf.setVisible(true);
 
         /*
@@ -32,6 +37,3 @@ public class Main {
          */
     }
 }
-
-
-//~ Formatted by Jindent --- http://www.jindent.com

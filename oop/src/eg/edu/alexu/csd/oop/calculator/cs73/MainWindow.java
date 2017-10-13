@@ -31,8 +31,6 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         inputScreen = new javax.swing.JTextField();
         resultScreen = new javax.swing.JLabel();
@@ -60,29 +58,11 @@ public class MainWindow extends javax.swing.JFrame {
         zeroBtn = new javax.swing.JButton();
         resetScreenBtn = new javax.swing.JButton();
         currBtn = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(113, 113, 113));
-
-        jPanel1.setBackground(new java.awt.Color(146, 220, 217));
-
-        jLabel1.setBackground(new java.awt.Color(146, 220, 217));
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 35)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 101, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Youssef's Calculator");
-        jLabel1.setBorder(null);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-        );
 
         inputScreen.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
 
@@ -91,6 +71,7 @@ public class MainWindow extends javax.swing.JFrame {
         resultScreen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         resultScreen.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        nineBtn.setBackground(new java.awt.Color(93, 136, 210));
         nineBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         nineBtn.setText("9");
         nineBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -99,6 +80,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        sevenBtn.setBackground(new java.awt.Color(93, 136, 210));
         sevenBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         sevenBtn.setText("7");
         sevenBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -107,6 +89,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        eightBtn.setBackground(new java.awt.Color(93, 136, 210));
         eightBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         eightBtn.setText("8");
         eightBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -115,6 +98,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        fourBtn.setBackground(new java.awt.Color(93, 136, 210));
         fourBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         fourBtn.setText("4");
         fourBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -123,6 +107,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        fiveBtn.setBackground(new java.awt.Color(93, 136, 210));
         fiveBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         fiveBtn.setText("5");
         fiveBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -131,6 +116,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        sixBtn.setBackground(new java.awt.Color(93, 136, 210));
         sixBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         sixBtn.setText("6");
         sixBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -139,6 +125,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        twoBtn.setBackground(new java.awt.Color(93, 136, 210));
         twoBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         twoBtn.setText("2");
         twoBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -147,6 +134,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        threeBtn.setBackground(new java.awt.Color(93, 136, 210));
         threeBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         threeBtn.setText("3");
         threeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -155,6 +143,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        oneBtn.setBackground(new java.awt.Color(93, 136, 210));
         oneBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         oneBtn.setText("1");
         oneBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -163,6 +152,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        mlpBtn.setBackground(new java.awt.Color(93, 136, 210));
         mlpBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         mlpBtn.setText("*");
         mlpBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -171,6 +161,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        divBtn.setBackground(new java.awt.Color(93, 136, 210));
         divBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         divBtn.setText("/");
         divBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -179,6 +170,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        plusBtn.setBackground(new java.awt.Color(93, 136, 210));
         plusBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         plusBtn.setText("+");
         plusBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -187,6 +179,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        minusBtn.setBackground(new java.awt.Color(93, 136, 210));
         minusBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         minusBtn.setText("-");
         minusBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -195,6 +188,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        deleteBtn.setBackground(new java.awt.Color(93, 136, 210));
         deleteBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         deleteBtn.setText("Del");
         deleteBtn.setToolTipText("Modulus, the two numbers must be integers.");
@@ -204,6 +198,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        dotBtn.setBackground(new java.awt.Color(93, 136, 210));
         dotBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         dotBtn.setText(".");
         dotBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -212,6 +207,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        prevBtn.setBackground(new java.awt.Color(93, 136, 210));
         prevBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         prevBtn.setText("<< Prev");
         prevBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -220,6 +216,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        nextBtn.setBackground(new java.awt.Color(93, 136, 210));
         nextBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         nextBtn.setText("Next >>");
         nextBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -228,6 +225,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        saveBtn.setBackground(new java.awt.Color(93, 136, 210));
         saveBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         saveBtn.setText("Save");
         saveBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -236,6 +234,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        loadBtn.setBackground(new java.awt.Color(93, 136, 210));
         loadBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         loadBtn.setText("Load");
         loadBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -244,6 +243,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        getResultBtn.setBackground(new java.awt.Color(93, 136, 210));
         getResultBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         getResultBtn.setText("=");
         getResultBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -256,6 +256,7 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Made by Youssef Ali, 2017");
 
+        zeroBtn.setBackground(new java.awt.Color(93, 136, 210));
         zeroBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         zeroBtn.setText("0");
         zeroBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -264,6 +265,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        resetScreenBtn.setBackground(new java.awt.Color(93, 136, 210));
         resetScreenBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         resetScreenBtn.setText("AC");
         resetScreenBtn.setToolTipText("Modulus, the two numbers must be integers.");
@@ -273,6 +275,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        currBtn.setBackground(new java.awt.Color(93, 136, 210));
         currBtn.setFont(new java.awt.Font("Ubuntu", 0, 21)); // NOI18N
         currBtn.setText("Current");
         currBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -348,7 +351,7 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(15, 15, 15)
                 .addComponent(inputScreen, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -396,19 +399,37 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/eg/edu/alexu/csd/oop/calculator/cs73/mylogo.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -557,7 +578,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton fourBtn;
     private javax.swing.JButton getResultBtn;
     private javax.swing.JTextField inputScreen;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
