@@ -6,9 +6,7 @@
  */
 package eg.edu.alexu.csd.oop.calculator.cs73;
 
-import java.util.Scanner;
 import javax.swing.ImageIcon;
-
 import javax.swing.JFrame;
 
 /**
