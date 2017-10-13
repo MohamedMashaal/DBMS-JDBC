@@ -6,7 +6,6 @@
  */
 package eg.edu.alexu.csd.oop.calculator.cs73;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -24,14 +23,5 @@ public class Main {
         
         jf.setVisible(true);
 
-        /*
-         * Scanner in = new Scanner(System.in);
-         * for(int j=0; j<10; j++){
-         *   String s = in.nextLine();
-         *   String[] x = s.split("\\+|\\*|/|-");
-         *   for(int i=0; i<x.length; i++)
-         *       System.out.println(x[i]);
-         * }
-         */
     }
 }
