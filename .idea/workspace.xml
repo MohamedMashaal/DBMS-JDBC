@@ -2,42 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="628454c3-52db-46d7-89f6-96977109cf21" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/controller/Controller.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/main/MainEntry.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/model/ClassGetter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/model/DrawEngineImp.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/model/JoeSONParser.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/model/MainShape.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/model/MoveHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/model/PasteHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/model/ResizeHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/model/ShapesFactory.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/model/XMLParser.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/model/shapes/Circle.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/model/shapes/Ellipse.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/model/shapes/Line.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/model/shapes/Rectangle.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/model/shapes/Square.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/model/shapes/Triangle.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/view/AboutDialogue.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/view/Canvas.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/view/ColorChooserDialogue.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/view/ColorChoser.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/view/ColorPicker.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/view/CreateDialogue.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/view/CreatePluginDialogue.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/view/CustomButton.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/view/EditBoxColorChooser.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/view/EditBuiltInDialogue.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/view/EditPluginShape.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/view/LoadChooser.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/view/PluginButton.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/view/PluginImporter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/view/SaveChooser.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/view/ShapeList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/view/StrokeSlider.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs60/view/View.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/oop/src/materials/Calculator.jar" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/DatabaseImp.java" afterPath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/DatabaseImp.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -74,7 +41,7 @@
         <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs73/view/Canvas.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="253">
-              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -84,8 +51,20 @@
         <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs73/view/ColorChooserDialogue.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="207">
-              <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+              <caret line="10" column="21" lean-forward="false" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseImp.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/DatabaseImp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="276">
+              <caret line="14" column="19" lean-forward="false" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -100,10 +79,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DrawEngineImp.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DrawEngineImp.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs73/model/DrawEngineImp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
+            <state relative-caret-position="192">
               <caret line="495" column="35" lean-forward="false" selection-start-line="495" selection-start-column="35" selection-end-line="495" selection-end-column="35" />
               <folding />
             </state>
@@ -115,16 +94,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="34" lean-forward="false" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Subject.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/Subject.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -183,12 +152,12 @@
         <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/calculator/cs73/CalculatorClass.java" />
         <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/Database.java" />
         <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/DatabaseImp.java" />
-        <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/DatabaseImp.java" />
         <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs73/view/AboutDialogue.java" />
         <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs73/view/Canvas.java" />
         <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs73/view/ColorChooserDialogue.java" />
         <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs73/controller/Controller.java" />
         <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs73/model/DrawEngineImp.java" />
+        <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/DatabaseImp.java" />
       </list>
     </option>
   </component>
@@ -639,17 +608,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/DatabaseImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="40" lean-forward="false" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
-          <folding>
-            <element signature="e#248#249#0" expanded="true" />
-            <element signature="e#275#276#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/Database.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
@@ -711,7 +669,7 @@
     <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs73/view/Canvas.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -727,7 +685,7 @@
     <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs73/view/ColorChooserDialogue.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
-          <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+          <caret line="10" column="21" lean-forward="false" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -742,9 +700,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/draw/cs73/model/DrawEngineImp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
+        <state relative-caret-position="192">
           <caret line="495" column="35" lean-forward="false" selection-start-line="495" selection-start-column="35" selection-end-line="495" selection-end-column="35" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/DatabaseImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="14" column="19" lean-forward="false" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

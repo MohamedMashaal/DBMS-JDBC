@@ -12,7 +12,7 @@ public class DatabaseImp implements Database{
 
     @Override
     public boolean executeStructureQuery(String query) throws SQLException {
-        return false;
+        return true;
     }
 
     @Override
