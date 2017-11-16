@@ -54,7 +54,7 @@ public class CalculatorClass implements Calculator {
      * @author youssefali
      */
     public CalculatorClass() {
-        history = new ArrayList <> ();
+        history = new ArrayList <>();
         currentOperationString = "";
         index = 0;
         data = new File("data.txt");

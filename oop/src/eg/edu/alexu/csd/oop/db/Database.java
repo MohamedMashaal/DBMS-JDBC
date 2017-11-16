@@ -1,4 +1,4 @@
-package eg.edu.alexu.csd.oop.calculator.db;
+package eg.edu.alexu.csd.oop.db;
 
 import java.sql.SQLException;
 
