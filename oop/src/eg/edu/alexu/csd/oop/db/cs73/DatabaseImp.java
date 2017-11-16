@@ -7,7 +7,7 @@ public class DatabaseImp implements Database{
 
     @Override
     public String createDatabase(String databaseName, boolean dropIfExists) {
-        return null;
+        return databaseName;
     }
 
     @Override
