@@ -1,14 +1,20 @@
-package eg.edu.alexu.csd.oop.db.cs73;
+package eg.edu.alexu.csd.oop.db.cs73.Model;
 
 import eg.edu.alexu.csd.oop.db.Database;
+import eg.edu.alexu.csd.oop.db.cs73.Controller.QueriesParser;
+import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.DBContainer;
+
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DatabaseImp implements Database{
 
     QueriesParser queriesParser;
+    ArrayList<DBContainer> data;
 
     public DatabaseImp(QueriesParser queriesParser){
         this.queriesParser = queriesParser;
+        this.data = new ArrayList<>();
     }
 
     @Override

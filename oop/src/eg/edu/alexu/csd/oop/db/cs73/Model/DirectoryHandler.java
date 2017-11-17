@@ -1,4 +1,4 @@
-package eg.edu.alexu.csd.oop.db.cs73;
+package eg.edu.alexu.csd.oop.db.cs73.Model;
 
 /*
 
