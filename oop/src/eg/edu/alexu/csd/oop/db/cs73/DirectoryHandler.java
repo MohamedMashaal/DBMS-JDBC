@@ -37,5 +37,14 @@ public class DirectoryHandler {
         return false;
     }
 
+    public boolean deleteDatabase(String databaseName){
+        // TODO
+        return true;
+    }
 
+
+    public String getPathOf(String databaseName) {
+        // TODO
+        return null;
+    }
 }

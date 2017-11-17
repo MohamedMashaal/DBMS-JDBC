@@ -18,7 +18,7 @@ public class QueriesParser {
     DirectoryHandler directoryHandler;
 
     public QueriesParser(){
-        database = new DatabaseImp();
+        database = new DatabaseImp(this);
         directoryHandler = new DirectoryHandler();
     }
 
@@ -52,5 +52,9 @@ public class QueriesParser {
         }
 
         return false; // invalid query
+    }
+
+    public DirectoryHandler getDirectoryHandler(){
+        return directoryHandler;
     }
 }
