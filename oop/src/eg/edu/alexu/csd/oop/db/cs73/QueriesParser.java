@@ -5,6 +5,14 @@ import eg.edu.alexu.csd.oop.db.Database;
 import java.io.File;
 import java.sql.SQLException;
 
+/*
+
+    This class may be considered our controller; it takes submitted queries from the view (console in this case)
+    and matches those queries with a function from the Database Interface.
+
+ */
+
+
 public class QueriesParser {
     Database database;
     File dataDirectory;
