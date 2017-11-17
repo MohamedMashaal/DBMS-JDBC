@@ -15,10 +15,11 @@ import java.sql.SQLException;
 
 public class QueriesParser {
     Database database;
-    File dataDirectory;
+    DirectoryHandler directoryHandler;
 
     public QueriesParser(){
         database = new DatabaseImp();
+        directoryHandler = new DirectoryHandler();
     }
 
     public boolean parseQuery(String query) throws SQLException {
