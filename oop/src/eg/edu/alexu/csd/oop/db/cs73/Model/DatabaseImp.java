@@ -4,6 +4,7 @@ import eg.edu.alexu.csd.oop.db.Database;
 import eg.edu.alexu.csd.oop.db.cs73.Controller.QueriesParser;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.DBContainer;
 
+import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -59,6 +60,11 @@ public class DatabaseImp implements Database{
     				data.remove(dbIndex(databaseName));
     			}
     			dirHandler.deleteDatabase(databaseName);
+    			StringBuilder st = new StringBuilder("db : " + databaseName);
+    			File f = new File("data"+System.getProperty("file.separator"));
+    			for(String x : new File("data").list()) {
+    				st.append(" dir" + x + " ---");
+    			}
     		}
     	}
     	else if (splittedQuery[1].equalsIgnoreCase("table")) {
