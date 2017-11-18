@@ -18,8 +18,8 @@ public class QueriesParser {
     Database database;
     DirectoryHandler directoryHandler;
 
-    public QueriesParser(){
-        database = new DatabaseImp(this);
+    public QueriesParser(Database database){
+        this.database = database;
         directoryHandler = new DirectoryHandler();
     }
 

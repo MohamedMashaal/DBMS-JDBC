@@ -8,43 +8,64 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DatabaseImp implements Database{
-
+	
     QueriesParser queriesParser;
     ArrayList<DBContainer> data;
+    DirectoryHandler dirHandler ;
     
-    public DatabaseImp() {}
+    //public DatabaseImp() {}
     
-    public DatabaseImp(QueriesParser queriesParser){
-        this.queriesParser = queriesParser;
+    public DatabaseImp(){
+        this.queriesParser = new QueriesParser(this);
         this.data = new ArrayList<>();
+        this.dirHandler = new DirectoryHandler();
     }
 
     @Override
     public String createDatabase(String databaseName, boolean dropIfExists) {
         String query = "";
         if(dropIfExists){
-            query = "DROP DATABASE " + databaseName +";";
+            query = "DROP DATABASE " + databaseName;
+            dirHandler.deleteDatabase(databaseName);
         }
         else{
-            query = "CREATE DATABASE " + databaseName +";";
+            query = "CREATE DATABASE " + databaseName;
         }
         try {
-            executeStructureQuery(query);
+        	executeStructureQuery(query);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        
         //return queriesParser.getDirectoryHandler().getPathOf(databaseName);
-        throw new RuntimeException(databaseName);
+        return dirHandler.getPathOf(databaseName);
+        //throw new RuntimeException(databaseName);
     }
 
     @Override
     public boolean executeStructureQuery(String query) throws SQLException {
-    	throw new RuntimeException(query);
-       // return true;
+    	String[] splittedQuery = query.split(" ");
+    	if(splittedQuery[1].equalsIgnoreCase("database")) {
+    		DBContainer dbc = new DBContainer(splittedQuery[2]);
+    		if(splittedQuery[0].equalsIgnoreCase("create")) {
+    			if(dbExists(splittedQuery[1])) {
+    				dbc = data.get(dbIndex(splittedQuery[1]));
+    				data.remove(dbc);
+    			}
+				data.add(dbc);    			
+    		}
+    		else { // drop
+    			if(dbExists(splittedQuery[1])) {
+    				dbc = data.get(dbIndex(splittedQuery[1]));
+    				data.remove(dbc);
+    			}
+				data.add(new DBContainer(splittedQuery[1]));
+    		}
+    	}
+        return true;
     }
 
-    @Override
+	@Override
     public Object[][] executeQuery(String query) throws SQLException {
     	throw new RuntimeException(query);
     	//return new Object[0][];
@@ -55,4 +76,25 @@ public class DatabaseImp implements Database{
     	throw new RuntimeException(query);
     	//return 0;
     }
+    
+    private int dbIndex(String string) {
+    	int i = 0 ;
+    	for(DBContainer db : data) {
+			if(db.getName().equals(string)) {	
+				return i;
+			}
+			i++ ;
+		}
+		return -1;
+	}
+
+	private boolean dbExists(String string) {
+		for(DBContainer db : data) {
+			if(db.getName().equals(string)) {
+				return true ;
+			}
+		}
+		return false;
+	}
+    
 }

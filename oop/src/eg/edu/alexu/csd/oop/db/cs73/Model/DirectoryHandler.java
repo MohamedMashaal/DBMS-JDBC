@@ -17,16 +17,8 @@ public class DirectoryHandler {
     File mainDirectory;
 
     public DirectoryHandler(){
-        // TODO Finish It
-        mainDirectory = new File("~/oop/Data/readme.txt");
-        mainDirectory.getParentFile().mkdirs();
-        try {
-            mainDirectory.getParentFile().createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println(mainDirectory.getPath());
-        System.out.println(mainDirectory.isDirectory());
+        mainDirectory = new File("data");
+        mainDirectory.mkdirs();
     }
 
     public boolean exists(){
@@ -44,7 +36,12 @@ public class DirectoryHandler {
 
 
     public String getPathOf(String databaseName) {
-        // TODO
-        return null;
+    	File dataFile = new File(mainDirectory.getPath() + "/" + databaseName);
+        return dataFile.getAbsolutePath();
+    }
+    
+    public void dropDir(String databaseName) {
+    	File dir = new File(mainDirectory.getPath() + "/" + databaseName);
+    	dir.delete();
     }
 }
