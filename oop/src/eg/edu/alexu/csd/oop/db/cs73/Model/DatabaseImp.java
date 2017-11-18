@@ -96,14 +96,14 @@ public class DatabaseImp implements Database{
 
 	@Override
     public Object[][] executeQuery(String query) throws SQLException {
-    	throw new RuntimeException(query);
-    	//return new Object[0][];
+    	//throw new RuntimeException(query);
+    	return new Object[0][];
     }
 
     @Override
     public int executeUpdateQuery(String query) throws SQLException {
-    	throw new RuntimeException(query);
-    	//return 0;
+    	//throw new RuntimeException(query);
+    	return 0;
     }
     
     private int dbIndex(String string) {
