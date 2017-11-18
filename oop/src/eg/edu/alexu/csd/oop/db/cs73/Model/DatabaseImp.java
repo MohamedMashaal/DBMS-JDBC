@@ -34,7 +34,8 @@ public class DatabaseImp implements Database{
             e.printStackTrace();
         }
 
-        return queriesParser.getDirectoryHandler().getPathOf(databaseName);
+        //return queriesParser.getDirectoryHandler().getPathOf(databaseName);
+        throw new RuntimeException(databaseName);
     }
 
     @Override
