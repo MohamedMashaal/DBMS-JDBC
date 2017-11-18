@@ -17,12 +17,12 @@ public class Testing {
     public static void main(String[] args){
         Database db = new DatabaseImp();
         db.createDatabase("7amada", true);
-        try {
+        /*try {
 			db.executeStructureQuery("DROP DATABASE 7amada");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
     }
 
 }

@@ -27,17 +27,26 @@ public class DatabaseImp implements Database{
         String query = "";
         if(dropIfExists){
             query = "DROP DATABASE " + databaseName;
+            try {
+				executeStructureQuery(query);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
             query = "CREATE DATABASE " + databaseName;
+            try {
+				executeStructureQuery(query);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
         }
         else{
             query = "CREATE DATABASE " + databaseName;
+            try {
+				executeStructureQuery(query);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
         }
-        try {
-        	executeStructureQuery(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        
         return dirHandler.getPathOf(databaseName);
     }
 
@@ -83,7 +92,7 @@ public class DatabaseImp implements Database{
     private int dbIndex(String string) {
     	int i = 0 ;
     	for(DBContainer db : data) {
-			if(db.getName().equals(string)) {	
+			if(db.getName().equalsIgnoreCase(string)) {	
 				return i;
 			}
 			i++ ;
@@ -93,7 +102,7 @@ public class DatabaseImp implements Database{
 
 	private boolean dbExists(String string) {
 		for(DBContainer db : data) {
-			if(db.getName().equals(string)) {
+			if(db.getName().equalsIgnoreCase(string)) {
 				return true ;
 			}
 		}
