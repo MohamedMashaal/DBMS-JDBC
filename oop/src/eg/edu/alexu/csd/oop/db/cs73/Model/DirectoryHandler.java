@@ -29,19 +29,18 @@ public class DirectoryHandler {
         return false;
     }
 
-    public boolean deleteDatabase(String databaseName){
-        // TODO
-        return true;
+    public void deleteDatabase(String databaseName){
+    	File dir = new File(mainDirectory.getPath() + System.getProperty("file.separator") + databaseName);
+    	dir.delete();
     }
 
-
     public String getPathOf(String databaseName) {
-    	File dataFile = new File(mainDirectory.getPath() + "/" + databaseName);
+    	File dataFile = new File(mainDirectory.getPath() + System.getProperty("file.separator") + databaseName);
         return dataFile.getAbsolutePath();
     }
     
-    public void dropDir(String databaseName) {
-    	File dir = new File(mainDirectory.getPath() + "/" + databaseName);
-    	dir.delete();
-    }
+	public void createDatabase(String databaseName) {
+		File dataFile = new File(mainDirectory.getPath() + System.getProperty("file.separator") + databaseName);
+		dataFile.mkdirs();
+	}
 }

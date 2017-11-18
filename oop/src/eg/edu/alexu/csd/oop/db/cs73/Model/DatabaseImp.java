@@ -27,9 +27,12 @@ public class DatabaseImp implements Database{
         if(dropIfExists){
             query = "DROP DATABASE " + databaseName;
             dirHandler.deleteDatabase(databaseName);
+            query = "CREATE DATABASE " + databaseName;
+            dirHandler.createDatabase(databaseName);
         }
         else{
             query = "CREATE DATABASE " + databaseName;
+            dirHandler.createDatabase(databaseName);
         }
         try {
         	executeStructureQuery(query);
@@ -37,9 +40,7 @@ public class DatabaseImp implements Database{
             e.printStackTrace();
         }
         
-        //return queriesParser.getDirectoryHandler().getPathOf(databaseName);
         return dirHandler.getPathOf(databaseName);
-        //throw new RuntimeException(databaseName);
     }
 
     @Override
@@ -54,12 +55,10 @@ public class DatabaseImp implements Database{
     			}
 				data.add(dbc);    			
     		}
-    		else { // drop
+    		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
     			if(dbExists(splittedQuery[1])) {
-    				dbc = data.get(dbIndex(splittedQuery[1]));
-    				data.remove(dbc);
+    				data.remove(dbIndex(splittedQuery[1]));
     			}
-				data.add(new DBContainer(splittedQuery[1]));
     		}
     	}
         return true;
