@@ -26,9 +26,7 @@ public class DatabaseImp implements Database{
         String query = "";
         if(dropIfExists){
             query = "DROP DATABASE " + databaseName;
-            dirHandler.deleteDatabase(databaseName);
             query = "CREATE DATABASE " + databaseName;
-            dirHandler.createDatabase(databaseName);
         }
         else{
             query = "CREATE DATABASE " + databaseName;
@@ -47,18 +45,21 @@ public class DatabaseImp implements Database{
     public boolean executeStructureQuery(String query) throws SQLException {
     	String[] splittedQuery = query.split(" ");
     	if(splittedQuery[1].equalsIgnoreCase("database")) {
+    		String databaseName = splittedQuery[2];
     		DBContainer dbc = new DBContainer(splittedQuery[2]);
     		if(splittedQuery[0].equalsIgnoreCase("create")) {
-    			if(dbExists(splittedQuery[1])) {
-    				dbc = data.get(dbIndex(splittedQuery[1]));
+    			if(dbExists(databaseName)) {
+    				dbc = data.get(dbIndex(databaseName));
     				data.remove(dbc);
     			}
-				data.add(dbc);    			
+				data.add(dbc);
+				dirHandler.createDatabase(databaseName);
     		}
     		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
-    			if(dbExists(splittedQuery[1])) {
-    				data.remove(dbIndex(splittedQuery[1]));
+    			if(dbExists(databaseName)) {
+    				data.remove(dbIndex(databaseName));
     			}
+    			dirHandler.deleteDatabase(databaseName);
     		}
     	}
         return true;

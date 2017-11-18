@@ -1,5 +1,7 @@
 package eg.edu.alexu.csd.oop.db.cs73.View;
 
+import java.sql.SQLException;
+
 import eg.edu.alexu.csd.oop.db.Database;
 
 /*
@@ -15,6 +17,12 @@ public class Testing {
     public static void main(String[] args){
         Database db = new DatabaseImp();
         db.createDatabase("7amada", true);
+        try {
+			db.executeStructureQuery("DROP DATABASE 7amada");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
 }
