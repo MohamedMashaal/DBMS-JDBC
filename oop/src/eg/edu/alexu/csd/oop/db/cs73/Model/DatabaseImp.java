@@ -60,12 +60,6 @@ public class DatabaseImp implements Database{
     				data.remove(dbIndex(databaseName));
     			}
     			dirHandler.deleteDatabase(databaseName);
-    			StringBuilder st = new StringBuilder("db : " + databaseName);
-    			File f = new File("data"+System.getProperty("file.separator"));
-    			for(String x : new File("data").list()) {
-    				st.append(" dir" + x + " ---");
-    			}
-    			throw new RuntimeException(st.toString());
     		}
     	}
     	else if (splittedQuery[1].equalsIgnoreCase("table")) {

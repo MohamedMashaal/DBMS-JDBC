@@ -16,14 +16,13 @@ public class Testing {
 
     public static void main(String[] args){
         Database db = new DatabaseImp();
-        String x = db.createDatabase("7amada", true);
-        System.out.println(x);
-        /*try {
+        db.createDatabase("7amada", true);
+        try {
 			db.executeStructureQuery("DROP DATABASE 7amada");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
     }
 
 }

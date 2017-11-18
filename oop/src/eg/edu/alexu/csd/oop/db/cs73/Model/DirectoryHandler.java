@@ -31,10 +31,24 @@ public class DirectoryHandler {
 
     public void deleteDatabase(String databaseName){
     	File dir = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
-    	dir.delete();
+    	deleteDir(dir);
     }
 
-    public String getPathOf(String databaseName) {
+    private void deleteDir(File dir) {
+    	File[] files = dir.listFiles();
+        if(files!=null) {
+            for(File f: files) {
+                if(f.isDirectory()) {
+                    deleteDir(f);
+                } else {
+                    f.delete();
+                }
+            }
+        }
+        dir.delete();
+	}
+
+	public String getPathOf(String databaseName) {
     	File dataFile = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
         return dataFile.getAbsolutePath();
     }
