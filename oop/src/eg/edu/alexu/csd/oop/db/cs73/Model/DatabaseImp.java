@@ -35,21 +35,23 @@ public class DatabaseImp implements Database{
         }
 
         //return queriesParser.getDirectoryHandler().getPathOf(databaseName);
-        throw new RuntimeException("Start"+databaseName+"End");
     }
 
     @Override
     public boolean executeStructureQuery(String query) throws SQLException {
-        return true;
+    	throw new RuntimeException(query);
+       // return true;
     }
 
     @Override
     public Object[][] executeQuery(String query) throws SQLException {
-        return new Object[0][];
+    	throw new RuntimeException(query);
+    	//return new Object[0][];
     }
 
     @Override
     public int executeUpdateQuery(String query) throws SQLException {
-        return 0;
+    	throw new RuntimeException(query);
+    	//return 0;
     }
 }
