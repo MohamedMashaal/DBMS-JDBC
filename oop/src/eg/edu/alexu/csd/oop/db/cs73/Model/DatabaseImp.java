@@ -63,7 +63,7 @@ public class DatabaseImp implements Database{
     		}
     	}
     	else if (splittedQuery[1].equalsIgnoreCase("table")) {
-    		throw new RuntimeException(query);
+    		
     	}
         return true;
     }
