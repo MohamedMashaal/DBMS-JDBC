@@ -14,4 +14,25 @@ public class DBContainer {
 	public String getName() {
 		return name;
 	}
+	
+	public void remove(String tableName) {
+		for(Table table :tables) {
+			if(table.getName().equalsIgnoreCase(tableName)) {
+				tables.remove(table);
+			}
+		}
+	}
+	
+	public void add(Table table) {
+		tables.add(table);
+	}
+
+	public boolean tableExists(String tableName) {
+		for(Table table : tables) {
+			if(table.getName().equalsIgnoreCase(tableName))
+				return true ;
+		}
+		return false;
+	}
+	
 }

@@ -3,6 +3,7 @@ package eg.edu.alexu.csd.oop.db.cs73.Model;
 import eg.edu.alexu.csd.oop.db.Database;
 import eg.edu.alexu.csd.oop.db.cs73.Controller.QueriesParser;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.DBContainer;
+import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Table;
 
 import java.io.File;
 import java.sql.SQLException;
@@ -72,7 +73,22 @@ public class DatabaseImp implements Database{
     		}
     	}
     	else if (splittedQuery[1].equalsIgnoreCase("table")) {
-    		
+    		String tableName = splittedQuery[2];
+    		Table table = new Table(splittedQuery[2]);
+    		if(splittedQuery[0].equalsIgnoreCase("create")) {
+    			if(data.get(data.size()-1).tableExists(tableName)) {
+    				data.get(data.size()-1).remove(tableName);
+    			}
+				data.get(data.size()-1).add(table);
+				dirHandler.createTable(tableName , data.get(data.size()-1).getName());
+    		}
+    		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
+    			if(data.get(data.size()-1).tableExists(tableName)) {
+    				data.get(data.size()-1).remove(tableName);
+    			}
+    			dirHandler.deleteTable(tableName , data.get(data.size()-1).getName());
+    		}
+    		throw new RuntimeException(query);
     	}
         return true;
     }
@@ -108,5 +124,5 @@ public class DatabaseImp implements Database{
 		}
 		return false;
 	}
-    
+	
 }

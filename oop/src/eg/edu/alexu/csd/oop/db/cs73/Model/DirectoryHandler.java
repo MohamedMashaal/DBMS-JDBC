@@ -57,4 +57,20 @@ public class DirectoryHandler {
 		File dataFile = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
 		dataFile.mkdirs();
 	}
+
+	public void createTable(String tableName , String databaseName) {
+		//Just for now
+		File table = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName +System.getProperty("file.separator")+ tableName +".xml");
+		try {
+			table.createNewFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void deleteTable(String tableName, String databaseName) {
+		File table = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName +System.getProperty("file.separator")+ tableName +".xml");
+		table.delete();
+	}
 }
