@@ -62,6 +62,9 @@ public class DatabaseImp implements Database{
     			dirHandler.deleteDatabase(databaseName);
     		}
     	}
+    	else if (splittedQuery[1].equals("table")) {
+    		throw new RuntimeException(query);
+    	}
         return true;
     }
 
