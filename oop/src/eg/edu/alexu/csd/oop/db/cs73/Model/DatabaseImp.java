@@ -88,7 +88,6 @@ public class DatabaseImp implements Database{
     			}
     			dirHandler.deleteTable(tableName , data.get(data.size()-1).getName());
     		}
-    		throw new RuntimeException(query);
     	}
         return true;
     }
