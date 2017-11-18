@@ -35,6 +35,7 @@ public class DatabaseImp implements Database{
         }
 
         //return queriesParser.getDirectoryHandler().getPathOf(databaseName);
+        throw new RuntimeException(databaseName);
     }
 
     @Override
