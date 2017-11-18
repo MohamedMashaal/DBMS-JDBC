@@ -30,7 +30,6 @@ public class DatabaseImp implements Database{
         }
         else{
             query = "CREATE DATABASE " + databaseName;
-            dirHandler.createDatabase(databaseName);
         }
         try {
         	executeStructureQuery(query);

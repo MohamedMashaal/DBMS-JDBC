@@ -17,8 +17,8 @@ public class DirectoryHandler {
     File mainDirectory;
 
     public DirectoryHandler(){
-        /*mainDirectory = new File("data");
-        mainDirectory.mkdirs();*/
+        mainDirectory = new File("data");
+        mainDirectory.mkdirs();
     }
 
     public boolean exists(){
@@ -30,20 +30,17 @@ public class DirectoryHandler {
     }
 
     public void deleteDatabase(String databaseName){
-    	//File dir = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
-    	File dir = new File(databaseName);
+    	File dir = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
     	dir.delete();
     }
 
     public String getPathOf(String databaseName) {
-    	//File dataFile = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
-    	File dataFile = new File(databaseName);
-    	return dataFile.getAbsolutePath();
+    	File dataFile = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
+        return dataFile.getAbsolutePath();
     }
     
 	public void createDatabase(String databaseName) {
-		//File dataFile = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
-		File dataFile = new File(databaseName);
+		File dataFile = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
 		dataFile.mkdirs();
 	}
 }
