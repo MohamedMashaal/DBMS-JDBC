@@ -30,17 +30,17 @@ public class DirectoryHandler {
     }
 
     public void deleteDatabase(String databaseName){
-    	File dir = new File(mainDirectory.getPath() + System.getProperty("file.separator") + databaseName);
+    	File dir = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
     	dir.delete();
     }
 
     public String getPathOf(String databaseName) {
-    	File dataFile = new File(mainDirectory.getPath() + System.getProperty("file.separator") + databaseName);
+    	File dataFile = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
         return dataFile.getAbsolutePath();
     }
     
 	public void createDatabase(String databaseName) {
-		File dataFile = new File(mainDirectory.getPath() + System.getProperty("file.separator") + databaseName);
+		File dataFile = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
 		dataFile.mkdirs();
 	}
 }
