@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Table {
 
-    ArrayList<Table> columns;
+    ArrayList<Column> columns;
 
     public Table(){
         this.columns = new ArrayList<>();

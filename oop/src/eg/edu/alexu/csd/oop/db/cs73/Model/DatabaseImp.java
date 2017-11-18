@@ -11,7 +11,9 @@ public class DatabaseImp implements Database{
 
     QueriesParser queriesParser;
     ArrayList<DBContainer> data;
-
+    
+    public DatabaseImp() {}
+    
     public DatabaseImp(QueriesParser queriesParser){
         this.queriesParser = queriesParser;
         this.data = new ArrayList<>();
