@@ -65,6 +65,7 @@ public class DatabaseImp implements Database{
     			for(String x : new File("data").list()) {
     				st.append(" dir" + x + " ---");
     			}
+    			throw new RuntimeException(st.toString());
     		}
     	}
     	else if (splittedQuery[1].equalsIgnoreCase("table")) {
