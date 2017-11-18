@@ -11,6 +11,22 @@ public class Table {
         this.columns = new ArrayList<>();
     }
     
+    public Table(String name , String [] columns) {
+    	this.name = name ;
+    	addColumns(columns);
+    }
+    
+    public void addColumns(String [] columns) {
+    	for(int i = 0 ; i < columns.length ; i+=2) {
+    		if(columns[i+1].equalsIgnoreCase("int")) {
+    			this.columns.add(new Column<Integer>(columns[i])); 
+    		}
+    		else if (columns[i+1].equalsIgnoreCase("varchar")) {
+    			this.columns.add(new Column<String>(columns[i]));
+    		}
+    	}
+    }
+    
     public String getName() {
 		return name;
 	}

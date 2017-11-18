@@ -15,14 +15,10 @@ import eg.edu.alexu.csd.oop.db.cs73.Model.DatabaseImp;
 public class Testing {
 
     public static void main(String[] args){
-        Database db = new DatabaseImp();
-        db.createDatabase("7amada", true);
-        /*try {
-			db.executeStructureQuery("DROP DATABASE 7amada");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+        String x = "Create TABLE table_name1(column_name1 varchar, column_name2 int, column_name3 varchar)";
+        String [] z = x.split("\\s|\\,\\s*|\\(|\\)");
+        for(String v : z)
+        	System.out.println(v);
     }
 
 }

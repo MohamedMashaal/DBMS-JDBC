@@ -4,6 +4,7 @@ import eg.edu.alexu.csd.oop.db.Database;
 import eg.edu.alexu.csd.oop.db.cs73.Controller.QueriesParser;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.DBContainer;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Table;
+import sun.net.www.content.text.plain;
 
 import java.io.File;
 import java.sql.SQLException;
@@ -53,7 +54,7 @@ public class DatabaseImp implements Database{
 
     @Override
     public boolean executeStructureQuery(String query) throws SQLException {
-    	String[] splittedQuery = query.split(" ");
+    	String[] splittedQuery = query.split("\\s|\\,\\s*|\\(|\\)");
     	if(splittedQuery[1].equalsIgnoreCase("database")) {
     		String databaseName = splittedQuery[2];
     		DBContainer dbc = new DBContainer(splittedQuery[2]);
@@ -74,8 +75,9 @@ public class DatabaseImp implements Database{
     	}
     	else if (splittedQuery[1].equalsIgnoreCase("table")) {
     		String tableName = splittedQuery[2];
-    		Table table = new Table(splittedQuery[2]);
+    		String [] columns = getColumns(splittedQuery);
     		if(splittedQuery[0].equalsIgnoreCase("create")) {
+    			Table table = new Table(splittedQuery[2] ,columns);
     			if(data.get(data.size()-1).tableExists(tableName)) {
     				data.get(data.size()-1).remove(tableName);
     			}
@@ -94,8 +96,8 @@ public class DatabaseImp implements Database{
 
 	@Override
     public Object[][] executeQuery(String query) throws SQLException {
-    	//throw new RuntimeException(query);
-    	return new Object[0][];
+    	throw new RuntimeException(query);
+    	//return new Object[0][];
     }
 
     @Override
@@ -122,6 +124,14 @@ public class DatabaseImp implements Database{
 			}
 		}
 		return false;
+	}
+	
+	private String[] getColumns(String[] splittedQuery) {
+		String [] columns = new String [splittedQuery.length-3];
+		for(int i = 2 , j = 0 ; i < splittedQuery.length && j < columns.length ; i++,j++ ) {
+			columns[j] = splittedQuery[i];
+		}
+		return columns;
 	}
 	
 }
