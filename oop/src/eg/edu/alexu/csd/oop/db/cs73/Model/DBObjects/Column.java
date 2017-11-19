@@ -24,16 +24,20 @@ public class Column <T> {
     public void addRecord(Record<T> record) {
     	records.add(record);
     }
-
+    
+    public Record getRecord(int index) {
+    	return records.get(index);
+    }
+    
     public ArrayList<Record<T>> getRecords() {
         return records;
     }
 
-    public Object [] getData() {
+    public T [] getData() {
         ArrayList<Object> colData = new ArrayList<>();
         for(Record record : records){
             colData.add(record.getValue());
         }
-        return colData.toArray();
+        return (T[]) colData.toArray();
     }
 }

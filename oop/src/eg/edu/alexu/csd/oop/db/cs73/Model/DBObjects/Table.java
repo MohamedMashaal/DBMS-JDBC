@@ -63,7 +63,7 @@ public class Table {
 			}
 			else {
 				if(column.getType().equalsIgnoreCase("int"))
-					column.addRecord(new Record<>(Integer.parseInt(values.get(index))));
+					column.addRecord(new Record<>(new Integer(Integer.parseInt(values.get(index)))));
 				else if(column.getType().equalsIgnoreCase("varchar")) 
 					column.addRecord(new Record<>(values.get(index)));
 			}
@@ -119,8 +119,42 @@ public class Table {
 			String whereColumn = toUpdate.get(0);
 			String whereValue = toUpdate.get(1);
 			int index = getIndex(whereColumn);
+			String type = this.columns.get(index).getType();
 			if(index != -1) {
-				//for(Record record : columns.get(index).get)
+				ArrayList<Record> records = this.columns.get(index).getRecords();
+				for(int i = 0 ; i < records.size() ; i++) {
+					if(type.equalsIgnoreCase("int")) {
+						Integer recordValue = (Integer)(records.get(i).getValue());
+						if(recordValue.intValue() == Integer.parseInt(whereValue)) {
+							for(Column cl : this.columns) {
+								int indexCl = getIndex(columns, cl.getName());
+								if(indexCl != -1) {
+									if(cl.getType().equalsIgnoreCase("int"))
+										cl.getRecord(i).setValue(new Integer(Integer.parseInt(values.get(indexCl))));
+									else if(cl.getType().equalsIgnoreCase("varchar")) {
+										cl.getRecord(i).setValue(values.get(indexCl));
+									}
+								}
+							}
+						}
+					}
+					else if(type.equalsIgnoreCase("varchar")) {
+						String recordValue = (String)(records.get(i).getValue());
+						if(recordValue.equalsIgnoreCase(whereValue)) {
+							for(Column cl : this.columns) {
+								int indexCl = getIndex(columns, cl.getName());
+								if(indexCl != -1) {
+									if(cl.getType().equalsIgnoreCase("int"))
+										cl.getRecord(i).setValue(new Integer(Integer.parseInt(values.get(indexCl))));
+									else if(cl.getType().equalsIgnoreCase("varchar")) {
+										cl.getRecord(i).setValue(values.get(indexCl));
+									}
+								}
+							}
+						}
+					}
+					
+				}
 			}
 		}
 		return 0;
