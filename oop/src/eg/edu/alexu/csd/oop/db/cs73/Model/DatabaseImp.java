@@ -15,7 +15,8 @@ public class DatabaseImp implements Database{
 	
 	private QueriesParser queriesParser;
 	private ArrayList<DBContainer> data;
-	private DirectoryHandler dirHandler ;
+	private DirectoryHandler dirHandler;
+	private InternalParser inParser;
    // boolean testing = false ;
     //public DatabaseImp() {}
     
@@ -23,6 +24,7 @@ public class DatabaseImp implements Database{
         this.queriesParser = new QueriesParser(this);
         this.data = new ArrayList<>();
         this.dirHandler = new DirectoryHandler();
+        this.inParser = new InternalParser();
     }
 
     @Override
@@ -78,7 +80,7 @@ public class DatabaseImp implements Database{
     		String tableName = splittedQuery[2];
     		//String [] columns = getColumns(splittedQuery);
     		if(splittedQuery[0].equalsIgnoreCase("create")) {
-    			Table table = new Table(splittedQuery[2] ,getColumns(splittedQuery));
+    			Table table = new Table(splittedQuery[2] ,inParser.getColumns(splittedQuery));
     			if(data.get(data.size()-1).tableExists(tableName)) {
     				return false ;
     				//data.get(data.size()-1).remove(tableName);
@@ -110,7 +112,7 @@ public class DatabaseImp implements Database{
     	String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").replaceAll("\\s+\\,", ",").split("\\s+|\\,\\s*|\\(|\\)|\\=");
     	int updated = 6 ;
     	if(splittedQuery[0].equalsIgnoreCase("insert")) {
-    		String [][] cloumnsValues = getColumnsValues(splittedQuery);
+    		String [][] cloumnsValues = inParser.getColumnsValues(splittedQuery);
     		if(data.get(data.size()-1).tableExists(splittedQuery[2]))
     			updated = data.get(data.size()-1).insert(splittedQuery[2] , Arrays.asList(cloumnsValues[0]) , Arrays.asList(cloumnsValues[1]));
     		else {
@@ -118,7 +120,8 @@ public class DatabaseImp implements Database{
     		}
     	}
     	else if (splittedQuery[0].equalsIgnoreCase("update")) {
-    		ArrayList<ArrayList<String>> columnsValues = getUpdatedColumnsValues(splittedQuery);
+    		ArrayList<ArrayList<String>> columnsValues = inParser.getUpdatedColumnsValues(splittedQuery);
+    		ArrayList<String> toUpdate = inParser.getUpdateWhere(splittedQuery);
     		if(data.get(data.size()-1).tableExists(splittedQuery[1]))
     			updated = data.get(data.size()-1).update(splittedQuery[1] , columnsValues.get(0) , columnsValues.get(1));
     		else {
@@ -127,40 +130,6 @@ public class DatabaseImp implements Database{
     	}
     	return updated;
     }
-    
-    private ArrayList<ArrayList<String>> getUpdatedColumnsValues(String[] splittedQuery){
-    	try {
-			ArrayList<ArrayList<String>> columnsValues = new ArrayList<ArrayList<String>>();
-			columnsValues.add(new ArrayList<String>());
-			columnsValues.add(new ArrayList<String>());
-			for(int i = 3 ; i < splittedQuery.length ; i+=2) {
-				columnsValues.get(0).add(splittedQuery[i]);
-				columnsValues.get(1).add(splittedQuery[i+1]);
-			}
-			return columnsValues;
-		} catch (Exception e) {
-			StringBuilder st = new StringBuilder();
-			for(String x : splittedQuery)
-				st.append(x+" ");
-			throw new RuntimeException(st.toString());
-		}
-    }
-    
-    private String[][] getColumnsValues(String[] splittedQuery) {
-		int length = 0;
-		for(int i = 3 ; i < splittedQuery.length ; i ++) {
-			if(splittedQuery[i].equalsIgnoreCase("values")) {
-				break ;
-			}
-			length++;
-		}
-    	String [][] columnsValues = new String [2][length];
-    	for(int i = 3 , j = i + length+1 , k = 0 ;i-3 < length &&j < splittedQuery.length; j++, i++ , k++) {
-    		columnsValues[0][k] = splittedQuery[i];
-    		columnsValues[1][k] = splittedQuery[j];
-    	}
-		return columnsValues;
-	}
 
 	private int dbIndex(String string) {
     	int i = 0 ;
@@ -180,16 +149,5 @@ public class DatabaseImp implements Database{
 			}
 		}
 		return false;
-	}
-	
-	private String[] getColumns(String[] splittedQuery) throws SQLException {
-		String [] columns = new String [splittedQuery.length-3];
-		if(splittedQuery.length-3 == 0 && !splittedQuery[0].equalsIgnoreCase("drop")) {
-			throw new SQLException("Wrong Create Query");
-		}
-		for(int i = 3 , j = 0 ; i < splittedQuery.length && j < columns.length ; i++,j++ ) {
-			columns[j] = splittedQuery[i];
-		}
-		return columns;
 	}
 }
