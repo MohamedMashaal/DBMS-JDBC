@@ -103,8 +103,8 @@ public class DatabaseImp implements Database{
 
 	@Override
     public Object[][] executeQuery(String query) throws SQLException {
-    	//throw new RuntimeException(query);
-		String [] splittedQuery = query.split(" ");
+    	throw new RuntimeException(query);
+		/*String [] splittedQuery = query.split(" ");
 		String colName = splittedQuery[1];
 		String tableName = splittedQuery[3];
 
@@ -133,13 +133,13 @@ public class DatabaseImp implements Database{
 			Object[] fetchedData = queriedColumn.getData();
 
 			if(queriedColumn.getType().equals("int")){
-				Integer[] intColumn = (Integer[]) fetchedData;
-				Object[][] retData = new Object[][]{intColumn};
+				//Integer[] intColumn = (Integer[]) fetchedData;
+				Object[][] retData = new Object[][]{fetchedData};
 				return applyWhere(retData, query, currTable);
 			}
 			else if(queriedColumn.getType().equals("varchar")){
-				String[] varcharColumn = (String[]) fetchedData;
-				Object[][] retData = new Object[][]{varcharColumn};
+				//String[] varcharColumn = (String[]) fetchedData;
+				Object[][] retData = new Object[][]{fetchedData};
 				return applyWhere(retData, query, currTable);
 			}
 		}
@@ -151,20 +151,21 @@ public class DatabaseImp implements Database{
 			for(Column column : columns){
 				Object[] columnData = column.getData();
 
-				if(column.getType().equals("int")){
+				/*if(column.getType().equals("int")){
 					Integer[] intColumn = (Integer[]) columnData;
 					fetchedData[i++] = intColumn;
 				}
 				else if(column.getType().equals("varchar")){
 					String[] varcharColumn = (String[]) columnData;
 					fetchedData[i++] = varcharColumn;
-				}
+				}*/
+		/*		fetchedData[i++] = columnData;
 			}
 			return applyWhere(fetchedData, query, currTable);
 		}
 
 //		throw new RuntimeException(query);
-    	return new Object[0][];
+    	return new Object[0][];*/
     }
 
     @Override
