@@ -153,8 +153,8 @@ public class DatabaseImp implements Database{
 	
 	private String[] getColumns(String[] splittedQuery) throws SQLException {
 		String [] columns = new String [splittedQuery.length-3];
-		if(columns.length == 0) {
-			throw new SQLException();
+		if(splittedQuery.length-3 == 0) {
+			throw new SQLException(splittedQuery.toString());
 		}
 //		StringBuilder st = new StringBuilder();
 //		if(testing) {
