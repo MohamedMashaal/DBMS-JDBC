@@ -101,7 +101,9 @@ public class DatabaseImp implements Database{
 	@Override
     public Object[][] executeQuery(String query) throws SQLException {
     	//throw new RuntimeException(query);
-    	return new Object[0][];
+		String [] splittedQuery = query.split(" ");
+		throw new RuntimeException(query);
+//    	return new Object[0][];
     }
 
     @Override
