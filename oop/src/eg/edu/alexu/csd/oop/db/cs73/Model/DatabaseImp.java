@@ -103,69 +103,69 @@ public class DatabaseImp implements Database{
 
 	@Override
     public Object[][] executeQuery(String query) throws SQLException {
-    	//throw new RuntimeException(query);
-		String [] splittedQuery = query.split(" ");
-		String colName = splittedQuery[1];
-		String tableName = splittedQuery[3];
-
-		DBContainer currDB = data.get(data.size()-1);
-
-		// check if table  exists
-		if(! currDB.tableExists(tableName)){
-			throw new RuntimeException("Table" + tableName +
-					                   "is not exists in " + currDB.getName());
-		}
-
-		Table currTable = currDB.getTables().get(currDB.getTableIndex(tableName));
-
-		// check if column exists in table
-		int columnIndex = currTable.columnIndex(colName);
-		if(columnIndex == -1 && !colName.equals("*")){
-			throw  new RuntimeException("Column" + tableName +
-					"is not exists in " + currTable.getName());
-		}
-
-		// fetching data part (with out applying "where" conditions)
-
-		// one column
-		if(!colName.equals("*")){
-			Column queriedColumn = currTable.getColumns().get(columnIndex);
-			Object[] fetchedData = queriedColumn.getData();
-
-			if(queriedColumn.getType().equals("int")){
-				//Integer[] intColumn = (Integer[]) fetchedData;
-				Object[][] retData = new Object[][]{fetchedData};
-				return applyWhere(retData, query, currTable);
-			}
-			else if(queriedColumn.getType().equals("varchar")){
-				//String[] varcharColumn = (String[]) fetchedData;
-				Object[][] retData = new Object[][]{fetchedData};
-				return applyWhere(retData, query, currTable);
-			}
-		}
-		// all columns
-		else{
-			ArrayList<Column> columns = currTable.getColumns();
-			int i = 0;
-			Object[][] fetchedData = new Object[currTable.getColumns().size()][];
-			for(Column column : columns){
-				Object[] columnData = column.getData();
-
-				/*if(column.getType().equals("int")){
-					Integer[] intColumn = (Integer[]) columnData;
-					fetchedData[i++] = intColumn;
-				}
-				else if(column.getType().equals("varchar")){
-					String[] varcharColumn = (String[]) columnData;
-					fetchedData[i++] = varcharColumn;
-				}*/
-				fetchedData[i++] = columnData;
-			}
-			return applyWhere(fetchedData, query, currTable);
-		}
-
-//		throw new RuntimeException(query);
-    	return new Object[0][];
+    	throw new RuntimeException(query);
+//		String [] splittedQuery = query.split(" ");
+//		String colName = splittedQuery[1];
+//		String tableName = splittedQuery[3];
+//
+//		DBContainer currDB = data.get(data.size()-1);
+//
+//		// check if table  exists
+//		if(! currDB.tableExists(tableName)){
+//			throw new RuntimeException("Table" + tableName +
+//					                   "is not exists in " + currDB.getName());
+//		}
+//
+//		Table currTable = currDB.getTables().get(currDB.getTableIndex(tableName));
+//
+//		// check if column exists in table
+//		int columnIndex = currTable.columnIndex(colName);
+//		if(columnIndex == -1 && !colName.equals("*")){
+//			throw  new RuntimeException("Column" + tableName +
+//					"is not exists in " + currTable.getName());
+//		}
+//
+//		// fetching data part (with out applying "where" conditions)
+//
+//		// one column
+//		if(!colName.equals("*")){
+//			Column queriedColumn = currTable.getColumns().get(columnIndex);
+//			Object[] fetchedData = queriedColumn.getData();
+//
+//			if(queriedColumn.getType().equals("int")){
+//				//Integer[] intColumn = (Integer[]) fetchedData;
+//				Object[][] retData = new Object[][]{fetchedData};
+//				return applyWhere(retData, query, currTable);
+//			}
+//			else if(queriedColumn.getType().equals("varchar")){
+//				//String[] varcharColumn = (String[]) fetchedData;
+//				Object[][] retData = new Object[][]{fetchedData};
+//				return applyWhere(retData, query, currTable);
+//			}
+//		}
+//		// all columns
+//		else{
+//			ArrayList<Column> columns = currTable.getColumns();
+//			int i = 0;
+//			Object[][] fetchedData = new Object[currTable.getColumns().size()][];
+//			for(Column column : columns){
+//				Object[] columnData = column.getData();
+//
+//				/*if(column.getType().equals("int")){
+//					Integer[] intColumn = (Integer[]) columnData;
+//					fetchedData[i++] = intColumn;
+//				}
+//				else if(column.getType().equals("varchar")){
+//					String[] varcharColumn = (String[]) columnData;
+//					fetchedData[i++] = varcharColumn;
+//				}*/
+//				fetchedData[i++] = columnData;
+//			}
+//			return applyWhere(fetchedData, query, currTable);
+//		}
+//
+////		throw new RuntimeException(query);
+//    	return new Object[0][];
     }
 
     @Override
