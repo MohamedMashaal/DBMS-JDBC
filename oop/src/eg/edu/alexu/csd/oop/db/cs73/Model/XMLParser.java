@@ -114,7 +114,8 @@ public class XMLParser {
             for (int i = 0; i < rootNode.getLength(); i++) {
                 Node colNode = rootNode.item(i);
                 NodeList colNL = colNode.getChildNodes();
-                Column col = new Column(colNode.getAttributes().getNamedItem("name").toString());
+                Column col = new Column(colNode.getAttributes().getNamedItem("name").toString(),
+                                        colNode.getAttributes().getNamedItem("type").toString());
                 System.out.println("Col Name : " + colNode.getAttributes().getNamedItem("name"));
                 if (colNode.getNodeName().equals("#text"))
                     continue;
@@ -127,7 +128,7 @@ public class XMLParser {
                     Record record = new Record(recItem.getAttributes().getNamedItem("value"));
                     col.addRecord(record);
                 }
-                //loadedTable.addColumn(col);
+               // shapesMaps.add(shapeMap);
             }
 
         } catch (ParserConfigurationException pce) {
@@ -137,6 +138,7 @@ public class XMLParser {
         } catch (IOException ioe) {
             System.err.println(ioe.getMessage());
         }
-        return loadedTable;
+       // return shapesMaps;
+        return null;
     }
 }

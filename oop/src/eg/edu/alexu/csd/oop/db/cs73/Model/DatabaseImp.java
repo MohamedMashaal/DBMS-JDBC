@@ -10,14 +10,13 @@ import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 
 public class DatabaseImp implements Database{
 	
     QueriesParser queriesParser;
     ArrayList<DBContainer> data;
     DirectoryHandler dirHandler ;
-    
+   // boolean testing = false ;
     //public DatabaseImp() {}
     
     public DatabaseImp(){
@@ -81,11 +80,12 @@ public class DatabaseImp implements Database{
     		if(splittedQuery[0].equalsIgnoreCase("create")) {
     			Table table = new Table(splittedQuery[2] ,columns);
     			if(data.get(data.size()-1).tableExists(tableName)) {
+    				//testing = true ;
     				return false ;
     				//data.get(data.size()-1).remove(tableName);
     			}
 				data.get(data.size()-1).add(table);
-				//dirHandler.deleteTable(tableName, data.get(data.size()-1).getName());
+				dirHandler.deleteTable(tableName, data.get(data.size()-1).getName());
 				dirHandler.createTable(tableName , data.get(data.size()-1).getName());
     		}
     		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
@@ -95,7 +95,7 @@ public class DatabaseImp implements Database{
     			dirHandler.deleteTable(tableName , data.get(data.size()-1).getName());
     		}
     	}
-        return true;	
+        return true;
     }
 
 	@Override
@@ -152,24 +152,12 @@ public class DatabaseImp implements Database{
 	}
 	
 	private String[] getColumns(String[] splittedQuery) throws SQLException {
-		HashMap<String,Integer> x = new HashMap<>();
 		String [] columns = new String [splittedQuery.length-3];
+		if(splittedQuery.length-3 == 0 && !splittedQuery[0].equalsIgnoreCase("drop")) {
+			throw new SQLException("Wrong Create Query");
+		}
 		for(int i = 3 , j = 0 ; i < splittedQuery.length && j < columns.length ; i++,j++ ) {
 			columns[j] = splittedQuery[i];
-		}
-		for(int i = 0 ; i< columns.length ; i+=2) {
-			if(!x.containsKey(columns[i])) {
-				x.put(columns[i], 1);
-			}
-			else {
-				throw new SQLException("!!!!");
-			}
-			if(columns[i+1].equalsIgnoreCase("int") || columns[i+1].equalsIgnoreCase("varchar")) {
-				continue ;
-			}
-			else {
-				throw new SQLException("!!!!!");
-			}
 		}
 		return columns;
 	}
