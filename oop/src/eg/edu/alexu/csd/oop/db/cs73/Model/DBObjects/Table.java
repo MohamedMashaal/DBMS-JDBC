@@ -39,7 +39,7 @@ public class Table {
 	
 	public boolean columnExists(String name){
     	for(Column column : columns){
-    		if(column.getName().equals(name))
+    		if(column.getName().equalsIgnoreCase(name))
     			return true;
 		}
 		return false;
