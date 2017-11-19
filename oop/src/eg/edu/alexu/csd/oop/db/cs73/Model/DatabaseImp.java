@@ -13,9 +13,9 @@ import java.util.Arrays;
 
 public class DatabaseImp implements Database{
 	
-    QueriesParser queriesParser;
-    ArrayList<DBContainer> data;
-    DirectoryHandler dirHandler ;
+	private QueriesParser queriesParser;
+	private ArrayList<DBContainer> data;
+	private DirectoryHandler dirHandler ;
    // boolean testing = false ;
     //public DatabaseImp() {}
     
@@ -55,7 +55,7 @@ public class DatabaseImp implements Database{
 
     @Override
     public boolean executeStructureQuery(String query) throws SQLException {
-    	String[] splittedQuery = query.split("\\s|\\,\\s*|\\(|\\)");
+    	String[] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").split("\\s+|\\,\\s*|\\(|\\)|\\=");
     	if(splittedQuery[1].equalsIgnoreCase("database")) {
     		String databaseName = splittedQuery[2];
     		DBContainer dbc = new DBContainer(splittedQuery[2]);
@@ -116,9 +116,23 @@ public class DatabaseImp implements Database{
     		}
     	}
     	else if (splittedQuery[0].equalsIgnoreCase("update")) {
-    		
+    		ArrayList<ArrayList<String>> columnsValues = getUpdatedColumnsValues(splittedQuery);
+    		if(data.get(data.size()-1).tableExists(splittedQuery[2]))
+    			updated = data.get(data.size()-1).update(splittedQuery[1] , columnsValues.get(0) , columnsValues.get(1));
+    		else {
+    			throw new SQLException();
+    		}
     	}
     	return updated;
+    }
+    
+    private ArrayList<ArrayList<String>> getUpdatedColumnsValues(String[] splittedQuery){
+    	ArrayList<ArrayList<String>> columnsValues = new ArrayList<>(2);
+    	for(int i = 3 ; i < splittedQuery.length ; i=+2) {
+			columnsValues.get(0).add(splittedQuery[i]);
+			columnsValues.get(1).add(splittedQuery[i+1]);
+		}
+    	return columnsValues;
     }
     
     private String[][] getColumnsValues(String[] splittedQuery) {
@@ -167,5 +181,4 @@ public class DatabaseImp implements Database{
 		}
 		return columns;
 	}
-	
 }
