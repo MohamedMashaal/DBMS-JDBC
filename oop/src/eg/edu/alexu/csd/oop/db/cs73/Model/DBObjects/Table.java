@@ -14,6 +14,7 @@ public class Table {
     
     public Table(String name , String [] columns) {
     	this.name = name ;
+    	this.columns = new ArrayList<>();
     	addColumns(columns);
     }
     
