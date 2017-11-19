@@ -4,13 +4,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class InternalParser {
-	public String[][] getColumnsValues(String[] splittedQuery) {
+	public String[][] getColumnsValues(String[] splittedQuery) throws SQLException {
 		int length = 0;
 		for(int i = 3 ; i < splittedQuery.length ; i ++) {
 			if(splittedQuery[i].equalsIgnoreCase("values")) {
 				break ;
 			}
 			length++;
+		}
+		if(length == 0) {
+			throw new SQLException();
 		}
     	String [][] columnsValues = new String [2][length];
     	for(int i = 3 , j = i + length+1 , k = 0 ;i-3 < length &&j < splittedQuery.length; j++, i++ , k++) {
