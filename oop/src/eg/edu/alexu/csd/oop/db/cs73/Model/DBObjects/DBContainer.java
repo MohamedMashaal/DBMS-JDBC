@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DBContainer {
-    String name;
-    ArrayList<Table> tables;
+    private String name;
+    private ArrayList<Table> tables;
 
     public DBContainer(String name){
         this.tables = new ArrayList<>();
@@ -61,6 +61,17 @@ public class DBContainer {
 			}
 		}
 		return columns.size();
+	}
+
+	public int update(String string, ArrayList<String> columns, ArrayList<String> values) {
+		int size = 0;
+		for(Table table : tables) {
+			if(table.getName().equalsIgnoreCase(string)) {
+				size = table.update(columns,values);
+				break ;
+			}
+		}
+		return size;
 	}
 	
 }

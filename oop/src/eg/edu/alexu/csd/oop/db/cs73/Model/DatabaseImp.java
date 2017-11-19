@@ -15,9 +15,10 @@ import java.util.Arrays;
 
 public class DatabaseImp implements Database{
 	
-    QueriesParser queriesParser;
-    ArrayList<DBContainer> data;
-    DirectoryHandler dirHandler ;
+	private QueriesParser queriesParser;
+	private ArrayList<DBContainer> data;
+	private DirectoryHandler dirHandler;
+	private InternalParser inParser;
    // boolean testing = false ;
     //public DatabaseImp() {}
     
@@ -25,6 +26,7 @@ public class DatabaseImp implements Database{
         this.queriesParser = new QueriesParser(this);
         this.data = new ArrayList<>();
         this.dirHandler = new DirectoryHandler();
+        this.inParser = new InternalParser();
     }
 
     @Override
@@ -57,7 +59,7 @@ public class DatabaseImp implements Database{
 
     @Override
     public boolean executeStructureQuery(String query) throws SQLException {
-    	String[] splittedQuery = query.split("\\s|\\,\\s*|\\(|\\)");
+    	String[] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").replaceAll("\\s+\\,", ",").split("\\s+|\\,\\s*|\\(|\\)|\\=");
     	if(splittedQuery[1].equalsIgnoreCase("database")) {
     		String databaseName = splittedQuery[2];
     		DBContainer dbc = new DBContainer(splittedQuery[2]);
@@ -78,16 +80,15 @@ public class DatabaseImp implements Database{
     	}
     	else if (splittedQuery[1].equalsIgnoreCase("table")) {
     		String tableName = splittedQuery[2];
-    		String [] columns = getColumns(splittedQuery);
+    		//String [] columns = getColumns(splittedQuery);
     		if(splittedQuery[0].equalsIgnoreCase("create")) {
-    			Table table = new Table(splittedQuery[2] ,columns);
+    			Table table = new Table(splittedQuery[2] ,inParser.getColumns(splittedQuery));
     			if(data.get(data.size()-1).tableExists(tableName)) {
-    				//testing = true ;
     				return false ;
     				//data.get(data.size()-1).remove(tableName);
     			}
 				data.get(data.size()-1).add(table);
-				dirHandler.deleteTable(tableName, data.get(data.size()-1).getName());
+				//dirHandler.deleteTable(tableName, data.get(data.size()-1).getName());
 				dirHandler.createTable(tableName , data.get(data.size()-1).getName());
     		}
     		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
@@ -168,30 +169,27 @@ public class DatabaseImp implements Database{
 
     @Override
     public int executeUpdateQuery(String query) throws SQLException {
-    	String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").split("\\s+|\\,\\s*|\\(|\\)");
+    	String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").replaceAll("\\s+\\,", ",").split("\\s+|\\,\\s*|\\(|\\)|\\=");
     	int updated = 6 ;
     	if(splittedQuery[0].equalsIgnoreCase("insert")) {
-    		String [][] cloumnsValues = getColumnsValues(splittedQuery);
-    		updated = data.get(data.size()-1).insert(splittedQuery[2] , Arrays.asList(cloumnsValues[0]) , Arrays.asList(cloumnsValues[1]));
+    		String [][] cloumnsValues = inParser.getColumnsValues(splittedQuery);
+    		if(data.get(data.size()-1).tableExists(splittedQuery[2]))
+    			updated = data.get(data.size()-1).insert(splittedQuery[2] , Arrays.asList(cloumnsValues[0]) , Arrays.asList(cloumnsValues[1]));
+    		else {
+    			throw new SQLException();
+    		}
+    	}
+    	else if (splittedQuery[0].equalsIgnoreCase("update")) {
+    		ArrayList<ArrayList<String>> columnsValues = inParser.getUpdatedColumnsValues(splittedQuery);
+    		ArrayList<String> toUpdate = inParser.getUpdateWhere(splittedQuery);
+    		if(data.get(data.size()-1).tableExists(splittedQuery[1]))
+    			updated = data.get(data.size()-1).update(splittedQuery[1] , columnsValues.get(0) , columnsValues.get(1));
+    		else {
+    			throw new SQLException();
+    		}
     	}
     	return updated;
     }
-    
-    private String[][] getColumnsValues(String[] splittedQuery) {
-		int length = 0;
-		for(int i = 3 ; i < splittedQuery.length ; i ++) {
-			if(splittedQuery[i].equalsIgnoreCase("values")) {
-				break ;
-			}
-			length++;
-		}
-    	String [][] columnsValues = new String [2][length];
-    	for(int i = 3 , j = i + length+1 , k = 0 ;i-3 < length &&j < splittedQuery.length; j++, i++ , k++) {
-    		columnsValues[0][k] = splittedQuery[i];
-    		columnsValues[1][k] = splittedQuery[j];
-    	}
-		return columnsValues;
-	}
 
 	private int dbIndex(String string) {
     	int i = 0 ;
@@ -211,96 +209,5 @@ public class DatabaseImp implements Database{
 			}
 		}
 		return false;
-	}
-	
-	private String[] getColumns(String[] splittedQuery) throws SQLException {
-		String [] columns = new String [splittedQuery.length-3];
-		if(splittedQuery.length-3 == 0 && !splittedQuery[0].equalsIgnoreCase("drop")) {
-			throw new SQLException("Wrong Create Query");
-		}
-		for(int i = 3 , j = 0 ; i < splittedQuery.length && j < columns.length ; i++,j++ ) {
-			columns[j] = splittedQuery[i];
-		}
-		return columns;
-	}
-
-	private Object[][] applyWhere(Object[][] cols, String query, Table table) { // without the bonus (later)
-		Object[][] filteredCols = new Object[cols.length][cols[0].length];
-		int colIndex = 0;
-		String[] splittedQuery = query.split(" ");
-    	if(splittedQuery.length == 4) // there is no where condition
-    		return cols;
-
-    	String columnName = splittedQuery[5];
-    	String operator = splittedQuery[6];
-    	String comparedValue = splittedQuery[7];
-
-		if(!table.columnExists(columnName)){
-			throw new RuntimeException("Error in where clause; there is no such column: " + columnName);
-		}
-
-		Column comparedColumn = table.getColumns().get(table.columnIndex(columnName));
-
-		if(comparedColumn.getType().equals("int")){
-			try{
-				int intValue = Integer.parseInt(comparedValue), i = 0;
-				for(Object[] column : cols){
-					ArrayList<Object> filteredRecords = new ArrayList<>();
-					for(Object record : column){
-						if(operator.equals("=")) {
-							if((Integer)(comparedColumn.getRecords().get(i)) == intValue) {
-								filteredRecords.add(record);
-							}
-						}
-						if(operator.equals(">")){
-							if((Integer)(comparedColumn.getRecords().get(i)) > intValue){
-								filteredRecords.add(record);
-							}
-						}
-						if(operator.equals("<")){
-							if((Integer)(comparedColumn.getRecords().get(i)) < intValue){
-								filteredRecords.add(record);
-							}
-						}
-						i++;
-					}
-					filteredCols[colIndex++] = filteredRecords.toArray();
-				}
-			}
-			catch(Exception e){
-				throw new RuntimeException("Error! You are trying to compare non-integer with an integer.");
-			}
-		}
-
-		if(comparedColumn.getType().equals("varchar")){
-			int i = 0;
-			for(Object[] column : cols){
-				ArrayList<Object> filteredRecords = new ArrayList<>();
-				for(Object record : column){
-					Record<String> castedRecord = (Record<String>) comparedColumn.getRecords().get(i);
-					int comparingVal = castedRecord.getValue().compareTo(comparedValue);
-					if(operator.equals("=")) {
-						if(comparingVal == 0) {
-							filteredRecords.add(record);
-						}
-					}
-					if(operator.equals(">")){
-						if(comparingVal == 1){
-							filteredRecords.add(record);
-						}
-					}
-					if(operator.equals("<")){
-						if(comparingVal == -1){
-							filteredRecords.add(record);
-						}
-					}
-					i++;
-				}
-				filteredCols[colIndex++] = filteredRecords.toArray();
-			}
-
-		}
-
-		return filteredCols;
 	}
 }
