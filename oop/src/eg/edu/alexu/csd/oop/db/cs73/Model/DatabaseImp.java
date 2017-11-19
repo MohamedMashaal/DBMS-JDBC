@@ -149,7 +149,7 @@ public class DatabaseImp implements Database{
 			int maxRecords = (int) 1e6, i = 0;
 			Object[][] fetchedData = new Object[currTable.getColumns().size()][maxRecords];
 			for(Column column : columns){
-				Object[] columnData = column.getData();
+				String[] columnData = column.getData();
 
 				if(column.getType().equals("int")){
 					Integer[] intColumn = (Integer[]) columnData;

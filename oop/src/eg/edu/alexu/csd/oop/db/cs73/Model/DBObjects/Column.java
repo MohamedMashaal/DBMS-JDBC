@@ -30,8 +30,8 @@ public class Column <T> {
     }
 
     public T[] getData() {
-        ArrayList<Object> colData = new ArrayList<>();
-        for(Record record : records){
+        ArrayList<T> colData = new ArrayList<>();
+        for(Record<T> record : records){
             colData.add(record.getValue());
         }
         return (T[]) colData.toArray();
