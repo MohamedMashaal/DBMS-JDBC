@@ -82,9 +82,10 @@ public class InternalParser {
 	public ArrayList<String> getdeleteWhere(String[] splittedQuery) {
 		int whereIndex = getWhereIndex(splittedQuery);
 		ArrayList<String> whereValue = new ArrayList<>();
+		if(whereIndex != -1)
 		for(int i = whereIndex+1 ; i < splittedQuery.length ; i ++) {
 			whereValue.add(splittedQuery[i]);
 		}
-		return null;
+		return whereValue;
 	}
 }
