@@ -129,14 +129,21 @@ public class DatabaseImp implements Database{
     }
     
     private ArrayList<ArrayList<String>> getUpdatedColumnsValues(String[] splittedQuery){
-    	ArrayList<ArrayList<String>> columnsValues = new ArrayList<ArrayList<String>>();
-    	columnsValues.add(new ArrayList<String>());
-    	columnsValues.add(new ArrayList<String>());
-    	for(int i = 3 ; i < splittedQuery.length ; i+=2) {
-			columnsValues.get(0).add(splittedQuery[i]);
-			columnsValues.get(1).add(splittedQuery[i+1]);
+    	try {
+			ArrayList<ArrayList<String>> columnsValues = new ArrayList<ArrayList<String>>();
+			columnsValues.add(new ArrayList<String>());
+			columnsValues.add(new ArrayList<String>());
+			for(int i = 3 ; i < splittedQuery.length ; i+=2) {
+				columnsValues.get(0).add(splittedQuery[i]);
+				columnsValues.get(1).add(splittedQuery[i+1]);
+			}
+			return columnsValues;
+		} catch (Exception e) {
+			StringBuilder st = new StringBuilder();
+			for(String x : splittedQuery)
+				st.append(x+" ");
+			throw new RuntimeException(st.toString());
 		}
-    	return columnsValues;
     }
     
     private String[][] getColumnsValues(String[] splittedQuery) {
