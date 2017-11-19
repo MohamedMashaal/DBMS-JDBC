@@ -30,8 +30,10 @@ public class Table {
 			}
 		} catch (Exception e) {
 			StringBuilder b = new StringBuilder();
+			b.append("Before");
 			for(String x : columns)
 				b.append(x+ " ");
+			b.append("After");
 			throw new RuntimeException(b.toString());
 		}
     }
