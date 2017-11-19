@@ -50,13 +50,14 @@ public class DBContainer {
 	}
 
 	public int update(String string, ArrayList<String> columns, ArrayList<String> values) {
+		int size = 0;
 		for(Table table : tables) {
 			if(table.getName().equalsIgnoreCase(string)) {
-				table.update(columns,values);
+				size = table.update(columns,values);
 				break ;
 			}
 		}
-		return 0;
+		return size;
 	}
 	
 }

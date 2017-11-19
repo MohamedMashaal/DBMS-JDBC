@@ -61,12 +61,14 @@ public class Table {
 		return -1;
 	}
 
-	public void update(ArrayList<String> columns, ArrayList<String> values) {
+	public int update(ArrayList<String> columns, ArrayList<String> values) {
+		int size = 0 ;
 		for(int i = 0 ; i < columns.size() ; i++) {
 			int index = getIndex(columns.get(i));
 			if(index != -1) {
 				ArrayList<Record> records = this.columns.get(index).getRecords() ;
 				String type = this.columns.get(index).getType();
+				size = records.size();
 				for(int j = 0 ; j < records.size() ; j++) {
 					if(type.equalsIgnoreCase("int")) {
 						records.get(j).setValue(Integer.parseInt((values.get(i))));
@@ -77,6 +79,7 @@ public class Table {
 				}
 			}
 		}
+		return size ;
 	}
 
 	private int getIndex(String cl) {

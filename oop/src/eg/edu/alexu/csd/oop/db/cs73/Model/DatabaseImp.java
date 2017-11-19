@@ -119,7 +119,7 @@ public class DatabaseImp implements Database{
     	}
     	else if (splittedQuery[0].equalsIgnoreCase("update")) {
     		ArrayList<ArrayList<String>> columnsValues = getUpdatedColumnsValues(splittedQuery);
-    		if(data.get(data.size()-1).tableExists(splittedQuery[2]))
+    		if(data.get(data.size()-1).tableExists(splittedQuery[1]))
     			updated = data.get(data.size()-1).update(splittedQuery[1] , columnsValues.get(0) , columnsValues.get(1));
     		else {
     			throw new SQLException();
@@ -132,7 +132,7 @@ public class DatabaseImp implements Database{
     	ArrayList<ArrayList<String>> columnsValues = new ArrayList<ArrayList<String>>();
     	columnsValues.add(new ArrayList<String>());
     	columnsValues.add(new ArrayList<String>());
-    	for(int i = 3 ; i < splittedQuery.length ; i=+2) {
+    	for(int i = 3 ; i < splittedQuery.length ; i+=2) {
 			columnsValues.get(0).add(splittedQuery[i]);
 			columnsValues.get(1).add(splittedQuery[i+1]);
 		}
