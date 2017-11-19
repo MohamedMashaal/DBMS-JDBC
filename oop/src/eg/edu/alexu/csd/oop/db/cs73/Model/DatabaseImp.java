@@ -153,21 +153,9 @@ public class DatabaseImp implements Database{
 	
 	private String[] getColumns(String[] splittedQuery) throws SQLException {
 		String [] columns = new String [splittedQuery.length-3];
-		if(splittedQuery.length-3 == 0) {
-			StringBuilder st = new StringBuilder();
-				for(String column : splittedQuery) {
-					st.append(column+" ");
-				}
-			//throw new RuntimeException(st.toString());
-			throw new SQLException(st.toString());
+		if(splittedQuery.length-3 == 0 && !splittedQuery[0].equalsIgnoreCase("drop")) {
+			throw new SQLException("Wrong Create Query");
 		}
-		/*StringBuilder st = new StringBuilder();
-		if(testing) {
-			for(String column : splittedQuery) {
-				st.append(column+" ");
-			}
-			throw new RuntimeException(st.toString());
-		}*/
 		for(int i = 3 , j = 0 ; i < splittedQuery.length && j < columns.length ; i++,j++ ) {
 			columns[j] = splittedQuery[i];
 		}
