@@ -146,7 +146,7 @@ public class DatabaseImp implements Database{
 		// all columns
 		else{
 			ArrayList<Column> columns = currTable.getColumns();
-			int maxRecords = (int) 1e6, i = 0;
+			int i = 0;
 			Object[][] fetchedData = new Object[currTable.getColumns().size()][];
 			for(Column column : columns){
 				Object[] columnData = column.getData();
@@ -165,7 +165,7 @@ public class DatabaseImp implements Database{
 		}
 
 //		throw new RuntimeException(query);
-    	return new Object[1][];
+    	return new Object[0][];
     }
 
     @Override
@@ -262,6 +262,7 @@ public class DatabaseImp implements Database{
 
 		if(comparedColumn.getType().equals("varchar")){
 			int i = 0;
+			colIndex = 0;
 			for(Object[] column : cols){
 				ArrayList<Object> filteredRecords = new ArrayList<>();
 				for(Object record : column){
