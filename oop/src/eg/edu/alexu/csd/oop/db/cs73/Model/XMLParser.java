@@ -123,7 +123,7 @@ public class XMLParser {
                         continue;
                     shapeMap.put(prop.getNodeName(), prop.getTextContent());
                 }
-                shapesMaps.add(shapeMap);
+               // shapesMaps.add(shapeMap);
             }
 
         } catch (ParserConfigurationException pce) {
@@ -133,6 +133,7 @@ public class XMLParser {
         } catch (IOException ioe) {
             System.err.println(ioe.getMessage());
         }
-        return shapesMaps;
+       // return shapesMaps;
+        return null;
     }
 }
