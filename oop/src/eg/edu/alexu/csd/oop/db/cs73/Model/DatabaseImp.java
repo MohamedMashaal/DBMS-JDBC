@@ -103,8 +103,8 @@ public class DatabaseImp implements Database{
 
 	@Override
     public Object[][] executeQuery(String query) throws SQLException {
-    	//throw new RuntimeException(query);
-		String [] splittedQuery = query.split(" ");
+    	throw new RuntimeException(query);
+		/*String [] splittedQuery = query.split(" ");
 		String colName = splittedQuery[1];
 		String tableName = splittedQuery[3];
 
@@ -159,13 +159,13 @@ public class DatabaseImp implements Database{
 					String[] varcharColumn = (String[]) columnData;
 					fetchedData[i++] = varcharColumn;
 				}*/
-				fetchedData[i++] = columnData;
+		/*		fetchedData[i++] = columnData;
 			}
 			return applyWhere(fetchedData, query, currTable);
 		}
 
 //		throw new RuntimeException(query);
-    	return new Object[0][];
+    	return new Object[0][];*/
     }
 
     @Override
