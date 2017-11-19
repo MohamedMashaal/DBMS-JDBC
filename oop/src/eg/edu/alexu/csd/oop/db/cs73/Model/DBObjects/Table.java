@@ -15,22 +15,25 @@ public class Table {
     public Table(String name , String [] columns) {
     	this.name = name ;
     	this.columns = new ArrayList<>();
-    	for(String x : columns) {
-    		System.out.println(x);
-    	}
     	addColumns(columns);
     }
     
     public void addColumns(String [] columns) {
-    	for(int i = 0 ; i < columns.length ; i+=2) {
-    		System.out.println("i : " + i + " length :" + columns.length);
-    		if(columns[i+1].equalsIgnoreCase("int")) {
-    			this.columns.add(new Column<Integer>(columns[i], "int"));
-    		}
-    		else if (columns[i+1].equalsIgnoreCase("varchar")) {
-    			this.columns.add(new Column<String>(columns[i], "varchar"));
-    		}
-    	}
+    	try {
+			for(int i = 0 ; i < columns.length ; i+=2) {
+				if(columns[i+1].equalsIgnoreCase("int")) {
+					this.columns.add(new Column<Integer>(columns[i], "int"));
+				}
+				else if (columns[i+1].equalsIgnoreCase("varchar")) {
+					this.columns.add(new Column<String>(columns[i], "varchar"));
+				}
+			}
+		} catch (Exception e) {
+			StringBuilder b = new StringBuilder();
+			for(String x : columns)
+				b.append(x+ " ");
+			throw new RuntimeException(b.toString());
+		}
     }
     
     public String getName() {
