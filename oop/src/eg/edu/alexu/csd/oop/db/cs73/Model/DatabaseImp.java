@@ -76,16 +76,15 @@ public class DatabaseImp implements Database{
     	}
     	else if (splittedQuery[1].equalsIgnoreCase("table")) {
     		String tableName = splittedQuery[2];
-    		String [] columns = getColumns(splittedQuery);
+    		//String [] columns = getColumns(splittedQuery);
     		if(splittedQuery[0].equalsIgnoreCase("create")) {
-    			Table table = new Table(splittedQuery[2] ,columns);
+    			Table table = new Table(splittedQuery[2] ,getColumns(splittedQuery));
     			if(data.get(data.size()-1).tableExists(tableName)) {
-    				//testing = true ;
     				return false ;
     				//data.get(data.size()-1).remove(tableName);
     			}
 				data.get(data.size()-1).add(table);
-				dirHandler.deleteTable(tableName, data.get(data.size()-1).getName());
+				//dirHandler.deleteTable(tableName, data.get(data.size()-1).getName());
 				dirHandler.createTable(tableName , data.get(data.size()-1).getName());
     		}
     		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
@@ -106,11 +105,18 @@ public class DatabaseImp implements Database{
 
     @Override
     public int executeUpdateQuery(String query) throws SQLException {
-    	String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").split("\\s+|\\,\\s*|\\(|\\)");
+    	String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").split("\\s+|\\,\\s*|\\(|\\)|\\=");
     	int updated = 6 ;
     	if(splittedQuery[0].equalsIgnoreCase("insert")) {
     		String [][] cloumnsValues = getColumnsValues(splittedQuery);
-    		updated = data.get(data.size()-1).insert(splittedQuery[2] , Arrays.asList(cloumnsValues[0]) , Arrays.asList(cloumnsValues[1]));
+    		if(data.get(data.size()-1).tableExists(splittedQuery[2]))
+    			updated = data.get(data.size()-1).insert(splittedQuery[2] , Arrays.asList(cloumnsValues[0]) , Arrays.asList(cloumnsValues[1]));
+    		else {
+    			throw new SQLException();
+    		}
+    	}
+    	else if (splittedQuery[0].equalsIgnoreCase("update")) {
+    		
     	}
     	return updated;
     }
