@@ -16,7 +16,7 @@ public class DatabaseImp implements Database{
     QueriesParser queriesParser;
     ArrayList<DBContainer> data;
     DirectoryHandler dirHandler ;
-    boolean testing = false ;
+   // boolean testing = false ;
     //public DatabaseImp() {}
     
     public DatabaseImp(){
@@ -80,7 +80,7 @@ public class DatabaseImp implements Database{
     		if(splittedQuery[0].equalsIgnoreCase("create")) {
     			Table table = new Table(splittedQuery[2] ,columns);
     			if(data.get(data.size()-1).tableExists(tableName)) {
-    				testing = true ;
+    				//testing = true ;
     				return false ;
     				//data.get(data.size()-1).remove(tableName);
     			}
@@ -151,15 +151,18 @@ public class DatabaseImp implements Database{
 		return false;
 	}
 	
-	private String[] getColumns(String[] splittedQuery) {
+	private String[] getColumns(String[] splittedQuery) throws SQLException {
 		String [] columns = new String [splittedQuery.length-3];
-		StringBuilder st = new StringBuilder();
-		if(testing) {
-			for(String column : splittedQuery) {
-				st.append(column+" ");
-			}
-			throw new RuntimeException(st.toString());
+		if(columns.length == 0) {
+			throw new SQLException();
 		}
+//		StringBuilder st = new StringBuilder();
+//		if(testing) {
+//			for(String column : splittedQuery) {
+//				st.append(column+" ");
+//			}
+//			throw new RuntimeException(st.toString());
+//		}
 		for(int i = 3 , j = 0 ; i < splittedQuery.length && j < columns.length ; i++,j++ ) {
 			columns[j] = splittedQuery[i];
 		}
