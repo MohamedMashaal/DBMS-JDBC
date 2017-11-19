@@ -59,7 +59,7 @@ public class Table {
 		for(Column column : this.columns) {
 			int index = getIndex(columns , column.getName());
 			if(index == -1) {
-				column.addRecord(null);
+				column.addRecord(new Record<>("null"));
 			}
 			else {
 				if(column.getType().equalsIgnoreCase("int"))

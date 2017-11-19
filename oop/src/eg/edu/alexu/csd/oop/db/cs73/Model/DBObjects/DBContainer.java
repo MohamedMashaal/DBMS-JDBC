@@ -61,10 +61,10 @@ public class DBContainer {
 			if(table.getName().equalsIgnoreCase(string)) {
 				if(columns.size() != 0) {
 					table.insert(columns,values);
-					return columns.size();}
+					return 1;}
 				else {
 					table.insert(values);
-					return values.size();
+					return 1;
 				}
 			}
 		}
