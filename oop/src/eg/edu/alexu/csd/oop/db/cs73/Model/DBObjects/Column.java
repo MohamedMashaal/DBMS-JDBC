@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 public class Column <T> {
 	String name ;
+	String type;
     ArrayList<Record<T>> records;
 
-    public Column(String name){
+    public Column(String name, String type){
     	this.name = name ;
         this.records = new ArrayList<>();
     }
