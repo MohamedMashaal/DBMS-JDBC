@@ -1,6 +1,7 @@
 package eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Table {
 	String name ;
@@ -29,5 +30,26 @@ public class Table {
     
     public String getName() {
 		return name;
+	}
+
+	public void insert(List<String> columns, List<String> values) {
+		for(Column column : this.columns) {
+			int index = getIndex(columns , column.getName());
+			if(index == -1) {
+				column.addRecord(null);
+			}
+			else {
+				column.addRecord(new Record<>(values.get(index)));
+			}
+		}
+	}
+
+	private int getIndex(List<String> columns, String name) {
+		for(int i = 0 ; i < columns.size()-1 ; i++) {
+			if(columns.get(i).equalsIgnoreCase(name)) {
+				return i ;
+			}
+		}
+		return -1;
 	}
 }

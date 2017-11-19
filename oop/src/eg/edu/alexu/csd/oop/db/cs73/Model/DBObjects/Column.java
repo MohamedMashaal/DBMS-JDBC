@@ -10,4 +10,12 @@ public class Column <T> {
     	this.name = name ;
         this.records = new ArrayList<>();
     }
+    
+    public String getName() {
+		return name;
+	}
+    
+    public void addRecord(Record<T> record) {
+    	records.add(record);
+    }
 }

@@ -1,6 +1,7 @@
 package eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DBContainer {
 	String name;
@@ -33,6 +34,16 @@ public class DBContainer {
 				return true ;
 		}
 		return false;
+	}
+
+	public int insert(String string, List<String> columns , List<String> values) {
+		for(Table table : tables) {
+			if(table.getName().equalsIgnoreCase(string)) {
+				table.insert(columns,values);
+				break ;
+			}
+		}
+		return columns.size();
 	}
 	
 }

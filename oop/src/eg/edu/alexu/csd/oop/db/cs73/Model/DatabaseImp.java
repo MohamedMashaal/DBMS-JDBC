@@ -9,6 +9,7 @@ import sun.net.www.content.text.plain;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class DatabaseImp implements Database{
 	
@@ -102,11 +103,32 @@ public class DatabaseImp implements Database{
 
     @Override
     public int executeUpdateQuery(String query) throws SQLException {
-    	//throw new RuntimeException(query);
-    	return 0;
+    	String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").split("\\s+|\\,\\s*|\\(|\\)");
+    	int updated = 0 ;
+    	if(splittedQuery[0].equalsIgnoreCase("insert")) {
+    		String [][] cloumnsValues = getColumnsValues(splittedQuery);
+    		updated = data.get(data.size()-1).insert(splittedQuery[2] , Arrays.asList(cloumnsValues[0]) , Arrays.asList(cloumnsValues[1]));
+    	}
+    	return updated;
     }
     
-    private int dbIndex(String string) {
+    private String[][] getColumnsValues(String[] splittedQuery) {
+		int length = 0;
+		for(int i = 3 ; i < splittedQuery.length ; i ++) {
+			if(splittedQuery[i].equalsIgnoreCase("values")) {
+				break ;
+			}
+			length++;
+		}
+    	String [][] columnsValues = new String [2][length];
+    	for(int i = 3 , j = i + length+1 , k = 0 ;i < length && j < splittedQuery.length; j++, i++ , k++) {
+    		columnsValues[0][k] = splittedQuery[i];
+    		columnsValues[1][k] = splittedQuery[j];
+    	}
+		return columnsValues;
+	}
+
+	private int dbIndex(String string) {
     	int i = 0 ;
     	for(DBContainer db : data) {
 			if(db.getName().equalsIgnoreCase(string)) {	
