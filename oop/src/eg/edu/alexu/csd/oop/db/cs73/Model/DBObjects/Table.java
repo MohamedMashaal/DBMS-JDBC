@@ -48,7 +48,7 @@ public class Table {
 	public int columnIndex(String name){
 		int i = 0;
 		for(Column column : columns){
-			if(column.getName().equals(name))
+			if(column.getName().equalsIgnoreCase(name))
 				return i;
 			i++;
 		}
