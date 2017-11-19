@@ -17,11 +17,14 @@ public class DBContainer {
 	}
 	
 	public void remove(String tableName) {
+		int i = 0;
 		for(Table table :tables) {
 			if(table.getName().equalsIgnoreCase(tableName)) {
-				tables.remove(table);
+				break ;
 			}
+			i ++ ;
 		}
+		tables.remove(i);
 	}
 	
 	public void add(Table table) {
