@@ -92,4 +92,8 @@ public class Table {
 		}
 		return -1;
 	}
+	
+	public void setColumns(List<Column> columns) {
+		this.columns = (ArrayList<Column>) columns;
+	}
 }

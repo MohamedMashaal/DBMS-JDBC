@@ -47,14 +47,17 @@ public class XMLParser {
             for (Column column : databaseTable.getColumns()) {
                 col = dom.createElement("column");
                 col.setAttribute("name", column.getName());
-                col.setAttribute("type", column.getRecords().getClass().getSimpleName());
+                col.setAttribute("type", column.getType());
                 for (Object object : column.getRecords()) {
                     Record record = (Record) object;
                     /*if(record.getValue().getClass().getSimpleName().equalsIgnoreCase("string")){
 
                     }*/
                     rec = dom.createElement("record");
-                    rec.setAttribute("value", record.getValue().toString());
+                    if(record.getValue() != null)
+                        rec.setAttribute("value", record.getValue().toString());
+                    else
+                        rec.setAttribute("value", "null");
                     //rec.appendChild(dom.createTextNode(record.getValue().toString()));
                     col.appendChild(rec);
                 }
@@ -84,12 +87,13 @@ public class XMLParser {
         }
     }
 
-    public Table loadTableFromXML(File xml) {
+    public Table loadTableFromXML(String path) {
         Table loadedTable = null;
         Document dom;
         InputStream inputStream;
         Reader reader = null;
         try {
+            File xml = new File(path);
             inputStream = new FileInputStream(xml);
             reader = new InputStreamReader(inputStream, "ISO-8859-1");
         } catch (UnsupportedEncodingException e) {
@@ -110,12 +114,13 @@ public class XMLParser {
             Element doc = dom.getDocumentElement();
             NodeList rootNode = doc.getChildNodes();
             loadedTable = new Table(doc.getAttribute("name"));
+            ArrayList<Column> cols = new ArrayList<>();
 
             for (int i = 0; i < rootNode.getLength(); i++) {
                 Node colNode = rootNode.item(i);
                 NodeList colNL = colNode.getChildNodes();
-                Column col = new Column(colNode.getAttributes().getNamedItem("name").toString(),
-                                        colNode.getAttributes().getNamedItem("type").toString());
+                Column col = new Column(colNode.getAttributes().getNamedItem("name").getNodeValue(),
+                                        colNode.getAttributes().getNamedItem("type").getNodeValue());
                 System.out.println("Col Name : " + colNode.getAttributes().getNamedItem("name"));
                 if (colNode.getNodeName().equals("#text"))
                     continue;
@@ -125,11 +130,19 @@ public class XMLParser {
                     if (recItem.getNodeName().equals("#text"))
                         continue;
                     //shapeMap.put(prop.getNodeName(), prop.getTextContent());
-                    Record record = new Record(recItem.getAttributes().getNamedItem("value"));
+                    Record record = null;
+                    if(!recItem.getAttributes().getNamedItem("value").equals("null"))
+                        record = new Record(recItem.getAttributes().getNamedItem("value"));
+                    else
+                        record = new Record(null);
+
                     col.addRecord(record);
                 }
-               // shapesMaps.add(shapeMap);
+                //loadedTable.addColumn(col);
+                cols.add(col);
             }
+
+            loadedTable.setColumns(cols);
 
         } catch (ParserConfigurationException pce) {
             System.out.println(pce.getMessage());
@@ -138,7 +151,6 @@ public class XMLParser {
         } catch (IOException ioe) {
             System.err.println(ioe.getMessage());
         }
-       // return shapesMaps;
-        return null;
+        return loadedTable;
     }
 }

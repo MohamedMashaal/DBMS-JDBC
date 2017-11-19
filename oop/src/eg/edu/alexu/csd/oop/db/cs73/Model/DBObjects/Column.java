@@ -20,7 +20,7 @@ public class Column <T> {
     public String getType() {
     	return type;
     }
-    
+
     public void addRecord(Record<T> record) {
     	records.add(record);
     }
