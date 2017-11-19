@@ -30,19 +30,19 @@ public class Testing {
     	DatabaseImp db = new DatabaseImp();
     	db.createDatabase("7amada", true);
     	try {
-			db.executeStructureQuery("CREATE TABLE table_1 (column_name1 varchar, column_name2 int, column_name3 varchar)");
+			db.executeStructureQuery("CREATE TABLE table_namE1 (column_name1 varchar, column_name2 int, column_name3 varchar)");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	try {
-			db.executeUpdateQuery("INSERT INTO table_1(column_NAME1, COLUMN_name2, column_name3) VALUES ('value1', 4, 'value2')");
+			db.executeUpdateQuery("INSERT INTO table_namE1(column_NAME1, COLUMN_name2, column_name3) VALUES ('value1', 4, 'value2')");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	try {
-			db.executeUpdateQuery("UPDATE table_1 SET column_name1='value1', column_name2=15, column_name3='value2'");
+			db.executeUpdateQuery("UPDATE table_namE1 SET column_name1 11111111 COLUMN_NAME2 22222222 column_name3 333333333 WHERE coLUmn_NAME3 VALUE3");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
