@@ -19,23 +19,14 @@ public class Table {
     }
     
     public void addColumns(String [] columns) {
-    	try {
-			for(int i = 0 ; i < columns.length ; i+=2) {
-				if(columns[i+1].equalsIgnoreCase("int")) {
-					this.columns.add(new Column<Integer>(columns[i], "int"));
-				}
-				else if (columns[i+1].equalsIgnoreCase("varchar")) {
-					this.columns.add(new Column<String>(columns[i], "varchar"));
-				}
-			}
-		} catch (Exception e) {
-			StringBuilder b = new StringBuilder();
-			b.append("Before");
-			for(String x : columns)
-				b.append(x+ " ");
-			b.append("After");
-			throw new RuntimeException(b.toString());
-		}
+    	for(int i = 0 ; i < columns.length ; i+=2) {
+    		if(columns[i+1].equalsIgnoreCase("int")) {
+    			this.columns.add(new Column<Integer>(columns[i], "int"));
+    		}
+    		else if (columns[i+1].equalsIgnoreCase("varchar")) {
+    			this.columns.add(new Column<String>(columns[i], "varchar"));
+    		}
+    	}
     }
     
     public String getName() {
