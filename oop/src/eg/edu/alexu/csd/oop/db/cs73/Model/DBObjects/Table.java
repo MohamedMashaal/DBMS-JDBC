@@ -21,10 +21,10 @@ public class Table {
     public void addColumns(String [] columns) {
     	for(int i = 0 ; i < columns.length ; i+=2) {
     		if(columns[i+1].equalsIgnoreCase("int")) {
-    			this.columns.add(new Column<Integer>(columns[i])); 
+    			this.columns.add(new Column<Integer>(columns[i], "int"));
     		}
     		else if (columns[i+1].equalsIgnoreCase("varchar")) {
-    			this.columns.add(new Column<String>(columns[i]));
+    			this.columns.add(new Column<String>(columns[i], "varchar"));
     		}
     	}
     }

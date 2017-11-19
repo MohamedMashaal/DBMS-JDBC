@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class XMLParser {
-    public void saveToXML(String path, Table databaseTable) throws FileNotFoundException {
+    public void saveTableToXML(String path, Table databaseTable) throws FileNotFoundException {
         Document dom;
         Element col = null, rec;
 
@@ -39,7 +39,7 @@ public class XMLParser {
             dom = db.newDocument();
 
             // create the root element
-            Element rootEle = dom.createElement("database");
+            Element rootEle = dom.createElement("table");
             rootEle.setAttribute("name", databaseTable.getName());
 
             // create data elements and place them under root
@@ -47,6 +47,7 @@ public class XMLParser {
             for (Column column : databaseTable.getColumns()) {
                 col = dom.createElement("column");
                 col.setAttribute("name", column.getName());
+                col.setAttribute("type", column.getRecords().getClass().getSimpleName());
                 for (Object object : column.getRecords()) {
                     Record record = (Record) object;
                     /*if(record.getValue().getClass().getSimpleName().equalsIgnoreCase("string")){
@@ -83,8 +84,8 @@ public class XMLParser {
         }
     }
 
-    public Table readXML(File xml) {
-
+    public Table loadTableFromXML(File xml) {
+        Table loadedTable = null;
         Document dom;
         InputStream inputStream;
         Reader reader = null;
@@ -108,22 +109,25 @@ public class XMLParser {
             dom = db.parse(is);
             Element doc = dom.getDocumentElement();
             NodeList rootNode = doc.getChildNodes();
-            Table loadedTable = new Table(doc.getAttribute("name"));
+            loadedTable = new Table(doc.getAttribute("name"));
 
             for (int i = 0; i < rootNode.getLength(); i++) {
-                Map<String, String> shapeMap = new HashMap<>();
-                Node shapeNode = rootNode.item(i);
-                NodeList shapeNL = shapeNode.getChildNodes();
-                if (shapeNode.getNodeName().equals("#text"))
+                Node colNode = rootNode.item(i);
+                NodeList colNL = colNode.getChildNodes();
+                Column col = new Column(colNode.getAttributes().getNamedItem("name").toString());
+                System.out.println("Col Name : " + colNode.getAttributes().getNamedItem("name"));
+                if (colNode.getNodeName().equals("#text"))
                     continue;
-                shapeMap.put("id", shapeNode.getNodeName());
-                for (int j = 0; j < shapeNL.getLength(); j++) {
-                    Node prop = shapeNL.item(j);
-                    if (prop.getNodeName().equals("#text"))
+                //put("id", colNode.getNodeName());
+                for (int j = 0; j < colNL.getLength(); j++) {
+                    Node recItem = colNL.item(j);
+                    if (recItem.getNodeName().equals("#text"))
                         continue;
-                    shapeMap.put(prop.getNodeName(), prop.getTextContent());
+                    //shapeMap.put(prop.getNodeName(), prop.getTextContent());
+                    Record record = new Record(recItem.getAttributes().getNamedItem("value"));
+                    col.addRecord(record);
                 }
-                shapesMaps.add(shapeMap);
+                //loadedTable.addColumn(col);
             }
 
         } catch (ParserConfigurationException pce) {
@@ -133,6 +137,6 @@ public class XMLParser {
         } catch (IOException ioe) {
             System.err.println(ioe.getMessage());
         }
-        return shapesMaps;
+        return loadedTable;
     }
 }
