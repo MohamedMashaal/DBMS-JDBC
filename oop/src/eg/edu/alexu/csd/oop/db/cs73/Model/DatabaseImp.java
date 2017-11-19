@@ -78,15 +78,14 @@ public class DatabaseImp implements Database{
     		String tableName = splittedQuery[2];
     		//String [] columns = getColumns(splittedQuery);
     		if(splittedQuery[0].equalsIgnoreCase("create")) {
-    			throw new RuntimeException(query);
-    			/*Table table = new Table(splittedQuery[2] ,getColumns(splittedQuery));
+    			Table table = new Table(splittedQuery[2] ,getColumns(splittedQuery));
     			if(data.get(data.size()-1).tableExists(tableName)) {
     				return false ;
     				//data.get(data.size()-1).remove(tableName);
     			}
 				data.get(data.size()-1).add(table);
 				//dirHandler.deleteTable(tableName, data.get(data.size()-1).getName());
-				dirHandler.createTable(tableName , data.get(data.size()-1).getName());*/
+				dirHandler.createTable(tableName , data.get(data.size()-1).getName());
     		}
     		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
     			if(data.get(data.size()-1).tableExists(tableName)) {
