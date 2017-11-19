@@ -104,7 +104,7 @@ public class DatabaseImp implements Database{
     @Override
     public int executeUpdateQuery(String query) throws SQLException {
     	String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").split("\\s+|\\,\\s*|\\(|\\)");
-    	int updated = 2 ;
+    	int updated = 0 ;
     	if(splittedQuery[0].equalsIgnoreCase("insert")) {
     		String [][] cloumnsValues = getColumnsValues(splittedQuery);
     		updated = data.get(data.size()-1).insert(splittedQuery[2] , Arrays.asList(cloumnsValues[0]) , Arrays.asList(cloumnsValues[1]));
