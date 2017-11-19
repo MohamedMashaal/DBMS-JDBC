@@ -131,7 +131,7 @@ public class XMLParser {
                         continue;
                     //shapeMap.put(prop.getNodeName(), prop.getTextContent());
                     Record record = null;
-                    if(recItem.getAttributes().getNamedItem("value").equals("null"))
+                    if(!recItem.getAttributes().getNamedItem("value").equals("null"))
                         record = new Record(recItem.getAttributes().getNamedItem("value"));
                     else
                         record = new Record(null);
