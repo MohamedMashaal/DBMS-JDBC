@@ -10,6 +10,7 @@ import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class DatabaseImp implements Database{
 	
@@ -150,10 +151,25 @@ public class DatabaseImp implements Database{
 		return false;
 	}
 	
-	private String[] getColumns(String[] splittedQuery) {
+	private String[] getColumns(String[] splittedQuery) throws SQLException {
+		HashMap<String,Integer> x = new HashMap<>();
 		String [] columns = new String [splittedQuery.length-3];
 		for(int i = 3 , j = 0 ; i < splittedQuery.length && j < columns.length ; i++,j++ ) {
 			columns[j] = splittedQuery[i];
+		}
+		for(int i = 0 ; i< splittedQuery.length ; i+=2) {
+			if(!x.containsKey(splittedQuery[i])) {
+				x.put(splittedQuery[i], 1);
+			}
+			else {
+				throw new SQLException("!!!!");
+			}
+			if(splittedQuery[i+1].equalsIgnoreCase("int") || splittedQuery[i+1].equalsIgnoreCase("varchar")) {
+				continue ;
+			}
+			else {
+				throw new SQLException("!!!!!");
+			}
 		}
 		return columns;
 	}
