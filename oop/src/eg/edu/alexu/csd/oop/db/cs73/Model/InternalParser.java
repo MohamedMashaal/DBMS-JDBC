@@ -36,8 +36,8 @@ public class InternalParser {
 			ArrayList<ArrayList<String>> columnsValues = new ArrayList<ArrayList<String>>();
 			columnsValues.add(new ArrayList<String>());
 			columnsValues.add(new ArrayList<String>());
-			
-			for(int i = 3 ; i < splittedQuery.length -3  ; i+=2) {
+			int length = getWhereIndex(splittedQuery) == -1 ? splittedQuery.length : getWhereIndex(splittedQuery) ;
+			for(int i = 3 ; i < length ; i+=2) {
 				columnsValues.get(0).add(splittedQuery[i]);
 				columnsValues.get(1).add(splittedQuery[i+1]);
 			}
@@ -50,8 +50,23 @@ public class InternalParser {
 		}
     }
 	
+	private int getWhereIndex(String [] splittedQuery) {
+		int i = 0;
+		for(String x : splittedQuery) {
+			if(x.equalsIgnoreCase("where")) {
+				return i;
+			}
+			i++;
+		}
+		return -1;
+	}
+
 	public ArrayList<String> getUpdateWhere(String[] splittedQuery) {
-		
-		return null;
+		int whereIndex = getWhereIndex(splittedQuery);
+		ArrayList<String> whereValue = new ArrayList<>();
+		for(int i = whereIndex+1 ; i < splittedQuery.length ; i ++) {
+			whereValue.add(splittedQuery[i]);
+		}
+		return whereValue;
 	}
 }

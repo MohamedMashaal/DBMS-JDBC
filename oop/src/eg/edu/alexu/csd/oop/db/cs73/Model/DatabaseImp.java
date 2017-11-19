@@ -123,7 +123,7 @@ public class DatabaseImp implements Database{
     		ArrayList<ArrayList<String>> columnsValues = inParser.getUpdatedColumnsValues(splittedQuery);
     		ArrayList<String> toUpdate = inParser.getUpdateWhere(splittedQuery);
     		if(data.get(data.size()-1).tableExists(splittedQuery[1]))
-    			updated = data.get(data.size()-1).update(splittedQuery[1] , columnsValues.get(0) , columnsValues.get(1));
+    			updated = data.get(data.size()-1).update(splittedQuery[1] , columnsValues.get(0) , columnsValues.get(1),toUpdate);
     		else {
     			throw new SQLException();
     		}
