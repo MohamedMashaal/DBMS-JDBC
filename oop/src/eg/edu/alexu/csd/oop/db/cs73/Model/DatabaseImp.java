@@ -80,10 +80,11 @@ public class DatabaseImp implements Database{
     		if(splittedQuery[0].equalsIgnoreCase("create")) {
     			Table table = new Table(splittedQuery[2] ,columns);
     			if(data.get(data.size()-1).tableExists(tableName)) {
-    				data.get(data.size()-1).remove(tableName);
+    				return false ;
+    				//data.get(data.size()-1).remove(tableName);
     			}
 				data.get(data.size()-1).add(table);
-				dirHandler.deleteTable(tableName, data.get(data.size()-1).getName());
+				//dirHandler.deleteTable(tableName, data.get(data.size()-1).getName());
 				dirHandler.createTable(tableName , data.get(data.size()-1).getName());
     		}
     		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
