@@ -83,6 +83,7 @@ public class DatabaseImp implements Database{
     				data.get(data.size()-1).remove(tableName);
     			}
 				data.get(data.size()-1).add(table);
+				dirHandler.deleteTable(tableName, data.get(data.size()-1).getName());
 				dirHandler.createTable(tableName , data.get(data.size()-1).getName());
     		}
     		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
@@ -121,7 +122,7 @@ public class DatabaseImp implements Database{
 			length++;
 		}
     	String [][] columnsValues = new String [2][length];
-    	for(int i = 3 , j = i + length+1 , k = 0 ;j < splittedQuery.length; j++, i++ , k++) {
+    	for(int i = 3 , j = i + length+1 , k = 0 ;i-3 < length &&j < splittedQuery.length; j++, i++ , k++) {
     		columnsValues[0][k] = splittedQuery[i];
     		columnsValues[1][k] = splittedQuery[j];
     	}
