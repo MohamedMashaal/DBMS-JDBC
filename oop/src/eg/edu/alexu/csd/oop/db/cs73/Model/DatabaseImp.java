@@ -211,17 +211,6 @@ public class DatabaseImp implements Database{
 		return false;
 	}
 
-	private String[] getColumns(String[] splittedQuery) throws SQLException {
-		String [] columns = new String [splittedQuery.length-3];
-		if(splittedQuery.length-3 == 0 && !splittedQuery[0].equalsIgnoreCase("drop")) {
-			throw new SQLException("Wrong Create Query");
-		}
-		for(int i = 3 , j = 0 ; i < splittedQuery.length && j < columns.length ; i++,j++ ) {
-			columns[j] = splittedQuery[i];
-		}
-		return columns;
-	}
-
 	private Object[][] applyWhere(Object[][] cols, String query, Table table) { // without the bonus (later)
 		Object[][] filteredCols = new Object[cols.length][cols[0].length];
 		int colIndex = 0;
