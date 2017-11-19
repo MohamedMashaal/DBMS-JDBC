@@ -29,7 +29,7 @@ public class Column <T> {
         return records;
     }
 
-    public Object[] getData() {
+    public T[] getData() {
         ArrayList<Object> colData = new ArrayList<>();
         for(Record record : records){
             colData.add(record.getValue());
