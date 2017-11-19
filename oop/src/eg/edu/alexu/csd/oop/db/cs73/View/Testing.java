@@ -25,11 +25,17 @@ public class Testing {
         for(String v : z)
         	System.out.println(v);*/
 
-        String q = "SELECT col1,col2,col3 FROM table";
+        /*String q = "SELECT col1,col2,col3 FROM table";
         String[] qs = q.split(" ");
         for(String s : qs){
             System.out.println(s);
-        }
+        }*/
+
+        String s1 = "a", s2 = "b";
+
+        System.out.println(s1.compareTo(s2));
+        System.out.println(s2.compareTo(s1));
+        System.out.println(s1.compareTo(s1));
     }
 
 }

@@ -27,4 +27,12 @@ public class Column <T> {
     public ArrayList<Record<T>> getRecords() {
         return records;
     }
+
+    public Object[] getData() {
+        ArrayList<Object> colData = null;
+        for(Record record : records){
+            colData.add(record.getValue());
+        }
+        return colData.toArray();
+    }
 }
