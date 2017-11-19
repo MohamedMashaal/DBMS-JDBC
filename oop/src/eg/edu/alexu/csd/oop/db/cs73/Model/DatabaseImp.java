@@ -133,13 +133,13 @@ public class DatabaseImp implements Database{
 			Object[] fetchedData = queriedColumn.getData();
 
 			if(queriedColumn.getType().equals("int")){
-				Integer[] intColumn = (Integer[]) fetchedData;
-				Object[][] retData = new Object[][]{intColumn};
+				//Integer[] intColumn = (Integer[]) fetchedData;
+				Object[][] retData = new Object[][]{fetchedData};
 				return applyWhere(retData, query, currTable);
 			}
 			else if(queriedColumn.getType().equals("varchar")){
-				String[] varcharColumn = (String[]) fetchedData;
-				Object[][] retData = new Object[][]{varcharColumn};
+				//String[] varcharColumn = (String[]) fetchedData;
+				Object[][] retData = new Object[][]{fetchedData};
 				return applyWhere(retData, query, currTable);
 			}
 		}
@@ -149,16 +149,17 @@ public class DatabaseImp implements Database{
 			int maxRecords = (int) 1e6, i = 0;
 			Object[][] fetchedData = new Object[currTable.getColumns().size()][maxRecords];
 			for(Column column : columns){
-				String[] columnData = column.getData();
+				Object[] columnData = column.getData();
 
-				if(column.getType().equals("int")){
+				/*if(column.getType().equals("int")){
 					Integer[] intColumn = (Integer[]) columnData;
 					fetchedData[i++] = intColumn;
 				}
 				else if(column.getType().equals("varchar")){
 					String[] varcharColumn = (String[]) columnData;
 					fetchedData[i++] = varcharColumn;
-				}
+				}*/
+				fetchedData[i++] = columnData;
 			}
 			return applyWhere(fetchedData, query, currTable);
 		}

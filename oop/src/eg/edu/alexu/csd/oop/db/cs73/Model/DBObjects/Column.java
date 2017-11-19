@@ -29,11 +29,14 @@ public class Column <T> {
         return records;
     }
 
-    public T[] getData() {
-        ArrayList<T> colData = new ArrayList<>();
-        for(Record<T> record : records){
+
+    public Object [] getData() {
+        ArrayList<Object> colData = new ArrayList<>();
+        for(Record record : records){
             colData.add(record.getValue());
         }
-        return (T[]) colData.toArray();
+        return colData.toArray();
     }
+
+
 }
