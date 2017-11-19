@@ -33,6 +33,10 @@ public class Table {
 		return name;
 	}
 
+	public ArrayList<Column> getColumns() {
+		return columns;
+	}
+
 	public void insert(List<String> columns, List<String> values) {
 		for(Column column : this.columns) {
 			int index = getIndex(columns , column.getName());

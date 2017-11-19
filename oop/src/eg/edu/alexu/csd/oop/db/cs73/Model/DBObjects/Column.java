@@ -18,4 +18,8 @@ public class Column <T> {
     public void addRecord(Record<T> record) {
     	records.add(record);
     }
+
+    public ArrayList<Record<T>> getRecords() {
+        return records;
+    }
 }
