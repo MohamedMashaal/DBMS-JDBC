@@ -236,18 +236,20 @@ public class DatabaseImp implements Database{
 				for(Object[] column : cols){
 					ArrayList<Object> filteredRecords = new ArrayList<>();
 					for(Object record : column){
+						Record  recordToCompare = comparedColumn.getRecord(i);
+						Integer recordValue = (Integer) (recordToCompare.getValue());
 						if(operator.equals("=")) {
-							if((Integer)(comparedColumn.getRecords().get(i)) == intValue) {
+							if(recordValue.intValue() == intValue) {
 								filteredRecords.add(record);
 							}
 						}
 						if(operator.equals(">")){
-							if((Integer)(comparedColumn.getRecords().get(i)) > intValue){
+							if(recordValue.intValue() > intValue){
 								filteredRecords.add(record);
 							}
 						}
 						if(operator.equals("<")){
-							if((Integer)(comparedColumn.getRecords().get(i)) < intValue){
+							if(recordValue.intValue() < intValue){
 								filteredRecords.add(record);
 							}
 						}
