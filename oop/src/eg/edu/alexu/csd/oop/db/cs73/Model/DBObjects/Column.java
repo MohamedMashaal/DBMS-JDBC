@@ -34,6 +34,6 @@ public class Column <T> {
         for(Record record : records){
             colData.add(record.getValue());
         }
-        return colData.toArray();
+        return (T[]) colData.toArray();
     }
 }
