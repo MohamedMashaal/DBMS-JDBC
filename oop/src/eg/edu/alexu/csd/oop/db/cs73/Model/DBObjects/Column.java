@@ -9,4 +9,8 @@ public class Column {
     public Column(){
         this.records = new ArrayList<>();
     }
+
+    public ArrayList<Table> getRecords() {
+        return records;
+    }
 }

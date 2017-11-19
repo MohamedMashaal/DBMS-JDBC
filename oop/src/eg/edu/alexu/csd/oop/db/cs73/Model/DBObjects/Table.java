@@ -9,4 +9,8 @@ public class Table {
     public Table(){
         this.columns = new ArrayList<>();
     }
+
+    public ArrayList<Table> getColumns() {
+        return columns;
+    }
 }
