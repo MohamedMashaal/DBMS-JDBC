@@ -40,7 +40,6 @@ public class InternalParser {
 	}
 	
 	public ArrayList<ArrayList<String>> getUpdatedColumnsValues(String[] splittedQuery){
-    	try {
 			ArrayList<ArrayList<String>> columnsValues = new ArrayList<ArrayList<String>>();
 			columnsValues.add(new ArrayList<String>());
 			columnsValues.add(new ArrayList<String>());
@@ -50,12 +49,6 @@ public class InternalParser {
 				columnsValues.get(1).add(splittedQuery[i+1]);
 			}
 			return columnsValues;
-		} catch (Exception e) {
-			StringBuilder st = new StringBuilder();
-			for(String x : splittedQuery)
-				st.append(x+" ");
-			throw new RuntimeException(st.toString());
-		}
     }
 	
 	private int getWhereIndex(String [] splittedQuery) {

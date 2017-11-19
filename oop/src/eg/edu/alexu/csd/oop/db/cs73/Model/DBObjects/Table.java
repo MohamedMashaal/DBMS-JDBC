@@ -89,7 +89,7 @@ public class Table {
 				size = records.size();
 				for(int j = 0 ; j < records.size() ; j++) {
 					if(type.equalsIgnoreCase("int")) {
-						records.get(j).setValue(Integer.parseInt((values.get(i))));
+						records.get(j).setValue(new Integer(Integer.parseInt((values.get(i)))));
 					}
 					else if (type.equalsIgnoreCase("varchar")) {
 						records.get(j).setValue(values.get(i));
