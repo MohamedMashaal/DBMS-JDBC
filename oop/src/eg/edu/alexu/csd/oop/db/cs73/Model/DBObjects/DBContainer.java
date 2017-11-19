@@ -33,15 +33,7 @@ public class DBContainer {
 	public void add(Table table) {
 		tables.add(table);
 	}
-
-	public boolean tableExists(String tableName) {
-		for(Table table : tables) {
-			if(table.getName().equalsIgnoreCase(tableName))
-				return true ;
-		}
-		return false;
-	}
-
+	
 	public int getTableIndex(String tableName){
     	int i=0;
 		for(Table table : tables) {
@@ -55,6 +47,14 @@ public class DBContainer {
 	public ArrayList<Table> getTables() {
 		return tables;
 	}
+	
+	public boolean tableExists(String tableName) {
+		for(Table table : tables) {
+			if(table.getName().equalsIgnoreCase(tableName))
+				return true ;
+		}
+		return false;
+	}
 
 	public int insert(String string, List<String> columns , List<String> values) {
 		for(Table table : tables) {
@@ -66,11 +66,14 @@ public class DBContainer {
 		return columns.size();
 	}
 
-	public int update(String string, ArrayList<String> columns, ArrayList<String> values) {
+	public int update(String string, ArrayList<String> columns, ArrayList<String> values, ArrayList<String> toUpdate) {
 		int size = 0;
 		for(Table table : tables) {
 			if(table.getName().equalsIgnoreCase(string)) {
-				size = table.update(columns,values);
+				if(toUpdate.isEmpty())
+					size = table.update(columns,values);
+				else
+					size = table.update(columns, values , toUpdate);
 				break ;
 			}
 		}

@@ -36,7 +36,7 @@ public class Table {
 	public ArrayList<Column> getColumns() {
 		return columns;
 	}
-
+	
 	public boolean columnExists(String name){
     	for(Column column : columns){
     		if(column.getName().equals(name))
@@ -54,7 +54,7 @@ public class Table {
 		}
 		return -1;
 	}
-
+	
 	public void insert(List<String> columns, List<String> values) {
 		for(Column column : this.columns) {
 			int index = getIndex(columns , column.getName());
@@ -112,5 +112,17 @@ public class Table {
 	
 	public void setColumns(List<Column> columns) {
 		this.columns = (ArrayList<Column>) columns;
+	}
+
+	public int update(ArrayList<String> columns, ArrayList<String> values, ArrayList<String> toUpdate) {
+		if(toUpdate.size() == 2) {
+			String whereColumn = toUpdate.get(0);
+			String whereValue = toUpdate.get(1);
+			int index = getIndex(whereColumn);
+			if(index != -1) {
+				//for(Record record : columns.get(index).get)
+			}
+		}
+		return 0;
 	}
 }
