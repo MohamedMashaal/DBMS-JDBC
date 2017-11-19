@@ -1,6 +1,7 @@
 package eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DBContainer {
     String name;
@@ -11,11 +12,41 @@ public class DBContainer {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
+	
+	public void remove(String tableName) {
+		int i = 0;
+		for(Table table :tables) {
+			if(table.getName().equalsIgnoreCase(tableName)) {
+				break ;
+			}
+			i ++ ;
+		}
+		tables.remove(i);
+	}
+	
+	public void add(Table table) {
+		tables.add(table);
+	}
 
-    public ArrayList<Table> getTables() {
-        return tables;
-    }
+	public boolean tableExists(String tableName) {
+		for(Table table : tables) {
+			if(table.getName().equalsIgnoreCase(tableName))
+				return true ;
+		}
+		return false;
+	}
+
+	public int insert(String string, List<String> columns , List<String> values) {
+		for(Table table : tables) {
+			if(table.getName().equalsIgnoreCase(string)) {
+				table.insert(columns,values);
+				break ;
+			}
+		}
+		return columns.size();
+	}
+	
 }

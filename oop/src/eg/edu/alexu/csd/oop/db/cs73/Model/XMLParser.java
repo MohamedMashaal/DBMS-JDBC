@@ -1,6 +1,8 @@
 package eg.edu.alexu.csd.oop.db.cs73.Model;
 
+import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Column;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.DBContainer;
+import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Record;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Table;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -24,9 +26,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class XMLParser {
-    public void saveToXML(Table databaseTable) throws FileNotFoundException {
+    public void saveToXML(String path, Table databaseTable) throws FileNotFoundException {
         Document dom;
-        Element shape = null, property = null;
+        Element col = null, rec;
 
         // instance of a DocumentBuilderFactory
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -42,14 +44,20 @@ public class XMLParser {
 
             // create data elements and place them under root
 
-            for (Table table : d) {
-                shape = dom.createElement(map.get("id"));
-                for (Map.Entry<String, String> entry : map.entrySet()) {
-                    property = dom.createElement(entry.getKey().toString());
-                    property.appendChild(dom.createTextNode(entry.getValue().toString()));
-                    shape.appendChild(property);
+            for (Column column : databaseTable.getColumns()) {
+                col = dom.createElement("column");
+                col.setAttribute("name", column.getName());
+                for (Object object : column.getRecords()) {
+                    Record record = (Record) object;
+                    /*if(record.getValue().getClass().getSimpleName().equalsIgnoreCase("string")){
+
+                    }*/
+                    rec = dom.createElement("record");
+                    rec.setAttribute("value", record.getValue().toString());
+                    //rec.appendChild(dom.createTextNode(record.getValue().toString()));
+                    col.appendChild(rec);
                 }
-                rootEle.appendChild(shape);
+                rootEle.appendChild(col);
             }
             dom.appendChild(rootEle);
 
@@ -75,9 +83,8 @@ public class XMLParser {
         }
     }
 
-    public ArrayList<Map<String, String>> readXML(File xml) {
+    public Table readXML(File xml) {
 
-        ArrayList<Map<String, String>> shapesMaps = new ArrayList<>();
         Document dom;
         InputStream inputStream;
         Reader reader = null;
@@ -101,6 +108,7 @@ public class XMLParser {
             dom = db.parse(is);
             Element doc = dom.getDocumentElement();
             NodeList rootNode = doc.getChildNodes();
+            Table loadedTable = new Table(doc.getAttribute("name"));
 
             for (int i = 0; i < rootNode.getLength(); i++) {
                 Map<String, String> shapeMap = new HashMap<>();
