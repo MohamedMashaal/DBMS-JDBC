@@ -147,7 +147,7 @@ public class DatabaseImp implements Database{
 		else{
 			ArrayList<Column> columns = currTable.getColumns();
 			int maxRecords = (int) 1e6, i = 0;
-			Object[][] fetchedData = new Object[currTable.getColumns().size()][maxRecords];
+			Object[][] fetchedData = new Object[currTable.getColumns().size()][];
 			for(Column column : columns){
 				Object[] columnData = column.getData();
 
