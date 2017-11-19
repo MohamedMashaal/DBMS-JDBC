@@ -165,7 +165,7 @@ public class DatabaseImp implements Database{
 		}
 
 //		throw new RuntimeException(query);
-    	return new Object[0][];
+    	return new Object[1][];
     }
 
     @Override
