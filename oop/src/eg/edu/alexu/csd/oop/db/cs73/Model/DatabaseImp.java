@@ -104,7 +104,7 @@ public class DatabaseImp implements Database{
     @Override
     public int executeUpdateQuery(String query) throws SQLException {
     	String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").split("\\s+|\\,\\s*|\\(|\\)");
-    	int updated = 0 ;
+    	int updated = 2 ;
     	if(splittedQuery[0].equalsIgnoreCase("insert")) {
     		String [][] cloumnsValues = getColumnsValues(splittedQuery);
     		updated = data.get(data.size()-1).insert(splittedQuery[2] , Arrays.asList(cloumnsValues[0]) , Arrays.asList(cloumnsValues[1]));
@@ -150,7 +150,7 @@ public class DatabaseImp implements Database{
 	
 	private String[] getColumns(String[] splittedQuery) {
 		String [] columns = new String [splittedQuery.length-3];
-		for(int i = 2 , j = 0 ; i < splittedQuery.length && j < columns.length ; i++,j++ ) {
+		for(int i = 3 , j = 0 ; i < splittedQuery.length && j < columns.length ; i++,j++ ) {
 			columns[j] = splittedQuery[i];
 		}
 		return columns;
