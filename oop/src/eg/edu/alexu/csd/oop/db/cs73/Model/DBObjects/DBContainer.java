@@ -84,5 +84,10 @@ public class DBContainer {
 		}
 		return size;
 	}
+
+	public int delete(String string, ArrayList<String> toUpdate) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }

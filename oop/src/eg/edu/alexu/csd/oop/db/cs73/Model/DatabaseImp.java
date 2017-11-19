@@ -190,7 +190,12 @@ public class DatabaseImp implements Database{
     		}
     	}
     	else if (splittedQuery[0].equalsIgnoreCase("delete")) {
-    		throw new RuntimeException(query);
+    		ArrayList<String> toUpdate = inParser.getdeleteWhere(splittedQuery);
+    		if(data.get(data.size()-1).tableExists(splittedQuery[2]))
+    			updated = data.get(data.size()-1).delete(splittedQuery[2] , toUpdate);
+    		else {
+    			throw new SQLException();
+    		}
     	}
     	return updated;
     }
