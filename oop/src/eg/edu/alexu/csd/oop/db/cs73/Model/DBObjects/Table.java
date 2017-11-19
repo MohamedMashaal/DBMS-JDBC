@@ -120,8 +120,9 @@ public class Table {
 			String whereColumn = toUpdate.get(0);
 			String whereValue = toUpdate.get(1);
 			int index = getIndex(whereColumn);
-			String type = this.columns.get(index).getType();
+			String type ;
 			if(index != -1) {
+				type = this.columns.get(index).getType();
 				ArrayList<Record> records = this.columns.get(index).getRecords();
 				for(int i = 0 ; i < records.size() ; i++) {
 					if(type.equalsIgnoreCase("int")) {
@@ -170,5 +171,45 @@ public class Table {
 			else if(columns.get(i).getType().equalsIgnoreCase("varchar")) 
 				columns.get(i).addRecord(new Record<>(values.get(i)));
 		}
+	}
+
+	public int delete() {
+		int size = this.columns.get(0) != null ? this.columns.get(0).getRecords().size() : 0 ;
+			for(Column cl : this.columns) {
+				cl.empty();
+			}
+		return size;
+	}
+
+	public int delete(ArrayList<String> toUpdate) {
+		int size = 0;
+		String whereColumn = toUpdate.get(0);
+		String whereValue = toUpdate.get(1);
+		String type ;
+		int index = getIndex(whereColumn);
+		if(index != -1) {
+			type = this.columns.get(index).getType();
+			ArrayList<Record> records = this.columns.get(index).getRecords();
+			ArrayList<Integer> toDelete = new ArrayList<>();
+			for(int i = 0 ; i < records.size() ; i++) {
+				if(type.equalsIgnoreCase("int")) {
+					Integer value = (Integer)records.get(i).getValue(); 
+					if(value.intValue() == Integer.parseInt(whereValue))
+						toDelete.add(i);
+				}
+				else if (type.equalsIgnoreCase("varchar")) {
+					String value = (String)records.get(i).getValue(); 
+					if(value.equalsIgnoreCase(whereValue))
+						toDelete.add(i);
+				}
+			}
+			for(int i = toDelete.size()-1 ; i >= 0 ; i --) {
+				for(Column cl : columns) {
+					cl.remove(toDelete.get(i));
+				}
+			}
+			size = toDelete.size();
+		}
+		return size;
 	}
 }

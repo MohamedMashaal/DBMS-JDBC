@@ -86,8 +86,17 @@ public class DBContainer {
 	}
 
 	public int delete(String string, ArrayList<String> toUpdate) {
-		// TODO Auto-generated method stub
-		return 0;
+		int size = 0;
+		for(Table table : tables) {
+			if(table.getName().equalsIgnoreCase(string)) {
+				if(toUpdate.isEmpty())
+					size = table.delete();
+				else
+					size = table.delete(toUpdate);
+				break ;
+			}
+		}
+		return size;
 	}
 	
 }
