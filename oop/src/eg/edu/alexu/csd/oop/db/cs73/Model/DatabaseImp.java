@@ -95,7 +95,7 @@ public class DatabaseImp implements Database{
     			dirHandler.deleteTable(tableName , data.get(data.size()-1).getName());
     		}
     	}
-        return true;
+        return true;	
     }
 
 	@Override
@@ -157,14 +157,14 @@ public class DatabaseImp implements Database{
 		for(int i = 3 , j = 0 ; i < splittedQuery.length && j < columns.length ; i++,j++ ) {
 			columns[j] = splittedQuery[i];
 		}
-		for(int i = 0 ; i< splittedQuery.length ; i+=2) {
-			if(!x.containsKey(splittedQuery[i])) {
-				x.put(splittedQuery[i], 1);
+		for(int i = 0 ; i< columns.length ; i+=2) {
+			if(!x.containsKey(columns[i])) {
+				x.put(columns[i], 1);
 			}
 			else {
 				throw new SQLException("!!!!");
 			}
-			if(splittedQuery[i+1].equalsIgnoreCase("int") || splittedQuery[i+1].equalsIgnoreCase("varchar")) {
+			if(columns[i+1].equalsIgnoreCase("int") || columns[i+1].equalsIgnoreCase("varchar")) {
 				continue ;
 			}
 			else {
