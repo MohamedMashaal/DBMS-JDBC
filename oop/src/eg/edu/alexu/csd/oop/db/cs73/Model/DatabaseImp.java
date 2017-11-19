@@ -2,7 +2,9 @@ package eg.edu.alexu.csd.oop.db.cs73.Model;
 
 import eg.edu.alexu.csd.oop.db.Database;
 import eg.edu.alexu.csd.oop.db.cs73.Controller.QueriesParser;
+import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Column;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.DBContainer;
+import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Record;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Table;
 import sun.net.www.content.text.plain;
 
@@ -103,8 +105,66 @@ public class DatabaseImp implements Database{
     public Object[][] executeQuery(String query) throws SQLException {
     	//throw new RuntimeException(query);
 		String [] splittedQuery = query.split(" ");
-		throw new RuntimeException(query);
-//    	return new Object[0][];
+		String colName = splittedQuery[1];
+		String tableName = splittedQuery[3];
+
+		DBContainer currDB = data.get(data.size()-1);
+
+		// check if table  exists
+		if(! currDB.tableExists(tableName)){
+			throw new RuntimeException("Table" + tableName +
+					                   "is not exists in " + currDB.getName());
+		}
+
+		Table currTable = currDB.getTables().get(currDB.getTableIndex(tableName));
+
+		// check if column exists in table
+		int columnIndex = currTable.columnIndex(colName);
+		if(columnIndex == -1 && !colName.equals("*")){
+			throw  new RuntimeException("Column" + tableName +
+					"is not exists in " + currTable.getName());
+		}
+
+		// fetching data part (with out applying "where" conditions)
+
+		// one column
+		if(!colName.equals("*")){
+			Column queriedColumn = currTable.getColumns().get(columnIndex);
+			Object[] fetchedData = queriedColumn.getData();
+
+			if(queriedColumn.getType().equals("int")){
+				Integer[] intColumn = (Integer[]) fetchedData;
+				Object[][] retData = new Object[][]{intColumn};
+				return applyWhere(retData, query, currTable);
+			}
+			else if(queriedColumn.getType().equals("varchar")){
+				String[] varcharColumn = (String[]) fetchedData;
+				Object[][] retData = new Object[][]{varcharColumn};
+				return applyWhere(retData, query, currTable);
+			}
+		}
+		// all columns
+		else{
+			ArrayList<Column> columns = currTable.getColumns();
+			int maxRecords = (int) 1e6, i = 0;
+			Object[][] fetchedData = new Object[currTable.getColumns().size()][maxRecords];
+			for(Column column : columns){
+				Object[] columnData = column.getData();
+
+				if(column.getType().equals("int")){
+					Integer[] intColumn = (Integer[]) columnData;
+					fetchedData[i++] = intColumn;
+				}
+				else if(column.getType().equals("varchar")){
+					String[] varcharColumn = (String[]) columnData;
+					fetchedData[i++] = varcharColumn;
+				}
+			}
+			return applyWhere(fetchedData, query, currTable);
+		}
+
+//		throw new RuntimeException(query);
+    	return new Object[0][];
     }
 
     @Override
@@ -149,5 +209,96 @@ public class DatabaseImp implements Database{
 			}
 		}
 		return false;
+	}
+
+	private String[] getColumns(String[] splittedQuery) throws SQLException {
+		String [] columns = new String [splittedQuery.length-3];
+		if(splittedQuery.length-3 == 0 && !splittedQuery[0].equalsIgnoreCase("drop")) {
+			throw new SQLException("Wrong Create Query");
+		}
+		for(int i = 3 , j = 0 ; i < splittedQuery.length && j < columns.length ; i++,j++ ) {
+			columns[j] = splittedQuery[i];
+		}
+		return columns;
+	}
+
+	private Object[][] applyWhere(Object[][] cols, String query, Table table) { // without the bonus (later)
+		Object[][] filteredCols = new Object[cols.length][cols[0].length];
+		int colIndex = 0;
+		String[] splittedQuery = query.split(" ");
+		if(splittedQuery.length == 4) // there is no where condition
+			return cols;
+
+		String columnName = splittedQuery[5];
+		String operator = splittedQuery[6];
+		String comparedValue = splittedQuery[7];
+
+		if(!table.columnExists(columnName)){
+			throw new RuntimeException("Error in where clause; there is no such column: " + columnName);
+		}
+
+		Column comparedColumn = table.getColumns().get(table.columnIndex(columnName));
+
+		if(comparedColumn.getType().equals("int")){
+			try{
+				int intValue = Integer.parseInt(comparedValue), i = 0;
+				for(Object[] column : cols){
+					ArrayList<Object> filteredRecords = new ArrayList<>();
+					for(Object record : column){
+						if(operator.equals("=")) {
+							if((Integer)(comparedColumn.getRecords().get(i)) == intValue) {
+								filteredRecords.add(record);
+							}
+						}
+						if(operator.equals(">")){
+							if((Integer)(comparedColumn.getRecords().get(i)) > intValue){
+								filteredRecords.add(record);
+							}
+						}
+						if(operator.equals("<")){
+							if((Integer)(comparedColumn.getRecords().get(i)) < intValue){
+								filteredRecords.add(record);
+							}
+						}
+						i++;
+					}
+					filteredCols[colIndex++] = filteredRecords.toArray();
+				}
+			}
+			catch(Exception e){
+				throw new RuntimeException("Error! You are trying to compare non-integer with an integer.");
+			}
+		}
+
+		if(comparedColumn.getType().equals("varchar")){
+			int i = 0;
+			for(Object[] column : cols){
+				ArrayList<Object> filteredRecords = new ArrayList<>();
+				for(Object record : column){
+					Record<String> castedRecord = (Record<String>) comparedColumn.getRecords().get(i);
+					int comparingVal = castedRecord.getValue().compareTo(comparedValue);
+					if(operator.equals("=")) {
+						if(comparingVal == 0) {
+							filteredRecords.add(record);
+						}
+					}
+					if(operator.equals(">")){
+						if(comparingVal == 1){
+							filteredRecords.add(record);
+						}
+					}
+					if(operator.equals("<")){
+						if(comparingVal == -1){
+							filteredRecords.add(record);
+						}
+					}
+					i++;
+				}
+				filteredCols[colIndex++] = filteredRecords.toArray();
+			}
+
+		}
+
+		return filteredCols;
 	}
 }

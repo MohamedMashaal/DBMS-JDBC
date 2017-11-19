@@ -37,6 +37,24 @@ public class Table {
 		return columns;
 	}
 
+	public boolean columnExists(String name){
+    	for(Column column : columns){
+    		if(column.getName().equals(name))
+    			return true;
+		}
+		return false;
+	}
+
+	public int columnIndex(String name){
+		int i = 0;
+		for(Column column : columns){
+			if(column.getName().equals(name))
+				return i;
+			i++;
+		}
+		return -1;
+	}
+
 	public void insert(List<String> columns, List<String> values) {
 		for(Column column : this.columns) {
 			int index = getIndex(columns , column.getName());

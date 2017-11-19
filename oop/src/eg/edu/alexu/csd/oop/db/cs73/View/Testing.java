@@ -26,6 +26,7 @@ public class Testing {
         String [] z = x.split("\\s+|\\,\\s*|\\(|\\)|\\=");
         for(String v : z)
         	System.out.println(v);*/
+
     	DatabaseImp db = new DatabaseImp();
     	db.createDatabase("7amada", true);
     	try {

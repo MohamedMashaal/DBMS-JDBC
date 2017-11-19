@@ -42,6 +42,20 @@ public class DBContainer {
 		return false;
 	}
 
+	public int getTableIndex(String tableName){
+    	int i=0;
+		for(Table table : tables) {
+			if(table.getName().equalsIgnoreCase(tableName))
+				return i ;
+			i++;
+		}
+		return -1;
+	}
+
+	public ArrayList<Table> getTables() {
+		return tables;
+	}
+
 	public int insert(String string, List<String> columns , List<String> values) {
 		for(Table table : tables) {
 			if(table.getName().equalsIgnoreCase(string)) {
