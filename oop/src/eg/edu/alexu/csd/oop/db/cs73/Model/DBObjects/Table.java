@@ -115,6 +115,7 @@ public class Table {
 	}
 
 	public int update(ArrayList<String> columns, ArrayList<String> values, ArrayList<String> toUpdate) {
+		int updated = 0;
 		if(toUpdate.size() == 2) {
 			String whereColumn = toUpdate.get(0);
 			String whereValue = toUpdate.get(1);
@@ -126,6 +127,7 @@ public class Table {
 					if(type.equalsIgnoreCase("int")) {
 						Integer recordValue = (Integer)(records.get(i).getValue());
 						if(recordValue.intValue() == Integer.parseInt(whereValue)) {
+							updated ++ ;
 							for(Column cl : this.columns) {
 								int indexCl = getIndex(columns, cl.getName());
 								if(indexCl != -1) {
@@ -141,6 +143,7 @@ public class Table {
 					else if(type.equalsIgnoreCase("varchar")) {
 						String recordValue = (String)(records.get(i).getValue());
 						if(recordValue.equalsIgnoreCase(whereValue)) {
+							updated ++ ;
 							for(Column cl : this.columns) {
 								int indexCl = getIndex(columns, cl.getName());
 								if(indexCl != -1) {
@@ -157,6 +160,6 @@ public class Table {
 				}
 			}
 		}
-		return 0;
+		return updated;
 	}
 }
