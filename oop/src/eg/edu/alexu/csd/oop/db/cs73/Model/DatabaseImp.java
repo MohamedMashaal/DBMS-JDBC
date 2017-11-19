@@ -121,7 +121,7 @@ public class DatabaseImp implements Database{
 			length++;
 		}
     	String [][] columnsValues = new String [2][length];
-    	for(int i = 3 , j = i + length+1 , k = 0 ;i < length && j < splittedQuery.length; j++, i++ , k++) {
+    	for(int i = 3 , j = i + length+1 , k = 0 ;j < splittedQuery.length; j++, i++ , k++) {
     		columnsValues[0][k] = splittedQuery[i];
     		columnsValues[1][k] = splittedQuery[j];
     	}
