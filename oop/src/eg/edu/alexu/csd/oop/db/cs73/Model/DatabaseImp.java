@@ -55,7 +55,7 @@ public class DatabaseImp implements Database{
 
     @Override
     public boolean executeStructureQuery(String query) throws SQLException {
-    	String[] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").split("\\s+|\\,\\s*|\\(|\\)|\\=");
+    	String[] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").replaceAll("\\s+\\,", ",").split("\\s+|\\,\\s*|\\(|\\)|\\=");
     	if(splittedQuery[1].equalsIgnoreCase("database")) {
     		String databaseName = splittedQuery[2];
     		DBContainer dbc = new DBContainer(splittedQuery[2]);
@@ -107,7 +107,7 @@ public class DatabaseImp implements Database{
 
     @Override
     public int executeUpdateQuery(String query) throws SQLException {
-    	String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").split("\\s+|\\,\\s*|\\(|\\)|\\=");
+    	String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").replaceAll("\\s+\\,", ",").split("\\s+|\\,\\s*|\\(|\\)|\\=");
     	int updated = 6 ;
     	if(splittedQuery[0].equalsIgnoreCase("insert")) {
     		String [][] cloumnsValues = getColumnsValues(splittedQuery);
