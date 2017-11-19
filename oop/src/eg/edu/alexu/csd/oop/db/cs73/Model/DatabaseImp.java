@@ -185,9 +185,6 @@ public class DatabaseImp implements Database{
     		ArrayList<String> toUpdate = inParser.getUpdateWhere(splittedQuery);
     		if(data.get(data.size()-1).tableExists(splittedQuery[1]))
     			updated = data.get(data.size()-1).update(splittedQuery[1] , columnsValues.get(0) , columnsValues.get(1),toUpdate);
-    			if(updated == 2) {
-    				throw new RuntimeException(query);
-    			}
     		else {
     			throw new SQLException();
     		}

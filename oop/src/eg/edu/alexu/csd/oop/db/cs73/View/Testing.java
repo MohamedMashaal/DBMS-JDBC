@@ -15,7 +15,8 @@ import eg.edu.alexu.csd.oop.db.cs73.Model.DatabaseImp;
 public class Testing {
 
     public static void main(String[] args){
-        //DELETE From table_name2
+        // UPDATE table_name8 SET column_name1='11111111', COLUMN_NAME2=22222222, column_name3='333333333' WHERE coLUmn_NAME3='VALUE3' UPDATE table_name8 SET column_name1='11111111', COLUMN_NAME2=22222222, column_name3='333333333' WHERE coLUmn_NAME3='VALUE3'
+    	//DELETE From table_name2
     	//DELETE From table_name2 WHERE coLUmn_NAME1='VAluE1'
     	//UPDATE table_namE1 SET column_name1 11111111 COLUMN_NAME2 22222222 column_name3 333333333 WHERE coLUmn_NAME3 VALUE3
     	String x = "UPDATE table_namE1 SET column_name1='11111111', COLUMN_NAME2=22222222, column_name3='333333333' WHERE coLUmn_NAME3='VALUE3'";
