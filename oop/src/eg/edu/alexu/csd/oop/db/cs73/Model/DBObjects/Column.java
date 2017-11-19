@@ -28,8 +28,7 @@ public class Column <T> {
     public ArrayList<Record<T>> getRecords() {
         return records;
     }
-
-
+    
     public Object [] getData() {
         ArrayList<Object> colData = new ArrayList<>();
         for(Record record : records){

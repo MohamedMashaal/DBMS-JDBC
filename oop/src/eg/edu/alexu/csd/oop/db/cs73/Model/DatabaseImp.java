@@ -184,7 +184,7 @@ public class DatabaseImp implements Database{
     		ArrayList<ArrayList<String>> columnsValues = inParser.getUpdatedColumnsValues(splittedQuery);
     		ArrayList<String> toUpdate = inParser.getUpdateWhere(splittedQuery);
     		if(data.get(data.size()-1).tableExists(splittedQuery[1]))
-    			updated = data.get(data.size()-1).update(splittedQuery[1] , columnsValues.get(0) , columnsValues.get(1));
+    			updated = data.get(data.size()-1).update(splittedQuery[1] , columnsValues.get(0) , columnsValues.get(1),toUpdate);
     		else {
     			throw new SQLException();
     		}
@@ -210,17 +210,6 @@ public class DatabaseImp implements Database{
 			}
 		}
 		return false;
-	}
-
-	private String[] getColumns(String[] splittedQuery) throws SQLException {
-		String [] columns = new String [splittedQuery.length-3];
-		if(splittedQuery.length-3 == 0 && !splittedQuery[0].equalsIgnoreCase("drop")) {
-			throw new SQLException("Wrong Create Query");
-		}
-		for(int i = 3 , j = 0 ; i < splittedQuery.length && j < columns.length ; i++,j++ ) {
-			columns[j] = splittedQuery[i];
-		}
-		return columns;
 	}
 
 	private Object[][] applyWhere(Object[][] cols, String query, Table table) { // without the bonus (later)
