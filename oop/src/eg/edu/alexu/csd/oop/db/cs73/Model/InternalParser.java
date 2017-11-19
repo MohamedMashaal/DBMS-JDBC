@@ -21,8 +21,8 @@ public class InternalParser {
     	}}
     	else {
     		columnsValues = new String [][] {new String [0] , new String[splittedQuery.length-4]};
-    		for(int i = 4 ; i < splittedQuery.length ; i++) {
-    			columnsValues[1][i] = splittedQuery[i];
+    		for(int i = 4 , j = 0 ; i < splittedQuery.length ;j++ , i++) {
+    			columnsValues[1][j] = splittedQuery[i];
     		}
     	}
 		return columnsValues;

@@ -59,7 +59,11 @@ public class DBContainer {
 	public int insert(String string, List<String> columns , List<String> values) {
 		for(Table table : tables) {
 			if(table.getName().equalsIgnoreCase(string)) {
+				if(columns.size() != 0)
 				table.insert(columns,values);
+				else {
+					table.insert(values);
+				}
 				break ;
 			}
 		}
