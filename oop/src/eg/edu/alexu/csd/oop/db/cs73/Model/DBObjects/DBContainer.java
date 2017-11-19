@@ -59,15 +59,16 @@ public class DBContainer {
 	public int insert(String string, List<String> columns , List<String> values) {
 		for(Table table : tables) {
 			if(table.getName().equalsIgnoreCase(string)) {
-				if(columns.size() != 0)
-				table.insert(columns,values);
+				if(columns.size() != 0) {
+					table.insert(columns,values);
+					return columns.size();}
 				else {
 					table.insert(values);
+					return values.size();
 				}
-				break ;
 			}
 		}
-		return columns.size();
+		return 0;
 	}
 
 	public int update(String string, ArrayList<String> columns, ArrayList<String> values, ArrayList<String> toUpdate) {
