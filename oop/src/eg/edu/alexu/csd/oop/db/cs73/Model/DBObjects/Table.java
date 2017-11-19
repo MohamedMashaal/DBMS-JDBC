@@ -162,4 +162,13 @@ public class Table {
 		}
 		return updated;
 	}
+
+	public void insert(List<String> values) {
+		for(int i = 0 ; i < columns.size() ; i++) {
+			if(columns.get(i).getType().equalsIgnoreCase("int"))
+				columns.get(i).addRecord(new Record<>(new Integer(Integer.parseInt(values.get(i)))));
+			else if(columns.get(i).getType().equalsIgnoreCase("varchar")) 
+				columns.get(i).addRecord(new Record<>(values.get(i)));
+		}
+	}
 }

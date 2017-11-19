@@ -12,13 +12,18 @@ public class InternalParser {
 			}
 			length++;
 		}
-		if(length == 0) {
-			throw new SQLException();
-		}
-    	String [][] columnsValues = new String [2][length];
+		String [][] columnsValues= null;
+		if(length != 0) {
+			columnsValues = new String [2][length];
     	for(int i = 3 , j = i + length+1 , k = 0 ;i-3 < length &&j < splittedQuery.length; j++, i++ , k++) {
     		columnsValues[0][k] = splittedQuery[i];
     		columnsValues[1][k] = splittedQuery[j];
+    	}}
+    	else {
+    		columnsValues = new String [][] {new String [0] , new String[splittedQuery.length-4]};
+    		for(int i = 4 ; i < splittedQuery.length ; i++) {
+    			columnsValues[1][i] = splittedQuery[i];
+    		}
     	}
 		return columnsValues;
 	}
