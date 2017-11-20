@@ -277,7 +277,7 @@ public class DatabaseImp implements Database{
 				i = 0 ;
 				for(Object record : column){
 					Record<String> castedRecord = (Record<String>) comparedColumn.getRecords().get(i);
-					int comparingVal = castedRecord.getValue().compareToIgnoreCase(comparedValue);
+					int comparingVal = castedRecord.getValue().compareTo(comparedValue);
 					if(operator.equals("=")) {
 						if(comparingVal == 0) {
 							filteredRecords.add(record);
