@@ -3,7 +3,7 @@ package eg.edu.alexu.csd.oop.db.cs73.Model;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class InternalParser {
+public class ExtractingHandler {
 	public String[][] getColumnsValues(String[] splittedQuery) throws SQLException {
 		int length = 0;
 		for(int i = 3 ; i < splittedQuery.length ; i ++) {

@@ -18,7 +18,7 @@ public class DatabaseImp implements Database{
 	private QueriesParser queriesParser;
 	private ArrayList<DBContainer> data;
 	private DirectoryHandler dirHandler;
-	private InternalParser inParser;
+	private ExtractingHandler inParser;
    // boolean testing = false ;
     //public DatabaseImp() {}
     
@@ -26,7 +26,7 @@ public class DatabaseImp implements Database{
         this.queriesParser = new QueriesParser(this);
         this.data = new ArrayList<>();
         this.dirHandler = new DirectoryHandler();
-        this.inParser = new InternalParser();
+        this.inParser = new ExtractingHandler();
     }
 
     @Override
@@ -191,8 +191,9 @@ public class DatabaseImp implements Database{
     	}
     	else if (splittedQuery[0].equalsIgnoreCase("delete")) {
     		ArrayList<String> toUpdate = inParser.getdeleteWhere(splittedQuery);
-    		if(data.get(data.size()-1).tableExists(splittedQuery[2]))
-    			updated = data.get(data.size()-1).delete(splittedQuery[2] , toUpdate);
+    		String tableName = splittedQuery[1].equalsIgnoreCase("from") ? splittedQuery[2] : splittedQuery[3];
+    		if(data.get(data.size()-1).tableExists(tableName))
+    			updated = data.get(data.size()-1).delete(tableName , toUpdate);
     		else {
     			throw new SQLException();
     		}
