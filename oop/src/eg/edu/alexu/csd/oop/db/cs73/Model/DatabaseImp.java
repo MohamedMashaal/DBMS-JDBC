@@ -104,7 +104,7 @@ public class DatabaseImp implements Database{
 	@Override
     public Object[][] executeQuery(String query) throws SQLException {
     	//throw new RuntimeException(query);
-		String [] splittedQuery = query.split(" ");
+		String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").replaceAll("\\s+\\,", ",").split("\\s+|\\,\\s*|\\(|\\)");
 		String colName = splittedQuery[1];
 		String tableName = splittedQuery[3];
 
@@ -225,7 +225,7 @@ public class DatabaseImp implements Database{
 		int colIndex = 0;
 		String[] splittedQuery = query.split(" ");
 		if(splittedQuery.length == 4) // there is no where condition
-			return cols;
+			return inverse(cols);
 
 		String columnName = splittedQuery[5];
 		String operator = splittedQuery[6];
@@ -298,6 +298,16 @@ public class DatabaseImp implements Database{
 
 		}
 
-		return filteredCols;
+		return inverse(filteredCols);
+	}
+
+	private Object[][] inverse(Object[][] cols) {
+		Object[][] newArray = new Object[cols[0].length][cols.length] ;
+		for(int i = 0 ; i < cols.length ; i++) {
+			for(int j = 0 ; j< cols[0].length ; j++) {
+				newArray[j][i] = cols[i][j];
+			}
+		}
+		return newArray;
 	}
 }
