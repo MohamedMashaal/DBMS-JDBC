@@ -18,7 +18,7 @@ public class DatabaseImp implements Database{
 	private QueriesParser queriesParser;
 	private ArrayList<DBContainer> data;
 	private DirectoryHandler dirHandler;
-	private ExtractingHandler inParser;
+	private ExtractingHandler extractor;
    // boolean testing = false ;
     //public DatabaseImp() {}
     
@@ -26,7 +26,7 @@ public class DatabaseImp implements Database{
         this.queriesParser = new QueriesParser(this);
         this.data = new ArrayList<>();
         this.dirHandler = new DirectoryHandler();
-        this.inParser = new ExtractingHandler();
+        this.extractor = new ExtractingHandler();
     }
 
     @Override
@@ -80,15 +80,12 @@ public class DatabaseImp implements Database{
     	}
     	else if (splittedQuery[1].equalsIgnoreCase("table")) {
     		String tableName = splittedQuery[2];
-    		//String [] columns = getColumns(splittedQuery);
     		if(splittedQuery[0].equalsIgnoreCase("create")) {
-    			Table table = new Table(splittedQuery[2] ,inParser.getColumns(splittedQuery));
+    			Table table = new Table(splittedQuery[2] ,extractor.getColumnsTypes(splittedQuery));
     			if(data.get(data.size()-1).tableExists(tableName)) {
     				return false ;
-    				//data.get(data.size()-1).remove(tableName);
     			}
 				data.get(data.size()-1).add(table);
-				//dirHandler.deleteTable(tableName, data.get(data.size()-1).getName());
 				dirHandler.createTable(tableName , data.get(data.size()-1).getName());
     		}
     		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
@@ -170,10 +167,10 @@ public class DatabaseImp implements Database{
 
     @Override
     public int executeUpdateQuery(String query) throws SQLException {
-    	String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").replaceAll("\\s+\\,", ",").split("\\s+|\\,\\s*|\\(|\\)|\\=");
+    	String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").replaceAll("=", " = ").replaceAll("\\s+\\,", ",").split("\\s+|\\,\\s*|\\(|\\)");
     	int updated = 0 ;
     	if(splittedQuery[0].equalsIgnoreCase("insert")) {
-    		String [][] cloumnsValues = inParser.getColumnsValues(splittedQuery);
+    		String [][] cloumnsValues = extractor.getColumnsValues(splittedQuery);
     		if(data.get(data.size()-1).tableExists(splittedQuery[2]))
     			updated = data.get(data.size()-1).insert(splittedQuery[2] , Arrays.asList(cloumnsValues[0]) , Arrays.asList(cloumnsValues[1]));
     		else {
@@ -181,8 +178,8 @@ public class DatabaseImp implements Database{
     		}
     	}
     	else if (splittedQuery[0].equalsIgnoreCase("update")) {
-    		ArrayList<ArrayList<String>> columnsValues = inParser.getUpdatedColumnsValues(splittedQuery);
-    		ArrayList<String> toUpdate = inParser.getWhere(splittedQuery);
+    		ArrayList<ArrayList<String>> columnsValues = extractor.getUpdatedColumnsValues(splittedQuery);
+    		ArrayList<String> toUpdate = extractor.getWhere(splittedQuery);
     		if(data.get(data.size()-1).tableExists(splittedQuery[1]))
     			updated = data.get(data.size()-1).update(splittedQuery[1] , columnsValues.get(0) , columnsValues.get(1),toUpdate);
     		else {
@@ -190,7 +187,7 @@ public class DatabaseImp implements Database{
     		}
     	}
     	else if (splittedQuery[0].equalsIgnoreCase("delete")) {
-    		ArrayList<String> toUpdate = inParser.getWhere(splittedQuery);
+    		ArrayList<String> toUpdate = extractor.getWhere(splittedQuery);
     		String tableName = splittedQuery[1].equalsIgnoreCase("from") ? splittedQuery[2] : splittedQuery[3];
     		if(data.get(data.size()-1).tableExists(tableName))
     			updated = data.get(data.size()-1).delete(tableName , toUpdate);
