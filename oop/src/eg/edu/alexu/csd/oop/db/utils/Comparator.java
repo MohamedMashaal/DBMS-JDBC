@@ -19,13 +19,13 @@ public class Comparator<T> {
 			String element1 = (String)elem1;
 			String element2 = (String)elem2;
 			if(operator.equals("=")) {
-				return element1.compareTo(element2) == 0 ? true : false ;
+				return element1.compareToIgnoreCase(element2) == 0 ? true : false ;
 			}
 			else if(operator.equals(">")) {
-				return element1.compareTo(element2) > 0 ? true : false ;
+				return element1.compareToIgnoreCase(element2) > 0 ? true : false ;
 			}
 			else if(operator.equals("<")) {
-				return element1.compareTo(element2) < 0 ? true : false ;
+				return element1.compareToIgnoreCase(element2) < 0 ? true : false ;
 			}
 		}
 		return false ;
