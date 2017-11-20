@@ -125,9 +125,7 @@ public class Table {
 			int index = getIndex(whereColumn);
 			String type ;
 			if(index != -1) {
-				type = this.columns.get(index).getType();
-				ArrayList<Record> records = this.columns.get(index).getRecords();
-				/*ArrayList<Integer> indices = new ArrayList<>();
+				ArrayList<Integer> indices = new ArrayList<>();
 				type = this.columns.get(index).getType();
 				ArrayList<Record> records = this.columns.get(index).getRecords();
 				for(int i = 0 ; i < records.size() ; i++) {
@@ -158,8 +156,8 @@ public class Table {
 					}
 				}
 			}
-		}*/
-				for(int i = 0 ; i < records.size() ; i++) {
+		}
+				/*for(int i = 0 ; i < records.size() ; i++) {
 					if(type.equalsIgnoreCase("int")) {
 						if(records.get(i) != null) {
 							Integer recordValue = (Integer)(records.get(i).getValue());
@@ -198,7 +196,7 @@ public class Table {
 					}
 				}
 			}
-		}
+		}*/
 		return updated;
 	}
 

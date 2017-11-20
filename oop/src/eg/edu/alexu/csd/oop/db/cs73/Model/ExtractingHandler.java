@@ -46,8 +46,8 @@ public class ExtractingHandler {
 			String [] filteredSplittedQuery = filterQueyColVal(splittedQuery).toArray(new String [0]);
 			int length = getWhereIndex(filteredSplittedQuery) == -1 ? filteredSplittedQuery.length : getWhereIndex(filteredSplittedQuery) ;
 			for(int i = 3 ; i < length ; i+=2) {
-				columnsValues.get(0).add(splittedQuery[i]);
-				columnsValues.get(1).add(splittedQuery[i+1]);
+				columnsValues.get(0).add(filteredSplittedQuery[i]);
+				columnsValues.get(1).add(filteredSplittedQuery[i+1]);
 			}
 			return columnsValues;
     }
