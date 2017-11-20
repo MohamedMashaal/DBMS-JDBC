@@ -15,7 +15,7 @@ public class ExtractingHandler {
 		String [][] columnsValues= null;
 		if(length != 0) {
 			columnsValues = new String [2][length];
-    	for(int i = 3 , j = i + length+1 , k = 0 ;i-3 < length &&j < splittedQuery.length; j++, i++ , k++) {
+    	for(int k = 0 , i = 3 , j = i + length + 1; k < length; j++ , i++ , k++) {
     		columnsValues[0][k] = splittedQuery[i];
     		columnsValues[1][k] = splittedQuery[j];
     	}}
@@ -28,7 +28,7 @@ public class ExtractingHandler {
 		return columnsValues;
 	}
 	
-	public String[] getColumns(String[] splittedQuery) throws SQLException {
+	public String[] getColumnsTypes(String[] splittedQuery) throws SQLException {
 		String [] columns = new String [splittedQuery.length-3];
 		if(splittedQuery.length-3 == 0 && !splittedQuery[0].equalsIgnoreCase("drop")) {
 			throw new SQLException("Wrong Create Query");
@@ -43,14 +43,25 @@ public class ExtractingHandler {
 			ArrayList<ArrayList<String>> columnsValues = new ArrayList<ArrayList<String>>();
 			columnsValues.add(new ArrayList<String>());
 			columnsValues.add(new ArrayList<String>());
-			int length = getWhereIndex(splittedQuery) == -1 ? splittedQuery.length : getWhereIndex(splittedQuery) ;
+			String [] filteredSplittedQuery = filterQueyColVal(splittedQuery).toArray(new String [0]);
+			int length = getWhereIndex(filteredSplittedQuery) == -1 ? filteredSplittedQuery.length : getWhereIndex(filteredSplittedQuery) ;
 			for(int i = 3 ; i < length ; i+=2) {
-				columnsValues.get(0).add(splittedQuery[i]);
-				columnsValues.get(1).add(splittedQuery[i+1]);
+				columnsValues.get(0).add(filteredSplittedQuery[i]);
+				columnsValues.get(1).add(filteredSplittedQuery[i+1]);
 			}
 			return columnsValues;
     }
 	
+	private ArrayList<String> filterQueyColVal(String[] splittedQuery) {
+		ArrayList<String> filtered = new ArrayList<>();
+		for(String x : splittedQuery) {
+			if(!x.equalsIgnoreCase("=")) {
+				filtered.add(x);
+			}
+		}
+		return filtered;
+	}
+
 	private int getWhereIndex(String [] splittedQuery) {
 		int i = 0;
 		for(String x : splittedQuery) {
