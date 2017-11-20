@@ -15,7 +15,10 @@ import eg.edu.alexu.csd.oop.db.cs73.Model.DatabaseImp;
 public class Testing {
 
     public static void main(String[] args){
-       String x = "DELETE * FROM table_name" ;
+        String x = "DELETE * FROM table_name" ;
+        x = "SELECT * FROM Customers " +
+                "WHERE Country='Germany' " +
+                "AND City='Berlin'; ";
         x = x.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").replaceAll("\\s+\\,", ",");
         System.out.println(x);
         String [] z = x.split("\\s+|\\,\\s*|\\(|\\)|\\=");
