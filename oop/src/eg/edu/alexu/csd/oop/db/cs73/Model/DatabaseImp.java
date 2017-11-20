@@ -242,19 +242,22 @@ public class DatabaseImp implements Database{
 				int intValue = Integer.parseInt(comparedValue), i = 0;
 				for(Object[] column : cols){
 					ArrayList<Object> filteredRecords = new ArrayList<>();
+					i = 0 ;
 					for(Object record : column){
+						Record x = comparedColumn.getRecord(i);
+						Integer comparedColumnRecord = (Integer)x.getValue();
 						if(operator.equals("=")) {
-							if((Integer)(comparedColumn.getRecords().get(i)) == intValue) {
+							if(comparedColumnRecord.intValue() == intValue) {
 								filteredRecords.add(record);
 							}
 						}
-						if(operator.equals(">")){
-							if((Integer)(comparedColumn.getRecords().get(i)) > intValue){
+						else if(operator.equals(">")){
+							if(comparedColumnRecord.intValue() > intValue){
 								filteredRecords.add(record);
 							}
 						}
-						if(operator.equals("<")){
-							if((Integer)(comparedColumn.getRecords().get(i)) < intValue){
+						else if(operator.equals("<")){
+							if(comparedColumnRecord.intValue() < intValue){
 								filteredRecords.add(record);
 							}
 						}
@@ -264,7 +267,7 @@ public class DatabaseImp implements Database{
 				}
 			}
 			catch(Exception e){
-				throw new RuntimeException("Error! You are trying to compare non-integer with an integer.");
+				e.printStackTrace();
 			}
 		}
 
@@ -273,6 +276,7 @@ public class DatabaseImp implements Database{
 			colIndex = 0;
 			for(Object[] column : cols){
 				ArrayList<Object> filteredRecords = new ArrayList<>();
+				i = 0 ;
 				for(Object record : column){
 					Record<String> castedRecord = (Record<String>) comparedColumn.getRecords().get(i);
 					int comparingVal = castedRecord.getValue().compareTo(comparedValue);
@@ -281,12 +285,12 @@ public class DatabaseImp implements Database{
 							filteredRecords.add(record);
 						}
 					}
-					if(operator.equals(">")){
+					else if(operator.equals(">")){
 						if(comparingVal == 1){
 							filteredRecords.add(record);
 						}
 					}
-					if(operator.equals("<")){
+					else if(operator.equals("<")){
 						if(comparingVal == -1){
 							filteredRecords.add(record);
 						}
