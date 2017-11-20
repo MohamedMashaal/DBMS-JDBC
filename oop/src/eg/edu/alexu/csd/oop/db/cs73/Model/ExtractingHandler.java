@@ -61,18 +61,8 @@ public class ExtractingHandler {
 		}
 		return -1;
 	}
-
-	public ArrayList<String> getUpdateWhere(String[] splittedQuery) {
-		int whereIndex = getWhereIndex(splittedQuery);
-		ArrayList<String> whereValue = new ArrayList<>();
-		if(whereIndex != -1)
-		for(int i = whereIndex+1 ; i < splittedQuery.length ; i ++) {
-			whereValue.add(splittedQuery[i]);
-		}
-		return whereValue;
-	}
-
-	public ArrayList<String> getdeleteWhere(String[] splittedQuery) {
+	
+	public ArrayList<String> getWhere(String[] splittedQuery) {
 		int whereIndex = getWhereIndex(splittedQuery);
 		ArrayList<String> whereValue = new ArrayList<>();
 		if(whereIndex != -1)

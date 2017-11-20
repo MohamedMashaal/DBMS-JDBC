@@ -182,7 +182,7 @@ public class DatabaseImp implements Database{
     	}
     	else if (splittedQuery[0].equalsIgnoreCase("update")) {
     		ArrayList<ArrayList<String>> columnsValues = inParser.getUpdatedColumnsValues(splittedQuery);
-    		ArrayList<String> toUpdate = inParser.getUpdateWhere(splittedQuery);
+    		ArrayList<String> toUpdate = inParser.getWhere(splittedQuery);
     		if(data.get(data.size()-1).tableExists(splittedQuery[1]))
     			updated = data.get(data.size()-1).update(splittedQuery[1] , columnsValues.get(0) , columnsValues.get(1),toUpdate);
     		else {
@@ -190,7 +190,7 @@ public class DatabaseImp implements Database{
     		}
     	}
     	else if (splittedQuery[0].equalsIgnoreCase("delete")) {
-    		ArrayList<String> toUpdate = inParser.getdeleteWhere(splittedQuery);
+    		ArrayList<String> toUpdate = inParser.getWhere(splittedQuery);
     		String tableName = splittedQuery[1].equalsIgnoreCase("from") ? splittedQuery[2] : splittedQuery[3];
     		if(data.get(data.size()-1).tableExists(tableName))
     			updated = data.get(data.size()-1).delete(tableName , toUpdate);
