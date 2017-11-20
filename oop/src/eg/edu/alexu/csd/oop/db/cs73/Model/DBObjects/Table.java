@@ -48,7 +48,7 @@ public class Table {
 	public int columnIndex(String name){
 		int i = 0;
 		for(Column column : columns){
-			if(column.getName().equals(name))
+			if(column.getName().equalsIgnoreCase(name))
 				return i;
 			i++;
 		}
@@ -59,7 +59,7 @@ public class Table {
 		for(Column column : this.columns) {
 			int index = getIndex(columns , column.getName());
 			if(index == -1) {
-				column.addRecord(null);
+				column.addRecord(new Record<>("null"));
 			}
 			else {
 				if(column.getType().equalsIgnoreCase("int"))
@@ -89,7 +89,7 @@ public class Table {
 				size = records.size();
 				for(int j = 0 ; j < records.size() ; j++) {
 					if(type.equalsIgnoreCase("int")) {
-						records.get(j).setValue(Integer.parseInt((values.get(i))));
+						records.get(j).setValue(new Integer(Integer.parseInt((values.get(i)))));
 					}
 					else if (type.equalsIgnoreCase("varchar")) {
 						records.get(j).setValue(values.get(i));
@@ -120,43 +120,47 @@ public class Table {
 			String whereColumn = toUpdate.get(0);
 			String whereValue = toUpdate.get(1);
 			int index = getIndex(whereColumn);
-			String type = this.columns.get(index).getType();
+			String type ;
 			if(index != -1) {
+				type = this.columns.get(index).getType();
 				ArrayList<Record> records = this.columns.get(index).getRecords();
 				for(int i = 0 ; i < records.size() ; i++) {
 					if(type.equalsIgnoreCase("int")) {
-						Integer recordValue = (Integer)(records.get(i).getValue());
-						if(recordValue.intValue() == Integer.parseInt(whereValue)) {
-							updated ++ ;
-							for(Column cl : this.columns) {
-								int indexCl = getIndex(columns, cl.getName());
-								if(indexCl != -1) {
-									if(cl.getType().equalsIgnoreCase("int"))
-										cl.getRecord(i).setValue(new Integer(Integer.parseInt(values.get(indexCl))));
-									else if(cl.getType().equalsIgnoreCase("varchar")) {
-										cl.getRecord(i).setValue(values.get(indexCl));
+						if(records.get(i) != null) {
+							Integer recordValue = (Integer)(records.get(i).getValue());
+							if(recordValue.intValue() == Integer.parseInt(whereValue)) {
+								updated ++ ;
+								for(Column cl : this.columns) {
+									int indexCl = getIndex(columns, cl.getName());
+									if(indexCl != -1) {
+										if(cl.getType().equalsIgnoreCase("int"))
+											cl.getRecord(i).setValue(new Integer(Integer.parseInt(values.get(indexCl))));
+										else if(cl.getType().equalsIgnoreCase("varchar")) {
+											cl.getRecord(i).setValue(values.get(indexCl));
+										}
 									}
 								}
 							}
 						}
 					}
 					else if(type.equalsIgnoreCase("varchar")) {
-						String recordValue = (String)(records.get(i).getValue());
-						if(recordValue.equalsIgnoreCase(whereValue)) {
-							updated ++ ;
-							for(Column cl : this.columns) {
-								int indexCl = getIndex(columns, cl.getName());
-								if(indexCl != -1) {
-									if(cl.getType().equalsIgnoreCase("int"))
-										cl.getRecord(i).setValue(new Integer(Integer.parseInt(values.get(indexCl))));
-									else if(cl.getType().equalsIgnoreCase("varchar")) {
-										cl.getRecord(i).setValue(values.get(indexCl));
+						if(records.get(i) != null) {
+							String recordValue = (String)(records.get(i).getValue());
+							if(recordValue.equalsIgnoreCase(whereValue)) {
+								updated ++ ;
+								for(Column cl : this.columns) {
+									int indexCl = getIndex(columns, cl.getName());
+									if(indexCl != -1) {
+										if(cl.getType().equalsIgnoreCase("int"))
+											cl.getRecord(i).setValue(new Integer(Integer.parseInt(values.get(indexCl))));
+										else if(cl.getType().equalsIgnoreCase("varchar")) {
+											cl.getRecord(i).setValue(values.get(indexCl));
+										}
 									}
 								}
 							}
 						}
 					}
-					
 				}
 			}
 		}
@@ -170,5 +174,45 @@ public class Table {
 			else if(columns.get(i).getType().equalsIgnoreCase("varchar")) 
 				columns.get(i).addRecord(new Record<>(values.get(i)));
 		}
+	}
+
+	public int delete() {
+		int size = this.columns.get(0) != null ? this.columns.get(0).getRecords().size() : 0 ;
+			for(Column cl : this.columns) {
+				cl.empty();
+			}
+		return size;
+	}
+
+	public int delete(ArrayList<String> toUpdate) {
+		int size = 0;
+		String whereColumn = toUpdate.get(0);
+		String whereValue = toUpdate.get(1);
+		String type ;
+		int index = getIndex(whereColumn);
+		if(index != -1) {
+			type = this.columns.get(index).getType();
+			ArrayList<Record> records = this.columns.get(index).getRecords();
+			ArrayList<Integer> toDelete = new ArrayList<>();
+			for(int i = 0 ; i < records.size() ; i++) {
+				if(type.equalsIgnoreCase("int")) {
+					Integer value = (Integer)records.get(i).getValue(); 
+					if(value.intValue() == Integer.parseInt(whereValue))
+						toDelete.add(i);
+				}
+				else if (type.equalsIgnoreCase("varchar")) {
+					String value = (String)records.get(i).getValue(); 
+					if(value.equalsIgnoreCase(whereValue))
+						toDelete.add(i);
+				}
+			}
+			for(int i = toDelete.size()-1 ; i >= 0 ; i --) {
+				for(Column cl : columns) {
+					cl.remove(toDelete.get(i));
+				}
+			}
+			size = toDelete.size();
+		}
+		return size;
 	}
 }

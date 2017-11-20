@@ -18,7 +18,7 @@ public class DatabaseImp implements Database{
 	private QueriesParser queriesParser;
 	private ArrayList<DBContainer> data;
 	private DirectoryHandler dirHandler;
-	private InternalParser inParser;
+	private ExtractingHandler inParser;
    // boolean testing = false ;
     //public DatabaseImp() {}
     
@@ -26,7 +26,7 @@ public class DatabaseImp implements Database{
         this.queriesParser = new QueriesParser(this);
         this.data = new ArrayList<>();
         this.dirHandler = new DirectoryHandler();
-        this.inParser = new InternalParser();
+        this.inParser = new ExtractingHandler();
     }
 
     @Override
@@ -104,7 +104,7 @@ public class DatabaseImp implements Database{
 	@Override
     public Object[][] executeQuery(String query) throws SQLException {
     	//throw new RuntimeException(query);
-		String [] splittedQuery = query.split(" ");
+		String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").replaceAll("\\s+\\,", ",").split("\\s+|\\,\\s*|\\(|\\)");
 		String colName = splittedQuery[1];
 		String tableName = splittedQuery[3];
 
@@ -181,14 +181,22 @@ public class DatabaseImp implements Database{
     		}
     	}
     	else if (splittedQuery[0].equalsIgnoreCase("update")) {
-//    		ArrayList<ArrayList<String>> columnsValues = inParser.getUpdatedColumnsValues(splittedQuery);
-//    		ArrayList<String> toUpdate = inParser.getUpdateWhere(splittedQuery);
-//    		if(data.get(data.size()-1).tableExists(splittedQuery[1]))
-//    			updated = data.get(data.size()-1).update(splittedQuery[1] , columnsValues.get(0) , columnsValues.get(1),toUpdate);
-//    		else {
-//    			throw new SQLException();
-//    		}
-    		throw new RuntimeException(query);
+    		ArrayList<ArrayList<String>> columnsValues = inParser.getUpdatedColumnsValues(splittedQuery);
+    		ArrayList<String> toUpdate = inParser.getWhere(splittedQuery);
+    		if(data.get(data.size()-1).tableExists(splittedQuery[1]))
+    			updated = data.get(data.size()-1).update(splittedQuery[1] , columnsValues.get(0) , columnsValues.get(1),toUpdate);
+    		else {
+    			throw new SQLException();
+    		}
+    	}
+    	else if (splittedQuery[0].equalsIgnoreCase("delete")) {
+    		ArrayList<String> toUpdate = inParser.getWhere(splittedQuery);
+    		String tableName = splittedQuery[1].equalsIgnoreCase("from") ? splittedQuery[2] : splittedQuery[3];
+    		if(data.get(data.size()-1).tableExists(tableName))
+    			updated = data.get(data.size()-1).delete(tableName , toUpdate);
+    		else {
+    			throw new SQLException();
+    		}
     	}
     	return updated;
     }
@@ -218,7 +226,7 @@ public class DatabaseImp implements Database{
 		int colIndex = 0;
 		String[] splittedQuery = query.split(" ");
 		if(splittedQuery.length == 4) // there is no where condition
-			return cols;
+			return inverse(cols);
 
 		String columnName = splittedQuery[5];
 		String operator = splittedQuery[6];
@@ -235,21 +243,22 @@ public class DatabaseImp implements Database{
 				int intValue = Integer.parseInt(comparedValue), i = 0;
 				for(Object[] column : cols){
 					ArrayList<Object> filteredRecords = new ArrayList<>();
+					i = 0 ;
 					for(Object record : column){
-						Record  recordToCompare = comparedColumn.getRecord(i);
-						Integer recordValue = (Integer) (recordToCompare.getValue());
+						Record x = comparedColumn.getRecord(i);
+						Integer comparedColumnRecord = (Integer)x.getValue();
 						if(operator.equals("=")) {
-							if(recordValue.intValue() == intValue) {
+							if(comparedColumnRecord.intValue() == intValue) {
 								filteredRecords.add(record);
 							}
 						}
-						if(operator.equals(">")){
-							if(recordValue.intValue() > intValue){
+						else if(operator.equals(">")){
+							if(comparedColumnRecord.intValue() > intValue){
 								filteredRecords.add(record);
 							}
 						}
-						if(operator.equals("<")){
-							if(recordValue.intValue() < intValue){
+						else if(operator.equals("<")){
+							if(comparedColumnRecord.intValue() < intValue){
 								filteredRecords.add(record);
 							}
 						}
@@ -259,7 +268,7 @@ public class DatabaseImp implements Database{
 				}
 			}
 			catch(Exception e){
-				throw new RuntimeException("Error! You are trying to compare non-integer with an integer.");
+				e.printStackTrace();
 			}
 		}
 
@@ -268,6 +277,7 @@ public class DatabaseImp implements Database{
 			colIndex = 0;
 			for(Object[] column : cols){
 				ArrayList<Object> filteredRecords = new ArrayList<>();
+				i = 0 ;
 				for(Object record : column){
 					Record<String> castedRecord = (Record<String>) comparedColumn.getRecords().get(i);
 					int comparingVal = castedRecord.getValue().compareTo(comparedValue);
@@ -276,12 +286,12 @@ public class DatabaseImp implements Database{
 							filteredRecords.add(record);
 						}
 					}
-					if(operator.equals(">")){
+					else if(operator.equals(">")){
 						if(comparingVal == 1){
 							filteredRecords.add(record);
 						}
 					}
-					if(operator.equals("<")){
+					else if(operator.equals("<")){
 						if(comparingVal == -1){
 							filteredRecords.add(record);
 						}
@@ -293,6 +303,16 @@ public class DatabaseImp implements Database{
 
 		}
 
-		return filteredCols;
+		return inverse(filteredCols);
+	}
+
+	private Object[][] inverse(Object[][] cols) {
+		Object[][] newArray = new Object[cols[0].length][cols.length] ;
+		for(int i = 0 ; i < cols.length ; i++) {
+			for(int j = 0 ; j< cols[0].length ; j++) {
+				newArray[j][i] = cols[i][j];
+			}
+		}
+		return newArray;
 	}
 }

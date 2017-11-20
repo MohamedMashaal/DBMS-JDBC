@@ -41,5 +41,11 @@ public class Column <T> {
         return (T[]) colData.toArray();
     }
 
-
+    public void empty() {
+    	this.records = new ArrayList<>();
+    }
+    
+    public void remove(int index) {
+    	records.remove(index);
+    }
 }

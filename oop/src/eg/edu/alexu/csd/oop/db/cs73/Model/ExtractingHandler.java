@@ -3,7 +3,7 @@ package eg.edu.alexu.csd.oop.db.cs73.Model;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class InternalParser {
+public class ExtractingHandler {
 	public String[][] getColumnsValues(String[] splittedQuery) throws SQLException {
 		int length = 0;
 		for(int i = 3 ; i < splittedQuery.length ; i ++) {
@@ -40,7 +40,6 @@ public class InternalParser {
 	}
 	
 	public ArrayList<ArrayList<String>> getUpdatedColumnsValues(String[] splittedQuery){
-    	try {
 			ArrayList<ArrayList<String>> columnsValues = new ArrayList<ArrayList<String>>();
 			columnsValues.add(new ArrayList<String>());
 			columnsValues.add(new ArrayList<String>());
@@ -50,12 +49,6 @@ public class InternalParser {
 				columnsValues.get(1).add(splittedQuery[i+1]);
 			}
 			return columnsValues;
-		} catch (Exception e) {
-			StringBuilder st = new StringBuilder();
-			for(String x : splittedQuery)
-				st.append(x+" ");
-			throw new RuntimeException(st.toString());
-		}
     }
 	
 	private int getWhereIndex(String [] splittedQuery) {
@@ -68,10 +61,11 @@ public class InternalParser {
 		}
 		return -1;
 	}
-
-	public ArrayList<String> getUpdateWhere(String[] splittedQuery) {
+	
+	public ArrayList<String> getWhere(String[] splittedQuery) {
 		int whereIndex = getWhereIndex(splittedQuery);
 		ArrayList<String> whereValue = new ArrayList<>();
+		if(whereIndex != -1)
 		for(int i = whereIndex+1 ; i < splittedQuery.length ; i ++) {
 			whereValue.add(splittedQuery[i]);
 		}

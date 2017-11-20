@@ -61,10 +61,10 @@ public class DBContainer {
 			if(table.getName().equalsIgnoreCase(string)) {
 				if(columns.size() != 0) {
 					table.insert(columns,values);
-					return columns.size();}
+					return 1;}
 				else {
 					table.insert(values);
-					return values.size();
+					return 1;
 				}
 			}
 		}
@@ -79,6 +79,20 @@ public class DBContainer {
 					size = table.update(columns,values);
 				else
 					size = table.update(columns, values , toUpdate);
+				break ;
+			}
+		}
+		return size;
+	}
+
+	public int delete(String string, ArrayList<String> toUpdate) {
+		int size = 0;
+		for(Table table : tables) {
+			if(table.getName().equalsIgnoreCase(string)) {
+				if(toUpdate.isEmpty())
+					size = table.delete();
+				else
+					size = table.delete(toUpdate);
 				break ;
 			}
 		}
