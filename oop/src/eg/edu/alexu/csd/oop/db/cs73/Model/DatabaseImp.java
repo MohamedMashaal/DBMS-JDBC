@@ -101,7 +101,11 @@ public class DatabaseImp implements Database{
 	@Override
     public Object[][] executeQuery(String query) throws SQLException {
     	//throw new RuntimeException(query);
-		String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").replaceAll("\\s+\\,", ",").split("\\s+|\\,\\s*|\\(|\\)");
+		String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ")
+				  						.replaceAll("'", "").replaceAll("\\s+\\,", ",")
+										.replaceAll("\\s*\"\\s*","\"").replaceAll("\\s*'\\s*","'")
+										.replaceAll("=", " = ")
+										.split("\\s+|\\,\\s*|\\(|\\)");
 		String colName = splittedQuery[1];
 		String tableName = splittedQuery[3];
 

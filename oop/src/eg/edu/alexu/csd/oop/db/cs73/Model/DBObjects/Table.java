@@ -72,7 +72,7 @@ public class Table {
 		}
 	}
 
-	private int getIndex(List<String> columns, String name) {
+	public int getIndex(List<String> columns, String name) {
 		for(int i = 0 ; i < columns.size() ; i++) {
 			if(columns.get(i).equalsIgnoreCase(name)) {
 				return i ;
@@ -102,7 +102,7 @@ public class Table {
 		return size ;
 	}
 
-	private int getIndex(String cl) {
+	public int getIndex(String cl) {
 		int i = 0;
 		for(Column column : columns) {
 			if(column.getName().equalsIgnoreCase(cl))
