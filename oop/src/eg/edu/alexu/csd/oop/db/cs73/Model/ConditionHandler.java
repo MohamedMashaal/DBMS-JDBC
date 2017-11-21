@@ -85,7 +85,10 @@ public class ConditionHandler {
                 if(part.equalsIgnoreCase("not")){
                     ArrayList<Integer> temp = evaluationStack.pop();
                     // Flipping
-                    temp.forEach(integer -> integer = 1 - integer);
+                    //temp.forEach(integer -> integer = 1 - integer); // The tester doesn't support lambdas
+                    for(Integer x : temp){
+                        x = 1-x;
+                    }
                     evaluationStack.push(temp);
                 }
                 else if(part.equalsIgnoreCase("and")){
@@ -121,7 +124,10 @@ public class ConditionHandler {
                 String type ;
                 if(index != -1) {
                     ArrayList<Integer> indices = new ArrayList<>(colSize);
-                    indices.forEach(integer -> integer = 0);
+                    //indices.forEach(integer -> integer = 0); // The tester doesn't support lambdas
+                    for(Integer x : indices){
+                        x = 0;
+                    }
                     type = table.getColumns().get(index).getType();
                     ArrayList<Record> records = table.getColumns().get(index).getRecords();
                     for(int i = 0 ; i < records.size() ; i++) {
