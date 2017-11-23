@@ -24,10 +24,10 @@ public class Testing {
                 .replaceAll("\\s*\"\\s*","\"").replaceAll("\\s*'\\s*","'").replaceAll("=", " = ");
         System.out.println(x);
         String [] z = x.split("\\s+|\\,\\s*|\\(|\\)");
-        System.out.print("[");
+        //System.out.print("[");
         for(String v : z)
-        	System.out.print(" " + v + ",");
-        System.out.println(" ]");*/
+        	System.out.println(v);
+        //System.out.println(" ]");
 
         /*ConditionHandler ch = new ConditionHandler();
         ArrayList<String> arr = new ArrayList<>();
