@@ -18,7 +18,7 @@ public class Testing {
 
     public static void main(String[] args){
 
-        String x = "UPDATE Customers SET ContactName = 'Alfred Schmidt', City = 'Frankfurt' WHERE CustomerID = 1;" ;
+        /*String x = "UPDATE Customers SET ContactName = 'Alfred Schmidt', City = 'Frankfurt' WHERE CustomerID = 1;" ;
         x = "select col from table where a > 5 and b = 'john wick'";
         x = x.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("\\s+\\,", ",")
                 .replaceAll("\\s*\"\\s*","\"").replaceAll("\\s*'\\s*","'").replaceAll("=", " = ");
@@ -27,7 +27,7 @@ public class Testing {
         System.out.print("[");
         for(String v : z)
         	System.out.print(" " + v + ",");
-        System.out.println(" ]");
+        System.out.println(" ]");*/
 
         /*ConditionHandler ch = new ConditionHandler();
         ArrayList<String> arr = new ArrayList<>();
@@ -47,6 +47,17 @@ public class Testing {
 
         String[] test = {"a",">","5","and","b","=","'john","wick'"};
         System.out.println(ch.getWillFormedArrayOf(test));*/
+
+        Database db = new DatabaseImp();
+        db.createDatabase("db1", true);
+        try {
+            db.executeStructureQuery("create table table1 (name varchar, age int)");
+            db.executeUpdateQuery("insert into table1 values (\"youssef\", 20)");
+            db.executeUpdateQuery("insert into table1 (name) values (\"ali\")");
+            db.executeUpdateQuery("insert into table1 values (\"hossam\", 14)");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

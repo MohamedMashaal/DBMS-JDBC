@@ -52,6 +52,12 @@ public class DirectoryHandler {
     	File dataFile = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
         return dataFile.getAbsolutePath();
     }
+
+    public String getPathOf(String tableName, String databaseName) {
+        File tableFile = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName
+        + System.getProperty("file.separator") + tableName + ".xml");
+        return tableFile.getAbsolutePath();
+    }
     
 	public void createDatabase(String databaseName) {
 		File dataFile = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
@@ -73,4 +79,8 @@ public class DirectoryHandler {
 		File table = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName +System.getProperty("file.separator")+ tableName +".xml");
 		table.delete();
 	}
+
+	public void loadDB(){
+
+    }
 }

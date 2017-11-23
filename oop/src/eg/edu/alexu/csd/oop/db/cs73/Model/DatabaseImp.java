@@ -9,6 +9,7 @@ import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Table;
 import sun.net.www.content.text.plain;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,6 +20,8 @@ public class DatabaseImp implements Database{
 	private ArrayList<DBContainer> data;
 	private DirectoryHandler dirHandler;
 	private ExtractingHandler extractor;
+	private ConditionHandler conditionHandler;
+	private XMLParser xmlParser;
    // boolean testing = false ;
     //public DatabaseImp() {}
     
@@ -27,7 +30,9 @@ public class DatabaseImp implements Database{
         this.data = new ArrayList<>();
         this.dirHandler = new DirectoryHandler();
         this.extractor = new ExtractingHandler();
-    }
+        this.conditionHandler = new ConditionHandler();
+        this.xmlParser = new XMLParser();
+	}
 
     @Override
     public String createDatabase(String databaseName, boolean dropIfExists) {
@@ -87,7 +92,13 @@ public class DatabaseImp implements Database{
     			}
 				data.get(data.size()-1).add(table);
 				dirHandler.createTable(tableName , data.get(data.size()-1).getName());
-    		}
+				String tablePath = dirHandler.getPathOf(tableName , data.get(data.size()-1).getName());
+				try {
+					xmlParser.saveTableToXML(tablePath, table);
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				}
+			}
     		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
     			if(data.get(data.size()-1).tableExists(tableName)) {
     				data.get(data.size()-1).remove(tableName);
@@ -198,6 +209,14 @@ public class DatabaseImp implements Database{
     			throw new SQLException();
     		}
     	}
+    	String tablePath = dirHandler.getPathOf(splittedQuery[2] , data.get(data.size()-1).getName());
+		try {
+			int currTableIndex = data.get(data.size()-1).getTableIndex(splittedQuery[2]);
+			Table currTable = data.get(data.size()-1).getTables().get(currTableIndex);
+			xmlParser.saveTableToXML(tablePath, currTable);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
     	return updated;
     }
 
