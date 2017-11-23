@@ -181,10 +181,13 @@ public class DatabaseImp implements Database{
     public int executeUpdateQuery(String query) throws SQLException {
     	String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").replaceAll("=", " = ").replaceAll("\\s+\\,", ",").split("\\s+|\\,\\s*|\\(|\\)");
     	int updated = 0 ;
+    	String tablePath = null;
     	if(splittedQuery[0].equalsIgnoreCase("insert")) {
     		String [][] cloumnsValues = extractor.getColumnsValues(splittedQuery);
-    		if(data.get(data.size()-1).tableExists(splittedQuery[2]))
+    		if(data.get(data.size()-1).tableExists(splittedQuery[2])) {
     			updated = data.get(data.size()-1).insert(splittedQuery[2] , Arrays.asList(cloumnsValues[0]) , Arrays.asList(cloumnsValues[1]));
+    			tablePath = dirHandler.getPathOf(splittedQuery[2] , data.get(data.size()-1).getName());
+    		}
     		else {
     			throw new SQLException();
     		}
@@ -192,8 +195,10 @@ public class DatabaseImp implements Database{
     	else if (splittedQuery[0].equalsIgnoreCase("update")) {
     		ArrayList<ArrayList<String>> columnsValues = extractor.getUpdatedColumnsValues(splittedQuery);
     		ArrayList<String> toUpdate = extractor.getWhere(splittedQuery);
-    		if(data.get(data.size()-1).tableExists(splittedQuery[1]))
+    		if(data.get(data.size()-1).tableExists(splittedQuery[1])) {
     			updated = data.get(data.size()-1).update(splittedQuery[1] , columnsValues.get(0) , columnsValues.get(1),toUpdate);
+    			tablePath = dirHandler.getPathOf(splittedQuery[1] , data.get(data.size()-1).getName());
+    		}
     		else {
     			throw new SQLException();
     		}
@@ -201,17 +206,19 @@ public class DatabaseImp implements Database{
     	else if (splittedQuery[0].equalsIgnoreCase("delete")) {
     		ArrayList<String> toUpdate = extractor.getWhere(splittedQuery);
     		String tableName = splittedQuery[1].equalsIgnoreCase("from") ? splittedQuery[2] : splittedQuery[3];
-    		if(data.get(data.size()-1).tableExists(tableName))
+    		if(data.get(data.size()-1).tableExists(tableName)) {
     			updated = data.get(data.size()-1).delete(tableName , toUpdate);
+    			tablePath = dirHandler.getPathOf(tableName , data.get(data.size()-1).getName());
+    		}
     		else {
     			throw new SQLException();
     		}
     	}
-    	String tablePath = dirHandler.getPathOf(splittedQuery[2] , data.get(data.size()-1).getName());
 		try {
+			if(tablePath != null) {
 			int currTableIndex = data.get(data.size()-1).getTableIndex(splittedQuery[2]);
 			Table currTable = data.get(data.size()-1).getTables().get(currTableIndex);
-			xmlParser.saveTableToXML(tablePath, currTable);
+			xmlParser.saveTableToXML(tablePath, currTable);}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
