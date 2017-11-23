@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
  */
 
-
+//TODO Syntax Parsing
 public class QueriesParser {
     Database database;
     DirectoryHandler directoryHandler;
