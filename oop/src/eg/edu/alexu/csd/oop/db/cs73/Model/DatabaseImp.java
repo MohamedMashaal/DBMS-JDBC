@@ -217,7 +217,7 @@ public class DatabaseImp implements Database{
     	if(tableName != null) {
     		String tablePath = dirHandler.getPathOf(tableName , data.get(data.size()-1).getName());
     		try {
-    			int currTableIndex = data.get(data.size()-1).getTableIndex(splittedQuery[2]);
+    			int currTableIndex = data.get(data.size()-1).getTableIndex(tableName);
     			Table currTable = data.get(data.size()-1).getTables().get(currTableIndex);
     			xmlParser.saveTableToXML(tablePath, currTable);
     		} catch (FileNotFoundException e) {
