@@ -30,6 +30,8 @@ public class DatabaseImp implements Database{
         this.extractor = new ExtractingHandler();
         this.conditionHandler = new ConditionHandler();
         this.xmlParser = new XMLParser();
+
+        this.data = dirHandler.loadAllDBs();
 	}
 
     @Override
@@ -207,6 +209,7 @@ public class DatabaseImp implements Database{
     			throw new SQLException();
     		}
     	}
+    	// update xml fil
     	String tablePath = dirHandler.getPathOf(splittedQuery[2] , data.get(data.size()-1).getName());
 		try {
 			int currTableIndex = data.get(data.size()-1).getTableIndex(splittedQuery[2]);

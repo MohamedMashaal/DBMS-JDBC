@@ -118,12 +118,14 @@ public class XMLParser {
 
             for (int i = 0; i < rootNode.getLength(); i++) {
                 Node colNode = rootNode.item(i);
-                NodeList colNL = colNode.getChildNodes();
-                Column col = new Column(colNode.getAttributes().getNamedItem("name").getNodeValue(),
-                                        colNode.getAttributes().getNamedItem("type").getNodeValue());
-                System.out.println("Col Name : " + colNode.getAttributes().getNamedItem("name"));
                 if (colNode.getNodeName().equals("#text"))
                     continue;
+                //Element colEle = (Element) rootNode.item(i).get;
+                NodeList colNL = colNode.getChildNodes();
+                System.out.println("Col Name : " + colNode);
+                Column col = new Column(colNode.getAttributes().getNamedItem("name").getNodeValue(),
+                        colNode.getAttributes().getNamedItem("type").getNodeValue());
+                System.out.println("Col Name : " + colNode.getAttributes().getNamedItem("name"));
                 //put("id", colNode.getNodeName());
                 for (int j = 0; j < colNL.getLength(); j++) {
                     Node recItem = colNL.item(j);
@@ -132,7 +134,7 @@ public class XMLParser {
                     //shapeMap.put(prop.getNodeName(), prop.getTextContent());
                     Record record = null;
                     if(!recItem.getAttributes().getNamedItem("value").equals("null"))
-                        record = new Record(recItem.getAttributes().getNamedItem("value"));
+                        record = new Record(((Element)colNode).getAttribute("value"));
                     else
                         record = new Record(null);
 
