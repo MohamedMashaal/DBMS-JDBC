@@ -27,14 +27,6 @@ public class DirectoryHandler {
         xmlParser = new XMLParser();
     }
 
-    public boolean exists(){
-        // TODO Complete It
-        for(File dir : mainDirectory.listFiles()){
-
-        }
-        return false;
-    }
-
     public void deleteDatabase(String databaseName){
     	File dir = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
     	deleteDir(dir);
@@ -102,5 +94,29 @@ public class DirectoryHandler {
         }
 
         return allDBs;
+    }
+
+    public boolean dbExists(String databaseName) {
+        for(File dir : mainDirectory.listFiles()){
+            if(dir.getName().equalsIgnoreCase(databaseName))
+                return true;
+        }
+        return false;
+    }
+
+    public DBContainer loadDB(String databaseName) {
+        for(File dbFile : mainDirectory.listFiles()){
+            if(dbFile.getName().equalsIgnoreCase(databaseName)){
+                DBContainer dbObj = new DBContainer(dbFile.getName());
+
+                for(File tableFile : dbFile.listFiles()){
+                    System.out.println(tableFile.getAbsolutePath());
+                    Table tableObj = xmlParser.loadTableFromXML(tableFile.getAbsolutePath());
+                    dbObj.getTables().add(tableObj);
+                }
+                return dbObj;
+            }
+        }
+        return null;
     }
 }
