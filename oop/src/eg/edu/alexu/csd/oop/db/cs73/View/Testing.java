@@ -1,19 +1,6 @@
 package eg.edu.alexu.csd.oop.db.cs73.View;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-
-import eg.edu.alexu.csd.oop.db.Database;
-import eg.edu.alexu.csd.oop.db.commands.Create;
-
-/*
-
-    This class is just for testing purposes
-
- */
-
-import eg.edu.alexu.csd.oop.db.cs73.Model.ConditionHandler;
-import eg.edu.alexu.csd.oop.db.cs73.Model.DatabaseImp;
+import eg.edu.alexu.csd.oop.db.commands.Insert;
 
 public class Testing {
 
@@ -48,7 +35,7 @@ public class Testing {
 
         String[] test = {"a",">","5","and","b","=","'john","wick'"};
         System.out.println(ch.getWillFormedArrayOf(test));*/
-    	System.out.println(new Create().syntaxParse("CREATE TABLE Persons(PersonID int,LastName varchar,FirstName varchar,Address varchar,City varchar)        "));
+    	System.out.println(new Insert().syntaxParse("INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country) VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway')"));
         /*Database db = new DatabaseImp();
         db.createDatabase("db1", true);
         try {
