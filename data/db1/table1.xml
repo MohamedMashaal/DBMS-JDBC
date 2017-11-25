@@ -7,7 +7,7 @@
     </column>
     <column name="age" type="int">
         <record value="20"/>
-        <record value="null"/>
+        <record value="21"/>
         <record value="14"/>
     </column>
 </table>

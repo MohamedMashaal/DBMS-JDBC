@@ -29,6 +29,9 @@ public class DatabaseImp implements Database{
         this.extractor = new ExtractingHandler();
         this.conditionHandler = new ConditionHandler();
         this.xmlParser = new XMLParser();
+
+        /*this.data = dirHandler.loadAllDBs();
+        System.out.println(this.data);*/
 	}
 
     @Override
@@ -66,9 +69,10 @@ public class DatabaseImp implements Database{
     		String databaseName = splittedQuery[2];
     		DBContainer dbc = new DBContainer(splittedQuery[2]);
     		if(splittedQuery[0].equalsIgnoreCase("create")) {
-    			if(dbExists(databaseName)) {
-    				dbc = data.get(dbIndex(databaseName));
-    				data.remove(dbc);
+    			if(dirHandler.dbExists(databaseName)) {
+    				/*dbc = data.get(dbIndex(databaseName));
+    				data.remove(dbc);*/
+    				dbc = dirHandler.loadDB(databaseName);
     			}
 				data.add(dbc);
 				dirHandler.createDatabase(databaseName);

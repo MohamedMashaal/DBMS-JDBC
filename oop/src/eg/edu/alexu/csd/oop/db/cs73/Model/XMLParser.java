@@ -114,28 +114,39 @@ public class XMLParser {
             Element doc = dom.getDocumentElement();
             NodeList rootNode = doc.getChildNodes();
             loadedTable = new Table(doc.getAttribute("name"));
+            System.out.println(loadedTable.getName());
             ArrayList<Column> cols = new ArrayList<>();
 
             for (int i = 0; i < rootNode.getLength(); i++) {
                 Node colNode = rootNode.item(i);
-                NodeList colNL = colNode.getChildNodes();
-                Column col = new Column(colNode.getAttributes().getNamedItem("name").getNodeValue(),
-                                        colNode.getAttributes().getNamedItem("type").getNodeValue());
-                System.out.println("Col Name : " + colNode.getAttributes().getNamedItem("name"));
                 if (colNode.getNodeName().equals("#text"))
                     continue;
+                //Element colEle = (Element) rootNode.item(i).get;
+                NodeList colNL = colNode.getChildNodes();
+                System.out.println(colNL);
+                System.out.println("Col Name1 : " + colNode);
+                String colName = colNode.getAttributes().getNamedItem("name")
+                        .toString().replaceAll("^\\w*=\"", "").replaceAll("\"$","");
+                String colType = colNode.getAttributes().getNamedItem("type")
+                        .toString().replaceAll("^\\w*=\"", "").replaceAll("\"$","");
+                Column col = new Column(colName, colType);
+                System.out.println("Col Name2 : " + col.getName() + " " + col.getType());
                 //put("id", colNode.getNodeName());
+                System.out.println(colNL + " " + colNL.getLength());
                 for (int j = 0; j < colNL.getLength(); j++) {
                     Node recItem = colNL.item(j);
                     if (recItem.getNodeName().equals("#text"))
                         continue;
                     //shapeMap.put(prop.getNodeName(), prop.getTextContent());
                     Record record = null;
+                    String recordValue = recItem.getAttributes().getNamedItem("value")
+                            .toString().replaceAll("^\\w*=\"", "").replaceAll("\"$","");
+                    System.out.println("recItem: " + recordValue);
                     if(!recItem.getAttributes().getNamedItem("value").equals("null"))
-                        record = new Record(recItem.getAttributes().getNamedItem("value"));
+                        record = new Record(recordValue);
                     else
                         record = new Record(null);
-
+                    System.out.println("val: " + record.getValue());
                     col.addRecord(record);
                 }
                 //loadedTable.addColumn(col);
