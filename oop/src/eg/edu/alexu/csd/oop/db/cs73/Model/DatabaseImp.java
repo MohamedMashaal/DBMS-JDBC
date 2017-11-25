@@ -1,7 +1,7 @@
 package eg.edu.alexu.csd.oop.db.cs73.Model;
 
 import eg.edu.alexu.csd.oop.db.Database;
-import eg.edu.alexu.csd.oop.db.cs73.Controller.QueriesParser;
+import eg.edu.alexu.csd.oop.db.cs73.Controller.QueriesExecutor;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Column;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.DBContainer;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Record;
@@ -14,7 +14,7 @@ import java.util.Arrays;
 
 public class DatabaseImp implements Database{
 	
-	private QueriesParser queriesParser;
+	private QueriesExecutor queriesExecutor;
 	private ArrayList<DBContainer> data;
 	private DirectoryHandler dirHandler;
 	private ExtractingHandler extractor;
@@ -24,7 +24,7 @@ public class DatabaseImp implements Database{
     //public DatabaseImp() {}
     
     public DatabaseImp(){
-        this.queriesParser = new QueriesParser(this);
+        this.queriesExecutor = new QueriesExecutor();
         this.data = new ArrayList<>();
         this.dirHandler = new DirectoryHandler();
         this.extractor = new ExtractingHandler();

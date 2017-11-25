@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import eg.edu.alexu.csd.oop.db.Database;
+import eg.edu.alexu.csd.oop.db.commands.Create;
 
 /*
 
@@ -47,8 +48,8 @@ public class Testing {
 
         String[] test = {"a",">","5","and","b","=","'john","wick'"};
         System.out.println(ch.getWillFormedArrayOf(test));*/
-
-        Database db = new DatabaseImp();
+    	System.out.println(new Create().syntaxParse("CREATE TABLE Persons(PersonID int,LastName varchar,FirstName varchar,Address varchar,City varchar)        "));
+        /*Database db = new DatabaseImp();
         db.createDatabase("db1", true);
         try {
             db.executeStructureQuery("create table table1 (name varchar, age int)");
@@ -57,7 +58,7 @@ public class Testing {
             db.executeUpdateQuery("insert into table1 values ('hossam', 14)");
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
 }
