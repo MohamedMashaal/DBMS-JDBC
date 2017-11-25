@@ -6,7 +6,7 @@ public class Delete implements Command{
 
 	@Override
 	public boolean syntaxParse(String query) {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 

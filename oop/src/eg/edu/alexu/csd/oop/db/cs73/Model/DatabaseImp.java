@@ -24,7 +24,6 @@ public class DatabaseImp implements Database{
     //public DatabaseImp() {}
     
     public DatabaseImp(){
-        this.queriesExecutor = new QueriesExecutor();
         this.data = new ArrayList<>();
         this.dirHandler = new DirectoryHandler();
         this.extractor = new ExtractingHandler();
