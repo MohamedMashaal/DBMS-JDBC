@@ -30,8 +30,8 @@ public class DatabaseImp implements Database{
         this.conditionHandler = new ConditionHandler();
         this.xmlParser = new XMLParser();
 
-        this.data = dirHandler.loadAllDBs();
-        System.out.println(this.data);
+        /*this.data = dirHandler.loadAllDBs();
+        System.out.println(this.data);*/
 	}
 
     @Override
