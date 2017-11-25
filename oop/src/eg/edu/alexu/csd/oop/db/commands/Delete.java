@@ -1,0 +1,13 @@
+package eg.edu.alexu.csd.oop.db.commands;
+
+import eg.edu.alexu.csd.oop.db.Command;
+
+public class Delete implements Command{
+
+	@Override
+	public boolean syntaxParse(String query) {
+		
+		return false;
+	}
+
+}
