@@ -52,9 +52,9 @@ public class Testing {
         db.createDatabase("db1", true);
         try {
             db.executeStructureQuery("create table table1 (name varchar, age int)");
-            db.executeUpdateQuery("insert into table1 values (\"youssef\", 20)");
-            db.executeUpdateQuery("insert into table1 (name) values (\"ali\")");
-            db.executeUpdateQuery("insert into table1 values (\"hossam\", 14)");
+            db.executeUpdateQuery("insert into table1 values ('youssef', 20)");
+            db.executeUpdateQuery("insert into table1 (name) values ('ali')");
+            db.executeUpdateQuery("insert into table1 values ('hossam', 14)");
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
 <table name="table1">
     <column name="name" type="varchar">
-        <record value="&quot;youssef&quot;"/>
-        <record value="&quot;ali&quot;"/>
-        <record value="&quot;hossam&quot;"/>
+        <record value="youssef"/>
+        <record value="ali"/>
+        <record value="hossam"/>
     </column>
     <column name="age" type="int">
         <record value="20"/>
