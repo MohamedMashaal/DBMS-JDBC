@@ -32,6 +32,7 @@ public class DatabaseImp implements Database{
         this.xmlParser = new XMLParser();
 
         this.data = dirHandler.loadAllDBs();
+        System.out.println(this.data);
 	}
 
     @Override
@@ -181,12 +182,16 @@ public class DatabaseImp implements Database{
 
     @Override
     public int executeUpdateQuery(String query) throws SQLException {
+    	//TODO relpace the ReplaceAll and adjust the filtering process in SplittedQuery to integrate the ConditionHandler
     	String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").replaceAll("=", " = ").replaceAll("\\s+\\,", ",").split("\\s+|\\,\\s*|\\(|\\)");
     	int updated = 0 ;
+    	String tableName = null ;
     	if(splittedQuery[0].equalsIgnoreCase("insert")) {
     		String [][] cloumnsValues = extractor.getColumnsValues(splittedQuery);
-    		if(data.get(data.size()-1).tableExists(splittedQuery[2]))
+    		if(data.get(data.size()-1).tableExists(splittedQuery[2])) {
     			updated = data.get(data.size()-1).insert(splittedQuery[2] , Arrays.asList(cloumnsValues[0]) , Arrays.asList(cloumnsValues[1]));
+    			tableName = splittedQuery[2];
+    		}
     		else {
     			throw new SQLException();
     		}
@@ -194,30 +199,35 @@ public class DatabaseImp implements Database{
     	else if (splittedQuery[0].equalsIgnoreCase("update")) {
     		ArrayList<ArrayList<String>> columnsValues = extractor.getUpdatedColumnsValues(splittedQuery);
     		ArrayList<String> toUpdate = extractor.getWhere(splittedQuery);
-    		if(data.get(data.size()-1).tableExists(splittedQuery[1]))
+    		if(data.get(data.size()-1).tableExists(splittedQuery[1])) {
     			updated = data.get(data.size()-1).update(splittedQuery[1] , columnsValues.get(0) , columnsValues.get(1),toUpdate);
+    			tableName = splittedQuery[1];
+    		}
     		else {
     			throw new SQLException();
     		}
     	}
     	else if (splittedQuery[0].equalsIgnoreCase("delete")) {
     		ArrayList<String> toUpdate = extractor.getWhere(splittedQuery);
-    		String tableName = splittedQuery[1].equalsIgnoreCase("from") ? splittedQuery[2] : splittedQuery[3];
-    		if(data.get(data.size()-1).tableExists(tableName))
-    			updated = data.get(data.size()-1).delete(tableName , toUpdate);
+    		String table = splittedQuery[1].equalsIgnoreCase("from") ? splittedQuery[2] : splittedQuery[3];
+    		if(data.get(data.size()-1).tableExists(table)) {
+    			updated = data.get(data.size()-1).delete(table , toUpdate);
+    			tableName = table;
+    		}
     		else {
     			throw new SQLException();
     		}
     	}
-    	// update xml fil
-    	String tablePath = dirHandler.getPathOf(splittedQuery[2] , data.get(data.size()-1).getName());
-		try {
-			int currTableIndex = data.get(data.size()-1).getTableIndex(splittedQuery[2]);
-			Table currTable = data.get(data.size()-1).getTables().get(currTableIndex);
-			xmlParser.saveTableToXML(tablePath, currTable);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+    	if(tableName != null) {
+    		String tablePath = dirHandler.getPathOf(tableName , data.get(data.size()-1).getName());
+    		try {
+    			int currTableIndex = data.get(data.size()-1).getTableIndex(tableName);
+    			Table currTable = data.get(data.size()-1).getTables().get(currTableIndex);
+    			xmlParser.saveTableToXML(tablePath, currTable);
+    		} catch (FileNotFoundException e) {
+    			e.printStackTrace();
+    		}
+    	}
     	return updated;
     }
 
