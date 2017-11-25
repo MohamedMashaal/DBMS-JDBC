@@ -48,7 +48,6 @@ public class QueriesExecutor {
             		return new String(splittedQuery[1].toUpperCase() + "WASN'T DROPPED SUCCESSFULLY");
             }
             return "Wrong Syntax" ;
-        	}
         }
         
         else if(splittedQuery[0].equalsIgnoreCase("select")){
