@@ -23,7 +23,9 @@ public class DirectoryHandler {
 
     public DirectoryHandler(){
         mainDirectory = new File("data");
-        mainDirectory.mkdirs();
+        System.out.println("ex? " + mainDirectory.exists());
+        if(!mainDirectory.exists())
+            mainDirectory.mkdirs();
         xmlParser = new XMLParser();
     }
 
@@ -59,7 +61,9 @@ public class DirectoryHandler {
     
 	public void createDatabase(String databaseName) {
 		File dataFile = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
-		dataFile.mkdirs();
+		System.out.println("de? " + dataFile.exists());
+		if(!dataFile.exists())
+    		dataFile.mkdirs();
 	}
 
 	public void createTable(String tableName , String databaseName) {
@@ -81,7 +85,7 @@ public class DirectoryHandler {
 	public ArrayList<DBContainer> loadAllDBs(){
         ArrayList<DBContainer> allDBs = new ArrayList<>();
         for(File dbFile : mainDirectory.listFiles()){
-
+            System.out.println(dbFile.getAbsolutePath());
             DBContainer dbObj = new DBContainer(dbFile.getName());
 
             for(File tableFile : dbFile.listFiles()){
@@ -97,19 +101,18 @@ public class DirectoryHandler {
     }
 
     public boolean dbExists(String databaseName) {
-        /*System.out.println(databaseName);
-        System.out.println(mainDirectory.);
+        System.out.println(databaseName);
+        //System.out.println(mainDirectory.);
         for(File dir : mainDirectory.listFiles()){
-            System.out.println(dir.getName());
+            System.out.println("dir " + dir.getName());
             if(dir.getName().equalsIgnoreCase(databaseName))
             {
-                System.out.println(databaseName);
+                System.out.println("db " + databaseName);
                 return true;
             }
         }
-        return false;
         System.out.println(new File(getPathOf(databaseName)).exists());
-        return new File(getPathOf(databaseName)).exists();*/
+        //return new File(getPathOf(databaseName)).exists();
         return false;
     }
 

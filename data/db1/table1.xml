@@ -4,8 +4,20 @@
         <record value="ahmed"/>
         <record value="khaled"/>
         <record value="hassan"/>
+        <record value="ahmed"/>
+        <record value="khaled"/>
+        <record value="hassan"/>
+        <record value="ahmed"/>
+        <record value="khaled"/>
+        <record value="hassan"/>
     </column>
     <column name="age" type="int">
+        <record value="15"/>
+        <record value="null"/>
+        <record value="26"/>
+        <record value="15"/>
+        <record value="null"/>
+        <record value="26"/>
         <record value="15"/>
         <record value="null"/>
         <record value="26"/>
