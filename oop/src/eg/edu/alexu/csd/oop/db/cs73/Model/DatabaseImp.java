@@ -14,7 +14,6 @@ import java.util.Arrays;
 
 public class DatabaseImp implements Database{
 	
-	private QueriesExecutor queriesExecutor;
 	private ArrayList<DBContainer> data;
 	private DirectoryHandler dirHandler;
 	private ExtractingHandler extractor;
@@ -185,8 +184,9 @@ public class DatabaseImp implements Database{
 
     @Override
     public int executeUpdateQuery(String query) throws SQLException {
-    	//TODO relpace the ReplaceAll and adjust the filtering process in SplittedQuery to integrate the ConditionHandler
     	String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").replaceAll("=", " = ").replaceAll("\\s+\\,", ",").split("\\s+|\\,\\s*|\\(|\\)");
+    	//String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("=", " = ").replaceAll("\\s+\\,", ",").split("\\s+(?=(?:[^\']*\'[^\']*\')*[^\']*$)|\\,\\s*|\\(|\\)");
+    	//splittedQuery = extractor.filterQuotes(splittedQuery);
     	int updated = 0 ;
     	String tableName = null ;
     	if(splittedQuery[0].equalsIgnoreCase("insert")) {

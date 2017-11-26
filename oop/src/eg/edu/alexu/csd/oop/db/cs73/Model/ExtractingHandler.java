@@ -82,4 +82,21 @@ public class ExtractingHandler {
 		}
 		return whereValue;
 	}
+
+	public String[] filterQuotes(String[] splittedQuery) {
+		ArrayList<String> filtered = new ArrayList<>();
+		boolean quote = true ;
+		for(String x : splittedQuery) {
+			if(x.equalsIgnoreCase("where")) {
+				quote = false;
+			}
+			if(x.charAt(0) == '\'' && quote) {
+				filtered.add(x.substring(1, x.length()-1));
+			}
+			else {
+				filtered.add(x);
+			}
+		}
+		return filtered.toArray(new String [0]);
+	}
 }

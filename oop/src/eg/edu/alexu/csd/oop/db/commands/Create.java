@@ -7,6 +7,7 @@ public class Create implements Command{
 	@Override
 	public boolean syntaxParse(String query) {
 		String nQuery = query.toUpperCase();
+		nQuery = nQuery.charAt(nQuery.length()-1) == ';' ? nQuery.substring(0, nQuery.length()-1) : nQuery ;
 		nQuery = nQuery.trim().replaceAll("\\s+", " ");
 		if(nQuery.matches("CREATE DATABASE \\w+"))
 			return true ;

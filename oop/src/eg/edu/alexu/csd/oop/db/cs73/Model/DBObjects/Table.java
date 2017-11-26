@@ -157,46 +157,6 @@ public class Table {
 				}
 			}
 		}
-				/*for(int i = 0 ; i < records.size() ; i++) {
-					if(type.equalsIgnoreCase("int")) {
-						if(records.get(i) != null) {
-							Integer recordValue = (Integer)(records.get(i).getValue());
-							if(recordValue.intValue() == Integer.parseInt(whereValue)) {
-								updated ++ ;
-								for(Column cl : this.columns) {
-									int indexCl = getIndex(columns, cl.getName());
-									if(indexCl != -1) {
-										if(cl.getType().equalsIgnoreCase("int"))
-											cl.getRecord(i).setValue(new Integer(Integer.parseInt(values.get(indexCl))));
-										else if(cl.getType().equalsIgnoreCase("varchar")) {
-											cl.getRecord(i).setValue(values.get(indexCl));
-										}
-									}
-								}
-							}
-						}
-					}
-					else if(type.equalsIgnoreCase("varchar")) {
-						if(records.get(i) != null) {
-							String recordValue = (String)(records.get(i).getValue());
-							if(recordValue.equalsIgnoreCase(whereValue)) {
-								updated ++ ;
-								for(Column cl : this.columns) {
-									int indexCl = getIndex(columns, cl.getName());
-									if(indexCl != -1) {
-										if(cl.getType().equalsIgnoreCase("int"))
-											cl.getRecord(i).setValue(new Integer(Integer.parseInt(values.get(indexCl))));
-										else if(cl.getType().equalsIgnoreCase("varchar")) {
-											cl.getRecord(i).setValue(values.get(indexCl));
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}*/
 		return updated;
 	}
 
