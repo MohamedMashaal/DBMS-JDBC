@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
 <table name="table1">
     <column name="name" type="varchar">
-        <record value="youssef"/>
-        <record value="ali"/>
-        <record value="hossam"/>
+        <record value="ahmed"/>
+        <record value="khaled"/>
+        <record value="hassan"/>
     </column>
     <column name="age" type="int">
-        <record value="20"/>
-        <record value="21"/>
-        <record value="14"/>
+        <record value="15"/>
+        <record value="null"/>
+        <record value="26"/>
     </column>
 </table>

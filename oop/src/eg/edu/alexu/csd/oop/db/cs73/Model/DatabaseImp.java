@@ -70,13 +70,16 @@ public class DatabaseImp implements Database{
     		DBContainer dbc = new DBContainer(splittedQuery[2]);
     		if(splittedQuery[0].equalsIgnoreCase("create")) {
     			if(dirHandler.dbExists(databaseName)) {
+    				System.out.println("found!");
     				/*dbc = data.get(dbIndex(databaseName));
     				data.remove(dbc);*/
     				dbc = dirHandler.loadDB(databaseName);
     			}
+				else {
+					dirHandler.createDatabase(databaseName);
+				}
 				data.add(dbc);
-				dirHandler.createDatabase(databaseName);
-    		}
+			}
     		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
     			if(dbExists(databaseName)) {
     				data.remove(dbIndex(databaseName));
