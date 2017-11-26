@@ -108,8 +108,8 @@ public class DirectoryHandler {
             }
         }
         return false;*/
-        /*System.out.println(new File(getPathOf(databaseName)).exists());
-        return new File(getPathOf(databaseName)).exists();*/
+        System.out.println(new File(getPathOf(databaseName)).exists());
+        return new File(getPathOf(databaseName)).exists();
     }
 
     public DBContainer loadDB(String databaseName) {
