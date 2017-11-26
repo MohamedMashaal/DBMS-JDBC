@@ -3,16 +3,11 @@ package eg.edu.alexu.csd.oop.db.commands;
 import eg.edu.alexu.csd.oop.db.Command;
 
 public class Insert implements Command{
-	//TODO fix insert to work with multiple words String.
-	//TODO work classes again
 	@Override
 	public boolean syntaxParse(String query) {
 		query = query.charAt(query.length()-1) == ';' ? query.substring(0, query.length()-1) : query ;
-		System.out.println(query);
-		String [] nQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("\\s+\\,", ",").split("\\s+|\\,\\s*|\\(|\\)|\\=");
-		for(String x : nQuery)
-			System.out.println(x);
-		if(nQuery[0].equalsIgnoreCase("insert") && nQuery[1].equalsIgnoreCase("into") && nQuery[3].equalsIgnoreCase("values")) {
+		String [] nQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("\\s+\\,", ",").split("\\s+(?=(?:[^\']*\'[^\']*\')*[^\']*$)|\\,\\s*|\\(|\\)|\\=");
+		if(nQuery[0].equalsIgnoreCase("insert") && nQuery[1].equalsIgnoreCase("into") && nQuery[3].equalsIgnoreCase("values") && nQuery.length > 4) {
 			return true ;
 		}
 		else if (nQuery[0].equalsIgnoreCase("insert") && nQuery[1].equalsIgnoreCase("into")) {
@@ -28,7 +23,7 @@ public class Insert implements Command{
 				cnt2++;
 				i++;
 			}
-			if(cnt1 == cnt2)
+			if(cnt1 == cnt2 && cnt1 != 0)
 				return true ;
 		}
 		return false;

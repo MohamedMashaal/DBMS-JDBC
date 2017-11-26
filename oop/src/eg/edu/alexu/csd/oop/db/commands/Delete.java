@@ -13,7 +13,7 @@ public class Delete implements Command{
 			return true;
 		}
 		else {
-			String [] splittedQuery = nQuery.split(" ");
+			String [] splittedQuery = nQuery.split("\\s+");
 			if (splittedQuery[0].equalsIgnoreCase("delete") && splittedQuery[1].equalsIgnoreCase("from") && splittedQuery[3].equalsIgnoreCase("where") && splittedQuery.length > 4) {
 				return true ;
 			}

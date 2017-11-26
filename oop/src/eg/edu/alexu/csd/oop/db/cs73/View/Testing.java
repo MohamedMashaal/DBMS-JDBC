@@ -35,7 +35,7 @@ public class Testing {
 
         String[] test = {"a",">","5","and","b","=","'john","wick'"};
         System.out.println(ch.getWillFormedArrayOf(test));*/
-    	System.out.println(new Insert().syntaxParse("INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country) VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway')"));
+    	System.out.println(new Insert().syntaxParse("INSERT INTO Customers  VALUES"));
         /*Database db = new DatabaseImp();
         db.createDatabase("db1", true);
         try {
