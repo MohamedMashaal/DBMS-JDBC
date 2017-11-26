@@ -1,6 +1,7 @@
 package eg.edu.alexu.csd.oop.db.cs73.View;
 
 import eg.edu.alexu.csd.oop.db.commands.Insert;
+import eg.edu.alexu.csd.oop.db.cs73.Model.ExtractingHandler;
 
 public class Testing {
 
@@ -35,8 +36,17 @@ public class Testing {
 
         String[] test = {"a",">","5","and","b","=","'john","wick'"};
         System.out.println(ch.getWillFormedArrayOf(test));*/
-    	System.out.println(new Insert().syntaxParse("INSERT INTO Customers  VALUES"));
-        /*Database db = new DatabaseImp();
+    	String query = "UPDATE Customers SET ContactName='Juan' WHERE Country='Mexico'";
+    	String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("=", " = ").replaceAll("\\s+\\,", ",").split("\\s+(?=(?:[^\']*\'[^\']*\')*[^\']*$)|\\,\\s*|\\(|\\)");
+    	for(String x : splittedQuery)
+    		System.out.println(x);
+    	ExtractingHandler exHandler = new ExtractingHandler();
+    	splittedQuery = exHandler.filterQuotes(splittedQuery);
+    	System.out.println("After filtering");
+    	for(String x : splittedQuery) {
+    		System.out.println(x);
+    	}
+    	/*Database db = new DatabaseImp();
         db.createDatabase("db1", true);
         try {
             db.executeStructureQuery("create table table1 (name varchar, age int)");
