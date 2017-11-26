@@ -110,7 +110,7 @@ public class DirectoryHandler {
         return false;
         System.out.println(new File(getPathOf(databaseName)).exists());
         return new File(getPathOf(databaseName)).exists();*/
-        return true;
+        return false;
     }
 
     public DBContainer loadDB(String databaseName) {
