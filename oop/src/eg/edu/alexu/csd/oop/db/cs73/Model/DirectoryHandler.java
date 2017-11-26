@@ -97,8 +97,8 @@ public class DirectoryHandler {
     }
 
     public boolean dbExists(String databaseName) {
-        //System.out.println(databaseName);
-        /*System.out.println(mainDirectory.);
+        /*System.out.println(databaseName);
+        System.out.println(mainDirectory.);
         for(File dir : mainDirectory.listFiles()){
             System.out.println(dir.getName());
             if(dir.getName().equalsIgnoreCase(databaseName))
@@ -107,9 +107,10 @@ public class DirectoryHandler {
                 return true;
             }
         }
-        return false;*/
+        return false;
         System.out.println(new File(getPathOf(databaseName)).exists());
-        return new File(getPathOf(databaseName)).exists();
+        return new File(getPathOf(databaseName)).exists();*/
+        return true;
     }
 
     public DBContainer loadDB(String databaseName) {
