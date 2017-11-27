@@ -7,9 +7,9 @@ import java.sql.SQLException;
 
 public class Testing {
 
-    public static void main(String[] args){
+/*    public static void main(String[] args){
 
-        /*String x = "UPDATE Customers SET ContactName = 'Alfred Schmidt', City = 'Frankfurt' WHERE CustomerID = 1;" ;
+        String x = "UPDATE Customers SET ContactName = 'Alfred Schmidt', City = 'Frankfurt' WHERE CustomerID = 1;" ;
         x = "select col from table where a > 5 and b = 'john wick'";
         x = x.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("\\s+\\,", ",")
                 .replaceAll("\\s*\"\\s*","\"").replaceAll("\\s*'\\s*","'").replaceAll("=", " = ");
@@ -37,8 +37,8 @@ public class Testing {
         System.out.println(arr);
 
         String[] test = {"a",">","5","and","b","=","'john","wick'"};
-        System.out.println(ch.getWillFormedArrayOf(test));*/
-    	/*String query = "UPDATE Customers SET ContactName='Juan' WHERE Country='Mexico'";
+        System.out.println(ch.getWillFormedArrayOf(test));
+    	String query = "UPDATE Customers SET ContactName='Juan' WHERE Country='Mexico'";
     	String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("=", " = ").replaceAll("\\s+\\,", ",").split("\\s+(?=(?:[^\']*\'[^\']*\')*[^\']*$)|\\,\\s*|\\(|\\)");
     	for(String x : splittedQuery)
     		System.out.println(x);
@@ -47,20 +47,26 @@ public class Testing {
     	System.out.println("After filtering");
     	for(String x : splittedQuery) {
     		System.out.println(x);
-    	}*/
+    	}
     	Database db = new DatabaseImp();
         db.createDatabase("db2", false);
         try {
             db.executeStructureQuery("create table table1 (name varchar, age int)");
-           /* db.executeUpdateQuery("insert into table1 values ('hassan', 15)");
+            db.executeUpdateQuery("insert into table1 values ('hassan', 15)");
             db.executeUpdateQuery("insert into table1 (name) values ('hesham')");
             db.executeUpdateQuery("insert into table1 values ('hassan', 60)");
-            db.executeUpdateQuery("insert into table1 values ('hassan', 100)");*/
+            db.executeUpdateQuery("insert into table1 values ('hassan', 100)");
             //db.executeQuery("select name,age from table2");
         } catch (SQLException e) {
             e.printStackTrace();
         }
         db.createDatabase("db2", true);
-	}
+        try {
+			db.executeStructureQuery("drop database db2");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}*/
 
 }

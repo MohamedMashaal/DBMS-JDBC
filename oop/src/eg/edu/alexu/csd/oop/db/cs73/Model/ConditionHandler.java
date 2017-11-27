@@ -179,9 +179,7 @@ public class ConditionHandler {
         int len = 0;
 
         for(int i=0; i<condition.length; i++){
-            System.out.println(condition[i]);
             if(len == 3){
-                System.out.println("curr : " + curr);
                 wellFormed.add(curr);
                 len = 0;
                 curr = "";
@@ -191,7 +189,6 @@ public class ConditionHandler {
                 String temp = condition[i];
                 i++;
                 while(!condition[i].endsWith("'")){
-                    System.out.println(condition[i]);
                     temp += " " + condition[i];
                     i++;
                 }
@@ -200,7 +197,6 @@ public class ConditionHandler {
                 }
                 temp.replaceAll("'","");
                 curr += " " + temp;
-                System.out.println(temp);
                 len++;
             }
             else if(condition[i].startsWith("\"")){ // len == 2
@@ -225,13 +221,11 @@ public class ConditionHandler {
                     wellFormed.add(condition[i]);
                 }
                 else{
-                    System.out.println(len + " : " + condition[i]);
                     curr += condition[i];
                     len++;
                 }
             }
             else if(len == 1 || len == 2){
-                System.out.println(len + " : " + condition[i]);
                 curr += " " + condition[i];
                 len++;
             }

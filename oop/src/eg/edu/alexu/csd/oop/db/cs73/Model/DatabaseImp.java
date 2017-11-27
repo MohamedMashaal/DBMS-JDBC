@@ -121,7 +121,6 @@ public class DatabaseImp implements Database{
 				  						.replaceAll("\\s+\\,", ",").replaceAll("\\s*\"\\s*","\"")
 										.replaceAll("\\s*'\\s*","'").replaceAll("=", " = ")
 										.split("\\s+|\\(|\\)");
-		System.out.println(splittedQuery);
 		String colName = splittedQuery[1];
 		String tableName = splittedQuery[3];
 

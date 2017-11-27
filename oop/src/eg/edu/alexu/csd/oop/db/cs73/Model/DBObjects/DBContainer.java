@@ -50,7 +50,6 @@ public class DBContainer {
 	
 	public boolean tableExists(String tableName) {
 		for(Table table : tables) {
-			System.out.println(table);
 			if(table.getName().equalsIgnoreCase(tableName))
 				return true ;
 		}
