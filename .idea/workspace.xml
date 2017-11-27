@@ -3,14 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="628454c3-52db-46d7-89f6-96977109cf21" name="Default" comment="">
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DBObjects/DBContainer.java" afterPath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DBObjects/DBContainer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DatabaseImp.java" afterPath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DatabaseImp.java" />
 >>>>>>> 710c2f30e10c104d5ad3fe173f68a065f85640fd
+=======
+>>>>>>> 2a09edcc13eb36bb2656dd9ae4568b91a1fdf70c
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DirectoryHandler.java" afterPath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DirectoryHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/XMLParser.java" afterPath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/XMLParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/View/Testing.java" afterPath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/View/Testing.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,12 +26,17 @@
         <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DirectoryHandler.java">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state relative-caret-position="345">
               <caret line="98" column="35" lean-forward="false" selection-start-line="98" selection-start-column="35" selection-end-line="98" selection-end-column="45" />
               <folding />
 =======
             <state relative-caret-position="-182">
               <caret line="78" column="41" lean-forward="false" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
+=======
+            <state relative-caret-position="272">
+              <caret line="107" column="24" lean-forward="false" selection-start-line="107" selection-start-column="24" selection-end-line="107" selection-end-column="24" />
+>>>>>>> 2a09edcc13eb36bb2656dd9ae4568b91a1fdf70c
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -39,6 +45,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="DatabaseImp.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DatabaseImp.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -122,6 +129,13 @@
 =======
             <state relative-caret-position="1311">
               <caret line="69" column="7" lean-forward="false" selection-start-line="69" selection-start-column="7" selection-end-line="69" selection-end-column="7" />
+=======
+      <file leaf-file-name="XMLParser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/XMLParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-253">
+              <caret line="91" column="25" lean-forward="false" selection-start-line="91" selection-start-column="14" selection-end-line="91" selection-end-column="25" />
+>>>>>>> 2a09edcc13eb36bb2656dd9ae4568b91a1fdf70c
               <folding />
             </state>
           </provider>
@@ -147,7 +161,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConditionHandler.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ConditionHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/ConditionHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="437">
@@ -220,12 +234,15 @@
         <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DirectoryHandler.java" />
 =======
         <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DBObjects/DBContainer.java" />
-        <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DirectoryHandler.java" />
         <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DatabaseImp.java" />
         <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Controller/QueriesExecutor.java" />
         <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Controller/SyntaxParser.java" />
         <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/ConditionHandler.java" />
+<<<<<<< HEAD
 >>>>>>> 710c2f30e10c104d5ad3fe173f68a065f85640fd
+=======
+        <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DirectoryHandler.java" />
+>>>>>>> 2a09edcc13eb36bb2656dd9ae4568b91a1fdf70c
       </list>
     </option>
   </component>
@@ -911,14 +928,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DBObjects/Table.java">
+    <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DatabaseImp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="28" />
-          <folding />
+        <state relative-caret-position="210">
+          <caret line="69" column="35" lean-forward="true" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/commands/Select.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="598">
@@ -943,33 +963,47 @@
 =======
         <state relative-caret-position="1311">
           <caret line="69" column="7" lean-forward="false" selection-start-line="69" selection-start-column="7" selection-end-line="69" selection-end-column="7" />
+=======
+    <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Controller/SyntaxParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="32" lean-forward="false" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="32" />
+>>>>>>> 2a09edcc13eb36bb2656dd9ae4568b91a1fdf70c
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/ConditionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="24" column="34" lean-forward="true" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DBObjects/DBContainer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="49" column="4" lean-forward="false" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
-          <folding>
-            <marker date="1511825516740" expanded="true" signature="1154:1399" ph="{...}" />
-            <marker date="1511825516740" expanded="true" signature="1516:1784" ph="{...}" />
-            <marker date="1511825516740" expanded="true" signature="1848:2084" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DatabaseImp.java">
-      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="210">
           <caret line="69" column="35" lean-forward="true" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="35" />
 >>>>>>> 710c2f30e10c104d5ad3fe173f68a065f85640fd
+=======
+        <state relative-caret-position="352">
+          <caret line="49" column="4" lean-forward="false" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
+>>>>>>> 2a09edcc13eb36bb2656dd9ae4568b91a1fdf70c
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#333#334#0" expanded="true" />
+            <element signature="e#351#352#0" expanded="true" />
+            <element signature="e#632#633#0" expanded="true" />
+            <element signature="e#656#657#0" expanded="true" />
+            <element signature="e#881#882#0" expanded="true" />
+            <element signature="e#901#902#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Controller/QueriesExecutor.java">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
@@ -986,17 +1020,28 @@
 =======
         <state relative-caret-position="-182">
           <caret line="78" column="41" lean-forward="false" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
+=======
+    <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/View/Testing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1311">
+          <caret line="69" column="7" lean-forward="false" selection-start-line="69" selection-start-column="7" selection-end-line="69" selection-end-column="7" />
+>>>>>>> 2a09edcc13eb36bb2656dd9ae4568b91a1fdf70c
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/XMLParser.java">
+    <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DBObjects/Table.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="506">
           <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
 >>>>>>> 710c2f30e10c104d5ad3fe173f68a065f85640fd
+=======
+        <state relative-caret-position="184">
+          <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="28" />
+>>>>>>> 2a09edcc13eb36bb2656dd9ae4568b91a1fdf70c
           <folding />
         </state>
       </provider>
@@ -1015,25 +1060,37 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DirectoryHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="98" column="35" lean-forward="false" selection-start-line="98" selection-start-column="35" selection-end-line="98" selection-end-column="45" />
 =======
     <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Controller/SyntaxParser.java">
+=======
+    <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/XMLParser.java">
+>>>>>>> 2a09edcc13eb36bb2656dd9ae4568b91a1fdf70c
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="32" lean-forward="false" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="32" />
+        <state relative-caret-position="-253">
+          <caret line="91" column="25" lean-forward="false" selection-start-line="91" selection-start-column="14" selection-end-line="91" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/ConditionHandler.java">
+    <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DirectoryHandler.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="437">
           <caret line="24" column="34" lean-forward="true" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
 >>>>>>> 710c2f30e10c104d5ad3fe173f68a065f85640fd
           <folding />
+=======
+        <state relative-caret-position="272">
+          <caret line="107" column="24" lean-forward="false" selection-start-line="107" selection-start-column="24" selection-end-line="107" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+>>>>>>> 2a09edcc13eb36bb2656dd9ae4568b91a1fdf70c
         </state>
       </provider>
     </entry>
