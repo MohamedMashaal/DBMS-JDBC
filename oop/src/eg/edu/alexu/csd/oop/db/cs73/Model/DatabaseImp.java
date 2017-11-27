@@ -19,7 +19,6 @@ public class DatabaseImp implements Database{
 	private ExtractingHandler extractor;
 	private ConditionHandler conditionHandler;
 	private XMLParser xmlParser;
-	StringBuilder st = new StringBuilder();
     //public DatabaseImp() {}
     
     public DatabaseImp(){
@@ -90,16 +89,9 @@ public class DatabaseImp implements Database{
     		}
     	}
     	else if (splittedQuery[1].equalsIgnoreCase("table")) {
-    		st.append(query+ "!!!");
     		String tableName = splittedQuery[2];
     		if(splittedQuery[0].equalsIgnoreCase("create")) {
     			Table table = new Table(splittedQuery[2] ,extractor.getColumnsTypes(splittedQuery));
-    			try {
-    				data.get(data.size()-1).tableExists(tableName);
-    			}
-    			catch (Exception e) {
-					throw new RuntimeException(st.toString());
-				}
     			if(data.get(data.size()-1).tableExists(tableName)) {
     				return false ;
     			}
