@@ -19,8 +19,6 @@ public class DatabaseImp implements Database{
 	private ExtractingHandler extractor;
 	private ConditionHandler conditionHandler;
 	private XMLParser xmlParser;
-    boolean testing = false ;
-    boolean testing2 = false ;
     //public DatabaseImp() {}
     
     public DatabaseImp(){
@@ -38,7 +36,6 @@ public class DatabaseImp implements Database{
     public String createDatabase(String databaseName, boolean dropIfExists) {
         String query = "";
         if(dropIfExists){
-        	testing = true ;
             query = "DROP DATABASE " + databaseName;
             try {
 				executeStructureQuery(query);
@@ -80,12 +77,9 @@ public class DatabaseImp implements Database{
     			}
 				dirHandler.createDatabase(databaseName);
 				data.add(dbc);
-				if(testing && testing2)
-				dirHandler.createTable("deafult", databaseName);
 			}
     		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
     			if(dirHandler.dbExists(databaseName)) {
-    				testing2 = true;
     				int dbIndex = dbIndex(databaseName);
     				if(dbIndex != -1){
 						data.remove(dbIndex);
@@ -97,6 +91,9 @@ public class DatabaseImp implements Database{
     	else if (splittedQuery[1].equalsIgnoreCase("table")) {
     		String tableName = splittedQuery[2];
     		if(splittedQuery[0].equalsIgnoreCase("create")) {
+    			if(data.isEmpty()) {
+    				return false ;
+    			}
     			Table table = new Table(splittedQuery[2] ,extractor.getColumnsTypes(splittedQuery));
     			if(data.get(data.size()-1).tableExists(tableName)) {
     				return false ;
@@ -111,6 +108,8 @@ public class DatabaseImp implements Database{
 				}
 			}
     		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
+    			if(data.isEmpty())
+    				return false ;
     			if(data.get(data.size()-1).tableExists(tableName)) {
     				data.get(data.size()-1).remove(tableName);
     			}
