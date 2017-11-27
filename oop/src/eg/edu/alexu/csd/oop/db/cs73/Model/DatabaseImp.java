@@ -89,8 +89,7 @@ public class DatabaseImp implements Database{
     		}
     	}
     	else if (splittedQuery[1].equalsIgnoreCase("table")) {
-    		throw new RuntimeException(query);
-    		/*String tableName = splittedQuery[2];
+    		String tableName = splittedQuery[2];
     		if(splittedQuery[0].equalsIgnoreCase("create")) {
     			Table table = new Table(splittedQuery[2] ,extractor.getColumnsTypes(splittedQuery));
     			if(data.get(data.size()-1).tableExists(tableName)) {
@@ -110,7 +109,7 @@ public class DatabaseImp implements Database{
     				data.get(data.size()-1).remove(tableName);
     			}
     			dirHandler.deleteTable(tableName , data.get(data.size()-1).getName());
-    		}*/
+    		}
     	}
         return true;
     }
