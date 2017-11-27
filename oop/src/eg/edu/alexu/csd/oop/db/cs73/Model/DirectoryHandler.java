@@ -96,7 +96,7 @@ public class DirectoryHandler {
 
     public boolean dbExists(String databaseName) {
         for(File dir : mainDirectory.listFiles()){
-            if(dir.getName().equalsIgnoreCase(databaseName))
+            if(dir.getName().equals(databaseName))
             {
                 return true;
             }
