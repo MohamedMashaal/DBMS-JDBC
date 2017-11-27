@@ -102,9 +102,10 @@ public class DirectoryHandler {
                 DBContainer dbObj = new DBContainer(dbFile.getName());
 
                 for(File tableFile : dbFile.listFiles()){
-                    //Table tableObj = xmlParser.loadTableFromXML(tableFile.getAbsolutePath());
-                    Table tableObj = xmlParser.loadTableFromXML(getPathOf(tableFile.getName(), dbFile.getName()));
-                    dbObj.getTables().add(tableObj);
+                    Table tableObj = xmlParser.loadTableFromXML(tableFile.getAbsolutePath());
+                    //Table tableObj = xmlParser.loadTableFromXML(getPathOf(tableFile.getName(), dbFile.getName()));
+                    if(tableObj != null)
+                        dbObj.getTables().add(tableObj);
                 }
                 return dbObj;
             }
