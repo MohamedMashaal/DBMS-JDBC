@@ -24,7 +24,7 @@ public class DirectoryHandler {
     public DirectoryHandler(){
         mainDirectory = new File("data");
         System.out.println("ex? " + mainDirectory.exists());
-        if(!mainDirectory.exists())
+        //if(!mainDirectory.exists())
             mainDirectory.mkdirs();
         xmlParser = new XMLParser();
     }
@@ -62,7 +62,7 @@ public class DirectoryHandler {
 	public void createDatabase(String databaseName) {
 		File dataFile = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
 		System.out.println("de? " + dataFile.exists());
-		if(!dataFile.exists())
+		//if(!dataFile.exists())
     		dataFile.mkdirs();
 	}
 

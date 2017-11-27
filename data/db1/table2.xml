@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
 <table name="table2">
-    <column name="name" type="varchar"/>
-    <column name="age" type="int"/>
+    <column name="name" type="varchar">
+        <record value="lolo"/>
+        <record value="lolo"/>
+        <record value="hassan"/>
+    </column>
+    <column name="age" type="int">
+        <record value="15"/>
+        <record value="null"/>
+        <record value="26"/>
+    </column>
 </table>

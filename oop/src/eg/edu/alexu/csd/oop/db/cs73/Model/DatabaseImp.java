@@ -118,7 +118,8 @@ public class DatabaseImp implements Database{
 		String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ")
 				  						.replaceAll("\\s+\\,", ",").replaceAll("\\s*\"\\s*","\"")
 										.replaceAll("\\s*'\\s*","'").replaceAll("=", " = ")
-										.split("\\s+|\\,\\s*|\\(|\\)");
+										.split("\\s+|\\(|\\)");
+		System.out.println(splittedQuery);
 		String colName = splittedQuery[1];
 		String tableName = splittedQuery[3];
 
@@ -126,8 +127,8 @@ public class DatabaseImp implements Database{
 
 		// check if table  exists
 		if(! currDB.tableExists(tableName)){
-			throw new RuntimeException("Table" + tableName +
-					                   "is not exists in " + currDB.getName());
+			throw new RuntimeException("Table " + tableName +
+					                   " is not exists in " + currDB.getName());
 		}
 
 		Table currTable = currDB.getTables().get(currDB.getTableIndex(tableName));
@@ -135,15 +136,15 @@ public class DatabaseImp implements Database{
 		// check if column exists in table
 		int columnIndex = currTable.columnIndex(colName);
 		if(columnIndex == -1 && !colName.equals("*")){
-			throw  new RuntimeException("Column" + tableName +
-					"is not exists in " + currTable.getName());
+			throw  new RuntimeException("Column " + colName +
+					" is not exists in " + currTable.getName());
 		}
 
 		// fetching data part (with out applying "where" conditions)
 
-		// one column
-		if(!colName.equals("*")){
-			Column queriedColumn = currTable.getColumns().get(columnIndex);
+		// all columns
+		if(colName.equals("*")){
+			/*Column queriedColumn = currTable.getColumns().get(columnIndex);
 			Object[] fetchedData = queriedColumn.getData();
 
 			if(queriedColumn.getType().equals("int")){
@@ -155,10 +156,7 @@ public class DatabaseImp implements Database{
 				//String[] varcharColumn = (String[]) fetchedData;
 				Object[][] retData = new Object[][]{fetchedData};
 				return applyWhere(retData, query, currTable);
-			}
-		}
-		// all columns
-		else{
+			}*/
 			ArrayList<Column> columns = currTable.getColumns();
 			int i = 0;
 			Object[][] fetchedData = new Object[currTable.getColumns().size()][];
@@ -176,6 +174,43 @@ public class DatabaseImp implements Database{
 				fetchedData[i++] = columnData;
 			}
 			return applyWhere(fetchedData, query, currTable);
+		}
+
+		// more than one column
+
+
+		// one column
+		else{
+			/*ArrayList<Column> columns = currTable.getColumns();
+			int i = 0;
+			Object[][] fetchedData = new Object[currTable.getColumns().size()][];
+			for(Column column : columns){
+				Object[] columnData = column.getData();
+
+				/*if(column.getType().equals("int")){
+					Integer[] intColumn = (Integer[]) columnData;
+					fetchedData[i++] = intColumn;
+				}
+				else if(column.getType().equals("varchar")){
+					String[] varcharColumn = (String[]) columnData;
+					fetchedData[i++] = varcharColumn;
+				}*/
+				/*fetchedData[i++] = columnData;
+			}
+			return applyWhere(fetchedData, query, currTable);*/
+			Column queriedColumn = currTable.getColumns().get(columnIndex);
+			Object[] fetchedData = queriedColumn.getData();
+
+			if(queriedColumn.getType().equals("int")){
+				//Integer[] intColumn = (Integer[]) fetchedData;
+				Object[][] retData = new Object[][]{fetchedData};
+				return applyWhere(retData, query, currTable);
+			}
+			else if(queriedColumn.getType().equals("varchar")){
+				//String[] varcharColumn = (String[]) fetchedData;
+				Object[][] retData = new Object[][]{fetchedData};
+				return applyWhere(retData, query, currTable);
+			}
 		}
 
 //		throw new RuntimeException(query);
