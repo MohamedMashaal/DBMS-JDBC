@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
-<table name="table2">
+<table name="table1">
     <column name="name" type="varchar">
-        <record value="lolo"/>
-        <record value="lolo"/>
         <record value="hassan"/>
-        <record value="lolo"/>
-        <record value="lolo"/>
+        <record value="hesham"/>
+        <record value="hassan"/>
+        <record value="hassan"/>
+        <record value="hesham"/>
+        <record value="hassan"/>
         <record value="hassan"/>
     </column>
     <column name="age" type="int">
         <record value="15"/>
         <record value="null"/>
-        <record value="26"/>
+        <record value="60"/>
         <record value="15"/>
         <record value="null"/>
-        <record value="26"/>
+        <record value="60"/>
+        <record value="100"/>
     </column>
 </table>

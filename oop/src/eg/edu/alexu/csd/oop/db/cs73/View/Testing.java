@@ -49,12 +49,13 @@ public class Testing {
     		System.out.println(x);
     	}*/
     	Database db = new DatabaseImp();
-        db.createDatabase("db1", true);
+        db.createDatabase("db2", false);
         try {
-            db.executeStructureQuery("create table table2 (name varchar, age int)");
-            db.executeUpdateQuery("insert into table2 values ('lolo', 15)");
-            db.executeUpdateQuery("insert into table2 (name) values ('lolo')");
-            db.executeUpdateQuery("insert into table2 values ('hassan', 26)");
+            db.executeStructureQuery("create table table1 (name varchar, age int)");
+           /* db.executeUpdateQuery("insert into table1 values ('hassan', 15)");
+            db.executeUpdateQuery("insert into table1 (name) values ('hesham')");
+            db.executeUpdateQuery("insert into table1 values ('hassan', 60)");
+            db.executeUpdateQuery("insert into table1 values ('hassan', 100)");*/
             //db.executeQuery("select name,age from table2");
         } catch (SQLException e) {
             e.printStackTrace();
