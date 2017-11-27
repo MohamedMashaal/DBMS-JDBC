@@ -73,7 +73,7 @@ public class DatabaseImp implements Database{
 						dbc = data.get(dbIndex(databaseName));
 						data.remove(dbc);
 					}
-    				dbc = dirHandler.loadDB(databaseName);
+    				//dbc = dirHandler.loadDB(databaseName);
     			}
 				dirHandler.createDatabase(databaseName);
 				data.add(dbc);

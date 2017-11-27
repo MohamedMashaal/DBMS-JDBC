@@ -1,15 +1,16 @@
 package eg.edu.alexu.csd.oop.db.cs73.Model;
 
-import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Column;
-import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.DBContainer;
-import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Record;
-import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Table;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+
+import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Column;
+import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.DBContainer;
+import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Record;
+import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Table;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
