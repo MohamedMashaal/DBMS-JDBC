@@ -1,20 +1,11 @@
 package eg.edu.alexu.csd.oop.db.cs73.Model;
 
-/*
-
-    This class handles the main directory of databases:
-        Checks if a newly created database already exists
-        Creates new databases
-        Creates new tables
-
- */
-
-import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.DBContainer;
-import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Table;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.DBContainer;
+import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Table;
 
 public class DirectoryHandler {
 
