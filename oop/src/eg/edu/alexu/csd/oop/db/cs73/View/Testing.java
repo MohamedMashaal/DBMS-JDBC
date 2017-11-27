@@ -2,18 +2,21 @@ package eg.edu.alexu.csd.oop.db.cs73.View;
 
 import eg.edu.alexu.csd.oop.db.Database;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DatabaseImp;
+import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.DBContainer;
+import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Table;
 
+import java.io.File;
 import java.sql.SQLException;
 
 public class Testing {
 
     public static void main(String[] args){
 
-        String x = "CREATE TABLE table_name1(column_name1 varchar , column_name2 int, column_name3 varchar)" ;
-        String [] z = x.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").replaceAll("\\s+\\,", ",").split("\\s+|\\,\\s*|\\(|\\)|\\=");
-        for(String v : z)
-        System.out.println(v);
-        //String [] z = x.split("\\s+|\\,\\s*|\\(|\\)");
+//        String x = "CREATE TABLE table_name1(column_name1 varchar , column_name2 int, column_name3 varchar)" ;
+//        String [] z = x.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").replaceAll("\\s+\\,", ",").split("\\s+|\\,\\s*|\\(|\\)|\\=");
+//        for(String v : z)
+//        System.out.println(v);
+//        //String [] z = x.split("\\s+|\\,\\s*|\\(|\\)");
         //System.out.print("[");
         /*for(String v : z)
         	System.out.println(v);
@@ -47,9 +50,18 @@ public class Testing {
     	for(String x : splittedQuery) {
     		System.out.println(x);
     	}*/
-    	/*Database db = new DatabaseImp();
-        db.createDatabase("db2", false);
+    	Database db = new DatabaseImp();
+        String x = db.createDatabase("db2", false);
         try {
+        	db.executeStructureQuery("create table table1 (name varchar, age int)");
+        	db.executeStructureQuery("create table table2 (name varchar, age int)");
+        	for(File dbFile : new File("data").listFiles()){
+                
+                    DBContainer dbObj = new DBContainer(dbFile.getName());
+                    for(File tableFile : dbFile.listFiles()){
+                        System.out.println(tableFile.getName());
+                    }
+                    }
             db.executeStructureQuery("create table table1 (name varchar, age int)");
             db.executeUpdateQuery("insert into table1 values ('hassan', 15)");
             db.executeUpdateQuery("insert into table1 (name) values ('hesham')");
@@ -65,7 +77,8 @@ public class Testing {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
+    	
 	}
 
 }

@@ -109,7 +109,6 @@ public class DirectoryHandler {
         for(File dbFile : mainDirectory.listFiles()){
             if(dbFile.getName().equalsIgnoreCase(databaseName)){
                 DBContainer dbObj = new DBContainer(dbFile.getName());
-
                 for(File tableFile : dbFile.listFiles()){
                     Table tableObj = xmlParser.loadTableFromXML(tableFile.getAbsolutePath());
                     dbObj.getTables().add(tableObj);
