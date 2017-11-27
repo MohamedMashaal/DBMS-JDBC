@@ -82,11 +82,11 @@ public class DatabaseImp implements Database{
     		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
     			if(dirHandler.dbExists(databaseName)) {
     				int dbIndex = dbIndex(databaseName);
-    				if(dbIndex != -1){
+    				if(dbIndex != -1 && dbIndex != data.size()-1){
 						data.remove(dbIndex);
-					}
+						dirHandler.deleteDatabase(databaseName);
+    				}
     			}
-    			dirHandler.deleteDatabase(databaseName);
     		}
     	}
     	else if (splittedQuery[1].equalsIgnoreCase("table")) {
