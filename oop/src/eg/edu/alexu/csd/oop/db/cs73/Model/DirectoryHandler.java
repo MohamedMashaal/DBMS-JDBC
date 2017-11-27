@@ -101,6 +101,9 @@ public class DirectoryHandler {
             if(dbFile.getName().equalsIgnoreCase(databaseName)){
                 DBContainer dbObj = new DBContainer(dbFile.getName());
                 for(File tableFile : dbFile.listFiles()){
+                    if(!tableFile.getAbsolutePath().substring(tableFile.getAbsolutePath().length()-3).equalsIgnoreCase("xml")){
+                        continue;
+                    }
                     Table tableObj = xmlParser.loadTableFromXML(tableFile.getAbsolutePath());
                     //Table tableObj = xmlParser.loadTableFromXML(getPathOf(tableFile.getName(), dbFile.getName()));
                     if(tableObj != null)
