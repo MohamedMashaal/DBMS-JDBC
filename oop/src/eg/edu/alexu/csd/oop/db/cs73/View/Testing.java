@@ -60,6 +60,7 @@ public class Testing {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        db.createDatabase("db2", true);
 	}
 
 }

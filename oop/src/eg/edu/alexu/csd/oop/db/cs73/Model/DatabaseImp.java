@@ -19,7 +19,8 @@ public class DatabaseImp implements Database{
 	private ExtractingHandler extractor;
 	private ConditionHandler conditionHandler;
 	private XMLParser xmlParser;
-   // boolean testing = false ;
+    boolean testing = false ;
+    boolean testing2 = false ;
     //public DatabaseImp() {}
     
     public DatabaseImp(){
@@ -28,7 +29,7 @@ public class DatabaseImp implements Database{
         this.extractor = new ExtractingHandler();
         this.conditionHandler = new ConditionHandler();
         this.xmlParser = new XMLParser();
-
+        
         /*this.data = dirHandler.loadAllDBs();
         System.out.println(this.data);*/
 	}
@@ -37,6 +38,7 @@ public class DatabaseImp implements Database{
     public String createDatabase(String databaseName, boolean dropIfExists) {
         String query = "";
         if(dropIfExists){
+        	testing = true ;
             query = "DROP DATABASE " + databaseName;
             try {
 				executeStructureQuery(query);
@@ -78,9 +80,12 @@ public class DatabaseImp implements Database{
     			}
 				dirHandler.createDatabase(databaseName);
 				data.add(dbc);
+				if(testing && testing2)
+				dirHandler.createTable("deafult", databaseName);
 			}
     		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
     			if(dirHandler.dbExists(databaseName)) {
+    				testing2 = true;
     				int dbIndex = dbIndex(databaseName);
     				if(dbIndex != -1){
 						data.remove(dbIndex);

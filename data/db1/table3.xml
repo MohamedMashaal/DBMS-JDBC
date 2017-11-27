@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
-<table name="table3">
-    <column name="name" type="varchar"/>
-    <column name="age" type="int"/>
-</table>
