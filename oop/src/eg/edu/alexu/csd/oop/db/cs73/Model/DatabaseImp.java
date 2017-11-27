@@ -19,7 +19,6 @@ public class DatabaseImp implements Database{
 	private ExtractingHandler extractor;
 	private ConditionHandler conditionHandler;
 	private XMLParser xmlParser;
-   // boolean testing = false ;
     //public DatabaseImp() {}
     
     public DatabaseImp(){
@@ -28,7 +27,7 @@ public class DatabaseImp implements Database{
         this.extractor = new ExtractingHandler();
         this.conditionHandler = new ConditionHandler();
         this.xmlParser = new XMLParser();
-
+        
         /*this.data = dirHandler.loadAllDBs();
         System.out.println(this.data);*/
 	}
@@ -80,8 +79,11 @@ public class DatabaseImp implements Database{
 				data.add(dbc);
 			}
     		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
-    			if(dbExists(databaseName)) {
-    				data.remove(dbIndex(databaseName));
+    			if(dirHandler.dbExists(databaseName)) {
+    				int dbIndex = dbIndex(databaseName);
+    				if(dbIndex != -1){
+						data.remove(dbIndex);
+					}
     			}
     			dirHandler.deleteDatabase(databaseName);
     		}
@@ -119,7 +121,6 @@ public class DatabaseImp implements Database{
 				  						.replaceAll("\\s+\\,", ",").replaceAll("\\s*\"\\s*","\"")
 										.replaceAll("\\s*'\\s*","'").replaceAll("=", " = ")
 										.split("\\s+|\\(|\\)");
-		System.out.println(splittedQuery);
 		String colName = splittedQuery[1];
 		String tableName = splittedQuery[3];
 

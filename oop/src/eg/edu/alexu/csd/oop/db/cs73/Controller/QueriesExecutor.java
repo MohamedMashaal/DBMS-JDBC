@@ -33,9 +33,9 @@ public class QueriesExecutor {
             if(new Create().syntaxParse(query)) {
             	boolean done = dbManager.executeStructureQuery(query);
             	if(done)
-            		return new String(splittedQuery[1].toUpperCase() + "CREATED SUCCESSFULLY");
+            		return new String(splittedQuery[1].toUpperCase() + " CREATED SUCCESSFULLY");
             	else
-            		return new String(splittedQuery[1].toUpperCase() + "WASN'T CREATED SUCCESSFULLY");
+            		return new String(splittedQuery[1].toUpperCase() + " WASN'T CREATED SUCCESSFULLY");
             }
             return "Wrong Syntax" ;
         }
@@ -43,9 +43,9 @@ public class QueriesExecutor {
         	if(new Drop().syntaxParse(query)) {
         		boolean done = dbManager.executeStructureQuery(query);
             	if(done)
-            		return new String(splittedQuery[1].toUpperCase() + "DROPPED SUCCESSFULLY");
+            		return new String(splittedQuery[1].toUpperCase() + " DROPPED SUCCESSFULLY");
             	else
-            		return new String(splittedQuery[1].toUpperCase() + "WASN'T DROPPED SUCCESSFULLY");
+            		return new String(splittedQuery[1].toUpperCase() + " WASN'T DROPPED SUCCESSFULLY");
             }
             return "Wrong Syntax" ;
         }

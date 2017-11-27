@@ -23,7 +23,6 @@ public class DirectoryHandler {
 
     public DirectoryHandler(){
         mainDirectory = new File("data");
-        System.out.println("ex? " + mainDirectory.exists());
         mainDirectory.mkdirs();
         xmlParser = new XMLParser();
     }
@@ -82,11 +81,9 @@ public class DirectoryHandler {
 	public ArrayList<DBContainer> loadAllDBs(){
         ArrayList<DBContainer> allDBs = new ArrayList<>();
         for(File dbFile : mainDirectory.listFiles()){
-            System.out.println(dbFile.getAbsolutePath());
             DBContainer dbObj = new DBContainer(dbFile.getName());
 
             for(File tableFile : dbFile.listFiles()){
-                System.out.println(tableFile.getAbsolutePath());
                 Table tableObj = xmlParser.loadTableFromXML(tableFile.getAbsolutePath());
                 dbObj.getTables().add(tableObj);
             }
@@ -98,17 +95,12 @@ public class DirectoryHandler {
     }
 
     public boolean dbExists(String databaseName) {
-        System.out.println(databaseName);
-        //System.out.println(mainDirectory.);
         for(File dir : mainDirectory.listFiles()){
-            System.out.println("dir " + dir.getName());
             if(dir.getName().equalsIgnoreCase(databaseName))
             {
-                System.out.println("db " + databaseName);
                 return true;
             }
         }
-        System.out.println(new File(getPathOf(databaseName)).exists());
         //return new File(getPathOf(databaseName)).exists();
         return false;
     }
@@ -117,10 +109,8 @@ public class DirectoryHandler {
         for(File dbFile : mainDirectory.listFiles()){
             if(dbFile.getName().equalsIgnoreCase(databaseName)){
                 DBContainer dbObj = new DBContainer(dbFile.getName());
-
                 for(File tableFile : dbFile.listFiles()){
-                    System.out.println(tableFile.getAbsolutePath());
-                    Table tableObj = xmlParser.loadTableFromXML(tableFile.getAbsolutePath());
+                    Table tableObj = xmlParser.loadTableFromXML(getPathOf(tableFile.getName(), dbFile.getName()));
                     dbObj.getTables().add(tableObj);
                 }
                 return dbObj;
