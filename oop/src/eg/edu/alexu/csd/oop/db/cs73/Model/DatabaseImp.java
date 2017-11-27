@@ -92,6 +92,9 @@ public class DatabaseImp implements Database{
     		String tableName = splittedQuery[2];
     		if(splittedQuery[0].equalsIgnoreCase("create")) {
     			Table table = new Table(splittedQuery[2] ,extractor.getColumnsTypes(splittedQuery));
+    			if(data.isEmpty()) {    				
+    				return false ;
+    			}
     			if(data.get(data.size()-1).tableExists(tableName)) {
     				return false ;
     			}
@@ -105,6 +108,9 @@ public class DatabaseImp implements Database{
 				}
 			}
     		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
+    			if(data.isEmpty()) {    				
+    				return false ;
+    			}
     			if(data.get(data.size()-1).tableExists(tableName)) {
     				data.get(data.size()-1).remove(tableName);
     			}
