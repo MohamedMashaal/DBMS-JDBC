@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="628454c3-52db-46d7-89f6-96977109cf21" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/View/UI.java" afterPath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/View/UI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DirectoryHandler.java" afterPath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DirectoryHandler.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="DirectoryHandler.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DirectoryHandler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DirectoryHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="345">
-              <caret line="98" column="35" lean-forward="false" selection-start-line="98" selection-start-column="35" selection-end-line="98" selection-end-column="35" />
+              <caret line="98" column="35" lean-forward="false" selection-start-line="98" selection-start-column="35" selection-end-line="98" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -43,7 +43,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UI.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/View/UI.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
@@ -134,8 +134,8 @@
         <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Controller/SyntaxParser.java" />
         <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/View/Testing.java" />
         <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DatabaseImp.java" />
-        <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DirectoryHandler.java" />
         <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/View/UI.java" />
+        <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DirectoryHandler.java" />
       </list>
     </option>
   </component>
@@ -813,6 +813,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/View/UI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DatabaseImp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
@@ -824,15 +832,7 @@
     <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DirectoryHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
-          <caret line="98" column="35" lean-forward="false" selection-start-line="98" selection-start-column="35" selection-end-line="98" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/View/UI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <caret line="98" column="35" lean-forward="false" selection-start-line="98" selection-start-column="35" selection-end-line="98" selection-end-column="45" />
           <folding />
         </state>
       </provider>
