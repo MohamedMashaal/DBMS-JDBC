@@ -69,7 +69,7 @@ public class XMLParser {
                 Transformer tr = TransformerFactory.newInstance().newTransformer();
                 tr.setOutputProperty(OutputKeys.INDENT, "yes");
                 tr.setOutputProperty(OutputKeys.METHOD, "xml");
-                tr.setOutputProperty(OutputKeys.ENCODING, "ISO-8859-1");
+                tr.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
                 // tr.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM,
                 // "shapes.dtd");
                 tr.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
@@ -95,14 +95,14 @@ public class XMLParser {
         try {
             File xml = new File(path);
             inputStream = new FileInputStream(xml);
-            reader = new InputStreamReader(inputStream, "ISO-8859-1");
+            reader = new InputStreamReader(inputStream, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         InputSource is = new InputSource(reader);
-        is.setEncoding("ISO-8859-1");
+        is.setEncoding("UTF-8");
         // Make an instance of the DocumentBuilderFactory
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try {
