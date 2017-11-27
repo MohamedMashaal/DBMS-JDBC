@@ -19,7 +19,6 @@ public class DatabaseImp implements Database{
 	private ExtractingHandler extractor;
 	private ConditionHandler conditionHandler;
 	private XMLParser xmlParser;
-	private StringBuilder st = new StringBuilder();
    // boolean testing = false ;
     //public DatabaseImp() {}
     
@@ -64,7 +63,6 @@ public class DatabaseImp implements Database{
 
     @Override
     public boolean executeStructureQuery(String query) throws SQLException {
-    	st.append(query + " !!!!");
     	String[] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").replaceAll("\\s+\\,", ",").split("\\s+|\\,\\s*|\\(|\\)|\\=");
     	if(splittedQuery[1].equalsIgnoreCase("database")) {
     		String databaseName = splittedQuery[2];
@@ -82,14 +80,13 @@ public class DatabaseImp implements Database{
 				data.add(dbc);
 			}
     		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
-    			throw new RuntimeException(st.toString());
-    			/*if(dirHandler.dbExists(databaseName)) {
+    			if(dirHandler.dbExists(databaseName)) {
     				int dbIndex = dbIndex(databaseName);
     				if(dbIndex != -1){
 						data.remove(dbIndex);
 					}
     			}
-    			dirHandler.deleteDatabase(databaseName);*/
+    			dirHandler.deleteDatabase(databaseName);
     		}
     	}
     	else if (splittedQuery[1].equalsIgnoreCase("table")) {
