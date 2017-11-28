@@ -95,15 +95,15 @@ public class XMLParser {
         Reader reader = null;
         try {
             File xml = new File(path);
-            inputStream = new FileInputStream(xml);
-            reader = new InputStreamReader(inputStream, "ISO-8859-1");
-        } catch (UnsupportedEncodingException e) {
+            /*inputStream = new FileInputStream(xml);
+            reader = new InputStreamReader(inputStream, "ISO-8859-1");*/
+        /*} catch (UnsupportedEncodingException e) {
         	throw new RuntimeException(e.getMessage());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e.getMessage());
-        }
-        InputSource is = new InputSource(reader);
-        is.setEncoding("ISO-8859-1");
+        }*/
+        //InputSource is = new InputSource(reader);
+        //is.setEncoding("ISO-8859-1");
         // Make an instance of the DocumentBuilderFactory
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try {
@@ -111,7 +111,7 @@ public class XMLParser {
             DocumentBuilder db = dbf.newDocumentBuilder();
             // parse using the builder to get the DOM mapping of the
             // XML file
-            dom = db.parse(is);
+            dom = db.parse(xml);
             Element doc = dom.getDocumentElement();
             NodeList rootNode = doc.getChildNodes();
             loadedTable = new Table(doc.getAttribute("name"));
