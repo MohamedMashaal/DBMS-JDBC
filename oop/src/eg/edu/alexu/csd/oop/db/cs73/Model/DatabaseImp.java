@@ -92,9 +92,9 @@ public class DatabaseImp implements Database{
     		String tableName = splittedQuery[2];
     		if(splittedQuery[0].equalsIgnoreCase("create")) {
     			Table table = new Table(splittedQuery[2] ,extractor.getColumnsTypes(splittedQuery));
-    			/*if(data.get(data.size()-1).tableExists(tableName)) {
+    			if(data.get(data.size()-1).tableExists(tableName)) {
     				return false ;
-    			}*/
+    			}
 				data.get(data.size()-1).add(table);
 				dirHandler.createTable(tableName , data.get(data.size()-1).getName());
 				String tablePath = dirHandler.getPathOf(tableName , data.get(data.size()-1).getName());
@@ -107,6 +107,9 @@ public class DatabaseImp implements Database{
     		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
     			if(data.get(data.size()-1).tableExists(tableName)) {
     				data.get(data.size()-1).remove(tableName);
+    			}
+    			else {
+    				return false;
     			}
     			dirHandler.deleteTable(tableName , data.get(data.size()-1).getName());
     		}
