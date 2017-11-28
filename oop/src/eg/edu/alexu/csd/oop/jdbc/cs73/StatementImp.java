@@ -10,7 +10,8 @@ import eg.edu.alexu.csd.oop.db.Database;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DatabaseImp;
 
 public class StatementImp implements Statement{
-	Database dbManager = new DatabaseImp();
+	private Database dbManager = new DatabaseImp();
+	private boolean closed = false ;
 	@Override
 	public boolean isWrapperFor(Class<?> arg0) throws SQLException {
 		throw new UnsupportedOperationException();
@@ -43,7 +44,7 @@ public class StatementImp implements Statement{
 
 	@Override
 	public void close() throws SQLException {
-		throw new UnsupportedOperationException();
+		closed = true ;
 	}
 
 	@Override
@@ -53,7 +54,9 @@ public class StatementImp implements Statement{
 
 	@Override
 	public boolean execute(String sql) throws SQLException {
+		if(!closed)
 		return dbManager.executeStructureQuery(sql);
+		throw new SQLException();
 	}
 
 	@Override
@@ -78,12 +81,16 @@ public class StatementImp implements Statement{
 
 	@Override
 	public ResultSet executeQuery(String sql) throws SQLException {
+		if(!closed)
 		return new ResultsetImp(dbManager.executeQuery(sql));
+		throw new SQLException();
 	}
 
 	@Override
 	public int executeUpdate(String sql) throws SQLException {
+		if(!closed)
 		return dbManager.executeUpdateQuery(sql);
+		throw new SQLException();
 	}
 
 	@Override
