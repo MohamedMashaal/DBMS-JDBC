@@ -150,11 +150,11 @@ public class XMLParser {
             loadedTable.setColumns(cols);
 
         } catch (ParserConfigurationException pce) {
-            System.out.println(pce.getMessage());
+            throw new RuntimeException(pce.getMessage());
         } catch (SAXException se) {
-            System.out.println(se.getMessage());
+        	throw new RuntimeException(se.getMessage());
         } catch (IOException ioe) {
-            System.err.println(ioe.getMessage());
+        	throw new RuntimeException(ioe.getMessage());
         }
         return loadedTable;
     }
