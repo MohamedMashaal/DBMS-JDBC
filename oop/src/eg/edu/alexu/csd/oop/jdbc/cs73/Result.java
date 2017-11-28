@@ -35,10 +35,12 @@ public class Result implements ResultSet {
 	private int colCursor;
 	private int rows;
 	private int cols;
+	private boolean closed;
 
 	public Result (Object[][] res, String[] colNames) {
 		this.colNames = colNames;
 		this.res = res;
+		closed = false;
 		rows = res.length;
 		if (res[0] != null) {
 			cols = res[0].length;
@@ -69,6 +71,9 @@ public class Result implements ResultSet {
 
 	@Override
 	public boolean absolute(int row) throws SQLException {
+		if (closed) {
+			throw new SQLException("Result set closed.");
+		}
 		if (row > 0) {
 			rowCursor = absCursorFinder(row);
 		} else {
@@ -79,11 +84,17 @@ public class Result implements ResultSet {
 
 	@Override
 	public void afterLast() throws SQLException {
+		if (closed) {
+			throw new SQLException("Result set closed.");
+		}
 		rowCursor = rows + 1;
 	}
 
 	@Override
 	public void beforeFirst() throws SQLException {
+		if (closed) {
+			throw new SQLException("Result set closed.");
+		}
 		rowCursor = 0;
 	}
 
@@ -100,7 +111,8 @@ public class Result implements ResultSet {
 	}
 
 	@Override
-	public void close() throws SQLException {// No more access to data. 
+	public void close() throws SQLException {// No more access to data.
+		closed = true;
 		res = null;// It shall be cleaned by garbage collector 
 		// unless other references are pointing to it so handle that!
 	}
@@ -113,6 +125,9 @@ public class Result implements ResultSet {
 
 	@Override
 	public int findColumn(String columnLabel) throws SQLException {
+		if (closed) {
+			throw new SQLException("Result set closed.");
+		}
 		if (columnLabel == null) {
 			throw new SQLException("Given null in findColumn!");
 		} else {
@@ -128,6 +143,9 @@ public class Result implements ResultSet {
 
 	@Override
 	public boolean first() throws SQLException {
+		if (closed) {
+			throw new SQLException("Result set closed.");
+		}
 		rowCursor = 1;
 		return rows != 0;
 	}
@@ -618,26 +636,32 @@ public class Result implements ResultSet {
 
 	@Override
 	public boolean isClosed() throws SQLException {
-		throw new UnsupportedOperationException();
-		return false;
+		return closed;
 	}
 
 	@Override
 	public boolean isFirst() throws SQLException {
-		throw new UnsupportedOperationException();
-		return false;
+		if (closed) {
+			throw new SQLException("Result set closed.");
+		}
+		return rowCursor == 1;
 	}
 
 	@Override
 	public boolean isLast() throws SQLException {
-		throw new UnsupportedOperationException();
-		return false;
+		if (closed) {
+			throw new SQLException("Result set closed.");
+		}
+		return rowCursor == rows;
 	}
 
 	@Override
 	public boolean last() throws SQLException {
-		throw new UnsupportedOperationException();
-		return false;
+		if (closed) {
+			throw new SQLException("Result set closed.");
+		}
+		rowCursor = rows;
+		return rows != 0;
 	}
 
 	@Override
@@ -654,14 +678,24 @@ public class Result implements ResultSet {
 
 	@Override
 	public boolean next() throws SQLException {
-		throw new UnsupportedOperationException();
-		return false;
+		if (closed) {
+			throw new SQLException("Result set closed.");
+		}
+		if (!isAfterLast()) {
+			rowCursor++;
+		}
+		return !isAfterLast();
 	}
 
 	@Override
 	public boolean previous() throws SQLException {
-		throw new UnsupportedOperationException();
-		return false;
+		if (closed) {
+			throw new SQLException("Result set closed.");
+		}
+		if (!isBeforeFirst()) {
+			rowCursor++;
+		}
+		return !isBeforeFirst();
 	}
 
 	@Override
