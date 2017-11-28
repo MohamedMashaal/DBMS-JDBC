@@ -65,8 +65,8 @@ public class DatabaseImp implements Database{
     public boolean executeStructureQuery(String query) throws SQLException {
     	String[] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").replaceAll("\\s+\\,", ",").split("\\s+|\\,\\s*|\\(|\\)|\\=");
     	if(splittedQuery[1].equalsIgnoreCase("database")) {
-    		String databaseName = splittedQuery[2];
-    		DBContainer dbc = new DBContainer(splittedQuery[2]);
+    		String databaseName = splittedQuery[2].toLowerCase();
+    		DBContainer dbc = new DBContainer(databaseName);
     		if(splittedQuery[0].equalsIgnoreCase("create")) {
     			if(dirHandler.dbExists(databaseName)) {
     				int dbIndex = dbIndex(databaseName);
@@ -90,9 +90,9 @@ public class DatabaseImp implements Database{
     		}
     	}
     	else if (splittedQuery[1].equalsIgnoreCase("table")) {
-    		String tableName = splittedQuery[2];
+    		String tableName = splittedQuery[2].toLowerCase();
     		if(splittedQuery[0].equalsIgnoreCase("create")) {
-    			Table table = new Table(splittedQuery[2] ,extractor.getColumnsTypes(splittedQuery));
+    			Table table = new Table(tableName ,extractor.getColumnsTypes(splittedQuery));
     			if(data.get(data.size()-1).tableExists(tableName)) {
     				return false ;
     			}
