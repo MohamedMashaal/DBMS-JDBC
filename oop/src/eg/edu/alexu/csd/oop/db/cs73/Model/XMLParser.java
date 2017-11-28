@@ -93,7 +93,7 @@ public class XMLParser {
         Document dom;
         InputStream inputStream;
         Reader reader = null;
-        try {
+        //try {
             File xml = new File(path);
             /*inputStream = new FileInputStream(xml);
             reader = new InputStreamReader(inputStream, "ISO-8859-1");*/

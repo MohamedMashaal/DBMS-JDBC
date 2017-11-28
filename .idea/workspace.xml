@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="628454c3-52db-46d7-89f6-96977109cf21" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/XMLParser.java" afterPath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/XMLParser.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,8 +40,8 @@
       <file leaf-file-name="XMLParser.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/XMLParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="105" column="10" lean-forward="false" selection-start-line="105" selection-start-column="10" selection-end-line="105" selection-end-column="10" />
+            <state relative-caret-position="144">
+              <caret line="95" column="10" lean-forward="false" selection-start-line="95" selection-start-column="10" selection-end-line="95" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -849,8 +848,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/XMLParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="105" column="10" lean-forward="false" selection-start-line="105" selection-start-column="10" selection-end-line="105" selection-end-column="10" />
+        <state relative-caret-position="144">
+          <caret line="95" column="10" lean-forward="false" selection-start-line="95" selection-start-column="10" selection-end-line="95" selection-end-column="10" />
           <folding />
         </state>
       </provider>
