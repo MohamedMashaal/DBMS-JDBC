@@ -36,9 +36,21 @@ public class Result implements ResultSet {
 	private int rows;
 	private int cols;
 	private boolean closed;
+	private ResultSetMetaData meta;
+	private Statement statementCreator;
 
-	public Result (Object[][] res, String[] colNames) {
+	/**
+	 * This is the one and only constructor for the Result object.
+	 * @param res result of query as 2D Object array.
+	 * @param colNames String array of column names where 0-indexed indices correspond to
+	 * 1-indexed column names.
+	 * @param meta ResultSetMetaData object created before generating this object.
+	 * @param statementCreator the very same Statement object that created this ResultSet object.
+	 */
+	public Result (Object[][] res, String[] colNames, ResultSetMetaData meta, Statement statementCreator) {
+		this.statementCreator = statementCreator;
 		this.colNames = colNames;
+		this.meta = meta;
 		this.res = res;
 		closed = false;
 		rows = res.length;
@@ -327,12 +339,27 @@ public class Result implements ResultSet {
 
 	@Override
 	public int getInt(int columnIndex) throws SQLException {
-		throw new UnsupportedOperationException();
+		if (closed) {
+			throw new SQLException("Result set closed.");
+		}
+		if (columnIndex > cols) {
+			throw new SQLException("Invalid column index.");
+		}
+		if (isAfterLast() || isBeforeFirst()) {
+			return 0;
+		}
+		int returner = 0;
+		try {
+			returner = Integer.parseInt((String) res[rowCursor][columnIndex - 1]);
+			return returner;
+		} catch (Exception e) {
+			return returner;
+		}
 	}
 
 	@Override
 	public int getInt(String columnLabel) throws SQLException {
-		throw new UnsupportedOperationException();
+		return getInt(findColumn(columnLabel));
 	}
 
 	@Override
@@ -347,7 +374,10 @@ public class Result implements ResultSet {
 
 	@Override
 	public ResultSetMetaData getMetaData() throws SQLException {
-		throw new UnsupportedOperationException();
+		if (closed) {
+			throw new SQLException("Result set closed.");
+		}
+		return meta;
 	}
 
 	@Override
@@ -382,7 +412,16 @@ public class Result implements ResultSet {
 
 	@Override
 	public Object getObject(int columnIndex) throws SQLException {
-		throw new UnsupportedOperationException();
+		if (closed) {
+			throw new SQLException("Result set closed.");
+		}
+		if (columnIndex > cols) {
+			throw new SQLException("Invalid column index.");
+		}
+		if (isAfterLast() || isBeforeFirst()) {
+			return 0;
+		}
+		return res[rowCursor][columnIndex - 1];
 	}
 
 	@Override
@@ -457,17 +496,35 @@ public class Result implements ResultSet {
 
 	@Override
 	public Statement getStatement() throws SQLException {
-		throw new UnsupportedOperationException();
+		if (closed) {
+			throw new SQLException("Result set closed.");
+		}
+		return statementCreator;
 	}
 
 	@Override
 	public String getString(int columnIndex) throws SQLException {
-		throw new UnsupportedOperationException();
+		if (closed) {
+			throw new SQLException("Result set closed.");
+		}
+		if (columnIndex > cols) {
+			throw new SQLException("Invalid column index.");
+		}
+		if (isAfterLast() || isBeforeFirst()) {
+			return null;
+		}
+		String returner = null;
+		try {
+			returner = ((String) res[rowCursor][columnIndex - 1]);
+			return returner;
+		} catch (Exception e) {
+			return returner;
+		}
 	}
 
 	@Override
 	public String getString(String columnLabel) throws SQLException {
-		throw new UnsupportedOperationException();
+		return getString(findColumn(columnLabel));
 	}
 
 	@Override
