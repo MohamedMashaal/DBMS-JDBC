@@ -34,7 +34,8 @@ public class DatabaseImp implements Database{
 
     @Override
     public String createDatabase(String databaseName, boolean dropIfExists) {
-        String query = "";
+        databaseName = databaseName.toLowerCase();
+    	String query = "";
         if(dropIfExists){
             query = "DROP DATABASE " + databaseName;
             try {
