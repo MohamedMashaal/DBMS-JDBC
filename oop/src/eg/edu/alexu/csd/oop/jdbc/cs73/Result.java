@@ -39,6 +39,14 @@ public class Result implements ResultSet {
 	private ResultSetMetaData meta;
 	private Statement statementCreator;
 
+	/**
+	 * This is the one and only constructor for the Result object.
+	 * @param res result of query as 2D Object array.
+	 * @param colNames String array of column names where 0-indexed indices correspond to
+	 * 1-indexed column names.
+	 * @param meta ResultSetMetaData object created before generating this object.
+	 * @param statementCreator the very same Statement object that created this ResultSet object.
+	 */
 	public Result (Object[][] res, String[] colNames, ResultSetMetaData meta, Statement statementCreator) {
 		this.statementCreator = statementCreator;
 		this.colNames = colNames;
