@@ -75,7 +75,8 @@ public class DatabaseImp implements Database{
 					}
     				dbc = dirHandler.loadDB(databaseName);
     			}
-				dirHandler.createDatabase(databaseName);
+    			else {
+				dirHandler.createDatabase(databaseName);}
 				data.add(dbc);
 			}
     		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
