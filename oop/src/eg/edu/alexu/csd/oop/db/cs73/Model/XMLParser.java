@@ -102,8 +102,8 @@ public class XMLParser {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e.getMessage());
         }*/
-        //InputSource is = new InputSource(reader);
-        //is.setEncoding("ISO-8859-1");
+        InputSource is = new InputSource(reader);
+        is.setEncoding("ISO-8859-1");
         // Make an instance of the DocumentBuilderFactory
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try {
@@ -111,7 +111,7 @@ public class XMLParser {
             DocumentBuilder db = dbf.newDocumentBuilder();
             // parse using the builder to get the DOM mapping of the
             // XML file
-            dom = db.parse(xml);
+            dom = db.parse(is);
             Element doc = dom.getDocumentElement();
             NodeList rootNode = doc.getChildNodes();
             loadedTable = new Table(doc.getAttribute("name"));
