@@ -51,6 +51,9 @@ public class DirectoryHandler {
     }
     
 	public void createDatabase(String databaseName) {
+        if(dbExists(databaseName)){
+            databaseName = getExistedDBName(databaseName);
+        }
 		File dataFile = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName);
         dataFile.mkdirs();
 	}
@@ -96,6 +99,17 @@ public class DirectoryHandler {
         }
         //return new File(getPathOf(databaseName)).exists();
         return false;
+    }
+
+    public String getExistedDBName(String databaseName) {
+        for(File dir : mainDirectory.listFiles()){
+            if(dir.getName().equalsIgnoreCase(databaseName))
+            {
+                return dir.getName();
+            }
+        }
+        //return new File(getPathOf(databaseName)).exists();
+        return "";
     }
 
     public DBContainer loadDB(String databaseName) {
