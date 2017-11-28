@@ -98,9 +98,9 @@ public class XMLParser {
             inputStream = new FileInputStream(xml);
             reader = new InputStreamReader(inputStream, "ISO-8859-1");
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+        	throw new RuntimeException(e.getMessage());
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
         }
         InputSource is = new InputSource(reader);
         is.setEncoding("ISO-8859-1");
