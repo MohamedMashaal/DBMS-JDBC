@@ -21,7 +21,7 @@ public class DirectoryHandler {
     }
 
     public void deleteDatabase(String databaseName){
-    	File dir = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
+    	File dir = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName);
     	deleteDir(dir);
     }
 
@@ -40,24 +40,24 @@ public class DirectoryHandler {
 	}
 
 	public String getPathOf(String databaseName) {
-    	File dataFile = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
+    	File dataFile = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName);
         return dataFile.getAbsolutePath();
     }
 
     public String getPathOf(String tableName, String databaseName) {
-        File tableFile = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName
-        + System.getProperty("file.separator") + tableName + ".xml");
+        File tableFile = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName
+        + File.separator + tableName + ".xml");
         return tableFile.getAbsolutePath();
     }
     
 	public void createDatabase(String databaseName) {
-		File dataFile = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
+		File dataFile = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName);
         dataFile.mkdirs();
 	}
 
 	public void createTable(String tableName , String databaseName) {
 		//Just for now
-		File table = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName +System.getProperty("file.separator")+ tableName +".xml");
+		File table = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName + File.separator + tableName +".xml");
 		try {
 			table.createNewFile();
 			if(Files.exists(Paths.get(table.getAbsolutePath()))) {
@@ -70,7 +70,7 @@ public class DirectoryHandler {
 	}
 
 	public void deleteTable(String tableName, String databaseName) {
-		File table = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName +System.getProperty("file.separator")+ tableName +".xml");
+		File table = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName + File.separator + tableName +".xml");
 		table.delete();
 	}
 
