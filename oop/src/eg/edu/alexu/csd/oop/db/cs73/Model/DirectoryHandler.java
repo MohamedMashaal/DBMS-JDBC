@@ -95,7 +95,17 @@ public class DirectoryHandler {
         //return new File(getPathOf(databaseName)).exists();
         return false;
     }
-
+    
+    public boolean tableExists(String tableName , String databaseName) {
+        for(File dir : new File(getPathOf(databaseName)).listFiles()){
+            if(dir.getName().equalsIgnoreCase(tableName))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public DBContainer loadDB(String databaseName) {
         for(File dbFile : mainDirectory.listFiles()){
             if(dbFile.getName().equalsIgnoreCase(databaseName)){
