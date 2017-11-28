@@ -7,10 +7,18 @@ import java.util.concurrent.Executor;
 
 public class ConnectionImp implements Connection{
 
+    private boolean closed;
+
+    public ConnectionImp(){
+        closed = false;
+    }
+
 
     @Override
     public Statement createStatement() throws SQLException {
-    	throw new UnsupportedOperationException();
+        if(closed)
+            throw new SQLException();
+    	return new StatementImp();
     }
 
     @Override
@@ -50,12 +58,14 @@ public class ConnectionImp implements Connection{
 
     @Override
     public void close() throws SQLException {
-    	throw new UnsupportedOperationException();
+        if(closed)
+            throw new SQLException();
+    	closed = true;
     }
 
     @Override
     public boolean isClosed() throws SQLException {
-    	throw new UnsupportedOperationException();
+    	return closed;
     }
 
     @Override
