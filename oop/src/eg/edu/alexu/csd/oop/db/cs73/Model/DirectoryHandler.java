@@ -27,11 +27,7 @@ public class DirectoryHandler {
     	File[] files = dir.listFiles();
         if(files!=null) {
             for(File f: files) {
-                if(f.isDirectory()) {
-                    deleteDir(f);
-                } else {
-                    f.delete();
-                }
+                deleteDir(f);
             }
         }
         dir.delete();
