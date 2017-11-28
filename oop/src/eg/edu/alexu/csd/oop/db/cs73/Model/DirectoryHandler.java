@@ -2,6 +2,8 @@ package eg.edu.alexu.csd.oop.db.cs73.Model;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.DBContainer;
@@ -58,6 +60,9 @@ public class DirectoryHandler {
 		File table = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName +System.getProperty("file.separator")+ tableName +".xml");
 		try {
 			table.createNewFile();
+			if(Files.exists(Paths.get(table.getAbsolutePath()))) {
+				throw new RuntimeException("File exist at " + table.getAbsolutePath());
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
