@@ -49,7 +49,7 @@ public class DirectoryHandler {
     }
     
 	public void createDatabase(String databaseName) {
-		File dataFile = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
+		File dataFile = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName.toLowerCase());
         dataFile.mkdirs();
 	}
 
