@@ -67,7 +67,7 @@ public class DatabaseImp implements Database{
     		String databaseName = splittedQuery[2];
     		DBContainer dbc = new DBContainer(splittedQuery[2]);
     		if(splittedQuery[0].equalsIgnoreCase("create")) {
-    			if(dbExists(databaseName)) {
+    			if(dirHandler.dbExists(databaseName)) {
     				int dbIndex = dbIndex(databaseName);
     				if(dbIndex != -1){
 						dbc = data.get(dbIndex(databaseName));
@@ -79,7 +79,7 @@ public class DatabaseImp implements Database{
 				data.add(dbc);
 			}
     		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
-    			if(dbExists(databaseName)) {
+    			if(dirHandler.dbExists(databaseName)) {
     				int dbIndex = dbIndex(databaseName);
     				if(dbIndex != -1){
 						data.remove(dbIndex);
