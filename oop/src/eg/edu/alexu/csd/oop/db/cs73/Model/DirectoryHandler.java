@@ -56,12 +56,12 @@ public class DirectoryHandler {
 	public void createTable(String tableName , String databaseName) {
 		//Just for now
 		File table = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName +System.getProperty("file.separator")+ tableName +".xml");
-		//try {
-			table.mkdirs();
-		/*} catch (IOException e) {
+		try {
+			table.createNewFile();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 	}
 
 	public void deleteTable(String tableName, String databaseName) {
