@@ -64,7 +64,7 @@ public class DatabaseImp implements Database{
     public boolean executeStructureQuery(String query) throws SQLException {
     	String[] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").replaceAll("\\s+\\,", ",").split("\\s+|\\,\\s*|\\(|\\)|\\=");
     	if(splittedQuery[1].equalsIgnoreCase("database")) {
-    		String databaseName = splittedQuery[2];
+    		String databaseName = splittedQuery[2].toLowerCase();
     		DBContainer dbc = new DBContainer(splittedQuery[2]);
     		if(splittedQuery[0].equalsIgnoreCase("create")) {
     			if(dirHandler.dbExists(databaseName)) {
