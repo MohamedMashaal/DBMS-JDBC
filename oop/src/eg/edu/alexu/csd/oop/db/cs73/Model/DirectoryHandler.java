@@ -2,6 +2,8 @@ package eg.edu.alexu.csd.oop.db.cs73.Model;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.DBContainer;
@@ -13,13 +15,13 @@ public class DirectoryHandler {
     XMLParser xmlParser;
 
     public DirectoryHandler(){
-        mainDirectory = new File("data");
+        mainDirectory = new File("Mashaal__data");
         mainDirectory.mkdirs();
         xmlParser = new XMLParser();
     }
 
     public void deleteDatabase(String databaseName){
-    	File dir = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
+    	File dir = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName);
     	deleteDir(dir);
     }
 
@@ -38,24 +40,24 @@ public class DirectoryHandler {
 	}
 
 	public String getPathOf(String databaseName) {
-    	File dataFile = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName);
+    	File dataFile = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName);
         return dataFile.getAbsolutePath();
     }
 
     public String getPathOf(String tableName, String databaseName) {
-        File tableFile = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName
-        + System.getProperty("file.separator") + tableName + ".xml");
+        File tableFile = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName
+        + File.separator + tableName + ".xml");
         return tableFile.getAbsolutePath();
     }
     
 	public void createDatabase(String databaseName) {
-		File dataFile = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName.toLowerCase());
+		File dataFile = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName);
         dataFile.mkdirs();
 	}
 
 	public void createTable(String tableName , String databaseName) {
 		//Just for now
-		File table = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName +System.getProperty("file.separator")+ tableName +".xml");
+		File table = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName + File.separator + tableName +".xml");
 		try {
 			table.createNewFile();
 		} catch (IOException e) {
@@ -65,7 +67,7 @@ public class DirectoryHandler {
 	}
 
 	public void deleteTable(String tableName, String databaseName) {
-		File table = new File(mainDirectory.getAbsolutePath() + System.getProperty("file.separator") + databaseName +System.getProperty("file.separator")+ tableName +".xml");
+		File table = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName + File.separator + tableName +".xml");
 		table.delete();
 	}
 
