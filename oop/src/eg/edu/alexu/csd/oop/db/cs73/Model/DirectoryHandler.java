@@ -60,9 +60,6 @@ public class DirectoryHandler {
 		File table = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName + File.separator + tableName +".xml");
 		try {
 			table.createNewFile();
-			if(Files.exists(Paths.get(table.getAbsolutePath()))) {
-				throw new RuntimeException("File exist at " + table.getAbsolutePath());
-			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
