@@ -51,7 +51,7 @@ public class DirectoryHandler {
     }
     
 	public void createDatabase(String databaseName) {
-		File dataFile = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName.toLowerCase());
+		File dataFile = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName);
         dataFile.mkdirs();
 	}
 
