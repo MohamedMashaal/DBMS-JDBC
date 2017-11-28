@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
-<table name="table_2">
-    <column name="column1" type="int">
-        <record value="3"/>
-    </column>
-    <column name="column2" type="varchar">
-        <record value="whatever"/>
-    </column>
-</table>
