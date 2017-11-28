@@ -13,7 +13,7 @@ public class DirectoryHandler {
     XMLParser xmlParser;
 
     public DirectoryHandler(){
-        mainDirectory = new File(System.getProperty("user.dir")+System.getProperty("file.separator")+"data");
+        mainDirectory = new File("data");
         mainDirectory.mkdirs();
         xmlParser = new XMLParser();
     }
