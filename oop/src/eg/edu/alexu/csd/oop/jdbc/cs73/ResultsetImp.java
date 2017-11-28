@@ -27,7 +27,7 @@ import java.util.Map;
  * @author H
  *
  */
-public class Result implements ResultSet {
+public class ResultsetImp implements ResultSet {
 
 	private String[] colNames;
 	private Object[][] res;
@@ -47,7 +47,7 @@ public class Result implements ResultSet {
 	 * @param meta ResultSetMetaData object created before generating this object.
 	 * @param statementCreator the very same Statement object that created this ResultSet object.
 	 */
-	public Result (Object[][] res, String[] colNames, ResultSetMetaData meta, Statement statementCreator) {
+	public ResultsetImp (Object[][] res, String[] colNames, ResultSetMetaData meta, Statement statementCreator) {
 		this.statementCreator = statementCreator;
 		this.colNames = colNames;
 		this.meta = meta;

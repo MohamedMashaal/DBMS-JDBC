@@ -7,17 +7,17 @@ import java.util.logging.Logger;
 public class DriverImp implements Driver {
     @Override
     public Connection connect(String s, Properties properties) throws SQLException {
-        return null;
+    	throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean acceptsURL(String s) throws SQLException {
-        return false;
+    	throw new UnsupportedOperationException();
     }
 
     @Override
     public DriverPropertyInfo[] getPropertyInfo(String s, Properties properties) throws SQLException {
-        return new DriverPropertyInfo[0];
+    	throw new UnsupportedOperationException();
     }
 
     @Override
