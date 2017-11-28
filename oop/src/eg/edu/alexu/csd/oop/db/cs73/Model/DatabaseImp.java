@@ -85,6 +85,9 @@ public class DatabaseImp implements Database{
 						data.remove(dbIndex);
 					}
     			}
+    			else {
+    				return false;
+    			}
     			dirHandler.deleteDatabase(databaseName);
     		}
     	}
