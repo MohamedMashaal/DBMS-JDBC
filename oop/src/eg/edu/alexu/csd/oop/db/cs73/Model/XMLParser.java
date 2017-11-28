@@ -93,15 +93,15 @@ public class XMLParser {
         Document dom;
         InputStream inputStream;
         Reader reader = null;
-        //try {
+        try {
             File xml = new File(path);
-            /*inputStream = new FileInputStream(xml);
-            reader = new InputStreamReader(inputStream, "ISO-8859-1");*/
-        /*} catch (UnsupportedEncodingException e) {
+            inputStream = new FileInputStream(xml);
+            reader = new InputStreamReader(inputStream, "ISO-8859-1");
+        } catch (UnsupportedEncodingException e) {
         	throw new RuntimeException(e.getMessage());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e.getMessage());
-        }*/
+        }
         InputSource is = new InputSource(reader);
         is.setEncoding("ISO-8859-1");
         // Make an instance of the DocumentBuilderFactory
