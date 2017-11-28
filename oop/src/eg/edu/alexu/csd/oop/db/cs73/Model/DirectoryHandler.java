@@ -100,7 +100,6 @@ public class DirectoryHandler {
         for(File dbFile : mainDirectory.listFiles()){
             if(dbFile.getName().equalsIgnoreCase(databaseName)){
                 DBContainer dbObj = new DBContainer(dbFile.getName());
-
                 for(File tableFile : dbFile.listFiles()){
                     if(!tableFile.getAbsolutePath().substring(tableFile.getAbsolutePath().length()-3).equalsIgnoreCase("xml")){
                         continue;
