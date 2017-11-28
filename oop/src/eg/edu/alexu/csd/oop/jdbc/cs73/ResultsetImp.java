@@ -47,6 +47,19 @@ public class ResultsetImp implements ResultSet {
 	 * @param meta ResultSetMetaData object created before generating this object.
 	 * @param statementCreator the very same Statement object that created this ResultSet object.
 	 */
+	public ResultsetImp (Object[][] res) {
+		this.res = res;
+		closed = false;
+		rows = res.length;
+		if (res[0] != null) {
+			cols = res[0].length;
+		} else {
+			cols = -1;
+		}
+		colCursor = 0;
+		rowCursor = 0;
+	}
+	
 	public ResultsetImp (Object[][] res, String[] colNames, ResultSetMetaData meta, Statement statementCreator) {
 		this.statementCreator = statementCreator;
 		this.colNames = colNames;

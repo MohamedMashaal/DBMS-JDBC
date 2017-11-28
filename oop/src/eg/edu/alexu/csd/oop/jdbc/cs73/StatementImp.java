@@ -6,8 +6,11 @@ import java.sql.SQLException;
 import java.sql.SQLWarning;
 import java.sql.Statement;
 
-public class StatementImp implements Statement{
+import eg.edu.alexu.csd.oop.db.Database;
+import eg.edu.alexu.csd.oop.db.cs73.Model.DatabaseImp;
 
+public class StatementImp implements Statement{
+	Database dbManager = new DatabaseImp();
 	@Override
 	public boolean isWrapperFor(Class<?> arg0) throws SQLException {
 		throw new UnsupportedOperationException();
@@ -50,7 +53,7 @@ public class StatementImp implements Statement{
 
 	@Override
 	public boolean execute(String sql) throws SQLException {
-		throw new UnsupportedOperationException();
+		return dbManager.executeStructureQuery(sql);
 	}
 
 	@Override
@@ -75,12 +78,12 @@ public class StatementImp implements Statement{
 
 	@Override
 	public ResultSet executeQuery(String sql) throws SQLException {
-		throw new UnsupportedOperationException();
+		return new ResultsetImp(dbManager.executeQuery(sql));
 	}
 
 	@Override
 	public int executeUpdate(String sql) throws SQLException {
-		throw new UnsupportedOperationException();
+		return dbManager.executeUpdateQuery(sql);
 	}
 
 	@Override
