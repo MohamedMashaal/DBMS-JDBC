@@ -75,7 +75,9 @@ public class DatabaseImp implements Database{
 					}
     				dbc = dirHandler.loadDB(databaseName);
     			}
+    			else {
 				dirHandler.createDatabase(databaseName);
+				}
 				data.add(dbc);
 			}
     		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
@@ -84,6 +86,9 @@ public class DatabaseImp implements Database{
     				if(dbIndex != -1){
 						data.remove(dbIndex);
 					}
+    			}
+    			else {
+    				return false;
     			}
     			dirHandler.deleteDatabase(databaseName);
     		}
@@ -107,9 +112,6 @@ public class DatabaseImp implements Database{
     		else if (splittedQuery[0].equalsIgnoreCase("drop")) {
     			if(data.get(data.size()-1).tableExists(tableName)) {
     				data.get(data.size()-1).remove(tableName);
-    			}
-    			else {
-    				return false;
     			}
     			dirHandler.deleteTable(tableName , data.get(data.size()-1).getName());
     		}
