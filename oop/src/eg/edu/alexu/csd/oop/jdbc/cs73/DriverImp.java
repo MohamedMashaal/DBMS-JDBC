@@ -5,19 +5,21 @@ import java.util.Properties;
 import java.util.logging.Logger;
 
 public class DriverImp implements Driver {
-    @Override
+    private Properties properties ;
+	@Override
     public Connection connect(String s, Properties properties) throws SQLException {
-    	throw new UnsupportedOperationException();
+    	this.properties = properties;
+		return new ConnectionImp();
     }
 
     @Override
     public boolean acceptsURL(String s) throws SQLException {
-    	throw new UnsupportedOperationException();
+    	return true ;
     }
 
     @Override
     public DriverPropertyInfo[] getPropertyInfo(String s, Properties properties) throws SQLException {
-    	throw new UnsupportedOperationException();
+    	return new DriverPropertyInfo[0];
     }
 
     @Override
