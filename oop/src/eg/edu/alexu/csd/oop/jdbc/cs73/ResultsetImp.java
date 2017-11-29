@@ -670,6 +670,7 @@ public class ResultsetImp implements ResultSet {
 
 	@Override
 	public boolean next() throws SQLException {
+		try {
 		if (closed) {
 			throw new SQLException("Result set closed.");
 		}
@@ -677,10 +678,15 @@ public class ResultsetImp implements ResultSet {
 			rowCursor++;
 		}
 		return !isAfterLast();
+		}
+		catch(NullPointerException e) {
+			throw new RuntimeException("here");
+		}
 	}
 
 	@Override
 	public boolean previous() throws SQLException {
+		try {
 		if (closed) {
 			throw new SQLException("Result set closed.");
 		}
@@ -688,6 +694,10 @@ public class ResultsetImp implements ResultSet {
 			rowCursor++;
 		}
 		return !isBeforeFirst();
+		}
+		catch(NullPointerException e) {
+			throw new RuntimeException("here");
+		}
 	}
 
 	@Override
