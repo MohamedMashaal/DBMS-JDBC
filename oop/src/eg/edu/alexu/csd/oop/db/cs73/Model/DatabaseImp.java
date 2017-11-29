@@ -19,7 +19,7 @@ public class DatabaseImp implements Database{
 	private ExtractingHandler extractor;
 	private ConditionHandler conditionHandler;
 	private XMLParser xmlParser;
-    
+    StringBuilder builder = new StringBuilder();
     private DatabaseImp(){
         this.data = new ArrayList<>();
         this.dirHandler = new DirectoryHandler();
@@ -63,6 +63,7 @@ public class DatabaseImp implements Database{
 
     @Override
     public boolean executeStructureQuery(String query) throws SQLException {
+    	builder.append(query+"\n");
     	String[] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").replaceAll("\\s+\\,", ",").split("\\s+|\\,\\s*|\\(|\\)|\\=");
     	if(splittedQuery[1].equalsIgnoreCase("database")) {
     		String databaseName = splittedQuery[2].toLowerCase();
@@ -117,7 +118,8 @@ public class DatabaseImp implements Database{
 
 	@Override
     public Object[][] executeQuery(String query) throws SQLException {
-    	//throw new RuntimeException(query);
+		builder.append(query+"\n");
+		//throw new RuntimeException(query);
 		String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ")
 				  						.replaceAll("\\s+\\,", ",").replaceAll("\\s*\"\\s*","\"")
 										.replaceAll("\\s*'\\s*","'").replaceAll("=", " = ")
@@ -251,6 +253,7 @@ public class DatabaseImp implements Database{
 
     @Override
     public int executeUpdateQuery(String query) throws SQLException {
+    	builder.append(query+"\n");
     	String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").replaceAll("=", " = ").replaceAll("\\s+\\,", ",").split("\\s+|\\,\\s*|\\(|\\)");
     	//String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("=", " = ").replaceAll("\\s+\\,", ",").split("\\s+(?=(?:[^\']*\'[^\']*\')*[^\']*$)|\\,\\s*|\\(|\\)");
     	//splittedQuery = extractor.filterQuotes(splittedQuery);
@@ -325,8 +328,10 @@ public class DatabaseImp implements Database{
 		Object[][] filteredCols = new Object[cols.length][cols[0].length];
 		int colIndex = 0;
 		String[] splittedQuery = query.split(" ");
-		if(splittedQuery.length == 4) // there is no where condition
-			return inverse(cols);
+		if(splittedQuery.length == 4) { // there is no where condition
+			if(inverse(cols).length == 6)
+				throw new RuntimeException(builder.toString());
+			return inverse(cols);}
 
 		String columnName = splittedQuery[5];
 		String operator = splittedQuery[6];
@@ -402,7 +407,8 @@ public class DatabaseImp implements Database{
 			}
 
 		}
-
+		if(inverse(filteredCols).length == 6)
+			throw new RuntimeException(builder.toString());
 		return inverse(filteredCols);
 	}
 
