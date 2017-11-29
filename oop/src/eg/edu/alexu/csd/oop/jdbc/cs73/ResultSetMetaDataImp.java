@@ -20,7 +20,7 @@ public class ResultSetMetaDataImp implements ResultSetMetaData {
 
 	@Override
 	public int getColumnCount() throws SQLException {
-		if(table.length == 0 && table[0] != null)
+		if(table.length != 0 && table[0] != null)
 			return table[0].length;
 		return 0 ;
 	}
