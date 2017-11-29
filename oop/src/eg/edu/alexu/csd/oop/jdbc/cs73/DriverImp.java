@@ -19,7 +19,7 @@ public class DriverImp implements Driver {
 
     @Override
     public DriverPropertyInfo[] getPropertyInfo(String s, Properties properties) throws SQLException {
-    	return new DriverPropertyInfo[0];
+    	throw new UnsupportedOperationException();
     }
 
     @Override
