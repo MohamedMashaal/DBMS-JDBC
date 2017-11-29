@@ -362,10 +362,13 @@ public class ResultsetImp implements ResultSet {
 		}
 		int returner = 0;
 		try {
-			String x = (String)res[rowCursor-1][columnIndex - 1];
-			if(x.equalsIgnoreCase("null"))
-				return 0 ;
-			returner = Integer.parseInt(x);
+			Object x = res[rowCursor-1][columnIndex - 1];
+			if(x instanceof String) {
+				String z = (String)x;
+				if(z.equalsIgnoreCase("null"))
+					return 0 ;
+			}
+			returner = (Integer)x;
 			return returner;
 		} catch (Exception e) {
 			throw new SQLException();
@@ -436,9 +439,12 @@ public class ResultsetImp implements ResultSet {
 		if (isAfterLast() || isBeforeFirst()) {
 			throw new RuntimeException();
 		}
-		String x = (String) res[rowCursor-1][columnIndex - 1] ;
-		if(x.equalsIgnoreCase("null"))
-			return null ;
+		Object x = res[rowCursor-1][columnIndex - 1] ;
+		if(x instanceof String) {
+			String z = (String) x ;
+			if(z.equalsIgnoreCase("null"))
+				return null ;
+		}
 		return res[rowCursor-1][columnIndex - 1];
 	}
 
@@ -531,12 +537,13 @@ public class ResultsetImp implements ResultSet {
 		if (isAfterLast() || isBeforeFirst()) {
 			throw new SQLException();
 		}
-		String returner = null;
 		try {
-			String x = (String)res[rowCursor-1][columnIndex - 1];
-			if(x.equalsIgnoreCase("null"))
-				return returner ;
-			returner = x ;
+			Object x = res[rowCursor-1][columnIndex - 1];
+			if(x instanceof String) {
+				String z = (String)x;
+				if(z.equalsIgnoreCase("null"))
+					return null ;}
+			String returner = (String)x ;
 			return returner;
 		} catch (Exception e) {
 			throw new SQLException();
