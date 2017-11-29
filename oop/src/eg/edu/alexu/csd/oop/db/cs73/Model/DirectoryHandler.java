@@ -15,7 +15,7 @@ public class DirectoryHandler {
     XMLParser xmlParser;
 
     public DirectoryHandler(){
-        mainDirectory = new File("Mashaal__data");
+        mainDirectory = new File("Mashaal_data");
         mainDirectory.mkdirs();
         xmlParser = new XMLParser();
     }

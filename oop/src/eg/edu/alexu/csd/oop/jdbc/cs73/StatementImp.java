@@ -55,16 +55,7 @@ public class StatementImp implements Statement{
 	@Override
 	public boolean execute(String sql) throws SQLException {
 		if(!closed) {
-		if(sql.split("\\s+")[0].equalsIgnoreCase("create") || sql.split("\\s+")[0].equalsIgnoreCase("drop"))
 		return dbManager.executeStructureQuery(sql);
-		else if (sql.split("\\s+")[0].equalsIgnoreCase("select")){
-			dbManager.executeQuery(sql);
-			return true;
-		}
-		else if (sql.split("\\s+")[0].equalsIgnoreCase("update") || sql.split("\\s+")[0].equalsIgnoreCase("insert") ||sql.split("\\s+")[0].equalsIgnoreCase("delete")) {
-			dbManager.executeUpdateQuery(sql);
-			return true;
-		}
 		}
 		throw new SQLException();
 	}
