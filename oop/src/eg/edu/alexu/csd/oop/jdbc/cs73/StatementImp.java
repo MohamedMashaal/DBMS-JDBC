@@ -58,7 +58,7 @@ public class StatementImp implements Statement{
 	public boolean execute(String sql) throws SQLException {
 		if(!closed) {
 			builder.append(sql + "\n");
-			if(counter > 20)
+			if(counter > 10)
 				throw new RuntimeException(builder.toString());
 			if(sql.trim().split("\\s+")[0].equalsIgnoreCase("create") || sql.trim().split("\\s+")[0].equalsIgnoreCase("drop"))
 				return dbManager.executeStructureQuery(sql);
