@@ -4,7 +4,6 @@ import java.sql.*;
 import java.util.Properties;
 import java.util.logging.Logger;
 
-import javafx.scene.web.WebHistory.Entry;
 
 public class DriverImp implements Driver {
     private Properties properties ;
