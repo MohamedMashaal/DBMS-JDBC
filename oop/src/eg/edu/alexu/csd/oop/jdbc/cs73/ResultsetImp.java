@@ -425,16 +425,20 @@ public class ResultsetImp implements ResultSet {
 
 	@Override
 	public Object getObject(int columnIndex) throws SQLException {
-		if (closed) {
-			throw new SQLException("Result set closed.");
+		try {
+			if (closed) {
+				throw new SQLException("Result set closed.");
+			}
+			if (columnIndex > cols) {
+				throw new SQLException("Invalid column index.");
+			}
+			if (isAfterLast() || isBeforeFirst()) {
+				return 0;
+			}
+			return res[rowCursor][columnIndex - 1];
+		} catch (Exception e) {
+			throw new RuntimeException("Fault is here");
 		}
-		if (columnIndex > cols) {
-			throw new SQLException("Invalid column index.");
-		}
-		if (isAfterLast() || isBeforeFirst()) {
-			return 0;
-		}
-		return res[rowCursor][columnIndex - 1];
 	}
 
 	@Override
