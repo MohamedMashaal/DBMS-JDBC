@@ -96,7 +96,7 @@ public class StatementImp implements Statement{
 		if(!closed) {
 			builder.append(sql + "\n");
 			counter++;
-			if(counter > 5)
+			if(counter > 10)
 				throw new RuntimeException(builder.toString());
 			return new ResultsetImp(dbManager.executeQuery(sql));
 			}
@@ -108,7 +108,7 @@ public class StatementImp implements Statement{
 		if(!closed) {
 			builder.append(sql + "\n");
 			counter++;
-			if(counter > 5)
+			if(counter > 10)
 				throw new RuntimeException(builder.toString());
 			return dbManager.executeUpdateQuery(sql);}
 		throw new SQLException();
