@@ -12,7 +12,7 @@ import eg.edu.alexu.csd.oop.db.Database;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DatabaseImp;
 
 public class StatementImp implements Statement{
-	private Database dbManager = DatabaseImp.getUniqueInstance();
+	private DatabaseImp dbManager = DatabaseImp.getUniqueInstance();
 	private boolean closed = false ;
 	private ArrayList<String> commands = new ArrayList<>();
 	private Connection connection;

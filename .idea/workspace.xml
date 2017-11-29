@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="628454c3-52db-46d7-89f6-96977109cf21" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DatabaseImp.java" afterPath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DatabaseImp.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/jdbc/cs73/StatementImp.java" afterPath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/jdbc/cs73/StatementImp.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,12 +16,27 @@
       <file leaf-file-name="StatementImp.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/jdbc/cs73/StatementImp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="131" column="30" lean-forward="false" selection-start-line="131" selection-start-column="30" selection-end-line="131" selection-end-column="30" />
+            <state relative-caret-position="322">
+              <caret line="14" column="23" lean-forward="false" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#679#680#0" expanded="true" />
-                <element signature="e#714#715#0" expanded="true" />
+                <element signature="e#682#683#0" expanded="true" />
+                <element signature="e#717#718#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseImp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DatabaseImp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="223">
+              <caret line="304" column="31" lean-forward="true" selection-start-line="304" selection-start-column="8" selection-end-line="304" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#10908#10909#0" expanded="true" />
+                <element signature="e#10937#10938#0" expanded="true" />
+                <marker date="1511994760719" expanded="true" signature="3269:4048" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -60,31 +74,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseImp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DatabaseImp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="30" column="29" lean-forward="false" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#10908#10909#0" expanded="true" />
-                <element signature="e#10937#10938#0" expanded="true" />
-                <marker date="1511994760719" expanded="true" signature="3269:4048" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="XMLParser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/XMLParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="102" column="25" lean-forward="false" selection-start-line="102" selection-start-column="25" selection-end-line="102" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -114,6 +103,7 @@
       <find>getme</find>
       <find>getMetaa</find>
       <find>getMeta</find>
+      <find>info</find>
     </findStrings>
     <replaceStrings>
       <replace>cs73</replace>
@@ -842,19 +832,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DatabaseImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="30" column="29" lean-forward="false" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#10908#10909#0" expanded="true" />
-            <element signature="e#10937#10938#0" expanded="true" />
-            <marker date="1511994760719" expanded="true" signature="3269:4048" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/View/UI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -889,14 +866,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/jdbc/cs73/StatementImp.java">
+    <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DatabaseImp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="131" column="30" lean-forward="false" selection-start-line="131" selection-start-column="30" selection-end-line="131" selection-end-column="30" />
+        <state relative-caret-position="223">
+          <caret line="304" column="31" lean-forward="true" selection-start-line="304" selection-start-column="8" selection-end-line="304" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#679#680#0" expanded="true" />
-            <element signature="e#714#715#0" expanded="true" />
+            <element signature="e#10908#10909#0" expanded="true" />
+            <element signature="e#10937#10938#0" expanded="true" />
+            <marker date="1511994760719" expanded="true" signature="3269:4048" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/jdbc/cs73/StatementImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" column="23" lean-forward="false" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#682#683#0" expanded="true" />
+            <element signature="e#717#718#0" expanded="true" />
           </folding>
         </state>
       </provider>
