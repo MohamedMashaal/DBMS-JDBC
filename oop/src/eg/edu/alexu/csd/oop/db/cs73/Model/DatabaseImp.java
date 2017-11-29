@@ -28,7 +28,7 @@ public class DatabaseImp implements Database{
         this.xmlParser = new XMLParser();
 	}
     
-    public static Database getUniqueInstance() {
+    public static DatabaseImp getUniqueInstance() {
     	return uniqueInstance;
     }
     
