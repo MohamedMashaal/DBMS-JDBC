@@ -117,7 +117,7 @@ public class DatabaseImp implements Database{
 
 	@Override
     public Object[][] executeQuery(String query) throws SQLException {
-    	throw new RuntimeException(query);
+    	//throw new RuntimeException(query);
 		String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ")
 				.replaceAll("\\s+\\,", ",").replaceAll("\\s*\"\\s*","\"")
 				.replaceAll("\\s*'\\s*","'").replaceAll("=", " = ")
@@ -405,7 +405,7 @@ public class DatabaseImp implements Database{
 		}
 
 		//return inverse(filteredCols);
-		return cols;
+		return filteredCols;
 	}
 
 	private Object[][] inverse(Object[][] cols) {
