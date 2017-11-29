@@ -38,15 +38,7 @@ public class ResultsetImp implements ResultSet {
 	private boolean closed;
 	private ResultSetMetaData meta;
 	private Statement statementCreator;
-
-	/**
-	 * This is the one and only constructor for the Result object.
-	 * @param res result of query as 2D Object array.
-	 * @param colNames String array of column names where 0-indexed indices correspond to
-	 * 1-indexed column names.
-	 * @param meta ResultSetMetaData object created before generating this object.
-	 * @param statementCreator the very same Statement object that created this ResultSet object.
-	 */
+	
 	public ResultsetImp (Object[][] res) {
 		this.res = res;
 		closed = false;
@@ -60,6 +52,14 @@ public class ResultsetImp implements ResultSet {
 		rowCursor = 0;
 	}
 	
+	/**
+	 * This is the one and only constructor for the Result object.
+	 * @param res result of query as 2D Object array.
+	 * @param colNames String array of column names where 0-indexed indices correspond to
+	 * 1-indexed column names.
+	 * @param meta ResultSetMetaData object created before generating this object.
+	 * @param statementCreator the very same Statement object that created this ResultSet object.
+	 */
 	public ResultsetImp (Object[][] res, String[] colNames, ResultSetMetaData meta, Statement statementCreator) {
 		this.statementCreator = statementCreator;
 		this.colNames = colNames;
@@ -434,7 +434,7 @@ public class ResultsetImp implements ResultSet {
 		if (isAfterLast() || isBeforeFirst()) {
 			return 0;
 		}
-		return res[rowCursor][columnIndex - 1];
+		return res[rowCursor-1][columnIndex - 1];
 	}
 
 	@Override
