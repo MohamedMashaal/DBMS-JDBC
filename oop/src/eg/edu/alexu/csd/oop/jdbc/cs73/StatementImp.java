@@ -56,7 +56,7 @@ public class StatementImp implements Statement{
 	public boolean execute(String sql) throws SQLException {
 		if(!closed) {
 			if(sql.trim().split("\\s+")[0].equalsIgnoreCase("create") || sql.trim().split("\\s+")[0].equalsIgnoreCase("drop"))
-			return dbManager.executeStructureQuery(sql);
+				return dbManager.executeStructureQuery(sql);
 			else if(sql.trim().split("\\s+")[0].equalsIgnoreCase("insert") || sql.trim().split("\\s+")[0].equalsIgnoreCase("delete")||sql.trim().split("\\s+")[0].equalsIgnoreCase("update")) {
 				int result = dbManager.executeUpdateQuery(sql);
 				return result > 0 ? true : false ;
