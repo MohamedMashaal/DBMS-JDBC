@@ -8,7 +8,11 @@ public class ResultSetMetaDataImp implements ResultSetMetaData {
 
 	protected Object[][] table;
 	protected String[] columns;
-
+	
+	public ResultSetMetaDataImp(Object [][] table) {
+		this.table = table ;
+	}
+	
 	public ResultSetMetaDataImp(Object[][] table, String[] columns) {
 		this.table = table;
 		this.columns = columns;
@@ -16,7 +20,9 @@ public class ResultSetMetaDataImp implements ResultSetMetaData {
 
 	@Override
 	public int getColumnCount() throws SQLException {
-		return columns.length;
+		if(table.length == 0 && table[0] != null)
+			return table[0].length;
+		return 0 ;
 	}
 
 	@Override
