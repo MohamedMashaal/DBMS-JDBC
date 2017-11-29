@@ -57,10 +57,6 @@ public class StatementImp implements Statement{
 	@Override
 	public boolean execute(String sql) throws SQLException {
 		if(!closed) {
-			builder.append(sql + "\n");
-			counter++;
-			if(counter > 2)
-				throw new RuntimeException(builder.toString());
 			if(sql.trim().split("\\s+")[0].equalsIgnoreCase("create") || sql.trim().split("\\s+")[0].equalsIgnoreCase("drop"))
 				return dbManager.executeStructureQuery(sql);
 			else if(sql.trim().split("\\s+")[0].equalsIgnoreCase("insert") || sql.trim().split("\\s+")[0].equalsIgnoreCase("delete")||sql.trim().split("\\s+")[0].equalsIgnoreCase("update")) {
@@ -97,14 +93,23 @@ public class StatementImp implements Statement{
 
 	@Override
 	public ResultSet executeQuery(String sql) throws SQLException {
-		if(!closed)
+		if(!closed) {
+			builder.append(sql + "\n");
+			counter++;
+			if(counter > 5)
+				throw new RuntimeException(builder.toString());
 			return new ResultsetImp(dbManager.executeQuery(sql));
+			}
 		throw new SQLException();
 	}
 
 	@Override
 	public int executeUpdate(String sql) throws SQLException {
 		if(!closed) {
+			builder.append(sql + "\n");
+			counter++;
+			if(counter > 5)
+				throw new RuntimeException(builder.toString());
 			return dbManager.executeUpdateQuery(sql);}
 		throw new SQLException();
 	}
