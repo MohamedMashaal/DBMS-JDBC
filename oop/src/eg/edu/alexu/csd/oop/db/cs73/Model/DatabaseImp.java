@@ -326,8 +326,8 @@ public class DatabaseImp implements Database{
 		int colIndex = 0;
 		String[] splittedQuery = query.split(" ");
 		if(splittedQuery.length == 4) // there is no where condition
-			//return inverse(cols);
-			return cols;
+			return inverse(cols);
+			//return cols;
 
 		String columnName = splittedQuery[5];
 		String operator = splittedQuery[6];
@@ -404,8 +404,8 @@ public class DatabaseImp implements Database{
 
 		}
 
-		//return inverse(filteredCols);
-		return filteredCols;
+		return inverse(filteredCols);
+		//return filteredCols;
 	}
 
 	private Object[][] inverse(Object[][] cols) {
