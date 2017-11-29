@@ -5,13 +5,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLWarning;
 import java.sql.Statement;
+import java.util.ArrayList;
 
+import eg.edu.alexu.csd.oop.db.Command;
 import eg.edu.alexu.csd.oop.db.Database;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DatabaseImp;
 
 public class StatementImp implements Statement{
 	private Database dbManager = DatabaseImp.getUniqueInstance();
 	private boolean closed = false ;
+	private ArrayList<String> commands = new ArrayList<>();
+	private Connection connection;
+	private int queryTimeout = Integer.MAX_VALUE; // INF
+
+	public StatementImp(Connection connection){
+		this.connection = connection;
+	}
+
 	@Override
 	public boolean isWrapperFor(Class<?> arg0) throws SQLException {
 		throw new UnsupportedOperationException();
@@ -24,7 +34,17 @@ public class StatementImp implements Statement{
 
 	@Override
 	public void addBatch(String sql) throws SQLException {
-		throw new UnsupportedOperationException();
+		if(closed){
+			throw new SQLException("The statement has been closed.");
+		}
+		if(sql == null){
+			throw new SQLException();
+		}
+		if(!sql.trim().startsWith("insert") && !sql.trim().startsWith("update")){
+			throw new SQLException("INSERT or UPDATE queries only");
+		}
+
+		commands.add(sql);
 	}
 
 	@Override
@@ -34,7 +54,10 @@ public class StatementImp implements Statement{
 
 	@Override
 	public void clearBatch() throws SQLException {
-		throw new UnsupportedOperationException();
+		if(closed){
+			throw new SQLException("The statement has been closed.");
+		}
+		commands = new ArrayList<>();
 	}
 
 	@Override
@@ -44,7 +67,10 @@ public class StatementImp implements Statement{
 
 	@Override
 	public void close() throws SQLException {
-		closed = true ;
+		if(closed){
+			throw new SQLException();
+		}
+		closed = true;
 	}
 
 	@Override
@@ -59,11 +85,11 @@ public class StatementImp implements Statement{
 				return dbManager.executeStructureQuery(sql);
 			else if(sql.trim().split("\\s+")[0].equalsIgnoreCase("insert") || sql.trim().split("\\s+")[0].equalsIgnoreCase("delete")||sql.trim().split("\\s+")[0].equalsIgnoreCase("update")) {
 				int result = executeUpdate(sql);
-				return result > 0 ? true : false ;
+				return result > 0  ;
 			}
 			else if (sql.trim().split("\\s+")[0].equalsIgnoreCase("select")) {
 				ResultSet result = executeQuery(sql);
-				return result.getMetaData().getColumnCount() > 0 ? true : false ;
+				return result.getMetaData().getColumnCount() > 0 ;
 			}
 		}
 		throw new SQLException();
@@ -86,7 +112,17 @@ public class StatementImp implements Statement{
 
 	@Override
 	public int[] executeBatch() throws SQLException {
-		throw new UnsupportedOperationException();
+		if(closed){
+			throw new SQLException("The statement has been closed.");
+		}
+		int[] results = new int[commands.size()];
+		int i=0;
+		for(String command: commands){
+			results[i] = executeUpdate(command);
+			i++;
+		}
+
+		return results;
 	}
 
 	@Override
@@ -121,7 +157,10 @@ public class StatementImp implements Statement{
 
 	@Override
 	public Connection getConnection() throws SQLException {
-		throw new UnsupportedOperationException();
+		if(closed){
+			throw new SQLException("The statement has been closed.");
+		}
+		return connection;
 	}
 
 	@Override
@@ -161,7 +200,10 @@ public class StatementImp implements Statement{
 
 	@Override
 	public int getQueryTimeout() throws SQLException {
-		throw new UnsupportedOperationException();
+		if(closed){
+			throw new SQLException("The statement has been closed.");
+		}
+		return queryTimeout;
 	}
 
 	@Override
@@ -246,7 +288,13 @@ public class StatementImp implements Statement{
 
 	@Override
 	public void setQueryTimeout(int seconds) throws SQLException {
-		throw new UnsupportedOperationException();
+		if(closed){
+			throw new SQLException("The statement has been closed.");
+		}
+		if(seconds < 0){
+			throw new SQLException("Invalid Value.");
+		}
+		queryTimeout = seconds;
 	}
 
 }

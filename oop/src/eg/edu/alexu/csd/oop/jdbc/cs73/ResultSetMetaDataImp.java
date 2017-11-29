@@ -2,12 +2,54 @@ package eg.edu.alexu.csd.oop.jdbc.cs73;
 
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Types;
 
-public class ResultSetMetaDataImp implements ResultSetMetaData{
-	Object [][] data ;
-	
-	public ResultSetMetaDataImp(Object[][] data) {
-		this.data =data ;
+public class ResultSetMetaDataImp implements ResultSetMetaData {
+
+	protected Object[][] table;
+	protected String[] columns;
+
+	public ResultSetMetaDataImp(Object[][] table, String[] columns) {
+		this.table = table;
+		this.columns = columns;
+	}
+
+	@Override
+	public int getColumnCount() throws SQLException {
+		return columns.length;
+	}
+
+	@Override
+	public String getColumnLabel(int column) throws SQLException {
+		return columns[column - 1];
+	}
+
+	@Override
+	public String getColumnName(int column) throws SQLException {
+		return columns[column - 1];
+	}
+
+	@SuppressWarnings("null")
+	@Override
+	public int getColumnType(int column) throws SQLException {
+		if (columns[column - 1].getClass()
+				.getSimpleName()
+				.equalsIgnoreCase("Varchar")) {
+			return Types.VARCHAR;
+		} else if (columns[column - 1].getClass()
+				.getSimpleName()
+				.equalsIgnoreCase("Integer")) {
+			return Types.INTEGER;
+		} else {
+			return (Integer) null;
+		}
+	}
+
+	@Override
+	public String getTableName(int column) throws SQLException {
+		String tableName = "";
+		
+		return tableName;
 	}
 
 	@Override
@@ -31,29 +73,7 @@ public class ResultSetMetaDataImp implements ResultSetMetaData{
 	}
 
 	@Override
-	public int getColumnCount() throws SQLException {
-		if(data.length == 0)
-			return 0 ;
-		return data[0].length;
-	}
-
-	@Override
 	public int getColumnDisplaySize(int column) throws SQLException {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public String getColumnLabel(int column) throws SQLException {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public String getColumnName(int column) throws SQLException {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public int getColumnType(int column) throws SQLException {
 		throw new UnsupportedOperationException();
 	}
 
@@ -74,11 +94,6 @@ public class ResultSetMetaDataImp implements ResultSetMetaData{
 
 	@Override
 	public String getSchemaName(int column) throws SQLException {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public String getTableName(int column) throws SQLException {
 		throw new UnsupportedOperationException();
 	}
 
@@ -126,5 +141,4 @@ public class ResultSetMetaDataImp implements ResultSetMetaData{
 	public boolean isWritable(int column) throws SQLException {
 		throw new UnsupportedOperationException();
 	}
-
 }
