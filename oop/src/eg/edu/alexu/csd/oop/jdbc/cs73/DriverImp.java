@@ -8,9 +8,7 @@ public class DriverImp implements Driver {
     private Properties properties ;
 	@Override
     public Connection connect(String s, Properties properties) throws SQLException {
-    	if(!s.equalsIgnoreCase("jdbc:xmldb://localhost"))
-    		throw new RuntimeException(s);
-		this.properties = properties;
+    	this.properties = properties;
 		return new ConnectionImp();
     }
 
