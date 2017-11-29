@@ -58,12 +58,12 @@ public class StatementImp implements Statement{
 			if(sql.trim().split("\\s+")[0].equalsIgnoreCase("create") || sql.trim().split("\\s+")[0].equalsIgnoreCase("drop"))
 			return dbManager.executeStructureQuery(sql);
 			else if(sql.trim().split("\\s+")[0].equalsIgnoreCase("insert") || sql.trim().split("\\s+")[0].equalsIgnoreCase("delete")||sql.trim().split("\\s+")[0].equalsIgnoreCase("update")) {
-				int result = dbManager.executeUpdateQuery(sql);
+				int result = executeUpdate(sql);
 				return result > 0 ? true : false ;
 			}
 			else if (sql.trim().split("\\s+")[0].equalsIgnoreCase("select")) {
-				Object [][] result = dbManager.executeQuery(sql);
-				return result.length == 0 ? false : true ;
+				ResultSet result = executeQuery(sql);
+				return result.getMetaData().getColumnCount() > 0 ? true : false ;
 			}
 		}
 		throw new SQLException();
