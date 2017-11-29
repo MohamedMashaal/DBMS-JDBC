@@ -20,10 +20,8 @@ import java.sql.SQLException;
  */
 
 public class QueriesExecutor {
-    SyntaxParser syntaxParser;
     Database dbManager;
     public QueriesExecutor(){
-       syntaxParser = new SyntaxParser();
        dbManager = DatabaseImp.getUniqueInstance();
     }
 
