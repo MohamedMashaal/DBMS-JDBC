@@ -390,7 +390,7 @@ public class ResultsetImp implements ResultSet {
 		if (closed) {
 			throw new SQLException("Result set closed.");
 		}
-		return new ResultSetMetaDataImp(res);
+		return new ResultSetMetaDataImp(new Object [][] {res});
 	}
 
 	@Override
