@@ -55,7 +55,7 @@ public class StatementImp implements Statement{
 	@Override
 	public boolean execute(String sql) throws SQLException {
 		if(!closed) {
-		return dbManager.executeStructureQuery(sql);
+			return dbManager.executeStructureQuery(sql);
 		}
 		throw new SQLException();
 	}
@@ -83,14 +83,14 @@ public class StatementImp implements Statement{
 	@Override
 	public ResultSet executeQuery(String sql) throws SQLException {
 		if(!closed)
-		return new ResultsetImp(dbManager.executeQuery(sql));
+			return new ResultsetImp(dbManager.executeQuery(sql));
 		throw new SQLException();
 	}
 
 	@Override
 	public int executeUpdate(String sql) throws SQLException {
 		if(!closed)
-		return dbManager.executeUpdateQuery(sql);
+			return dbManager.executeUpdateQuery(sql);
 		throw new SQLException();
 	}
 

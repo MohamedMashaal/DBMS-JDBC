@@ -135,13 +135,6 @@ public class DatabaseImp implements Database{
 
 		Table currTable = currDB.getTables().get(currDB.getTableIndex(tableName));
 
-		// check if column exists in table
-		int columnIndex = currTable.columnIndex(colName);
-		if(columnIndex == -1 && !colName.equals("*")){
-			throw  new RuntimeException("Column " + colName +
-					" is not exists in " + currTable.getName());
-		}
-
 		// fetching data part (with out applying "where" conditions)
 
 		// all columns
@@ -179,10 +172,47 @@ public class DatabaseImp implements Database{
 		}
 
 		// more than one column
+		if(colName.contains(",")){
+			String[] columnsName = colName.split("\\s*,\\s*");
 
+			ArrayList<Column> columns = currTable.getColumns();
+			int i = 0;
+			Object[][] fetchedData = new Object[columnsName.length][];
+			for(Column column : columns){
+				boolean ok = false;
+				for(String oneCol : columnsName){
+					if(oneCol.equals(column.getName())){
+						ok = true;
+						break;
+					}
+				}
+				if(!ok){
+					continue;
+				}
+
+				Object[] columnData = column.getData();
+
+				/*if(column.getType().equals("int")){
+					Integer[] intColumn = (Integer[]) columnData;
+					fetchedData[i++] = intColumn;
+				}
+				else if(column.getType().equals("varchar")){
+					String[] varcharColumn = (String[]) columnData;
+					fetchedData[i++] = varcharColumn;
+				}*/
+				fetchedData[i++] = columnData;
+			}
+			return applyWhere(fetchedData, query, currTable);
+		}
 
 		// one column
 		else{
+			// check if column exists in table
+			int columnIndex = currTable.columnIndex(colName);
+			if(columnIndex == -1 && !colName.equals("*")){
+				throw  new RuntimeException("Column " + colName +
+						" is not exists in " + currTable.getName());
+			}
 			/*ArrayList<Column> columns = currTable.getColumns();
 			int i = 0;
 			Object[][] fetchedData = new Object[currTable.getColumns().size()][];
