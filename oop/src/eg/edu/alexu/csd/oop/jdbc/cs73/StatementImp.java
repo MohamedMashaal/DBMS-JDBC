@@ -62,8 +62,8 @@ public class StatementImp implements Statement{
 				return result > 0 ? true : false ;
 			}
 			else if (sql.trim().split("\\s+")[0].equalsIgnoreCase("select")) {
-				ResultSet resultSet = new ResultsetImp(dbManager.executeQuery(sql));
-				return resultSet.getMetaData().getColumnCount() > 0 ? true : false ;
+				Object [][] result = dbManager.executeQuery(sql);
+				return result.length == 0 ? false : true ;
 			}
 		}
 		throw new SQLException();
