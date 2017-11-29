@@ -129,7 +129,7 @@ public class StatementImp implements Statement{
 	public ResultSet executeQuery(String sql) throws SQLException {
 		if(!closed) {
 			Object[][] table = dbManager.executeQuery(sql);
-			String[][] columns = dbManager.getColumnsInfo(sql);
+			String[][] columns = new String[0][];// = dbManager.getColumnsInfo(sql);
 			return new ResultsetImp(table, columns, this);
 		}
 		throw new SQLException();
