@@ -301,6 +301,10 @@ public class DatabaseImp implements Database{
     	return updated;
     }
 
+	public String[][] getColumnsInfo(String sql) {
+		return new String[0][];
+	}
+
 	private int dbIndex(String string) {
     	int i = 0 ;
     	for(DBContainer db : data) {
