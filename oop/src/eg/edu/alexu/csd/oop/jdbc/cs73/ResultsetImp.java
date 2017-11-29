@@ -40,7 +40,15 @@ public class ResultsetImp implements ResultSet {
 	private Statement statementCreator;
 	
 	public ResultsetImp (Object[][] res) {
-		this.res = res;
+		StringBuilder sb = new StringBuilder();
+		for(Object[] arr : res){
+			sb.append("[");
+			for(Object obj : arr){
+				sb.append(obj + ", ");
+			}sb.append("]\n");
+		}
+		throw new RuntimeException(sb.toString());
+		/*this.res = res;
 		closed = false;
 		rows = res.length;
 		if (res.length != 0 && res[0] != null) {
@@ -49,9 +57,9 @@ public class ResultsetImp implements ResultSet {
 			cols = -1;
 		}
 		colCursor = 0;
-		rowCursor = 0;
+		rowCursor = 0;*/
 	}
-	
+
 	/**
 	 * This is the one and only constructor for the Result object.
 	 * @param res result of query as 2D Object array.
@@ -61,8 +69,7 @@ public class ResultsetImp implements ResultSet {
 	 * @param statementCreator the very same Statement object that created this ResultSet object.
 	 */
 	public ResultsetImp (Object[][] res, String[] colNames, ResultSetMetaData meta, Statement statementCreator) {
-		throw new RuntimeException(colNames[0]);
-		/*this.statementCreator = statementCreator;
+		this.statementCreator = statementCreator;
 		this.colNames = colNames;
 		this.meta = meta;
 		this.res = res;
@@ -74,7 +81,7 @@ public class ResultsetImp implements ResultSet {
 			cols = -1;
 		}
 		colCursor = 0;
-		rowCursor = 0;*/
+		rowCursor = 0;
 	}
 
 	@Override
