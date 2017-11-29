@@ -55,7 +55,8 @@ public class StatementImp implements Statement{
 	@Override
 	public boolean execute(String sql) throws SQLException {
 		if(!closed) {
-			return dbManager.executeStructureQuery(sql);
+			dbManager.executeStructureQuery(sql);
+			return false ;
 		}
 		throw new SQLException();
 	}
