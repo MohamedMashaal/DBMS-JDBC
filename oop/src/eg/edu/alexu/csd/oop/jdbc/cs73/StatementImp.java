@@ -10,7 +10,7 @@ import eg.edu.alexu.csd.oop.db.Database;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DatabaseImp;
 
 public class StatementImp implements Statement{
-	private Database dbManager = new DatabaseImp();
+	private Database dbManager = DatabaseImp.getUniqueInstance();
 	private boolean closed = false ;
 	@Override
 	public boolean isWrapperFor(Class<?> arg0) throws SQLException {
