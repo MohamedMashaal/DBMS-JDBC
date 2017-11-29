@@ -104,7 +104,8 @@ public class ResultsetImp implements ResultSet {
 
 	@Override
 	public boolean absolute(int row) throws SQLException {
-		if (closed) {
+		throw new UnsupportedOperationException();
+		/*if (closed) {
 			throw new SQLException("Result set closed.");
 		}
 		if (row > 0) {
@@ -112,23 +113,25 @@ public class ResultsetImp implements ResultSet {
 		} else {
 			rowCursor = rows + 1 - absCursorFinder(-row);
 		}
-		return !(isBeforeFirst() || isAfterLast());
+		return !(isBeforeFirst() || isAfterLast());*/
 	}
 
 	@Override
 	public void afterLast() throws SQLException {
-		if (closed) {
+		throw new UnsupportedOperationException();
+		/*if (closed) {
 			throw new SQLException("Result set closed.");
 		}
-		rowCursor = rows + 1;
+		rowCursor = rows + 1;*/
 	}
 
 	@Override
 	public void beforeFirst() throws SQLException {
-		if (closed) {
+		throw new UnsupportedOperationException();
+		/*if (closed) {
 			throw new SQLException("Result set closed.");
 		}
-		rowCursor = 0;
+		rowCursor = 0;*/
 	}
 
 	@Override
@@ -161,7 +164,8 @@ public class ResultsetImp implements ResultSet {
 
 	@Override
 	public int findColumn(String columnLabel) throws SQLException {
-		if (closed) {
+		throw new UnsupportedOperationException();
+		/*if (closed) {
 			throw new SQLException("Result set closed.");
 		}
 		if (columnLabel == null) {
@@ -174,16 +178,17 @@ public class ResultsetImp implements ResultSet {
 				}
 			}// Not found.
 			throw new SQLException("Specified ColumnLabel doesn't exist in ResultSet");
-		}
+		}*/
 	}
 
 	@Override
 	public boolean first() throws SQLException {
-		if (closed) {
+		throw new UnsupportedOperationException();
+		/*if (closed) {
 			throw new SQLException("Result set closed.");
 		}
 		rowCursor = 1;
-		return rows != 0;
+		return rows != 0;*/
 	}
 
 	@Override
@@ -363,7 +368,8 @@ public class ResultsetImp implements ResultSet {
 
 	@Override
 	public int getInt(int columnIndex) throws SQLException {
-		if (closed) {
+		throw new UnsupportedOperationException();
+		/*if (closed) {
 			throw new SQLException("Result set closed.");
 		}
 		if (columnIndex > cols) {
@@ -378,12 +384,13 @@ public class ResultsetImp implements ResultSet {
 			return returner;
 		} catch (Exception e) {
 			return returner;
-		}
+		}*/
 	}
 
 	@Override
 	public int getInt(String columnLabel) throws SQLException {
-		return getInt(findColumn(columnLabel));
+		throw new UnsupportedOperationException();
+		/*return getInt(findColumn(columnLabel));*/
 	}
 
 	@Override
@@ -436,7 +443,8 @@ public class ResultsetImp implements ResultSet {
 
 	@Override
 	public Object getObject(int columnIndex) throws SQLException {
-		if (closed) {
+		throw new UnsupportedOperationException();
+		/*if (closed) {
 			throw new SQLException("Result set closed.");
 		}
 		if (columnIndex > cols) {
@@ -445,7 +453,7 @@ public class ResultsetImp implements ResultSet {
 		if (isAfterLast() || isBeforeFirst()) {
 			return 0;
 		}
-		return res[rowCursor][columnIndex - 1];
+		return res[rowCursor][columnIndex - 1];*/
 	}
 
 	@Override
@@ -520,15 +528,17 @@ public class ResultsetImp implements ResultSet {
 
 	@Override
 	public Statement getStatement() throws SQLException {
-		if (closed) {
+		throw new UnsupportedOperationException();
+		/*if (closed) {
 			throw new SQLException("Result set closed.");
 		}
-		return statementCreator;
+		return statementCreator;*/
 	}
 
 	@Override
 	public String getString(int columnIndex) throws SQLException {
-		if (closed) {
+		throw new UnsupportedOperationException();
+		/*if (closed) {
 			throw new SQLException("Result set closed.");
 		}
 		if (columnIndex > cols) {
@@ -543,12 +553,13 @@ public class ResultsetImp implements ResultSet {
 			return returner;
 		} catch (Exception e) {
 			return returner;
-		}
+		}*/
 	}
 
 	@Override
 	public String getString(String columnLabel) throws SQLException {
-		return getString(findColumn(columnLabel));
+		throw new UnsupportedOperationException();
+		/*return getString(findColumn(columnLabel));*/
 	}
 
 	@Override
@@ -629,12 +640,14 @@ public class ResultsetImp implements ResultSet {
 
 	@Override
 	public boolean isAfterLast() throws SQLException {
-		return rowCursor == rows + 1;
+		throw new UnsupportedOperationException();
+		/*return rowCursor == rows + 1;*/
 	}
 
 	@Override
 	public boolean isBeforeFirst() throws SQLException {
-		return rowCursor == 0;
+		throw new UnsupportedOperationException();
+		/*return rowCursor == 0;*/
 	}
 
 	@Override
@@ -644,27 +657,30 @@ public class ResultsetImp implements ResultSet {
 
 	@Override
 	public boolean isFirst() throws SQLException {
-		if (closed) {
+		throw new UnsupportedOperationException();
+		/*if (closed) {
 			throw new SQLException("Result set closed.");
 		}
-		return rowCursor == 1;
+		return rowCursor == 1;*/
 	}
 
 	@Override
 	public boolean isLast() throws SQLException {
-		if (closed) {
+		throw new UnsupportedOperationException();
+		/*if (closed) {
 			throw new SQLException("Result set closed.");
 		}
-		return rowCursor == rows;
+		return rowCursor == rows;*/
 	}
 
 	@Override
 	public boolean last() throws SQLException {
-		if (closed) {
+		throw new UnsupportedOperationException();
+		/*if (closed) {
 			throw new SQLException("Result set closed.");
 		}
 		rowCursor = rows;
-		return rows != 0;
+		return rows != 0;*/
 	}
 
 	@Override
@@ -681,24 +697,26 @@ public class ResultsetImp implements ResultSet {
 
 	@Override
 	public boolean next() throws SQLException {
-		if (closed) {
+		throw new UnsupportedOperationException();
+		/*if (closed) {
 			throw new SQLException("Result set closed.");
 		}
 		if (!isAfterLast()) {
 			rowCursor++;
 		}
-		return !isAfterLast();
+		return !isAfterLast();*/
 	}
 
 	@Override
 	public boolean previous() throws SQLException {
-		if (closed) {
+		throw new UnsupportedOperationException();
+		/*if (closed) {
 			throw new SQLException("Result set closed.");
 		}
 		if (!isBeforeFirst()) {
 			rowCursor++;
 		}
-		return !isBeforeFirst();
+		return !isBeforeFirst();*/
 	}
 
 	@Override
