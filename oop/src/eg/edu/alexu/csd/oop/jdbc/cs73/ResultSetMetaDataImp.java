@@ -4,6 +4,11 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 public class ResultSetMetaDataImp implements ResultSetMetaData{
+	Object [][] data ;
+	
+	public ResultSetMetaDataImp(Object[][] data) {
+		this.data =data ;
+	}
 
 	@Override
 	public boolean isWrapperFor(Class<?> iface) throws SQLException {
@@ -27,7 +32,7 @@ public class ResultSetMetaDataImp implements ResultSetMetaData{
 
 	@Override
 	public int getColumnCount() throws SQLException {
-		throw new UnsupportedOperationException();
+		return data[0].length;
 	}
 
 	@Override
