@@ -40,6 +40,7 @@ public class ResultsetImp implements ResultSet {
 	private Statement statementCreator;
 	
 	public ResultsetImp (Object[][] res) {
+
 		this.res = res;
 		closed = false;
 		rows = res.length;
