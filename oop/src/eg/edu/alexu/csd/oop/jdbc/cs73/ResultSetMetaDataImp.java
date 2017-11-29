@@ -8,11 +8,7 @@ public class ResultSetMetaDataImp implements ResultSetMetaData {
 
 	protected Object[][] table;
 	protected String[][] columns;
-	
-	public ResultSetMetaDataImp(Object [][] table) {
-		this.table = table ;
-	}
-	
+
 	public ResultSetMetaDataImp(Object[][] table, String[][] columns) {
 		this.table = table;
 		this.columns = columns;
@@ -20,9 +16,7 @@ public class ResultSetMetaDataImp implements ResultSetMetaData {
 
 	@Override
 	public int getColumnCount() throws SQLException {
-		if(table.length != 0 && table[0] != null)
-			return table[0].length;
-		return 0 ;
+		return columns[0].length;
 	}
 
 	@Override
@@ -38,11 +32,11 @@ public class ResultSetMetaDataImp implements ResultSetMetaData {
 	@SuppressWarnings("null")
 	@Override
 	public int getColumnType(int column) throws SQLException {
-		if (columns[column - 1].getClass()
+		if (columns[1][column - 1].getClass()
 				.getSimpleName()
 				.equalsIgnoreCase("Varchar")) {
 			return Types.VARCHAR;
-		} else if (columns[column - 1].getClass()
+		} else if (columns[1][column - 1].getClass()
 				.getSimpleName()
 				.equalsIgnoreCase("Integer")) {
 			return Types.INTEGER;
@@ -148,3 +142,4 @@ public class ResultSetMetaDataImp implements ResultSetMetaData {
 		throw new UnsupportedOperationException();
 	}
 }
+
