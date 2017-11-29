@@ -121,7 +121,8 @@ public class DatabaseImp implements Database{
 
 	@Override
     public Object[][] executeQuery(String query) throws SQLException {
-    	//throw new RuntimeException(query);
+    	if(data.size() == 0)
+    		throw new SQLException() ;
 		String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ")
 				  						.replaceAll("\\s+\\,", ",").replaceAll("\\s*\"\\s*","\"")
 										.replaceAll("\\s*'\\s*","'").replaceAll("=", " = ")
@@ -225,6 +226,8 @@ public class DatabaseImp implements Database{
 
     @Override
     public int executeUpdateQuery(String query) throws SQLException {
+    	if(data.size() == 0)
+    		throw new SQLException() ;
     	String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("'", "").replaceAll("=", " = ").replaceAll("\\s+\\,", ",").split("\\s+|\\,\\s*|\\(|\\)");
     	//String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ").replaceAll("=", " = ").replaceAll("\\s+\\,", ",").split("\\s+(?=(?:[^\']*\'[^\']*\')*[^\']*$)|\\,\\s*|\\(|\\)");
     	//splittedQuery = extractor.filterQuotes(splittedQuery);
