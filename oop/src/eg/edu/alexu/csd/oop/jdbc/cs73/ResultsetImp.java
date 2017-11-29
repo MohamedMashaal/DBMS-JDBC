@@ -61,8 +61,7 @@ public class ResultsetImp implements ResultSet {
 	 * @param statementCreator the very same Statement object that created this ResultSet object.
 	 */
 	public ResultsetImp (Object[][] res, String[] colNames, ResultSetMetaData meta, Statement statementCreator) {
-		throw new RuntimeException(colNames[0]);
-		/*this.statementCreator = statementCreator;
+		this.statementCreator = statementCreator;
 		this.colNames = colNames;
 		this.meta = meta;
 		this.res = res;
@@ -74,7 +73,7 @@ public class ResultsetImp implements ResultSet {
 			cols = -1;
 		}
 		colCursor = 0;
-		rowCursor = 0;*/
+		rowCursor = 0;
 	}
 
 	@Override
