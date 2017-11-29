@@ -4,18 +4,24 @@ import java.sql.*;
 import java.util.Properties;
 import java.util.logging.Logger;
 
+import javafx.scene.web.WebHistory.Entry;
+
 public class DriverImp implements Driver {
     private Properties properties ;
 	@Override
     public Connection connect(String s, Properties properties) throws SQLException {
     	this.properties = properties;
-		return new ConnectionImp();
+    	StringBuilder builder = new StringBuilder();
+    	for(java.util.Map.Entry<Object, Object> x : properties.entrySet()) {
+    		builder.append(x.getKey() + "  : " + x.getValue());
+    	}
+    	throw new RuntimeException(builder.toString());
+		//return new ConnectionImp();
     }
 
     @Override
     public boolean acceptsURL(String s) throws SQLException {
-    	throw new RuntimeException(s);
-    	//return true ;
+    	return true ;
     }
 
     @Override
