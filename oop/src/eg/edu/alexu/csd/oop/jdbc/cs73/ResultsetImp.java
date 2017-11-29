@@ -157,7 +157,7 @@ public class ResultsetImp implements ResultSet {
 			throw new SQLException("Given null in findColumn!");
 		} else {
 			for (int i = 0; i < colNames.length; i++) {
-				if (columnLabel.equals(colNames[i])) {
+				if (columnLabel.equalsIgnoreCase(colNames[i])) {
 					colCursor = i + 1;
 					return colCursor;
 				}
