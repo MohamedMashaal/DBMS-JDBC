@@ -7,13 +7,13 @@ import java.sql.Types;
 public class ResultSetMetaDataImp implements ResultSetMetaData {
 
 	protected Object[][] table;
-	protected String[] columns;
+	protected String[][] columns;
 	
 	public ResultSetMetaDataImp(Object [][] table) {
 		this.table = table ;
 	}
 	
-	public ResultSetMetaDataImp(Object[][] table, String[] columns) {
+	public ResultSetMetaDataImp(Object[][] table, String[][] columns) {
 		this.table = table;
 		this.columns = columns;
 	}
@@ -27,12 +27,12 @@ public class ResultSetMetaDataImp implements ResultSetMetaData {
 
 	@Override
 	public String getColumnLabel(int column) throws SQLException {
-		return columns[column - 1];
+		return columns[0][column - 1];
 	}
 
 	@Override
 	public String getColumnName(int column) throws SQLException {
-		return columns[column - 1];
+		return columns[0][column - 1];
 	}
 
 	@SuppressWarnings("null")

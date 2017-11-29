@@ -42,4 +42,5 @@ public interface Database {
          */
         public int executeUpdateQuery(String query) throws java.sql.SQLException;
 
+    String[][] getColumnsInfo(String sql);
 }

@@ -2,8 +2,6 @@ package eg.edu.alexu.csd.oop.db.cs73.Model;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.DBContainer;
@@ -56,7 +54,6 @@ public class DirectoryHandler {
 	}
 
 	public void createTable(String tableName , String databaseName) {
-		//Just for now
 		File table = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName + File.separator + tableName +".xml");
 		try {
 			table.createNewFile();

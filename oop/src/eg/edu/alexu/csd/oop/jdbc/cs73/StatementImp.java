@@ -128,8 +128,10 @@ public class StatementImp implements Statement{
 	@Override
 	public ResultSet executeQuery(String sql) throws SQLException {
 		if(!closed) {
-			return new ResultsetImp(dbManager.executeQuery(sql) , this);
-			}
+			Object[][] table = dbManager.executeQuery(sql);
+			String[][] columns = dbManager.getColumnsInfo(sql);
+			return new ResultsetImp(table, columns, this);
+		}
 		throw new SQLException();
 	}
 

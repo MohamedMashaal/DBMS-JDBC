@@ -29,14 +29,13 @@ import java.util.Map;
  */
 public class ResultsetImp implements ResultSet {
 
-	private String[] colNames;
+	private String[][] colNames;
 	private Object[][] res;
 	private int rowCursor;
 	private int colCursor;
 	private int rows;
 	private int cols;
 	private boolean closed;
-	private ResultSetMetaData meta;
 	private Statement statementCreator;
 	
 	public ResultsetImp (Object[][] res , Statement statementCreator) {
@@ -58,13 +57,11 @@ public class ResultsetImp implements ResultSet {
 	 * @param res result of query as 2D Object array.
 	 * @param colNames String array of column names where 0-indexed indices correspond to
 	 * 1-indexed column names.
-	 * @param meta ResultSetMetaData object created before generating this object.
 	 * @param statementCreator the very same Statement object that created this ResultSet object.
 	 */
-	public ResultsetImp (Object[][] res, String[] colNames, ResultSetMetaData meta, Statement statementCreator) {
+	public ResultsetImp (Object[][] res, String[][] colNames, Statement statementCreator) {
 		this.statementCreator = statementCreator;
 		this.colNames = colNames;
-		this.meta = meta;
 		this.res = res;
 		closed = false;
 		rows = res.length;
@@ -156,7 +153,7 @@ public class ResultsetImp implements ResultSet {
 			throw new SQLException("Given null in findColumn!");
 		} else {
 			for (int i = 0; i < colNames.length; i++) {
-				if (columnLabel.equalsIgnoreCase(colNames[i])) {
+				if (columnLabel.equalsIgnoreCase(colNames[0][i])) {
 					colCursor = i;
 					return colCursor;
 				}
