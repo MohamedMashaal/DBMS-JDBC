@@ -1,5 +1,6 @@
 package eg.edu.alexu.csd.oop.jdbc.cs73;
 
+import java.lang.reflect.Type;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Types;
@@ -16,33 +17,32 @@ public class ResultSetMetaDataImp implements ResultSetMetaData {
 
 	@Override
 	public int getColumnCount() throws SQLException {
-		return columns[0].length;
+		return columns.length;
 	}
 
 	@Override
 	public String getColumnLabel(int column) throws SQLException {
-		return columns[0][column - 1];
+		if(column <= 0){
+			throw new SQLException();
+		}
+		return columns[column - 1][0];
 	}
 
 	@Override
 	public String getColumnName(int column) throws SQLException {
-		return columns[0][column - 1];
+		if(column <= 0){
+			throw new SQLException();
+		}
+		return columns[column - 1][0];
 	}
 
 	@SuppressWarnings("null")
 	@Override
 	public int getColumnType(int column) throws SQLException {
-		if (columns[1][column - 1].getClass()
-				.getSimpleName()
-				.equalsIgnoreCase("Varchar")) {
-			return Types.VARCHAR;
-		} else if (columns[1][column - 1].getClass()
-				.getSimpleName()
-				.equalsIgnoreCase("Integer")) {
-			return Types.INTEGER;
-		} else {
-			return (Integer) null;
+		if(column <= 0){
+			throw new SQLException();
 		}
+		return columns[column-1][1].equalsIgnoreCase("int")? Types.INTEGER : Types.VARCHAR;
 	}
 
 	@Override

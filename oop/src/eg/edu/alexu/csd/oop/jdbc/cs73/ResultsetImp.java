@@ -29,7 +29,7 @@ import java.util.Map;
  */
 public class ResultsetImp implements ResultSet {
 
-	private String[][] colNames;
+	private String[][] colInfo;
 	private Object[][] res;
 	private int rowCursor;
 	private int colCursor;
@@ -61,7 +61,7 @@ public class ResultsetImp implements ResultSet {
 	 */
 	public ResultsetImp (Object[][] res, String[][] colNames, Statement statementCreator) {
 		this.statementCreator = statementCreator;
-		this.colNames = colNames;
+		this.colInfo = colNames;
 		this.res = res;
 		closed = false;
 		rows = res.length;
@@ -152,8 +152,8 @@ public class ResultsetImp implements ResultSet {
 		if (columnLabel == null) {
 			throw new SQLException("Given null in findColumn!");
 		} else {
-			for (int i = 0; i < colNames.length; i++) {
-				if (columnLabel.equalsIgnoreCase(colNames[0][i])) {
+			for (int i = 0; i < colInfo.length; i++) {
+				if (columnLabel.equalsIgnoreCase(colInfo[0][i])) {
 					colCursor = i;
 					return colCursor;
 				}
@@ -392,7 +392,7 @@ public class ResultsetImp implements ResultSet {
 		if (closed) {
 			throw new SQLException("Result set closed.");
 		}
-		return new ResultSetMetaDataImp(res, colNames);
+		return new ResultSetMetaDataImp(res, colInfo);
 	}
 
 	@Override
