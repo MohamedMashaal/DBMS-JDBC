@@ -13,25 +13,25 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class DatabaseImp implements Database{
-	
+	private static DatabaseImp uniqueInstance = new DatabaseImp();
 	private ArrayList<DBContainer> data;
 	private DirectoryHandler dirHandler;
 	private ExtractingHandler extractor;
 	private ConditionHandler conditionHandler;
 	private XMLParser xmlParser;
-    //public DatabaseImp() {}
     
-    public DatabaseImp(){
+    private DatabaseImp(){
         this.data = new ArrayList<>();
         this.dirHandler = new DirectoryHandler();
         this.extractor = new ExtractingHandler();
         this.conditionHandler = new ConditionHandler();
         this.xmlParser = new XMLParser();
-        
-        /*this.data = dirHandler.loadAllDBs();
-        System.out.println(this.data);*/
 	}
-
+    
+    public static Database getUniqueInstance() {
+    	return uniqueInstance;
+    }
+    
     @Override
     public String createDatabase(String databaseName, boolean dropIfExists) {
         databaseName = databaseName.toLowerCase();
