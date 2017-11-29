@@ -18,7 +18,7 @@ public class ConnectionImp implements Connection{
     public Statement createStatement() throws SQLException {
         if(closed)
             throw new SQLException();
-    	return new StatementImp();
+    	return new StatementImp(this);
     }
 
     @Override
