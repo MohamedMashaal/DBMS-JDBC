@@ -390,7 +390,13 @@ public class ResultsetImp implements ResultSet {
 		if (closed) {
 			throw new SQLException("Result set closed.");
 		}
-		return new ResultSetMetaDataImp(new Object [][] {res});
+		Object [][] resTemp = new Object[res.length][res[0].length];
+		for(int i = 0 ; i < resTemp.length ; i++) {
+			for (int j = 0 ; j < resTemp[0].length ; j++) {
+				resTemp[i][j] = res [i][j];
+			}
+		}
+		return new ResultSetMetaDataImp(resTemp);
 	}
 
 	@Override
