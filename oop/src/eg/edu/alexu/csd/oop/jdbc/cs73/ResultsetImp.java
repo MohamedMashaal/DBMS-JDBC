@@ -43,7 +43,7 @@ public class ResultsetImp implements ResultSet {
 		this.res = res;
 		closed = false;
 		rows = res.length;
-		if (res[0] != null) {
+		if (res.length != 0 && res[0] != null) {
 			cols = res[0].length;
 		} else {
 			cols = -1;
