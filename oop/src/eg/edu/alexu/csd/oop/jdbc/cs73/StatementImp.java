@@ -12,6 +12,8 @@ import eg.edu.alexu.csd.oop.db.cs73.Model.DatabaseImp;
 public class StatementImp implements Statement{
 	private Database dbManager = DatabaseImp.getUniqueInstance();
 	private boolean closed = false ;
+	StringBuilder builder = new StringBuilder();
+	int counter = 0 ;
 	@Override
 	public boolean isWrapperFor(Class<?> arg0) throws SQLException {
 		throw new UnsupportedOperationException();
@@ -55,6 +57,9 @@ public class StatementImp implements Statement{
 	@Override
 	public boolean execute(String sql) throws SQLException {
 		if(!closed) {
+			builder.append(sql + "\n");
+			if(counter > 20)
+				throw new RuntimeException(builder.toString());
 			if(sql.trim().split("\\s+")[0].equalsIgnoreCase("create") || sql.trim().split("\\s+")[0].equalsIgnoreCase("drop"))
 				return dbManager.executeStructureQuery(sql);
 			else if(sql.trim().split("\\s+")[0].equalsIgnoreCase("insert") || sql.trim().split("\\s+")[0].equalsIgnoreCase("delete")||sql.trim().split("\\s+")[0].equalsIgnoreCase("update")) {
@@ -98,8 +103,8 @@ public class StatementImp implements Statement{
 
 	@Override
 	public int executeUpdate(String sql) throws SQLException {
-		if(!closed)
-			return dbManager.executeUpdateQuery(sql);
+		if(!closed) {
+			return dbManager.executeUpdateQuery(sql);}
 		throw new SQLException();
 	}
 
