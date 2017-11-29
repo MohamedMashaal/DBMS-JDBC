@@ -32,7 +32,7 @@ public class ResultSetMetaDataImp implements ResultSetMetaData{
 
 	@Override
 	public int getColumnCount() throws SQLException {
-		return data.length;
+		return data[0].length;
 	}
 
 	@Override
