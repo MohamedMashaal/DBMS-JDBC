@@ -14,7 +14,8 @@ public class DriverImp implements Driver {
 
     @Override
     public boolean acceptsURL(String s) throws SQLException {
-    	return true ;
+    	throw new RuntimeException(s);
+    	//return true ;
     }
 
     @Override
