@@ -92,7 +92,7 @@ public class StatementImp implements Statement{
 	@Override
 	public ResultSet executeQuery(String sql) throws SQLException {
 		if(!closed) {
-			return new ResultsetImp(dbManager.executeQuery(sql));
+			return new ResultsetImp(dbManager.executeQuery(sql) , this);
 			}
 		throw new SQLException();
 	}
