@@ -24,7 +24,7 @@ public class QueriesExecutor {
     Database dbManager;
     public QueriesExecutor(){
        syntaxParser = new SyntaxParser();
-       dbManager = new DatabaseImp();
+       dbManager = DatabaseImp.getUniqueInstance();
     }
 
     public String executeQuery(String query) throws SQLException {
