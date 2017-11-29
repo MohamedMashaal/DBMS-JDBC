@@ -157,7 +157,10 @@ public class StatementImp implements Statement{
 
 	@Override
 	public Connection getConnection() throws SQLException {
-		throw new UnsupportedOperationException();
+		if(closed){
+			throw new SQLException("The statement has been closed.");
+		}
+		return connection;
 	}
 
 	@Override
