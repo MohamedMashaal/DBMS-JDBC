@@ -425,7 +425,7 @@ public class ResultsetImp implements ResultSet {
 
 	@Override
 	public Object getObject(int columnIndex) throws SQLException {
-		try{if (closed) {
+		if (closed) {
 			throw new SQLException("Result set closed.");
 		}
 		if (columnIndex > cols) {
@@ -435,10 +435,6 @@ public class ResultsetImp implements ResultSet {
 			return 0;
 		}
 		return res[rowCursor][columnIndex - 1];
-		}
-		catch(Exception e) {
-			throw new RuntimeException("Wrong indexing");
-		}
 	}
 
 	@Override
