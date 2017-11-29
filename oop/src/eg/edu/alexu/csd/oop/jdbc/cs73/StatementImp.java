@@ -59,7 +59,7 @@ public class StatementImp implements Statement{
 		if(!closed) {
 			builder.append(sql + "\n");
 			counter++;
-			if(counter > 1)
+			if(counter > 2)
 				throw new RuntimeException(builder.toString());
 			if(sql.trim().split("\\s+")[0].equalsIgnoreCase("create") || sql.trim().split("\\s+")[0].equalsIgnoreCase("drop"))
 				return dbManager.executeStructureQuery(sql);
