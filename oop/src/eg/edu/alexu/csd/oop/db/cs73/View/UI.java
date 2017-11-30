@@ -6,8 +6,9 @@ import java.util.Scanner;
 import eg.edu.alexu.csd.oop.db.cs73.Controller.QueriesExecutor;
 
 public class UI {
+	private static Scanner sc;
 	public static void main(String [] args) {
-		Scanner sc = new Scanner(System.in);
+		sc = new Scanner(System.in);
 		QueriesExecutor executor = new QueriesExecutor();
 		while(true) {
 			System.out.println("Input command :");

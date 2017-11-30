@@ -7,7 +7,8 @@ import eg.edu.alexu.csd.oop.db.utils.Comparator;
 
 public class Table {
 	private String name ;
-    private ArrayList<Column> columns;
+    @SuppressWarnings("rawtypes")
+	private ArrayList<Column> columns;
 
     public Table(String name){
     	this.name = name ;
@@ -35,10 +36,12 @@ public class Table {
 		return name;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public ArrayList<Column> getColumns() {
 		return columns;
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public boolean columnExists(String name){
     	for(Column column : columns){
     		if(column.getName().equalsIgnoreCase(name))
@@ -47,6 +50,7 @@ public class Table {
 		return false;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public int columnIndex(String name){
 		int i = 0;
 		for(Column column : columns){
@@ -57,6 +61,7 @@ public class Table {
 		return -1;
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void insert(List<String> columns, List<String> values) {
 		for(Column column : this.columns) {
 			int index = getIndex(columns , column.getName());
@@ -81,6 +86,7 @@ public class Table {
 		return -1;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public int update(ArrayList<String> columns, ArrayList<String> values) {
 		int size = 0 ;
 		for(int i = 0 ; i < columns.size() ; i++) {
@@ -102,6 +108,7 @@ public class Table {
 		return size ;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public int getIndex(String cl) {
 		int i = 0;
 		for(Column column : columns) {
@@ -112,10 +119,12 @@ public class Table {
 		return -1;
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public void setColumns(List<Column> columns) {
 		this.columns = (ArrayList<Column>) columns;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public int update(ArrayList<String> columns, ArrayList<String> values, ArrayList<String> toUpdate) {
 		int updated = 0;
 		if(toUpdate.size() == 3) {
@@ -160,6 +169,7 @@ public class Table {
 		return updated;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void insert(List<String> values) {
 		for(int i = 0 ; i < columns.size() ; i++) {
 			if(columns.get(i).getType().equalsIgnoreCase("int"))
@@ -169,6 +179,7 @@ public class Table {
 		}
 	}
 
+	@SuppressWarnings("rawtypes")
 	public int delete() {
 		int size = this.columns.get(0) != null ? this.columns.get(0).getRecords().size() : 0 ;
 			for(Column cl : this.columns) {
@@ -177,6 +188,7 @@ public class Table {
 		return size;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public int delete(ArrayList<String> toUpdate) {
 		int size = 0;
 		String whereColumn = toUpdate.get(0);

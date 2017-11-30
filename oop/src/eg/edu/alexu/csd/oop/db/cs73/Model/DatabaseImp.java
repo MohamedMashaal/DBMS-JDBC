@@ -1,7 +1,6 @@
 package eg.edu.alexu.csd.oop.db.cs73.Model;
 
 import eg.edu.alexu.csd.oop.db.Database;
-import eg.edu.alexu.csd.oop.db.cs73.Controller.QueriesExecutor;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Column;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.DBContainer;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Record;
@@ -17,14 +16,13 @@ public class DatabaseImp implements Database{
 	private ArrayList<DBContainer> data;
 	private DirectoryHandler dirHandler;
 	private ExtractingHandler extractor;
-	private ConditionHandler conditionHandler;
 	private XMLParser xmlParser;
     
     private DatabaseImp(){
         this.data = new ArrayList<>();
         this.dirHandler = new DirectoryHandler();
         this.extractor = new ExtractingHandler();
-        this.conditionHandler = new ConditionHandler();
+        new ConditionHandler();
         this.xmlParser = new XMLParser();
 	}
     
@@ -116,6 +114,7 @@ public class DatabaseImp implements Database{
         return true;
     }
 
+	@SuppressWarnings("rawtypes")
 	@Override
     public Object[][] executeQuery(String query) throws SQLException {
     	//throw new RuntimeException(query);
@@ -303,6 +302,7 @@ public class DatabaseImp implements Database{
     	return updated;
     }
 
+	@SuppressWarnings("rawtypes")
 	public String[][] getColumnsInfo(String query) {
 		String[][] columnsInfo;
 		String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ")
@@ -383,15 +383,7 @@ public class DatabaseImp implements Database{
 		return -1;
 	}
 
-	private boolean dbExists(String string) {
-		for(DBContainer db : data) {
-			if(db.getName().equalsIgnoreCase(string)) {
-				return true ;
-			}
-		}
-		return false;
-	}
-
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private Object[][] applyWhere(Object[][] cols, String query, Table table) { // without the bonus (later)
 		Object[][] filteredCols = new Object[cols.length][cols[0].length];
 		int colIndex = 0;
