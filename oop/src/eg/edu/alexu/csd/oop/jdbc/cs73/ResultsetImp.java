@@ -68,7 +68,7 @@ public class ResultsetImp implements ResultSet {
 		if (res.length != 0 && res[0] != null) {
 			cols = res[0].length;
 		} else {
-			cols = -1;
+			cols = 0;
 		}
 		colCursor = 0;
 		rowCursor = 0;

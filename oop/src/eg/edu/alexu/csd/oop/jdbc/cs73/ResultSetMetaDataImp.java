@@ -17,12 +17,14 @@ public class ResultSetMetaDataImp implements ResultSetMetaData {
 
 	@Override
 	public int getColumnCount() throws SQLException {
-		return columns.length;
+		if(table.length != 0 && table[0] != null)
+			return table[0].length;
+		return 0 ;
 	}
 
 	@Override
 	public String getColumnLabel(int column) throws SQLException {
-		if(column <= 0){
+		if(column <= 0 || column > columns.length){
 			throw new SQLException();
 		}
 		return columns[column - 1][0];
@@ -30,7 +32,7 @@ public class ResultSetMetaDataImp implements ResultSetMetaData {
 
 	@Override
 	public String getColumnName(int column) throws SQLException {
-		if(column <= 0){
+		if(column <= 0 || column > columns.length){
 			throw new SQLException();
 		}
 		return columns[column - 1][0];
