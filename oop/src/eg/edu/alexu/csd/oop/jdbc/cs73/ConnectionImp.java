@@ -6,19 +6,24 @@ import java.util.Properties;
 import java.util.concurrent.Executor;
 
 public class ConnectionImp implements Connection{
-
+	private String path;
     private boolean closed;
 
     public ConnectionImp(){
         closed = false;
     }
-
+    
+    public ConnectionImp(String path) {
+    	this.path = path ;
+    }
 
     @Override
     public Statement createStatement() throws SQLException {
         if(closed)
             throw new SQLException();
-    	return new StatementImp(this);
+        if(path == null || path.equalsIgnoreCase(""))
+        	return new StatementImp(this);
+    	return new StatementImp(path , this);
     }
 
     @Override

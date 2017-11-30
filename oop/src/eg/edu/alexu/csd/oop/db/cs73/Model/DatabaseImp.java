@@ -489,4 +489,8 @@ public class DatabaseImp implements Database{
 		String tableName = splittedQuery[3];
 		return tableName;
 	}
+
+	public void setMainDirectory(String path) {
+		dirHandler.setMainDirectory(path);
+	}
 }
