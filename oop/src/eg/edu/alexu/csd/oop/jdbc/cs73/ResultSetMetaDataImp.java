@@ -1,6 +1,5 @@
 package eg.edu.alexu.csd.oop.jdbc.cs73;
 
-import java.lang.reflect.Type;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Types;
@@ -19,8 +18,9 @@ public class ResultSetMetaDataImp implements ResultSetMetaData {
 
 	@Override
 	public int getColumnCount() throws SQLException {
-		if(table.length != 0 && table[0] != null)
+		if(table.length != 0 && table[0] != null) {
 			return table[0].length;
+		}
 		return 0 ;
 	}
 
@@ -40,7 +40,6 @@ public class ResultSetMetaDataImp implements ResultSetMetaData {
 		return columns[column - 1][0];
 	}
 
-	@SuppressWarnings("null")
 	@Override
 	public int getColumnType(int column) throws SQLException {
 		if(column <= 0){
@@ -53,6 +52,8 @@ public class ResultSetMetaDataImp implements ResultSetMetaData {
 	public String getTableName(int column) throws SQLException {
 		if(column <= 0){
 			throw new SQLException();
+		} if (tableName == null) {
+			return "";
 		}
 		return tableName;
 	}
@@ -147,4 +148,3 @@ public class ResultSetMetaDataImp implements ResultSetMetaData {
 		throw new UnsupportedOperationException();
 	}
 }
-

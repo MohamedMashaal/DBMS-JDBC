@@ -29,7 +29,8 @@ public class Column <T> {
     	records.add(record);
     }
     
-    public Record getRecord(int index) {
+    @SuppressWarnings("rawtypes")
+	public Record getRecord(int index) {
     	return records.get(index);
     }
     
@@ -37,7 +38,8 @@ public class Column <T> {
         return records;
     }
 
-    public T [] getData() {
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	public T [] getData() {
         ArrayList<Object> colData = new ArrayList<>();
         for(Record record : records){
             colData.add(record.getValue());

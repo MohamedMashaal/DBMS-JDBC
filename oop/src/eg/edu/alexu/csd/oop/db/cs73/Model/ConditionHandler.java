@@ -3,7 +3,6 @@ package eg.edu.alexu.csd.oop.db.cs73.Model;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Record;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Table;
 import eg.edu.alexu.csd.oop.db.utils.Comparator;
-
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -75,7 +74,8 @@ public class ConditionHandler {
         return postfix;
     }
 
-    private ArrayList<Integer> evaluate(ArrayList<String> postfix, Table table){
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	private ArrayList<Integer> evaluate(ArrayList<String> postfix, Table table){
         int colSize = table.getColumns().get(0).getSize();
         ArrayList<Integer> validIndices = new ArrayList<>();
         evaluationStack = new Stack<>();
@@ -125,9 +125,6 @@ public class ConditionHandler {
                 if(index != -1) {
                     ArrayList<Integer> indices = new ArrayList<>(colSize);
                     //indices.forEach(integer -> integer = 0); // The tester doesn't support lambdas
-                    for(Integer x : indices){
-                        x = 0;
-                    }
                     type = table.getColumns().get(index).getType();
                     ArrayList<Record> records = table.getColumns().get(index).getRecords();
                     for(int i = 0 ; i < records.size() ; i++) {

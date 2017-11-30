@@ -6,9 +6,6 @@ import java.sql.SQLException;
 import java.sql.SQLWarning;
 import java.sql.Statement;
 import java.util.ArrayList;
-
-import eg.edu.alexu.csd.oop.db.Command;
-import eg.edu.alexu.csd.oop.db.Database;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DatabaseImp;
 
 public class StatementImp implements Statement{

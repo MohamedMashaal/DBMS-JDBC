@@ -3,7 +3,6 @@ package eg.edu.alexu.csd.oop.db.cs73.Model;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.DBContainer;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Table;
 
@@ -66,7 +65,6 @@ public class DirectoryHandler {
 			table.createNewFile();
 			tableDTD.createNewFile();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
