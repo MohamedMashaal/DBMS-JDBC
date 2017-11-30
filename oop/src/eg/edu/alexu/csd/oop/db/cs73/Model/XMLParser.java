@@ -1,9 +1,6 @@
 package eg.edu.alexu.csd.oop.db.cs73.Model;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Column;
@@ -63,15 +60,22 @@ public class XMLParser {
             dom.appendChild(rootEle);
 
             try {
+                // Creating the DTD
+                DOMImplementation domImp = dom.getImplementation();
+                DocumentType dtd = dom.getDoctype();
+                System.out.println(dtd);
+
                 Transformer tr = TransformerFactory.newInstance().newTransformer();
                 tr.setOutputProperty(OutputKeys.INDENT, "yes");
                 tr.setOutputProperty(OutputKeys.METHOD, "xml");
                 tr.setOutputProperty(OutputKeys.ENCODING, "ISO-8859-1");
+                //tr.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC,  dtd.getPublicId());
                 tr.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM,  dtdPath);
                 tr.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
 
                 // send DOM to file
                 tr.transform(new DOMSource(dom), new StreamResult(new FileOutputStream(path)));
+                //tr.transform(new DOMSource(dtd));
 
             } catch (TransformerException te) {
                 System.out.println(te.getMessage());
