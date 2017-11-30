@@ -1,10 +1,11 @@
 package eg.edu.alexu.csd.oop.db.cs73.Model;
 
+import java.util.ArrayList;
+import java.util.Stack;
+
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Record;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Table;
 import eg.edu.alexu.csd.oop.db.utils.Comparator;
-import java.util.ArrayList;
-import java.util.Stack;
 
 public class ConditionHandler {
 
@@ -13,7 +14,11 @@ public class ConditionHandler {
 
     public ArrayList<Integer> getValidIndicesFrom(Table table, String[] condition){ // condition:String, after-where part.
         ArrayList<String> splittedTerms = getWillFormedArrayOf(condition);
-        return evaluate(infixToPostfix(splittedTerms), table);
+        StringBuilder s = new StringBuilder();
+        for(String x : splittedTerms)
+        	s.append(x+"-");
+        throw new RuntimeException(s.toString());
+        //return evaluate(infixToPostfix(splittedTerms), table);
     }
 
     private ArrayList<String> infixToPostfix(ArrayList<String> infix){
