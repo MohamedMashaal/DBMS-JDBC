@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class XMLParser {
-    public void saveTableToXML(String path, Table databaseTable) throws FileNotFoundException {
+    public void saveTableToXML(String path, String dtdPath, Table databaseTable) throws FileNotFoundException {
         Document dom;
         Element col = null, rec;
 
@@ -71,8 +71,7 @@ public class XMLParser {
                 tr.setOutputProperty(OutputKeys.INDENT, "yes");
                 tr.setOutputProperty(OutputKeys.METHOD, "xml");
                 tr.setOutputProperty(OutputKeys.ENCODING, "ISO-8859-1");
-                // tr.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM,
-                // "shapes.dtd");
+                tr.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM,  dtdPath);
                 tr.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
 
                 // send DOM to file

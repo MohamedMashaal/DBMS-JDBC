@@ -99,8 +99,9 @@ public class DatabaseImp implements Database{
 				data.get(data.size()-1).add(table);
 				dirHandler.createTable(tableName , data.get(data.size()-1).getName());
 				String tablePath = dirHandler.getPathOf(tableName , data.get(data.size()-1).getName());
+				String dtdPath = dirHandler.getdtdPathOf(tableName , data.get(data.size()-1).getName());
 				try {
-					xmlParser.saveTableToXML(tablePath, table);
+					xmlParser.saveTableToXML(tablePath, dtdPath, table);
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
@@ -290,10 +291,11 @@ public class DatabaseImp implements Database{
     	}
     	if(tableName != null) {
     		String tablePath = dirHandler.getPathOf(tableName , data.get(data.size()-1).getName());
+			String dtdPath = dirHandler.getdtdPathOf(tableName , data.get(data.size()-1).getName());
     		try {
     			int currTableIndex = data.get(data.size()-1).getTableIndex(tableName);
     			Table currTable = data.get(data.size()-1).getTables().get(currTableIndex);
-    			xmlParser.saveTableToXML(tablePath, currTable);
+    			xmlParser.saveTableToXML(tablePath, dtdPath, currTable);
     		} catch (FileNotFoundException e) {
     			e.printStackTrace();
     		}
