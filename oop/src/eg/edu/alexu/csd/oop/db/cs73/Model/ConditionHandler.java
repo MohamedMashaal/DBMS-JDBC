@@ -1,11 +1,10 @@
 package eg.edu.alexu.csd.oop.db.cs73.Model;
 
-import java.util.ArrayList;
-import java.util.Stack;
-
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Record;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Table;
 import eg.edu.alexu.csd.oop.db.utils.Comparator;
+import java.util.ArrayList;
+import java.util.Stack;
 
 public class ConditionHandler {
 
@@ -14,11 +13,7 @@ public class ConditionHandler {
 
     public ArrayList<Integer> getValidIndicesFrom(Table table, String[] condition){ // condition:String, after-where part.
         ArrayList<String> splittedTerms = getWillFormedArrayOf(condition);
-        StringBuilder s = new StringBuilder();
-        for(String x : splittedTerms)
-        	s.append(x+"-");
-        throw new RuntimeException(s.toString());
-        //return evaluate(infixToPostfix(splittedTerms), table);
+        return evaluate(infixToPostfix(splittedTerms), table);
     }
 
     private ArrayList<String> infixToPostfix(ArrayList<String> infix){
@@ -190,13 +185,13 @@ public class ConditionHandler {
             if(condition[i].startsWith("'")){ // len == 2
                 String temp = condition[i];
                 i++;
-                /*while(!condition[i].endsWith("'")){
+                while(!condition[i].endsWith("'")){
                     temp += " " + condition[i];
                     i++;
                 }
                 if(condition[i].endsWith("'")){
                     temp += " " + condition[i];
-                }*/
+                }
                 temp.replaceAll("'","");
                 curr += " " + temp;
                 len++;
