@@ -14,9 +14,16 @@ public class StatementImp implements Statement{
 	private ArrayList<String> commands = new ArrayList<>();
 	private Connection connection;
 	private int queryTimeout = Integer.MAX_VALUE; // INF
-
+	private String path;
+	
 	public StatementImp(Connection connection){
 		this.connection = connection;
+	}
+
+	public StatementImp(String path, Connection connection) {
+		this.path = path;
+		this.connection = connection;
+		dbManager.setMainDirectory(path);
 	}
 
 	@Override

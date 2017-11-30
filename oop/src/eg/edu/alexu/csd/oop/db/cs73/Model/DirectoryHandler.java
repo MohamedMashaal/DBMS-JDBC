@@ -122,4 +122,8 @@ public class DirectoryHandler {
         return null;
     }
 
+	public void setMainDirectory(String path) {
+		mainDirectory = new File(path);
+	}
+
 }
