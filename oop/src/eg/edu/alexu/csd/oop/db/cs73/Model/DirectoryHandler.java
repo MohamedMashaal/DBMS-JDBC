@@ -3,7 +3,6 @@ package eg.edu.alexu.csd.oop.db.cs73.Model;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.DBContainer;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Table;
 
@@ -47,6 +46,12 @@ public class DirectoryHandler {
         + File.separator + tableName + ".xml");
         return tableFile.getAbsolutePath();
     }
+
+    public String getdtdPathOf(String tableName, String databaseName) {
+        File tableFile = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName
+                + File.separator + tableName + ".dtd");
+        return tableFile.getAbsolutePath();
+    }
     
 	public void createDatabase(String databaseName) {
 		File dataFile = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName);
@@ -55,17 +60,20 @@ public class DirectoryHandler {
 
 	public void createTable(String tableName , String databaseName) {
 		File table = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName + File.separator + tableName +".xml");
+		File tableDTD = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName + File.separator + tableName +".dtd");
 		try {
 			table.createNewFile();
+			tableDTD.createNewFile();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	public void deleteTable(String tableName, String databaseName) {
 		File table = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName + File.separator + tableName +".xml");
-		table.delete();
+        File tableDTD = new File(mainDirectory.getAbsolutePath() + File.separator + databaseName + File.separator + tableName +".dtd");
+        table.delete();
+        tableDTD.delete();
 	}
 
 	public ArrayList<DBContainer> loadAllDBs(){
@@ -113,4 +121,5 @@ public class DirectoryHandler {
         }
         return null;
     }
+
 }

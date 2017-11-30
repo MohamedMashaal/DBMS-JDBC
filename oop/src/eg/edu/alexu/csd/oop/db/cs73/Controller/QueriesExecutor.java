@@ -8,8 +8,6 @@ import eg.edu.alexu.csd.oop.db.commands.Insert;
 import eg.edu.alexu.csd.oop.db.commands.Select;
 import eg.edu.alexu.csd.oop.db.commands.Update;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DatabaseImp;
-import eg.edu.alexu.csd.oop.db.cs73.Model.DirectoryHandler;
-
 import java.sql.SQLException;
 
 /*

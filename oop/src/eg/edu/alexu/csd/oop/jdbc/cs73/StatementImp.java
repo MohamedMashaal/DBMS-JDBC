@@ -6,9 +6,6 @@ import java.sql.SQLException;
 import java.sql.SQLWarning;
 import java.sql.Statement;
 import java.util.ArrayList;
-
-import eg.edu.alexu.csd.oop.db.Command;
-import eg.edu.alexu.csd.oop.db.Database;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DatabaseImp;
 
 public class StatementImp implements Statement{
@@ -130,7 +127,8 @@ public class StatementImp implements Statement{
 		if(!closed) {
 			Object[][] table = dbManager.executeQuery(sql);
 			String[][] columns = dbManager.getColumnsInfo(sql);
-			return new ResultsetImp(table, columns, this);
+			String tableName = dbManager.getTableName(sql);
+			return new ResultsetImp(table, columns, tableName, this);
 		}
 		throw new SQLException();
 	}

@@ -29,8 +29,9 @@ import java.util.Map;
  */
 public class ResultsetImp implements ResultSet {
 
-	private String[][] colNames;
+	private String[][] colInfo;
 	private Object[][] res;
+	private String tableName;
 	private int rowCursor;
 	private int colCursor;
 	private int rows;
@@ -57,18 +58,20 @@ public class ResultsetImp implements ResultSet {
 	 * @param res result of query as 2D Object array.
 	 * @param colNames String array of column names where 0-indexed indices correspond to
 	 * 1-indexed column names.
+	 * @param tableName name of the table.
 	 * @param statementCreator the very same Statement object that created this ResultSet object.
 	 */
-	public ResultsetImp (Object[][] res, String[][] colNames, Statement statementCreator) {
+	public ResultsetImp (Object[][] res, String[][] colNames, String tableName, Statement statementCreator) {
 		this.statementCreator = statementCreator;
-		this.colNames = colNames;
+		this.colInfo = colNames;
 		this.res = res;
+		this.tableName = tableName;
 		closed = false;
 		rows = res.length;
-		if (res[0] != null) {
+		if (res.length != 0 && res[0] != null) {
 			cols = res[0].length;
 		} else {
-			cols = -1;
+			cols = 0;
 		}
 		colCursor = 0;
 		rowCursor = 0;
@@ -152,8 +155,8 @@ public class ResultsetImp implements ResultSet {
 		if (columnLabel == null) {
 			throw new SQLException("Given null in findColumn!");
 		} else {
-			for (int i = 0; i < colNames.length; i++) {
-				if (columnLabel.equalsIgnoreCase(colNames[0][i])) {
+			for (int i = 0; i < colInfo.length; i++) {
+				if (columnLabel.equalsIgnoreCase(colInfo[0][i])) {
 					colCursor = i;
 					return colCursor;
 				}
@@ -392,7 +395,7 @@ public class ResultsetImp implements ResultSet {
 		if (closed) {
 			throw new SQLException("Result set closed.");
 		}
-		return new ResultSetMetaDataImp(res, colNames);
+		return new ResultSetMetaDataImp(res, colInfo, tableName);
 	}
 
 	@Override

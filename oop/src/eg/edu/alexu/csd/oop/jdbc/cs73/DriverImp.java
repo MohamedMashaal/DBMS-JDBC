@@ -5,11 +5,9 @@ import java.util.Properties;
 import java.util.logging.Logger;
 
 public class DriverImp implements Driver {
-    private Properties properties ;
-	@Override
+    @Override
     public Connection connect(String s, Properties properties) throws SQLException {
-    	this.properties = properties;
-		return new ConnectionImp();
+    	return new ConnectionImp();
     }
 
     @Override

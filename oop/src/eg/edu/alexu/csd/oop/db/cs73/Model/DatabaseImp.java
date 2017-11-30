@@ -1,12 +1,10 @@
 package eg.edu.alexu.csd.oop.db.cs73.Model;
 
 import eg.edu.alexu.csd.oop.db.Database;
-import eg.edu.alexu.csd.oop.db.cs73.Controller.QueriesExecutor;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Column;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.DBContainer;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Record;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Table;
-
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,14 +15,13 @@ public class DatabaseImp implements Database{
 	private ArrayList<DBContainer> data;
 	private DirectoryHandler dirHandler;
 	private ExtractingHandler extractor;
-	private ConditionHandler conditionHandler;
 	private XMLParser xmlParser;
     
     private DatabaseImp(){
         this.data = new ArrayList<>();
         this.dirHandler = new DirectoryHandler();
         this.extractor = new ExtractingHandler();
-        this.conditionHandler = new ConditionHandler();
+        new ConditionHandler();
         this.xmlParser = new XMLParser();
 	}
     
@@ -99,8 +96,9 @@ public class DatabaseImp implements Database{
 				data.get(data.size()-1).add(table);
 				dirHandler.createTable(tableName , data.get(data.size()-1).getName());
 				String tablePath = dirHandler.getPathOf(tableName , data.get(data.size()-1).getName());
+				String dtdPath = dirHandler.getdtdPathOf(tableName , data.get(data.size()-1).getName());
 				try {
-					xmlParser.saveTableToXML(tablePath, table);
+					xmlParser.saveTableToXML(tablePath, dtdPath, table);
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
@@ -115,6 +113,7 @@ public class DatabaseImp implements Database{
         return true;
     }
 
+	@SuppressWarnings("rawtypes")
 	@Override
     public Object[][] executeQuery(String query) throws SQLException {
     	//throw new RuntimeException(query);
@@ -290,10 +289,11 @@ public class DatabaseImp implements Database{
     	}
     	if(tableName != null) {
     		String tablePath = dirHandler.getPathOf(tableName , data.get(data.size()-1).getName());
+			String dtdPath = dirHandler.getdtdPathOf(tableName , data.get(data.size()-1).getName());
     		try {
     			int currTableIndex = data.get(data.size()-1).getTableIndex(tableName);
     			Table currTable = data.get(data.size()-1).getTables().get(currTableIndex);
-    			xmlParser.saveTableToXML(tablePath, currTable);
+    			xmlParser.saveTableToXML(tablePath, dtdPath, currTable);
     		} catch (FileNotFoundException e) {
     			e.printStackTrace();
     		}
@@ -301,8 +301,74 @@ public class DatabaseImp implements Database{
     	return updated;
     }
 
-	public String[][] getColumnsInfo(String sql) {
-		return new String[0][];
+	@SuppressWarnings("rawtypes")
+	public String[][] getColumnsInfo(String query) {
+		String[][] columnsInfo;
+		String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ")
+				.replaceAll("\\s+\\,", ",").replaceAll("\\s*\"\\s*","\"")
+				.replaceAll("\\s*'\\s*","'").replaceAll("=", " = ")
+				.split("\\s+|\\(|\\)");
+		String colName = splittedQuery[1];
+		String tableName = splittedQuery[3];
+
+		DBContainer currDB = data.get(data.size()-1);
+
+		Table currTable = currDB.getTables().get(currDB.getTableIndex(tableName));
+
+		// all columns
+		if(colName.equals("*")){
+			ArrayList<Column> columns = currTable.getColumns();
+			columnsInfo = new String[columns.size()][2];
+			int i = 0;
+			for(Column column : columns){
+				columnsInfo[i][0] = column.getName();
+				columnsInfo[i][1] = column.getType();
+				i++;
+			}
+			return columnsInfo;
+		}
+
+		// more than one column
+		if(colName.contains(",")){
+			String[] columnsName = colName.split("\\s*,\\s*");
+			ArrayList<Column> columns = currTable.getColumns();
+			columnsInfo = new String[columns.size()][2];
+			int i = 0;
+
+			for(Column column : columns){
+				boolean ok = false;
+				for(String oneCol : columnsName){
+					if(oneCol.equals(column.getName())){
+						ok = true;
+						break;
+					}
+				}
+				if(!ok){
+					continue;
+				}
+				columnsInfo[i][0] = column.getName();
+				columnsInfo[i][1] = column.getType();
+				i++;
+			}
+			return columnsInfo;
+		}
+
+		// one column
+		else{
+			// check if column exists in table
+			int columnIndex = currTable.columnIndex(colName);
+			if(columnIndex == -1 && !colName.equals("*")){
+				throw  new RuntimeException("Column " + colName +
+						" is not exists in " + currTable.getName());
+			}
+			Column queriedColumn = currTable.getColumns().get(columnIndex);
+			columnsInfo = new String[1][2];
+			columnsInfo[0][0] = queriedColumn.getName();
+			columnsInfo[0][1] = queriedColumn.getType();
+			return columnsInfo;
+		}
+
+
 	}
 
 	private int dbIndex(String string) {
@@ -316,15 +382,7 @@ public class DatabaseImp implements Database{
 		return -1;
 	}
 
-	private boolean dbExists(String string) {
-		for(DBContainer db : data) {
-			if(db.getName().equalsIgnoreCase(string)) {
-				return true ;
-			}
-		}
-		return false;
-	}
-
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private Object[][] applyWhere(Object[][] cols, String query, Table table) { // without the bonus (later)
 		Object[][] filteredCols = new Object[cols.length][cols[0].length];
 		int colIndex = 0;
@@ -420,5 +478,14 @@ public class DatabaseImp implements Database{
 			}
 		}
 		return newArray;
+	}
+
+	public String getTableName(String query) {
+		String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ")
+				.replaceAll("\\s+\\,", ",").replaceAll("\\s*\"\\s*","\"")
+				.replaceAll("\\s*'\\s*","'").replaceAll("=", " = ")
+				.split("\\s+|\\(|\\)");
+		String tableName = splittedQuery[3];
+		return tableName;
 	}
 }

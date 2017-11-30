@@ -8,47 +8,54 @@ public class ResultSetMetaDataImp implements ResultSetMetaData {
 
 	protected Object[][] table;
 	protected String[][] columns;
+	protected String tableName;
 
-	public ResultSetMetaDataImp(Object[][] table, String[][] columns) {
+	public ResultSetMetaDataImp(Object[][] table, String[][] columns, String tableName) {
 		this.table = table;
 		this.columns = columns;
+		this.tableName = tableName;
 	}
 
 	@Override
 	public int getColumnCount() throws SQLException {
-		return columns[0].length;
+		if(table.length != 0 && table[0] != null) {
+			return table[0].length;
+		}
+		return 0 ;
 	}
 
 	@Override
 	public String getColumnLabel(int column) throws SQLException {
-		return columns[0][column - 1];
+		if (column <= 0 || column > columns.length) {
+			throw new SQLException();
+		}
+		return columns[column - 1][0];
 	}
 
 	@Override
 	public String getColumnName(int column) throws SQLException {
-		return columns[0][column - 1];
+		if (column <= 0 || column > columns.length) {
+			throw new SQLException();
+		}
+		return columns[column - 1][0];
 	}
 
-	@SuppressWarnings("null")
 	@Override
 	public int getColumnType(int column) throws SQLException {
-		if (columns[1][column - 1].getClass()
-				.getSimpleName()
-				.equalsIgnoreCase("Varchar")) {
-			return Types.VARCHAR;
-		} else if (columns[1][column - 1].getClass()
-				.getSimpleName()
-				.equalsIgnoreCase("Integer")) {
-			return Types.INTEGER;
-		} else {
-			return (Integer) null;
+		if (column <= 0) {
+			throw new SQLException();
 		}
+		return columns[column-1][1].equalsIgnoreCase("int")? Types.INTEGER : Types.VARCHAR;
 	}
 
 	@Override
 	public String getTableName(int column) throws SQLException {
-		String tableName = "";
-		
+		if (column <= 0) {
+			throw new SQLException();
+		}
+		if (tableName == null) {
+			return "";
+		}
 		return tableName;
 	}
 
@@ -142,4 +149,3 @@ public class ResultSetMetaDataImp implements ResultSetMetaData {
 		throw new UnsupportedOperationException();
 	}
 }
-
