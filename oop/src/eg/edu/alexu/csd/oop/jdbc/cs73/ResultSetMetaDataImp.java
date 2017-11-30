@@ -1,6 +1,5 @@
 package eg.edu.alexu.csd.oop.jdbc.cs73;
 
-import java.lang.reflect.Type;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Types;
@@ -40,7 +39,6 @@ public class ResultSetMetaDataImp implements ResultSetMetaData {
 		return columns[column - 1][0];
 	}
 
-	@SuppressWarnings("null")
 	@Override
 	public int getColumnType(int column) throws SQLException {
 		if(column <= 0){

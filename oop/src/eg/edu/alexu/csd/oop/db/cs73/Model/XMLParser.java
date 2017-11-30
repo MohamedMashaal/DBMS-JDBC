@@ -6,12 +6,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Column;
-import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.DBContainer;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Record;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Table;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -23,11 +20,10 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class XMLParser {
-    public void saveTableToXML(String path, String dtdPath, Table databaseTable) throws FileNotFoundException {
+    @SuppressWarnings("rawtypes")
+	public void saveTableToXML(String path, String dtdPath, Table databaseTable) throws FileNotFoundException {
         Document dom;
         Element col = null, rec;
 
@@ -87,7 +83,8 @@ public class XMLParser {
         }
     }
 
-    public Table loadTableFromXML(String path) {
+    @SuppressWarnings({ "rawtypes", "unchecked", "resource" })
+	public Table loadTableFromXML(String path) {
         Table loadedTable = null;
         Document dom;
         InputStream inputStream;
