@@ -61,9 +61,7 @@ public class XMLParser {
 
             try {
                 // Creating the DTD
-                DOMImplementation domImp = dom.getImplementation();
-                DocumentType dtd = dom.getDoctype();
-                System.out.println(dtd);
+                getDTD(dtdPath);
 
                 Transformer tr = TransformerFactory.newInstance().newTransformer();
                 tr.setOutputProperty(OutputKeys.INDENT, "yes");
@@ -84,6 +82,32 @@ public class XMLParser {
             }
         } catch (ParserConfigurationException pce) {
             System.out.println("UsersXML: Error trying to instantiate DocumentBuilder " + pce);
+        }
+    }
+
+    public void getDTD(String dtdPath){
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(new File(dtdPath)));
+
+            bw.write("<!ELEMENT table (column+)>");
+            bw.newLine();
+            bw.write("<!ATTLIST table name CDATA #REQUIRED>");
+            bw.newLine();
+            bw.newLine();
+            bw.write("<!ELEMENT column (record*)>");
+            bw.newLine();
+            bw.write("<!ATTLIST table \n\tname CDATA #REQUIRED\n\ttype CDATA #REQUIRED>");
+            bw.newLine();
+            bw.newLine();
+            bw.write("<!ELEMENT record EMPTY>");
+            bw.newLine();
+            bw.write("<!ATTLIST record value CDATA #IMPLIED>");
+            bw.newLine();
+            bw.newLine();
+
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

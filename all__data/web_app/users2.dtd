@@ -1,0 +1,11 @@
+<!ELEMENT table (column+)>
+<!ATTLIST table name CDATA #REQUIRED>
+
+<!ELEMENT column (record*)>
+<!ATTLIST table 
+	name CDATA #REQUIRED
+	type CDATA #REQUIRED>
+
+<!ELEMENT record EMPTY>
+<!ATTLIST record value CDATA #IMPLIED>
+
