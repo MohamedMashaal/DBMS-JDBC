@@ -185,13 +185,13 @@ public class ConditionHandler {
             if(condition[i].startsWith("'")){ // len == 2
                 String temp = condition[i];
                 i++;
-                while(!condition[i].endsWith("'")){
+                /*while(!condition[i].endsWith("'")){
                     temp += " " + condition[i];
                     i++;
                 }
                 if(condition[i].endsWith("'")){
                     temp += " " + condition[i];
-                }
+                }*/
                 temp.replaceAll("'","");
                 curr += " " + temp;
                 len++;
