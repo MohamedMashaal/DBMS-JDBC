@@ -9,10 +9,12 @@ public class ResultSetMetaDataImp implements ResultSetMetaData {
 
 	protected Object[][] table;
 	protected String[][] columns;
+	protected String tableName;
 
-	public ResultSetMetaDataImp(Object[][] table, String[][] columns) {
+	public ResultSetMetaDataImp(Object[][] table, String[][] columns, String tableName) {
 		this.table = table;
 		this.columns = columns;
+		this.tableName = tableName;
 	}
 
 	@Override
@@ -49,8 +51,9 @@ public class ResultSetMetaDataImp implements ResultSetMetaData {
 
 	@Override
 	public String getTableName(int column) throws SQLException {
-		String tableName = "";
-		
+		if(column <= 0){
+			throw new SQLException();
+		}
 		return tableName;
 	}
 

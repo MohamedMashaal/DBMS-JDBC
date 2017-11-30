@@ -130,7 +130,8 @@ public class StatementImp implements Statement{
 		if(!closed) {
 			Object[][] table = dbManager.executeQuery(sql);
 			String[][] columns = dbManager.getColumnsInfo(sql);
-			return new ResultsetImp(table, columns, this);
+			String tableName = dbManager.getTableName(sql);
+			return new ResultsetImp(table, columns, tableName, this);
 		}
 		throw new SQLException();
 	}

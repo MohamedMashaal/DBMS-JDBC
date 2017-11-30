@@ -31,6 +31,7 @@ public class ResultsetImp implements ResultSet {
 
 	private String[][] colInfo;
 	private Object[][] res;
+	private String tableName;
 	private int rowCursor;
 	private int colCursor;
 	private int rows;
@@ -57,12 +58,14 @@ public class ResultsetImp implements ResultSet {
 	 * @param res result of query as 2D Object array.
 	 * @param colNames String array of column names where 0-indexed indices correspond to
 	 * 1-indexed column names.
+	 * @param tableName name of the table.
 	 * @param statementCreator the very same Statement object that created this ResultSet object.
 	 */
-	public ResultsetImp (Object[][] res, String[][] colNames, Statement statementCreator) {
+	public ResultsetImp (Object[][] res, String[][] colNames, String tableName, Statement statementCreator) {
 		this.statementCreator = statementCreator;
 		this.colInfo = colNames;
 		this.res = res;
+		this.tableName = tableName;
 		closed = false;
 		rows = res.length;
 		if (res.length != 0 && res[0] != null) {
@@ -392,7 +395,7 @@ public class ResultsetImp implements ResultSet {
 		if (closed) {
 			throw new SQLException("Result set closed.");
 		}
-		return new ResultSetMetaDataImp(res, colInfo);
+		return new ResultSetMetaDataImp(res, colInfo, tableName);
 	}
 
 	@Override
