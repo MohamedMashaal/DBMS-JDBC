@@ -2,7 +2,7 @@
 <!ATTLIST table name CDATA #REQUIRED>
 
 <!ELEMENT column (record*)>
-<!ATTLIST table 
+<!ATTLIST column 
 	name CDATA #REQUIRED
 	type CDATA #REQUIRED>
 

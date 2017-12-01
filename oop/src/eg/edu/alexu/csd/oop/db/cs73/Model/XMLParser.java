@@ -96,7 +96,7 @@ public class XMLParser {
             bw.newLine();
             bw.write("<!ELEMENT column (record*)>");
             bw.newLine();
-            bw.write("<!ATTLIST table \n\tname CDATA #REQUIRED\n\ttype CDATA #REQUIRED>");
+            bw.write("<!ATTLIST column \n\tname CDATA #REQUIRED\n\ttype CDATA #REQUIRED>");
             bw.newLine();
             bw.newLine();
             bw.write("<!ELEMENT record EMPTY>");

@@ -44,8 +44,8 @@ public class StatementImp implements Statement{
 		if(sql == null){
 			throw new SQLException();
 		}
-		if(!sql.trim().startsWith("insert") && !sql.trim().startsWith("update")){
-			throw new SQLException("INSERT or UPDATE queries only");
+		if(!sql.trim().startsWith("insert") && !sql.trim().startsWith("update") && !sql.trim().startsWith("delete")){
+			throw new SQLException("INSERT, UPDATE or DELETE queries only");
 		}
 
 		commands.add(sql);
