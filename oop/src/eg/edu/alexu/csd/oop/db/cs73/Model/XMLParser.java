@@ -42,12 +42,14 @@ public class XMLParser {
                 col = dom.createElement("column");
                 col.setAttribute("name", column.getName());
                 col.setAttribute("type", column.getType());
+                int i = 1;
                 for (Object object : column.getRecords()) {
                     Record record = (Record) object;
                     /*if(record.getValue().getClass().getSimpleName().equalsIgnoreCase("string")){
 
                     }*/
                     rec = dom.createElement("record");
+                    rec.setAttribute("id", Integer.toString(i++));
                     if(record.getValue() != null)
                         rec.setAttribute("value", record.getValue().toString());
                     else
@@ -101,7 +103,7 @@ public class XMLParser {
             bw.newLine();
             bw.write("<!ELEMENT record EMPTY>");
             bw.newLine();
-            bw.write("<!ATTLIST record value CDATA #IMPLIED>");
+            bw.write("<!ATTLIST record \n\tid    CDATA #REQUIRED\n\tvalue CDATA #REQUIRED>");
             bw.newLine();
             bw.newLine();
 

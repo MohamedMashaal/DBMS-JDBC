@@ -7,5 +7,7 @@
 	type CDATA #REQUIRED>
 
 <!ELEMENT record EMPTY>
-<!ATTLIST record value CDATA #IMPLIED>
+<!ATTLIST record 
+	id    CDATA #REQUIRED
+	value CDATA #REQUIRED>
 
