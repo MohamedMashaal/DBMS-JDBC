@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="628454c3-52db-46d7-89f6-96977109cf21" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/all__data/web_app/users2.dtd" afterPath="$PROJECT_DIR$/all__data/web_app/users2.dtd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/all__data/web_app/users2.xml" afterPath="$PROJECT_DIR$/all__data/web_app/users2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/ConditionHandler.java" afterPath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/ConditionHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DBObjects/Table.java" afterPath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DBObjects/Table.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/XMLParser.java" afterPath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/XMLParser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/jdbc/cs73/StatementImp.java" afterPath="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/jdbc/cs73/StatementImp.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,16 +20,20 @@
               <caret line="125" column="67" lean-forward="false" selection-start-line="125" selection-start-column="67" selection-end-line="125" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <marker date="1512137241462" expanded="true" signature="5716:6653" ph="{...}" />
+                <marker date="1512137241462" expanded="true" signature="6699:6814" ph="{...}" />
+                <marker date="1512137241462" expanded="true" signature="6859:7085" ph="{...}" />
+                <marker date="1512137241462" expanded="true" signature="7158:9055" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StatementImp.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="StatementImp.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/jdbc/cs73/StatementImp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="463">
-              <caret line="47" column="60" lean-forward="false" selection-start-line="47" selection-start-column="60" selection-end-line="47" selection-end-column="60" />
+            <state relative-caret-position="506">
+              <caret line="129" column="31" lean-forward="false" selection-start-line="129" selection-start-column="31" selection-end-line="129" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -60,7 +58,14 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="143">
               <caret line="139" column="18" lean-forward="false" selection-start-line="139" selection-start-column="18" selection-end-line="139" selection-end-column="18" />
-              <folding />
+              <folding>
+                <marker date="1512137263578" expanded="false" signature="5464:5494" ph="/unchecked/" />
+                <marker date="1512137263578" expanded="true" signature="5536:5861" ph="{...}" />
+                <marker date="1512137263578" expanded="false" signature="5864:5893" ph="/rawtypes/" />
+                <marker date="1512137263578" expanded="true" signature="5915:6079" ph="{...}" />
+                <marker date="1512137263578" expanded="false" signature="6082:6128" ph="/rawtypes, unchecked/" />
+                <marker date="1512137263578" expanded="true" signature="6176:7501" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,7 +94,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="XMLParser.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="XMLParser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/XMLParser.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="207">
@@ -209,8 +214,8 @@
         <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DatabaseImp.java" />
         <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DBObjects/Table.java" />
         <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/ConditionHandler.java" />
-        <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/jdbc/cs73/StatementImp.java" />
         <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/XMLParser.java" />
+        <option value="$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/jdbc/cs73/StatementImp.java" />
       </list>
     </option>
   </component>
@@ -867,6 +872,10 @@
           <caret line="125" column="67" lean-forward="false" selection-start-line="125" selection-start-column="67" selection-end-line="125" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1512137241462" expanded="true" signature="5716:6653" ph="{...}" />
+            <marker date="1512137241462" expanded="true" signature="6699:6814" ph="{...}" />
+            <marker date="1512137241462" expanded="true" signature="6859:7085" ph="{...}" />
+            <marker date="1512137241462" expanded="true" signature="7158:9055" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -921,21 +930,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/jdbc/cs73/StatementImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="47" column="60" lean-forward="false" selection-start-line="47" selection-start-column="60" selection-end-line="47" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/db/cs73/Model/DBObjects/Table.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
           <caret line="139" column="18" lean-forward="false" selection-start-line="139" selection-start-column="18" selection-end-line="139" selection-end-column="18" />
-          <folding />
+          <folding>
+            <marker date="1512137263578" expanded="false" signature="5464:5494" ph="/unchecked/" />
+            <marker date="1512137263578" expanded="true" signature="5536:5861" ph="{...}" />
+            <marker date="1512137263578" expanded="false" signature="5864:5893" ph="/rawtypes/" />
+            <marker date="1512137263578" expanded="true" signature="5915:6079" ph="{...}" />
+            <marker date="1512137263578" expanded="false" signature="6082:6128" ph="/rawtypes, unchecked/" />
+            <marker date="1512137263578" expanded="true" signature="6176:7501" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -944,6 +950,16 @@
         <state relative-caret-position="207">
           <caret line="91" column="8" lean-forward="true" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="8" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oop/src/eg/edu/alexu/csd/oop/jdbc/cs73/StatementImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="129" column="31" lean-forward="false" selection-start-line="129" selection-start-column="31" selection-end-line="129" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

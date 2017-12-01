@@ -44,7 +44,9 @@ public class StatementImp implements Statement{
 		if(sql == null){
 			throw new SQLException();
 		}
-		if(!sql.trim().startsWith("insert") && !sql.trim().startsWith("update") && !sql.trim().startsWith("delete")){
+		if(!sql.trim().startsWith("insert") && !sql.trim().startsWith("update")
+				&& !sql.trim().startsWith("delete") && !sql.trim().startsWith("create")
+				&& !sql.trim().startsWith("drop")){
 			throw new SQLException("INSERT, UPDATE or DELETE queries only");
 		}
 
@@ -122,7 +124,11 @@ public class StatementImp implements Statement{
 		int[] results = new int[commands.size()];
 		int i=0;
 		for(String command: commands){
-			results[i] = executeUpdate(command);
+			if(!command.trim().startsWith("create") && !command.trim().startsWith("drop")) {
+				results[i] = executeUpdate(command);
+			} else {
+				results[i] = 0;
+			}
 			i++;
 		}
 
