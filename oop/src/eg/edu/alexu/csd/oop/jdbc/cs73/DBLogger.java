@@ -3,6 +3,7 @@ package eg.edu.alexu.csd.oop.jdbc.cs73;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.FileHandler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
@@ -15,8 +16,9 @@ public class DBLogger {
 
 	public Logger log;
 	private FileHandler fh;
+	private static DBLogger instance;
 
-	public DBLogger() {
+	private DBLogger() {
 		File f = new File("log.txt");
 		if (!f.exists()) {
 			try {
@@ -35,6 +37,18 @@ public class DBLogger {
 		log = Logger.getLogger("MainLog");
 		log.addHandler(fh);
 		fh.setFormatter(new SimpleFormatter());
+		log.setLevel(Level.INFO);
+	}
+
+	public static DBLogger getInstance() {
+		if (instance == null) {
+			synchronized (DBLogger.class) {
+				if (instance == null) {
+					instance = new DBLogger();
+				}
+			}
+		}
+		return instance;
 	}
 
 }
