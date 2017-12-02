@@ -73,6 +73,7 @@ public class ResultsetImp implements ResultSet {
 	 */
 	public ResultsetImp(final Object[][] res, final String[][] colNames, final String tableName,
 			final Statement statementCreator) {
+		logger = DBLogger.getInstance();
 		logger.log.info("Building up ResultSet object.");
 		this.statementCreator = statementCreator;
 		this.colInfo = colNames;
