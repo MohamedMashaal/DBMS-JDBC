@@ -73,7 +73,6 @@ public class StatementImp implements Statement {
 		if (closed) {
 			throw new SQLException();
 		}
-		logger.log.info("Closing connection to Statement!");
 		closed = true;
 	}
 
