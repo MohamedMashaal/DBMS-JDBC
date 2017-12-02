@@ -24,6 +24,7 @@ import java.util.Map;
 
 /**
  * ResultSet implementation.
+ * 
  * @author H
  *
  */
@@ -38,8 +39,11 @@ public class ResultsetImp implements ResultSet {
 	private int cols;
 	private boolean closed;
 	private Statement statementCreator;
-	
-	public ResultsetImp (Object[][] res , Statement statementCreator) {
+	private DBLogger logger;
+
+	public ResultsetImp(Object[][] res, Statement statementCreator) {
+		logger = DBLogger.getInstance();
+		logger.log.info("Building ResultSet object.");
 		this.res = res;
 		this.statementCreator = statementCreator;
 		closed = false;
@@ -52,16 +56,23 @@ public class ResultsetImp implements ResultSet {
 		colCursor = 0;
 		rowCursor = 0;
 	}
-	
+
 	/**
 	 * This is the one and only constructor for the Result object.
-	 * @param res result of query as 2D Object array.
-	 * @param colNames String array of column names where 0-indexed indices correspond to
-	 * 1-indexed column names.
-	 * @param tableName name of the table.
-	 * @param statementCreator the very same Statement object that created this ResultSet object.
+	 * 
+	 * @param res
+	 *            result of query as 2D Object array.
+	 * @param colNames
+	 *            String array of column names where 0-indexed indices
+	 *            correspond to 1-indexed column names.
+	 * @param tableName
+	 *            name of the table.
+	 * @param statementCreator
+	 *            the very same Statement object that created this ResultSet
+	 *            object.
 	 */
-	public ResultsetImp (Object[][] res, String[][] colNames, String tableName, Statement statementCreator) {
+	public ResultsetImp(Object[][] res, String[][] colNames, String tableName, Statement statementCreator) {
+		logger.log.info("Building up ResultSet object.");
 		this.statementCreator = statementCreator;
 		this.colInfo = colNames;
 		this.res = res;
@@ -76,6 +87,7 @@ public class ResultsetImp implements ResultSet {
 		colCursor = 0;
 		rowCursor = 0;
 	}
+
 	@Override
 	public boolean isWrapperFor(Class<?> arg0) throws SQLException {
 		throw new UnsupportedOperationException();
@@ -91,16 +103,15 @@ public class ResultsetImp implements ResultSet {
 		if (closed) {
 			throw new SQLException("Result set closed.");
 		}
-		if(row > 0) {
-			rowCursor = row ;
+		logger.log.info("Moving head to absolute position " + row);
+		if (row > 0) {
+			rowCursor = row;
+		} else if (row < 0) {
+			rowCursor = rows + 1 + row;
+		} else {
+			rowCursor = 0;
 		}
-		else if (row < 0) {
-			rowCursor = rows + 1 + row ;
-		}
-		else {
-			rowCursor = 0 ;
-		}
-		return (rowCursor > 0 && rowCursor < rows + 1) ;
+		return (rowCursor > 0 && rowCursor < rows + 1);
 	}
 
 	@Override
@@ -108,8 +119,8 @@ public class ResultsetImp implements ResultSet {
 		if (closed) {
 			throw new SQLException("Result set closed.");
 		}
-		if(rows != 0)
-			rowCursor = rows + 1 ;
+		if (rows != 0)
+			rowCursor = rows + 1;
 	}
 
 	@Override
@@ -134,7 +145,8 @@ public class ResultsetImp implements ResultSet {
 
 	@Override
 	public void close() throws SQLException {// No more access to data.
-		if(!closed){
+		if (!closed) {
+			DBLogger.getInstance().log.warning("Closing ResultSet.");
 			closed = true;
 			res = null;// It shall be cleaned by garbage collector
 			// unless other references are pointing to it so handle that!
@@ -153,6 +165,7 @@ public class ResultsetImp implements ResultSet {
 			throw new SQLException("Result set closed.");
 		}
 		if (columnLabel == null) {
+			DBLogger.getInstance().log.warning("Given null in findColumn!");
 			throw new SQLException("Given null in findColumn!");
 		} else {
 			for (int i = 0; i < colInfo.length; i++) {
@@ -160,7 +173,7 @@ public class ResultsetImp implements ResultSet {
 					colCursor = i;
 					return colCursor;
 				}
-			}// Not found.
+			} // Not found.
 			throw new SQLException("Specified ColumnLabel doesn't exist in ResultSet");
 		}
 	}
@@ -354,7 +367,9 @@ public class ResultsetImp implements ResultSet {
 		if (closed) {
 			throw new SQLException("Result set closed.");
 		}
+		logger.log.info("Fetching result at column " + columnIndex);
 		if (columnIndex > cols) {
+			logger.log.info("Given invalid column index to getInt.");
 			throw new SQLException("Invalid column index.");
 		}
 		if (isAfterLast() || isBeforeFirst()) {
@@ -362,13 +377,13 @@ public class ResultsetImp implements ResultSet {
 		}
 		int returner = 0;
 		try {
-			Object x = res[rowCursor-1][columnIndex - 1];
-			if(x instanceof String) {
-				String z = (String)x;
-				if(z.equalsIgnoreCase("null"))
-					return 0 ;
+			Object x = res[rowCursor - 1][columnIndex - 1];
+			if (x instanceof String) {
+				String z = (String) x;
+				if (z.equalsIgnoreCase("null"))
+					return 0;
 			}
-			returner = (Integer)x;
+			returner = (Integer) x;
 			return returner;
 		} catch (Exception e) {
 			throw new SQLException();
@@ -433,19 +448,21 @@ public class ResultsetImp implements ResultSet {
 		if (closed) {
 			throw new SQLException("Result set closed.");
 		}
+		logger.log.info("Fetching result at " + columnIndex);
 		if (columnIndex > cols) {
+			logger.log.info("Given invalid column index to getObject.");
 			throw new SQLException("Invalid column index.");
 		}
 		if (isAfterLast() || isBeforeFirst()) {
 			throw new RuntimeException();
 		}
-		Object x = res[rowCursor-1][columnIndex - 1] ;
-		if(x instanceof String) {
-			String z = (String) x ;
-			if(z.equalsIgnoreCase("null"))
-				return null ;
+		Object x = res[rowCursor - 1][columnIndex - 1];
+		if (x instanceof String) {
+			String z = (String) x;
+			if (z.equalsIgnoreCase("null"))
+				return null;
 		}
-		return res[rowCursor-1][columnIndex - 1];
+		return res[rowCursor - 1][columnIndex - 1];
 	}
 
 	@Override
@@ -532,18 +549,21 @@ public class ResultsetImp implements ResultSet {
 			throw new SQLException("Result set closed.");
 		}
 		if (columnIndex > cols) {
+			logger.log.info("Given invalid column index to getString.");
 			throw new SQLException("Invalid column index.");
 		}
 		if (isAfterLast() || isBeforeFirst()) {
 			throw new SQLException();
 		}
 		try {
-			Object x = res[rowCursor-1][columnIndex - 1];
-			if(x instanceof String) {
-				String z = (String)x;
-				if(z.equalsIgnoreCase("null"))
-					return null ;}
-			String returner = (String)x ;
+			logger.log.info("Fetching result at column " + columnIndex);
+			Object x = res[rowCursor - 1][columnIndex - 1];
+			if (x instanceof String) {
+				String z = (String) x;
+				if (z.equalsIgnoreCase("null"))
+					return null;
+			}
+			String returner = (String) x;
 			return returner;
 		} catch (Exception e) {
 			throw new SQLException();
@@ -667,6 +687,7 @@ public class ResultsetImp implements ResultSet {
 		if (closed) {
 			throw new SQLException("Result set closed.");
 		}
+		logger.log.info("Head is moved to last row.");
 		rowCursor = rows;
 		return rows != 0;
 	}
@@ -688,7 +709,8 @@ public class ResultsetImp implements ResultSet {
 		if (closed) {
 			throw new SQLException("Result set closed.");
 		}
-		rowCursor ++ ;
+		logger.log.info("Advancing head.");
+		rowCursor++;
 		return !isAfterLast();
 	}
 
@@ -697,14 +719,14 @@ public class ResultsetImp implements ResultSet {
 		if (closed) {
 			throw new SQLException("Result set closed.");
 		}
-		rowCursor -- ;
+		rowCursor--;
+		logger.log.info("Moving head backwards.");
 		return !isBeforeFirst();
 	}
 
 	@Override
 	public void refreshRow() throws SQLException {
 		throw new UnsupportedOperationException();
-
 	}
 
 	@Override

@@ -8,19 +8,24 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DatabaseImp;
 
-public class StatementImp implements Statement{
+public class StatementImp implements Statement {
 	private DatabaseImp dbManager = DatabaseImp.getUniqueInstance();
-	private boolean closed = false ;
+	private boolean closed = false;
 	private ArrayList<String> commands = new ArrayList<>();
 	private Connection connection;
 	private int queryTimeout = Integer.MAX_VALUE; // INF
 	private String path;
-	
-	public StatementImp(Connection connection){
+	private DBLogger logger;
+
+	public StatementImp(Connection connection) {
+		logger = DBLogger.getInstance();
+		logger.log.info("Statement generated.");
 		this.connection = connection;
 	}
 
 	public StatementImp(String path, Connection connection) {
+		logger = DBLogger.getInstance();
+		logger.log.info("Statement generated.");
 		this.path = path;
 		this.connection = connection;
 		dbManager.setMainDirectory(path);
@@ -38,18 +43,19 @@ public class StatementImp implements Statement{
 
 	@Override
 	public void addBatch(String sql) throws SQLException {
-		if(closed){
+		if (closed) {
 			throw new SQLException("The statement has been closed.");
 		}
-		if(sql == null){
+		if (sql == null) {
 			throw new SQLException();
 		}
-		if(!sql.trim().startsWith("insert") && !sql.trim().startsWith("update")
-				&& !sql.trim().startsWith("delete") && !sql.trim().startsWith("create")
-				&& !sql.trim().startsWith("drop")){
+		if (!sql.trim().startsWith("insert") && !sql.trim().startsWith("update")
+				&& !sql.trim().startsWith("delete")
+				&& !sql.trim().startsWith("create") && !sql.trim().startsWith("drop")) {
+			logger.log.warning("Commands unsupported.");
 			throw new SQLException("INSERT, UPDATE or DELETE queries only");
 		}
-
+		logger.log.info("Adding accepted batch of commands..");
 		commands.add(sql);
 	}
 
@@ -60,9 +66,10 @@ public class StatementImp implements Statement{
 
 	@Override
 	public void clearBatch() throws SQLException {
-		if(closed){
+		if (closed) {
 			throw new SQLException("The statement has been closed.");
 		}
+		logger.log.warning("Clearing batch of commands.");
 		commands = new ArrayList<>();
 	}
 
@@ -73,9 +80,10 @@ public class StatementImp implements Statement{
 
 	@Override
 	public void close() throws SQLException {
-		if(closed){
+		if (closed) {
 			throw new SQLException();
 		}
+		logger.log.warning("Closing connection to Statement!");
 		closed = true;
 	}
 
@@ -86,16 +94,20 @@ public class StatementImp implements Statement{
 
 	@Override
 	public boolean execute(String sql) throws SQLException {
-		if(!closed) {
-			if(sql.trim().split("\\s+")[0].equalsIgnoreCase("create") || sql.trim().split("\\s+")[0].equalsIgnoreCase("drop"))
+		if (!closed) {
+			logger.log.info("Executing given command..");
+			if (sql.trim().split("\\s+")[0].equalsIgnoreCase("create")
+					|| sql.trim().split("\\s+")[0].equalsIgnoreCase("drop"))
 				return dbManager.executeStructureQuery(sql);
-			else if(sql.trim().split("\\s+")[0].equalsIgnoreCase("insert") || sql.trim().split("\\s+")[0].equalsIgnoreCase("delete")||sql.trim().split("\\s+")[0].equalsIgnoreCase("update")) {
+			else if (sql.trim().split("\\s+")[0].equalsIgnoreCase("insert")
+					|| sql.trim().split("\\s+")[0].equalsIgnoreCase("delete")
+					|| sql.trim().split("\\s+")[0].equalsIgnoreCase("update")) {
 				int result = executeUpdate(sql);
-				return result > 0  ;
-			}
-			else if (sql.trim().split("\\s+")[0].equalsIgnoreCase("select")) {
+				return result > 0;
+			} else if (sql.trim().split("\\s+")[0].equalsIgnoreCase("select")) {
+				logger.log.info("Generating result of select query..");
 				ResultSet result = executeQuery(sql);
-				return result.getMetaData().getColumnCount() > 0 ;
+				return result.getMetaData().getColumnCount() > 0;
 			}
 		}
 		throw new SQLException();
@@ -118,26 +130,27 @@ public class StatementImp implements Statement{
 
 	@Override
 	public int[] executeBatch() throws SQLException {
-		if(closed){
+		if (closed) {
 			throw new SQLException("The statement has been closed.");
 		}
+		logger.log.info("Executing batch of commands..");
 		int[] results = new int[commands.size()];
-		int i=0;
-		for(String command: commands){
-			if(!command.trim().startsWith("create") && !command.trim().startsWith("drop")) {
+		int i = 0;
+		for (String command : commands) {
+			if (!command.trim().startsWith("create") && !command.trim().startsWith("drop")) {
 				results[i] = executeUpdate(command);
 			} else {
 				results[i] = 0;
 			}
 			i++;
 		}
-
 		return results;
 	}
 
 	@Override
 	public ResultSet executeQuery(String sql) throws SQLException {
-		if(!closed) {
+		if (!closed) {
+			logger.log.info("Fetching ResultSet data..");
 			Object[][] table = dbManager.executeQuery(sql);
 			String[][] columns = dbManager.getColumnsInfo(sql);
 			String tableName = dbManager.getTableName(sql);
@@ -148,8 +161,10 @@ public class StatementImp implements Statement{
 
 	@Override
 	public int executeUpdate(String sql) throws SQLException {
-		if(!closed) {
-			return dbManager.executeUpdateQuery(sql);}
+		if (!closed) {
+			logger.log.info("Executing given update query..");
+			return dbManager.executeUpdateQuery(sql);
+		}
 		throw new SQLException();
 	}
 
@@ -170,7 +185,7 @@ public class StatementImp implements Statement{
 
 	@Override
 	public Connection getConnection() throws SQLException {
-		if(closed){
+		if (closed) {
 			throw new SQLException("The statement has been closed.");
 		}
 		return connection;
@@ -213,7 +228,7 @@ public class StatementImp implements Statement{
 
 	@Override
 	public int getQueryTimeout() throws SQLException {
-		if(closed){
+		if (closed) {
 			throw new SQLException("The statement has been closed.");
 		}
 		return queryTimeout;
@@ -301,12 +316,13 @@ public class StatementImp implements Statement{
 
 	@Override
 	public void setQueryTimeout(int seconds) throws SQLException {
-		if(closed){
+		if (closed) {
 			throw new SQLException("The statement has been closed.");
 		}
-		if(seconds < 0){
+		if (seconds < 0) {
 			throw new SQLException("Invalid Value.");
 		}
+		logger.log.warning("Setting query timeout to " + seconds + " seconds");
 		queryTimeout = seconds;
 	}
 

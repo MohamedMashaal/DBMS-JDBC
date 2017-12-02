@@ -11,6 +11,7 @@ public class ResultSetMetaDataImp implements ResultSetMetaData {
 	protected String tableName;
 
 	public ResultSetMetaDataImp(Object[][] table, String[][] columns, String tableName) {
+		DBLogger.getInstance().log.info("Generating meta data.");
 		this.table = table;
 		this.columns = columns;
 		this.tableName = tableName;
