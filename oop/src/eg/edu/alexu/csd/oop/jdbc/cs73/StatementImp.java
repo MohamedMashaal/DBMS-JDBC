@@ -42,7 +42,7 @@ public class StatementImp implements Statement {
 		}
 		if (!sql.trim().startsWith("insert") && !sql.trim().startsWith("update") && !sql.trim().startsWith("delete")
 				&& !sql.trim().startsWith("create") && !sql.trim().startsWith("drop")) {
-			logger.log.info("Commands unsupported.");
+			logger.log.warning("Commands unsupported.");
 			throw new SQLException("INSERT, UPDATE or DELETE queries only");
 		}
 		logger.log.info("Adding accepted batch of commands..");
@@ -59,7 +59,7 @@ public class StatementImp implements Statement {
 		if (closed) {
 			throw new SQLException("The statement has been closed.");
 		}
-		logger.log.info("Clearing batch of commands.");
+		logger.log.warning("Clearing batch of commands.");
 		commands = new ArrayList<>();
 	}
 
@@ -73,6 +73,7 @@ public class StatementImp implements Statement {
 		if (closed) {
 			throw new SQLException();
 		}
+		logger.log.warning("Closing connection to Statement!");
 		closed = true;
 	}
 
@@ -318,7 +319,7 @@ public class StatementImp implements Statement {
 		if (seconds < 0) {
 			throw new SQLException("Invalid Value.");
 		}
-		logger.log.info("Setting query timeout to " + seconds + " seconds");
+		logger.log.warning("Setting query timeout to " + seconds + " seconds");
 		queryTimeout = seconds;
 	}
 
