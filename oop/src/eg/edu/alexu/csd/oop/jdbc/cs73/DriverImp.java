@@ -10,31 +10,23 @@ import java.util.Properties;
 import java.util.logging.Logger;
 
 public class DriverImp implements Driver {
-	private Properties properties;
-
 	@Override
-	public Connection connect(String s, Properties properties) throws SQLException {
-		this.properties = properties;
-		DBLogger.getInstance().log.info("Attempting to connect...");
-		File dir = null;
-		if (properties.contains("path") && !properties.getProperty("path").equalsIgnoreCase("")) {
-			dir = (File) properties.get("path");
-			String path = dir.getAbsolutePath();
-			DBLogger.getInstance().log.info("Connecting to specified path...");
-			return new ConnectionImp(path);
-		}
-		return new ConnectionImp("");
-	}
-
-	@Override
-	public boolean acceptsURL(String s) throws SQLException {
+	public boolean acceptsURL(final String s) throws SQLException {
 		DBLogger.getInstance().log.info("Access to " + s + "has no security.");
 		return true;
 	}
 
 	@Override
-	public DriverPropertyInfo[] getPropertyInfo(String s, Properties properties) throws SQLException {
-		throw new UnsupportedOperationException();
+	public Connection connect(final String s, final Properties properties) throws SQLException {
+		DBLogger.getInstance().log.info("Attempting to connect...");
+		File dir = null;
+		if (properties.contains("path") && !properties.getProperty("path").equalsIgnoreCase("")) {
+			dir = (File) properties.get("path");
+			final String path = dir.getAbsolutePath();
+			DBLogger.getInstance().log.info("Connecting to specified path...");
+			return new ConnectionImp(path);
+		}
+		return new ConnectionImp("");
 	}
 
 	@Override
@@ -48,12 +40,17 @@ public class DriverImp implements Driver {
 	}
 
 	@Override
-	public boolean jdbcCompliant() {
+	public Logger getParentLogger() throws SQLFeatureNotSupportedException {
+		return DBLogger.getInstance().log;
+	}
+
+	@Override
+	public DriverPropertyInfo[] getPropertyInfo(final String s, final Properties properties) throws SQLException {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public Logger getParentLogger() throws SQLFeatureNotSupportedException {
-		return DBLogger.getInstance().log;
+	public boolean jdbcCompliant() {
+		throw new UnsupportedOperationException();
 	}
 }

@@ -9,21 +9,35 @@ import java.util.logging.SimpleFormatter;
 
 /**
  * This class does the job of handling the logger for the JDBC&DBMS.
+ * 
  * @author H
  *
  */
 public class DBLogger {
 
-	public Logger log;
-	private FileHandler fh;
 	private static DBLogger instance;
 
+	public static DBLogger getInstance() {
+		if (DBLogger.instance == null) {
+			synchronized (DBLogger.class) {
+				if (DBLogger.instance == null) {
+					DBLogger.instance = new DBLogger();
+				}
+			}
+		}
+		return DBLogger.instance;
+	}
+
+	public Logger log;
+
+	private FileHandler fh;
+
 	private DBLogger() {
-		File f = new File("log.txt");
+		final File f = new File("log.txt");
 		if (!f.exists()) {
 			try {
 				f.createNewFile();
-			} catch (IOException e) {
+			} catch (final IOException e) {
 				System.out.println("Failed to create log file.");
 				e.printStackTrace();
 			}
@@ -33,22 +47,11 @@ public class DBLogger {
 		} catch (SecurityException | IOException e) {
 			System.out.println("Failed to handle log file.");
 			e.printStackTrace();
-		}// Appends to log.txt file.
+		} // Appends to log.txt file.
 		log = Logger.getLogger("MainLog");
 		log.addHandler(fh);
 		fh.setFormatter(new SimpleFormatter());
 		log.setLevel(Level.INFO);
-	}
-
-	public static DBLogger getInstance() {
-		if (instance == null) {
-			synchronized (DBLogger.class) {
-				if (instance == null) {
-					instance = new DBLogger();
-				}
-			}
-		}
-		return instance;
 	}
 
 }
