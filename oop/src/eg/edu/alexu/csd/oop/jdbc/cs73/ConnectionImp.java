@@ -9,12 +9,9 @@ public class ConnectionImp implements Connection{
 	private String path;
     private boolean closed;
 
-    public ConnectionImp(){
-        closed = false;
-    }
-    
     public ConnectionImp(String path) {
     	this.path = path ;
+        this.closed = false;
     }
 
     @Override

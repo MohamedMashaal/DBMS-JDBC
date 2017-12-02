@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
-<!DOCTYPE table SYSTEM "/home/youssefali/My OOP Repo/oop/all__data/website/posts.dtd">
-<table name="posts">
-    <column name="content" type="varchar"/>
-    <column name="user_id" type="int"/>
-</table>

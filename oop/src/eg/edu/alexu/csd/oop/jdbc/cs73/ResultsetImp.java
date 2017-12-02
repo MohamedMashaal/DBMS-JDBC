@@ -538,6 +538,7 @@ public class ResultsetImp implements ResultSet {
 			throw new SQLException();
 		}
 		try {
+			String
 			Object x = res[rowCursor-1][columnIndex - 1];
 			if(x instanceof String) {
 				String z = (String)x;
@@ -546,8 +547,10 @@ public class ResultsetImp implements ResultSet {
 			String returner = (String)x ;
 			return returner;
 		} catch (Exception e) {
-			throw new SQLException();
+			e.printStackTrace();
+			//throw new SQLException();
 		}
+		return "";
 	}
 
 	@Override

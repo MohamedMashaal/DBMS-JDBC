@@ -15,6 +15,8 @@ public class StatementImp implements Statement{
 	private Connection connection;
 	private int queryTimeout = Integer.MAX_VALUE; // INF
 	private String path;
+	private ResultSet currentResultSet;
+	private int updatedCount;
 	
 	public StatementImp(Connection connection){
 		this.connection = connection;
@@ -141,7 +143,8 @@ public class StatementImp implements Statement{
 			Object[][] table = dbManager.executeQuery(sql);
 			String[][] columns = dbManager.getColumnsInfo(sql);
 			String tableName = dbManager.getTableName(sql);
-			return new ResultsetImp(table, columns, tableName, this);
+			currentResultSet = new ResultsetImp(table, columns, tableName, this);
+			return currentResultSet;
 		}
 		throw new SQLException();
 	}
@@ -149,7 +152,8 @@ public class StatementImp implements Statement{
 	@Override
 	public int executeUpdate(String sql) throws SQLException {
 		if(!closed) {
-			return dbManager.executeUpdateQuery(sql);}
+			updatedCount = dbManager.executeUpdateQuery(sql);
+			return updatedCount;}
 		throw new SQLException();
 	}
 
@@ -221,7 +225,7 @@ public class StatementImp implements Statement{
 
 	@Override
 	public ResultSet getResultSet() throws SQLException {
-		throw new UnsupportedOperationException();
+		return currentResultSet;
 	}
 
 	@Override
@@ -241,7 +245,7 @@ public class StatementImp implements Statement{
 
 	@Override
 	public int getUpdateCount() throws SQLException {
-		throw new UnsupportedOperationException();
+		return updatedCount;
 	}
 
 	@Override
