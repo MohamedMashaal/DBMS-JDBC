@@ -138,7 +138,7 @@ public class ResultsetImp implements ResultSet {
 	@Override
 	public void close() throws SQLException {// No more access to data.
 		if (!closed) {
-			DBLogger.getInstance().log.warning("Closing ResultSet.");
+			DBLogger.getInstance().log.info("Closing ResultSet.");
 			closed = true;
 			res = null;// It shall be cleaned by garbage collector
 			// unless other references are pointing to it so handle that!
@@ -157,7 +157,7 @@ public class ResultsetImp implements ResultSet {
 			throw new SQLException("Result set closed.");
 		}
 		if (columnLabel == null) {
-			DBLogger.getInstance().log.warning("Given null in findColumn!");
+			DBLogger.getInstance().log.info("Given null in findColumn!");
 			throw new SQLException("Given null in findColumn!");
 		} else {
 			for (int i = 0; i < colInfo.length; i++) {

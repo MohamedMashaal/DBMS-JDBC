@@ -47,7 +47,7 @@ public class ConnectionImp implements Connection {
 		if (closed) {
 			throw new SQLException();
 		}
-		DBLogger.getInstance().log.warning("Closing connection.");
+		DBLogger.getInstance().log.info("Closing connection.");
 		closed = true;
 	}
 
