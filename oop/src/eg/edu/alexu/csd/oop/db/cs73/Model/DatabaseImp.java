@@ -260,7 +260,7 @@ public class DatabaseImp implements Database{
     		String [][] cloumnsValues = extractor.getColumnsValues(splittedQuery);
     		if(data.get(data.size()-1).tableExists(splittedQuery[2])) {
     			updated = data.get(data.size()-1).insert(splittedQuery[2] , Arrays.asList(cloumnsValues[0]) , Arrays.asList(cloumnsValues[1]));
-    			tableName = splittedQuery[2];
+    			tableName = splittedQuery[2].toLowerCase();
     		}
     		else {
     			throw new SQLException();
@@ -271,7 +271,7 @@ public class DatabaseImp implements Database{
     		ArrayList<String> toUpdate = extractor.getWhere(splittedQuery);
     		if(data.get(data.size()-1).tableExists(splittedQuery[1])) {
     			updated = data.get(data.size()-1).update(splittedQuery[1] , columnsValues.get(0) , columnsValues.get(1),toUpdate);
-    			tableName = splittedQuery[1];
+    			tableName = splittedQuery[1].toLowerCase();
     		}
     		else {
     			throw new SQLException();

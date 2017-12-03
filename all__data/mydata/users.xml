@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE table SYSTEM "/home/youssefali/My OOP Repo/oop/all__data/mydata/users.dtd">
+<table name="users">
+    <column name="name" type="varchar">
+        <record id="1" value="youssef"/>
+        <record id="2" value="ahmed"/>
+    </column>
+    <column name="age" type="int">
+        <record id="1" value="20"/>
+        <record id="2" value="45"/>
+    </column>
+</table>

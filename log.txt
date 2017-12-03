@@ -138,3 +138,75 @@ Dec 03, 2017 4:41:27 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp <init>
 INFO: Statement generated.
 Dec 03, 2017 4:41:36 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp execute
 INFO: Executing given command..
+Dec 03, 2017 4:54:18 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Attempting to connect...
+Dec 03, 2017 4:54:18 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Connecting to specified path...
+Dec 03, 2017 4:54:18 PM eg.edu.alexu.csd.oop.jdbc.cs73.ConnectionImp createStatement
+INFO: Generating statement..
+Dec 03, 2017 4:54:18 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp <init>
+INFO: Statement generated.
+Dec 03, 2017 4:55:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Attempting to connect...
+Dec 03, 2017 4:55:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Connecting to specified path...
+Dec 03, 2017 4:55:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ConnectionImp createStatement
+INFO: Generating statement..
+Dec 03, 2017 4:55:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp <init>
+INFO: Statement generated.
+Dec 03, 2017 4:55:31 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp execute
+INFO: Executing given command..
+Dec 03, 2017 4:57:23 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp execute
+INFO: Executing given command..
+Dec 03, 2017 4:57:48 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp execute
+INFO: Executing given command..
+Dec 03, 2017 4:58:10 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp executeUpdate
+INFO: Executing given update query..
+Dec 03, 2017 4:58:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp executeUpdate
+INFO: Executing given update query..
+Dec 03, 2017 4:59:00 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp executeUpdate
+INFO: Executing given update query..
+Dec 03, 2017 4:59:00 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp executeUpdate
+INFO: Executing given update query..
+Dec 03, 2017 4:59:00 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp executeUpdate
+INFO: Executing given update query..
+Dec 03, 2017 4:59:01 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp executeUpdate
+INFO: Executing given update query..
+Dec 03, 2017 4:59:01 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp executeUpdate
+INFO: Executing given update query..
+Dec 03, 2017 4:59:11 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp executeQuery
+INFO: Fetching ResultSet data..
+Dec 03, 2017 4:59:11 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp <init>
+INFO: Building up ResultSet object.
+Dec 03, 2017 4:59:11 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 4:59:11 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 4:59:11 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 4:59:11 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 4:59:11 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 4:59:11 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 4:59:11 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 4:59:11 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 4:59:11 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 4:59:11 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 4:59:11 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 4:59:11 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 4:59:11 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 4:59:11 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 4:59:11 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 4:59:11 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
