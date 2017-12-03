@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import javax.swing.JTable;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 public class JdbcController {
 	private JdbcView view ;
@@ -69,6 +72,7 @@ public class JdbcController {
 					}
 					else if(query.equalsIgnoreCase("insert") || query.equalsIgnoreCase("delete")||query.equalsIgnoreCase("update")) {
 						int res = statement.executeUpdate(sql);
+						System.out.println(res);
 						view.getTextArea().setText(res + " has been changed");
 					}
 					else if(query.equalsIgnoreCase("select")) {
@@ -119,7 +123,6 @@ public class JdbcController {
 		} catch (SQLException e) {
 			view.getTextArea().setText("Something went Wrong");
 		}
-		JTable table = view.getTable();
-		table = new JTable(data ,titles.toArray(new String [0]));
+		view.getTable().setModel(new DefaultTableModel(data , titles.toArray(new String [0])));
 	}
 }

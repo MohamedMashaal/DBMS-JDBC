@@ -5,6 +5,7 @@ import java.awt.Component;
 import javax.swing.JList;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.table.DefaultTableModel;
 
 public class JdbcView {
 	private javax.swing.JFrame mainWindow;
@@ -133,9 +134,9 @@ public class JdbcView {
 	}
 
 	public void clear() {
-		textArea = new JTextArea();
-		history = new JList<>();
-		table = new JTable();
+		textArea.setText("");
+		history.setListData(new String [0]);
+		table.setModel(new DefaultTableModel( new String[0][] , new String[0]));
 	}
 	
 	public javax.swing.JButton getPathButton() {
