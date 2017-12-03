@@ -359,21 +359,6 @@ public class DatabaseImp implements Database{
 						Integer comparedColumnRecord = (Integer)x.getValue();
 						if(new Comparator<Integer>().compare(comparedColumnRecord, new Integer(intValue), operator))
 							filteredRecords.add(record);
-						/*if(operator.equals("=")) {
-							if(comparedColumnRecord.intValue() == intValue) {
-								filteredRecords.add(record);
-							}
-						}
-						else if(operator.equals(">")){
-							if(comparedColumnRecord.intValue() > intValue){
-								filteredRecords.add(record);
-							}
-						}
-						else if(operator.equals("<")){
-							if(comparedColumnRecord.intValue() < intValue){
-								filteredRecords.add(record);
-							}
-						}*/
 						i++;
 					}
 					filteredCols[colIndex++] = filteredRecords.toArray();
@@ -392,24 +377,8 @@ public class DatabaseImp implements Database{
 				i = 0 ;
 				for(Object record : column){
 					Record<String> castedRecord = (Record<String>) comparedColumn.getRecords().get(i);
-					//int comparingVal = castedRecord.getValue().compareTo(comparedValue);
 					if(new Comparator<String>().compare(castedRecord.getValue() ,comparedValue , operator))
 						filteredRecords.add(record);
-					/*if(operator.equals("=")) {
-						if(comparingVal == 0) {
-							filteredRecords.add(record);
-						}
-					}
-					else if(operator.equals(">")){
-						if(comparingVal == 1){
-							filteredRecords.add(record);
-						}
-					}
-					else if(operator.equals("<")){
-						if(comparingVal == -1){
-							filteredRecords.add(record);
-						}
-					}*/
 					i++;
 				}
 				filteredCols[colIndex++] = filteredRecords.toArray();
