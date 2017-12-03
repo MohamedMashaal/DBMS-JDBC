@@ -119,8 +119,12 @@ public class JdbcController {
 			System.out.println(rows + " " + res.getMetaData().getColumnCount());
 			res.first();
 			for(int i = 0 ; i < rows ; i ++) {
-				for(int j = 0 ; j < res.getMetaData().getColumnCount() ; j++)
-					data[i][j] = res.getObject(j+1).toString();
+				for(int j = 0 ; j < res.getMetaData().getColumnCount() ; j++) {
+					if(res.getObject(j+1) != null)
+						data[i][j] = res.getObject(j+1).toString();
+					else
+						data[i][j] = "null";
+				}
 				res.next();
 			}
 			
