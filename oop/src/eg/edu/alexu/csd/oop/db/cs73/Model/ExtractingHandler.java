@@ -85,12 +85,8 @@ public class ExtractingHandler {
 
 	public String[] filterQuotes(String[] splittedQuery) {
 		ArrayList<String> filtered = new ArrayList<>();
-		boolean quote = true ;
 		for(String x : splittedQuery) {
-			if(x.equalsIgnoreCase("where")) {
-				quote = false;
-			}
-			if(x.charAt(0) == '\'' && quote) {
+			if(x.charAt(0) == '\'') {
 				filtered.add(x.substring(1, x.length()-1));
 			}
 			else {
