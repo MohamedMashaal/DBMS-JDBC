@@ -242,3 +242,643 @@ Dec 03, 2017 5:05:18 PM eg.edu.alexu.csd.oop.jdbc.cs73.ConnectionImp createState
 INFO: Generating statement..
 Dec 03, 2017 5:05:18 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp <init>
 INFO: Statement generated.
+Dec 03, 2017 5:06:43 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Attempting to connect...
+Dec 03, 2017 5:06:43 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Connecting to specified path...
+Dec 03, 2017 5:06:43 PM eg.edu.alexu.csd.oop.jdbc.cs73.ConnectionImp createStatement
+INFO: Generating statement..
+Dec 03, 2017 5:06:43 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp <init>
+INFO: Statement generated.
+Dec 03, 2017 5:06:48 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Attempting to connect...
+Dec 03, 2017 5:06:48 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Connecting to specified path...
+Dec 03, 2017 5:06:48 PM eg.edu.alexu.csd.oop.jdbc.cs73.ConnectionImp createStatement
+INFO: Generating statement..
+Dec 03, 2017 5:06:48 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp <init>
+INFO: Statement generated.
+Dec 03, 2017 5:06:56 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp executeQuery
+INFO: Fetching ResultSet data..
+Dec 03, 2017 5:07:51 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp execute
+INFO: Executing given command..
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp executeQuery
+INFO: Fetching ResultSet data..
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp <init>
+INFO: Building up ResultSet object.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:06 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp executeQuery
+INFO: Fetching ResultSet data..
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp <init>
+INFO: Building up ResultSet object.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp executeQuery
+INFO: Fetching ResultSet data..
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp <init>
+INFO: Building up ResultSet object.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:37 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp executeQuery
+INFO: Fetching ResultSet data..
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp <init>
+INFO: Building up ResultSet object.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:08:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
+Dec 03, 2017 5:09:32 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Attempting to connect...
+Dec 03, 2017 5:09:32 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Connecting to specified path...
+Dec 03, 2017 5:09:32 PM eg.edu.alexu.csd.oop.jdbc.cs73.ConnectionImp createStatement
+INFO: Generating statement..
+Dec 03, 2017 5:09:32 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp <init>
+INFO: Statement generated.
+Dec 03, 2017 5:09:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Attempting to connect...
+Dec 03, 2017 5:09:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Connecting to specified path...
+Dec 03, 2017 5:09:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.ConnectionImp createStatement
+INFO: Generating statement..
+Dec 03, 2017 5:09:44 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp <init>
+INFO: Statement generated.
+Dec 03, 2017 5:09:45 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp execute
+INFO: Executing given command..
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp executeQuery
+INFO: Fetching ResultSet data..
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp <init>
+INFO: Building up ResultSet object.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:09:59 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
+Dec 03, 2017 5:12:23 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Attempting to connect...
+Dec 03, 2017 5:12:23 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Connecting to specified path...
+Dec 03, 2017 5:12:23 PM eg.edu.alexu.csd.oop.jdbc.cs73.ConnectionImp createStatement
+INFO: Generating statement..
+Dec 03, 2017 5:12:23 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp <init>
+INFO: Statement generated.
+Dec 03, 2017 5:12:29 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Attempting to connect...
+Dec 03, 2017 5:12:29 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Connecting to specified path...
+Dec 03, 2017 5:12:29 PM eg.edu.alexu.csd.oop.jdbc.cs73.ConnectionImp createStatement
+INFO: Generating statement..
+Dec 03, 2017 5:12:29 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp <init>
+INFO: Statement generated.
+Dec 03, 2017 5:12:36 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp execute
+INFO: Executing given command..
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp executeQuery
+INFO: Fetching ResultSet data..
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp <init>
+INFO: Building up ResultSet object.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:12:50 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
+Dec 03, 2017 5:15:29 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Attempting to connect...
+Dec 03, 2017 5:15:29 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Connecting to specified path...
+Dec 03, 2017 5:15:29 PM eg.edu.alexu.csd.oop.jdbc.cs73.ConnectionImp createStatement
+INFO: Generating statement..
+Dec 03, 2017 5:15:29 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp <init>
+INFO: Statement generated.
+Dec 03, 2017 5:15:39 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Attempting to connect...
+Dec 03, 2017 5:15:39 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Connecting to specified path...
+Dec 03, 2017 5:15:39 PM eg.edu.alexu.csd.oop.jdbc.cs73.ConnectionImp createStatement
+INFO: Generating statement..
+Dec 03, 2017 5:15:39 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp <init>
+INFO: Statement generated.
+Dec 03, 2017 5:15:40 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp execute
+INFO: Executing given command..
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp executeQuery
+INFO: Fetching ResultSet data..
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp <init>
+INFO: Building up ResultSet object.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 1
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp getObject
+INFO: Fetching result at 2
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <init>
+INFO: Generating meta data.
+Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
+INFO: Advancing head.

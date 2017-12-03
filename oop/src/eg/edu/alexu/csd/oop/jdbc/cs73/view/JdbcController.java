@@ -100,6 +100,7 @@ public class JdbcController {
 	}
 	
 	private void updateTable(ResultSet res) {
+		System.out.println("i'm here");
 		ArrayList<String> titles = new ArrayList<>();
 		String [][] data = new String [0][];
 		int rows = 0;
@@ -108,15 +109,18 @@ public class JdbcController {
 				titles.add(res.getMetaData().getColumnLabel(i));
 			}
 			res.first();
+			if(!res.isBeforeFirst())
+				rows ++ ;
 			while(!res.isLast()) {
 				rows ++ ;
 				res.next();
 			}
 			data = new String[rows][res.getMetaData().getColumnCount()];
+			System.out.println(rows + " " + res.getMetaData().getColumnCount());
 			res.first();
-			for(int i = 1 ; i <= rows ; i ++) {
-				for(int j = 1 ; j <= res.getMetaData().getColumnCount() ; j++)
-					data[i][j] = res.getObject(j).toString();
+			for(int i = 0 ; i < rows ; i ++) {
+				for(int j = 0 ; j < res.getMetaData().getColumnCount() ; j++)
+					data[i][j] = res.getObject(j+1).toString();
 				res.next();
 			}
 			
