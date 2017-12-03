@@ -3,6 +3,10 @@ package eg.edu.alexu.csd.oop.db.cs73.Model;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Column;
+import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.DBContainer;
+import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Table;
+
 public class ExtractingHandler {
 	public String[][] getColumnsValues(String[] splittedQuery) throws SQLException {
 		int length = 0;
@@ -94,5 +98,70 @@ public class ExtractingHandler {
 			}
 		}
 		return filtered.toArray(new String [0]);
+	}
+	
+	public String[][] getColumnsInfoSelect(DBContainer currDB, String query) {
+		String[][] columnsInfo;
+		String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ")
+				.replaceAll("\\s+\\,", ",").replaceAll("\\s*\"\\s*","\"")
+				.replaceAll("\\s*'\\s*","'").replaceAll("=", " = ")
+				.split("\\s+|\\(|\\)");
+		String colName = splittedQuery[1];
+		String tableName = splittedQuery[3];
+
+		Table currTable = currDB.getTables().get(currDB.getTableIndex(tableName));
+
+		// all columns
+		if(colName.equals("*")){
+			ArrayList<Column> columns = currTable.getColumns();
+			columnsInfo = new String[columns.size()][2];
+			int i = 0;
+			for(Column column : columns){
+				columnsInfo[i][0] = column.getName();
+				columnsInfo[i][1] = column.getType();
+				i++;
+			}
+			return columnsInfo;
+		}
+
+		// more than one column
+		if(colName.contains(",")){
+			String[] columnsName = colName.split("\\s*,\\s*");
+			ArrayList<Column> columns = currTable.getColumns();
+			columnsInfo = new String[columns.size()][2];
+			int i = 0;
+
+			for(Column column : columns){
+				boolean ok = false;
+				for(String oneCol : columnsName){
+					if(oneCol.equals(column.getName())){
+						ok = true;
+						break;
+					}
+				}
+				if(!ok){
+					continue;
+				}
+				columnsInfo[i][0] = column.getName();
+				columnsInfo[i][1] = column.getType();
+				i++;
+			}
+			return columnsInfo;
+		}
+
+		// one column
+		else{
+			// check if column exists in table
+			int columnIndex = currTable.columnIndex(colName);
+			if(columnIndex == -1 && !colName.equals("*")){
+				throw  new RuntimeException("Column " + colName +
+						" is not exists in " + currTable.getName());
+			}
+			Column queriedColumn = currTable.getColumns().get(columnIndex);
+			columnsInfo = new String[1][2];
+			columnsInfo[0][0] = queriedColumn.getName();
+			columnsInfo[0][1] = queriedColumn.getType();
+			return columnsInfo;
+		}
 	}
 }
