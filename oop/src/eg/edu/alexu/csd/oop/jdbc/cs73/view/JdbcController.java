@@ -42,7 +42,7 @@ public class JdbcController {
 			e.printStackTrace();
 		}
 	}
-	private void addListeners(JdbcView view) {
+	private void addListeners(final JdbcView view) {
 		view.getPathButton().addActionListener(new ActionListener() {
 			
 			@Override
