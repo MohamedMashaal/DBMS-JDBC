@@ -6,6 +6,7 @@ import java.sql.Driver;
 import java.sql.DriverPropertyInfo;
 import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
+import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -20,7 +21,7 @@ public class DriverImp implements Driver {
 	public Connection connect(final String s, final Properties properties) throws SQLException {
 		DBLogger.getInstance().log.info("Attempting to connect...");
 		File dir = null;
-		if (properties.contains("path") && !properties.getProperty("path").equalsIgnoreCase("")) {
+		if (properties.containsKey("path") && !(properties.get("path") == null)) {
 			dir = (File) properties.get("path");
 			final String path = dir.getAbsolutePath();
 			DBLogger.getInstance().log.info("Connecting to specified path...");

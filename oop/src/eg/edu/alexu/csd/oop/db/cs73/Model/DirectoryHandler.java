@@ -124,6 +124,7 @@ public class DirectoryHandler {
 
 	public void setMainDirectory(String path) {
 		mainDirectory = new File(path);
+		mainDirectory.mkdirs();
 	}
 
 }
