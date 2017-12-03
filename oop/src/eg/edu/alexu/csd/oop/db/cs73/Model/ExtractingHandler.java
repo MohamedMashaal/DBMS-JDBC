@@ -164,4 +164,13 @@ public class ExtractingHandler {
 			return columnsInfo;
 		}
 	}
+	
+	public String getTableNameSelect(String query) {
+		String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ")
+				.replaceAll("\\s+\\,", ",").replaceAll("\\s*\"\\s*","\"")
+				.replaceAll("\\s*'\\s*","'").replaceAll("=", " = ")
+				.split("\\s+|\\(|\\)");
+		String tableName = splittedQuery[3];
+		return tableName; 
+	}
 }

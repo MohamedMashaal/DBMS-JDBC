@@ -337,12 +337,7 @@ public class DatabaseImp implements Database{
 	}
 
 	public String getTableName(String query) {
-		String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ")
-				.replaceAll("\\s+\\,", ",").replaceAll("\\s*\"\\s*","\"")
-				.replaceAll("\\s*'\\s*","'").replaceAll("=", " = ")
-				.split("\\s+|\\(|\\)");
-		String tableName = splittedQuery[3];
-		return tableName;
+		return extractor.getTableNameSelect(query);
 	}
 
 	public void setMainDirectory(String path) {

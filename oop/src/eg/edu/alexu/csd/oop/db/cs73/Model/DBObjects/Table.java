@@ -169,20 +169,6 @@ public class Table {
 				}
 			}
 		}
-			/*ArrayList<Integer> indices = new ConditionHandler().getValidIndicesFrom(this, toUpdate.toArray(new String [0]));
-			updated = indices.size();
-			for(Column cl : this.columns) {
-				int indexCl = getIndex(columns, cl.getName());
-				if(indexCl != -1) {
-					for(Integer i : indices) {
-						if(cl.getType().equalsIgnoreCase("int"))
-							cl.getRecord(i).setValue(new Integer(Integer.parseInt(values.get(indexCl))));
-						else if(cl.getType().equalsIgnoreCase("varchar")) {
-							cl.getRecord(i).setValue(values.get(indexCl));
-						}
-					}
-				}
-			}*/
 		return updated;
 	}
 
@@ -238,13 +224,6 @@ public class Table {
 			}
 			size = toDelete.size();
 		}
-		/*ArrayList<Integer> toDelete = new ConditionHandler().getValidIndicesFrom(this, toUpdate.toArray(new String [0]));
-		for(int i = toDelete.size()-1 ; i >= 0 ; i --) {
-			for(Column cl : columns) {
-				cl.remove(toDelete.get(i));
-			}
-		}
-		size = toDelete.size();*/
 		return size;
 	}
 }
