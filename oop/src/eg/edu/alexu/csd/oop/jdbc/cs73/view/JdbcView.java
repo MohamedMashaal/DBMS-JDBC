@@ -2,9 +2,6 @@ package eg.edu.alexu.csd.oop.jdbc.cs73.view;
 
 import java.awt.Component;
 
-import javax.swing.JList;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
 public class JdbcView {
@@ -49,7 +46,7 @@ public class JdbcView {
         titleLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLabel.setText("JDBC Tester");
-        
+
         jScrollPane1.setViewportView(history);
 
         queryField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
