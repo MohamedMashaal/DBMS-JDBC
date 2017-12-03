@@ -5,6 +5,7 @@ import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Column;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.DBContainer;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Record;
 import eg.edu.alexu.csd.oop.db.cs73.Model.DBObjects.Table;
+import eg.edu.alexu.csd.oop.db.utils.Comparator;
 
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
@@ -117,7 +118,6 @@ public class DatabaseImp implements Database{
 	@SuppressWarnings("rawtypes")
 	@Override
     public Object[][] executeQuery(String query) throws SQLException {
-    	//throw new RuntimeException(query);
 		String [] splittedQuery = query.replaceAll("\\)", " ").replaceAll("\\(", " ")
 				.replaceAll("\\s+\\,", ",").replaceAll("\\s*\"\\s*","\"")
 				.replaceAll("\\s*'\\s*","'").replaceAll("=", " = ")
@@ -139,33 +139,11 @@ public class DatabaseImp implements Database{
 
 		// all columns
 		if(colName.equals("*")){
-			/*Column queriedColumn = currTable.getColumns().get(columnIndex);
-			Object[] fetchedData = queriedColumn.getData();
-
-			if(queriedColumn.getType().equals("int")){
-				//Integer[] intColumn = (Integer[]) fetchedData;
-				Object[][] retData = new Object[][]{fetchedData};
-				return applyWhere(retData, query, currTable);
-			}
-			else if(queriedColumn.getType().equals("varchar")){
-				//String[] varcharColumn = (String[]) fetchedData;
-				Object[][] retData = new Object[][]{fetchedData};
-				return applyWhere(retData, query, currTable);
-			}*/
 			ArrayList<Column> columns = currTable.getColumns();
 			int i = 0;
 			Object[][] fetchedData = new Object[columns.size()][];
 			for(Column column : columns){
 				Object[] columnData = column.getData();
-
-				/*if(column.getType().equals("int")){
-					Integer[] intColumn = (Integer[]) columnData;
-					fetchedData[i++] = intColumn;
-				}
-				else if(column.getType().equals("varchar")){
-					String[] varcharColumn = (String[]) columnData;
-					fetchedData[i++] = varcharColumn;
-				}*/
 				fetchedData[i++] = columnData;
 			}
 			return applyWhere(fetchedData, query, currTable);
@@ -191,15 +169,6 @@ public class DatabaseImp implements Database{
 				}
 
 				Object[] columnData = column.getData();
-
-				/*if(column.getType().equals("int")){
-					Integer[] intColumn = (Integer[]) columnData;
-					fetchedData[i++] = intColumn;
-				}
-				else if(column.getType().equals("varchar")){
-					String[] varcharColumn = (String[]) columnData;
-					fetchedData[i++] = varcharColumn;
-				}*/
 				fetchedData[i++] = columnData;
 			}
 			return applyWhere(fetchedData, query, currTable);
@@ -213,39 +182,19 @@ public class DatabaseImp implements Database{
 				throw  new RuntimeException("Column " + colName +
 						" is not exists in " + currTable.getName());
 			}
-			/*ArrayList<Column> columns = currTable.getColumns();
-			int i = 0;
-			Object[][] fetchedData = new Object[currTable.getColumns().size()][];
-			for(Column column : columns){
-				Object[] columnData = column.getData();
-
-				/*if(column.getType().equals("int")){
-					Integer[] intColumn = (Integer[]) columnData;
-					fetchedData[i++] = intColumn;
-				}
-				else if(column.getType().equals("varchar")){
-					String[] varcharColumn = (String[]) columnData;
-					fetchedData[i++] = varcharColumn;
-				}*/
-				/*fetchedData[i++] = columnData;
-			}
-			return applyWhere(fetchedData, query, currTable);*/
 			Column queriedColumn = currTable.getColumns().get(columnIndex);
 			Object[] fetchedData = queriedColumn.getData();
 
 			if(queriedColumn.getType().equals("int")){
-				//Integer[] intColumn = (Integer[]) fetchedData;
 				Object[][] retData = new Object[][]{fetchedData};
 				return applyWhere(retData, query, currTable);
 			}
 			else if(queriedColumn.getType().equals("varchar")){
-				//String[] varcharColumn = (String[]) fetchedData;
 				Object[][] retData = new Object[][]{fetchedData};
 				return applyWhere(retData, query, currTable);
 			}
 		}
 
-//		throw new RuntimeException(query);
 		return new Object[0][];
     }
 
@@ -368,8 +317,6 @@ public class DatabaseImp implements Database{
 			columnsInfo[0][1] = queriedColumn.getType();
 			return columnsInfo;
 		}
-
-
 	}
 
 	private int dbIndex(String string) {
@@ -390,7 +337,6 @@ public class DatabaseImp implements Database{
 		String[] splittedQuery = query.split(" ");
 		if(splittedQuery.length == 4) // there is no where condition
 			return inverse(cols);
-			//return cols;
 
 		String columnName = splittedQuery[5];
 		String operator = splittedQuery[6];
@@ -411,7 +357,9 @@ public class DatabaseImp implements Database{
 					for(Object record : column){
 						Record x = comparedColumn.getRecord(i);
 						Integer comparedColumnRecord = (Integer)x.getValue();
-						if(operator.equals("=")) {
+						if(new Comparator<Integer>().compare(comparedColumnRecord, new Integer(intValue), operator))
+							filteredRecords.add(record);
+						/*if(operator.equals("=")) {
 							if(comparedColumnRecord.intValue() == intValue) {
 								filteredRecords.add(record);
 							}
@@ -425,7 +373,7 @@ public class DatabaseImp implements Database{
 							if(comparedColumnRecord.intValue() < intValue){
 								filteredRecords.add(record);
 							}
-						}
+						}*/
 						i++;
 					}
 					filteredCols[colIndex++] = filteredRecords.toArray();
@@ -444,8 +392,10 @@ public class DatabaseImp implements Database{
 				i = 0 ;
 				for(Object record : column){
 					Record<String> castedRecord = (Record<String>) comparedColumn.getRecords().get(i);
-					int comparingVal = castedRecord.getValue().compareTo(comparedValue);
-					if(operator.equals("=")) {
+					//int comparingVal = castedRecord.getValue().compareTo(comparedValue);
+					if(new Comparator<String>().compare(castedRecord.getValue() ,comparedValue , operator))
+						filteredRecords.add(record);
+					/*if(operator.equals("=")) {
 						if(comparingVal == 0) {
 							filteredRecords.add(record);
 						}
@@ -459,7 +409,7 @@ public class DatabaseImp implements Database{
 						if(comparingVal == -1){
 							filteredRecords.add(record);
 						}
-					}
+					}*/
 					i++;
 				}
 				filteredCols[colIndex++] = filteredRecords.toArray();
@@ -468,7 +418,6 @@ public class DatabaseImp implements Database{
 		}
 
 		return inverse(filteredCols);
-		//return filteredCols;
 	}
 
 	private Object[][] inverse(Object[][] cols) {
