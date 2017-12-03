@@ -251,7 +251,6 @@ public class DatabaseImp implements Database{
     	return updated;
     }
 
-	@SuppressWarnings("rawtypes")
 	public String[][] getColumnsInfo(String query) {
 		return extractor.getColumnsInfoSelect(data.get(data.size()-1), query);
 	}
@@ -271,7 +270,8 @@ public class DatabaseImp implements Database{
 	private Object[][] applyWhere(Object[][] cols, String query, Table table) { // without the bonus (later)
 		Object[][] filteredCols = new Object[cols.length][cols[0].length];
 		int colIndex = 0;
-		String[] splittedQuery = query.split(" ");
+		String[] splittedQuery = query.split("\\s+(?=(?:[^\']*\'[^\']*\')*[^\']*$)|\\,\\s*|\\(|\\)");
+		splittedQuery = extractor.filterQuotes(splittedQuery);
 		if(splittedQuery.length == 4) // there is no where condition
 			return inverse(cols);
 
