@@ -3,6 +3,7 @@ package eg.edu.alexu.csd.oop.jdbc.cs73;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.Driver;
+import java.sql.DriverManager;
 import java.sql.DriverPropertyInfo;
 import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
@@ -11,6 +12,14 @@ import java.util.Properties;
 import java.util.logging.Logger;
 
 public class DriverImp implements Driver {
+	static {
+		try {
+			java.sql.DriverManager.registerDriver(new DriverImp());
+		} catch (SQLException E) {
+			throw new RuntimeException("Can't register driver!");
+		}
+	}
+
 	@Override
 	public boolean acceptsURL(final String s) throws SQLException {
 		DBLogger.getInstance().log.info("Access to " + s + "has no security.");
@@ -47,7 +56,7 @@ public class DriverImp implements Driver {
 
 	@Override
 	public DriverPropertyInfo[] getPropertyInfo(final String s, final Properties properties) throws SQLException {
-		throw new UnsupportedOperationException();
+		return new DriverPropertyInfo[0];
 	}
 
 	@Override

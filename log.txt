@@ -882,3 +882,21 @@ Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultSetMetaDataImp <ini
 INFO: Generating meta data.
 Dec 03, 2017 5:15:49 PM eg.edu.alexu.csd.oop.jdbc.cs73.ResultsetImp next
 INFO: Advancing head.
+Dec 03, 2017 7:10:07 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Attempting to connect...
+Dec 03, 2017 7:10:07 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Connecting to specified path...
+Dec 03, 2017 7:10:07 PM eg.edu.alexu.csd.oop.jdbc.cs73.ConnectionImp createStatement
+INFO: Generating statement..
+Dec 03, 2017 7:10:07 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp <init>
+INFO: Statement generated.
+Dec 03, 2017 7:10:13 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Attempting to connect...
+Dec 03, 2017 7:10:13 PM eg.edu.alexu.csd.oop.jdbc.cs73.DriverImp connect
+INFO: Connecting to specified path...
+Dec 03, 2017 7:10:13 PM eg.edu.alexu.csd.oop.jdbc.cs73.ConnectionImp createStatement
+INFO: Generating statement..
+Dec 03, 2017 7:10:13 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp <init>
+INFO: Statement generated.
+Dec 03, 2017 7:10:25 PM eg.edu.alexu.csd.oop.jdbc.cs73.StatementImp execute
+INFO: Executing given command..
