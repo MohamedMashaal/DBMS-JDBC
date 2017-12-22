@@ -1,0 +1,8 @@
+Dec 22, 2017 4:07:35 PM eg.edu.alexu.csd.oop.jdbc.cs60.DriverImp connect
+INFO: Attempting to connect...
+Dec 22, 2017 4:07:35 PM eg.edu.alexu.csd.oop.jdbc.cs60.DriverImp connect
+INFO: Connecting to specified path...
+Dec 22, 2017 4:07:35 PM eg.edu.alexu.csd.oop.jdbc.cs60.ConnectionImp createStatement
+INFO: Generating statement..
+Dec 22, 2017 4:07:35 PM eg.edu.alexu.csd.oop.jdbc.cs60.StatementImp <init>
+INFO: Statement generated.
